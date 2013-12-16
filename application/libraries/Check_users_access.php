@@ -8,6 +8,7 @@ class Check_users_access {
   }
 
   function checkUsers(){
+    $this->ci->load->helper('extract_key_this_array');
     $this->ci->load->model('select_models');
 
     $permissionUserWho = $this->executeActionOverUserReturnWho($this->checkHashUserInDb());
@@ -36,7 +37,7 @@ class Check_users_access {
   }
 
   function getCurrentHashUser(){
-    return $this->ci->session->userdata('user')['hash'];
+    return extract_key_this_array($this->ci->session->userdata('user'), 'hash');
   }
 
   function sendUserDistributor(){
