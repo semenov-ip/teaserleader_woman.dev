@@ -1,24 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
-  public $headerArr;
 
   function __construct(){
 
     parent::__construct();
 
-    $this->load->helper('css_js');
-
-    $this->headerArr = array(
-      'css' => css_js('css', 'welcome'),
-      'js' => css_js('js', 'welcome')
-    );
-
   }
 
   public function index() {
+    $this->load->helper('header_src_css_js');
 
-    $data['header'] = $this->headerArr;
+    $data['header'] = header_src_css_js('welcome', false);
     
     $this->load->view('/welcome/welcome_tpl.php', $data);
   }
