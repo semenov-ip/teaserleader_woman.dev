@@ -15,7 +15,7 @@ class Check_users_access {
 
     $permissionDirArr = $this->$permissionUserWho();
 
-    $currentDir = end(explode('/', dirname(!empty($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : !empty($_SERVER['PHP_SELF']) ? $_SERVER['PHP_SELF'] : str_replace('\\','/',__FILE__))));
+    $currentDir = $this->currentDirExtract();
 
     if( array_search($currentDir, $permissionDirArr) === false ){
       return $this->sendUserDistributor();
@@ -24,16 +24,22 @@ class Check_users_access {
     return $permissionUserWho;
   }
 
+  function checkHashUserInDb(){
+    $dataWhereArr['hash'] = $this->getCurrentHashUser();
+
+    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who', 'users');
+  }
+
   function executeActionOverUserReturnWho($dataUserWho){
     if( !is_object($dataUserWho) ){ return $this->sendUserDistributor(); }
 
     return $dataUserWho->who;
   }
 
-  function checkHashUserInDb(){
-    $dataWhereArr['hash'] = $this->getCurrentHashUser();
+  function currentDirExtract(){
+    $currentUrl = explode( "/", $_SERVER['REQUEST_URI'] );
 
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who', 'users');
+    return $currentUrl[1];
   }
 
   function getCurrentHashUser(){

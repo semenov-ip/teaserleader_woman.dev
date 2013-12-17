@@ -2,16 +2,19 @@
 
 if(!function_exists('template_builder')){
 
-  function template_builder(){
+  function template_builder($template, $body, $who, $statisticsBoolean = false){
+    $ci =& get_instance();
 
-    // $data['header'] = header_src_css_js('admin');
+    $ci->load->helper('header_src_css_js');
 
-    // $data['menu'] = "/".$this->who."/menu/top_menu";
+    $data['header'] = header_src_css_js($template);
 
-    // $data['statistics'] = "/_shared/admin_statistics";
+    $data['menu'] = "/$who/menu/top_menu";
 
-    // $data['body'] = "/".$this->who."/sites_tpl.php"; 
+    $data['body'] = "/$who/$body";
 
-    //return $data;
+    if($statisticsBoolean) { $data['statistics'] = "/_shared/admin_statistics"; }
+
+    return $data;
   }
 }

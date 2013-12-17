@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-    
-class Sites extends CI_Controller{
+
+class Sites_edit extends CI_Controller {
 
   private $who;
 
@@ -12,19 +12,11 @@ class Sites extends CI_Controller{
     $this->who = $this->check_users_access->checkUsers();
   }
 
-  function index(){
+  function index($sitesId){
     $this->load->helper('template_builder');
 
     $data = template_builder('admin','sites_tpl',$this->who,true);
 
-    $data['userSitesObj'] = $this->getUserSites();
-
     $this->load->view( '/_shared/admin_tpl.php', $data );
-  }
-
-  function getUserSites(){
-    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
-
-    return $this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'sites_id, url', 'sites');
   }
 }

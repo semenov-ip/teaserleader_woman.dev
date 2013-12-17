@@ -26,7 +26,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -373,15 +373,26 @@ $config['date']  = date("Y-m-d H:i:s");
 $config['prefixes'] = 'leader_';
 
 $config['error_message'] = array(
-  false => false,
-  
+
   "empty_data" => "Все поля являются обязательными для заполнения.",
 
   "password_confirm" => "Ваши пароли не совпадают",
 
   "email_confirm" => "Указанный e-mail уже зарегистрирован!",
 
-  "email_password_incorrect" => "Логин или пароль указаны не верно!"
+  "email_password_incorrect" => "Логин или пароль указаны не верно!",
+
+  "webmoney_input_error" => "Не верно указан номер WMR-кошелька!",
+
+  "webmoney_double_save" =>"В целях безопасности, вы не можете изменить WMR-кошелек!",
+
+  "success_save_data" => "Изменения сохранены!",
+
+  "sites_add_title" => "Добавление сайта!",
+
+  "empty_url" => "Не указан адрес сайта!",
+
+  "url_confirm" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!"
 );
 
 

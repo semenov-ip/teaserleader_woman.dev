@@ -1,3 +1,10 @@
+<?php var_dump($userSitesObj); ?>
+
+
+<?php foreach ($userSitesObj as $rowObj) {
+    echo "<a href=\"/webmaster/sites_edit/index/".$rowObj->sites_id."/\">".$rowObj->url."</a>";
+} ?>
+
 <h4>Сайты</h4>
         <button type="button" class="btn btn-warning">Добавить сайт</button>
         <table class="table table-bordered table-hover margin_top_10">

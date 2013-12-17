@@ -7,11 +7,10 @@ class User_distributor extends CI_Controller{
   }
 
   function index(){
+    $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
 
-    $userDataSession = $this->session->userdata('user');
-
-    $dataUser = $this->checkUserHash($userDataSession['hash']);
+    $dataUser = $this->checkUserHash();
 
     if( !$dataUser ) { return $this->registrationPag(); }
 
@@ -20,8 +19,8 @@ class User_distributor extends CI_Controller{
     $this->$functionName($dataUser);
   }
 
-  function checkUserHash($userHash){
-    $whereHashData['hash'] = $userHash;
+  function checkUserHash(){
+    $whereHashData['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
 
     return $this->select_models->select_one_row_where_column_selectcolumn($whereHashData, 'who, admin, moderator', 'users');
   }

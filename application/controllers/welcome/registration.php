@@ -76,7 +76,7 @@ class Registration extends CI_Controller{
     $idUser = $this->insert_models->insert_data_return_id($post, 'users');
 
     if($idUser){ 
-      $this->session->set_userdata( array('user' => array('hash' => $post['hash'])) );
+      $this->session->set_userdata( array('user' => array('hash' => $post['hash'], 'user_id' => $idUser)) );
 
       redirect( "/_shared/user_distributor/", 'location'); 
     }

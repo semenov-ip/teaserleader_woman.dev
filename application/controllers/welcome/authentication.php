@@ -58,7 +58,7 @@ class Authentication extends CI_Controller{
   }
 
   function successfullyAuthentication(){
-    $this->session->set_userdata( array('user' => array('hash' => $this->userIdHash->hash)) );
+    $this->session->set_userdata( array('user' => array( 'hash' => $this->userIdHash->hash, 'user_id' => $this->userIdHash->user_id )) );
 
     redirect( "/_shared/user_distributor/", 'location'); 
   }
