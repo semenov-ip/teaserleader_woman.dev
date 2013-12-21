@@ -20,21 +20,27 @@ class User_distributor extends CI_Controller{
   }
 
   function checkUserHash(){
-    $whereHashData['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
+    $dataWhereArr['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
 
-    return $this->select_models->select_one_row_where_column_selectcolumn($whereHashData, 'who, admin, moderator', 'users');
+    if(!$dataWhereArr['hash']){ return $this->registrationPag(); }
+
+    return $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, moderator', 'users');
   }
 
   function registrationPag(){
     redirect( "/welcome/authentication/", 'location');
   }
 
+  function partner(){
+    // для партнера
+  }
+
   function webmaster($dataUser){
     redirect( "/".$dataUser->who."/sites/", 'location');
   }
 
-  function partner(){
-    // для партнера
+  function tiser($dataUser){
+    redirect( "/".$dataUser->who."/campaigns/", 'location');
   }
 
   function moderator($dataUser){

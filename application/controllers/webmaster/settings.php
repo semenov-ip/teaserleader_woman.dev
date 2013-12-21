@@ -2,7 +2,7 @@
     
 class Settings extends CI_Controller{
 
-  private $who, $userId, $top10Login, $curr_num;
+  private $who, $top10Login, $curr_num;
 
   function __construct(){
 
@@ -33,12 +33,10 @@ class Settings extends CI_Controller{
   function getUserData(){
     $dataWhereArr['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
 
-    return $this->cleanAddAataInput($this->select_models->select_one_row_where_column($dataWhereArr, 'users'));
+    return $this->cleanAddDataInput($this->select_models->select_one_row_where_column($dataWhereArr, 'users'));
   }
 
-  function cleanAddAataInput($dataUserObj){
-    $this->userId = $dataUserObj->user_id;
-
+  function cleanAddDataInput($dataUserObj){
     $this->curr_num = $dataUserObj->curr_num;
 
     $this->top10Login = $dataUserObj->top10_login;
@@ -49,7 +47,7 @@ class Settings extends CI_Controller{
   }
 
   function extractKeyErrorMessageInitializationPostQuery(){
-    return $this->session->flashdata('successSaveData') ? $this->session->flashdata('successSaveData') : $this->getPostDataSettingsUpdate();
+    return $this->session->flashdata('successSaveUpdateData') ? $this->session->flashdata('successSaveUpdateData') : $this->getPostDataSettingsUpdate();
   }
 
   function getPostDataSettingsUpdate(){
@@ -65,7 +63,7 @@ class Settings extends CI_Controller{
 
       if($this->updateDataUserProfile($_POST)){
 
-        $this->session->set_flashdata('successSaveData', 'success_save_data');
+        $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
         redirect( "/webmaster/settings/", 'location');
       }
@@ -79,6 +77,8 @@ class Settings extends CI_Controller{
     if( !isset($_POST['notshow_top10_login']) ){
 
       $post['notshow_top10_login'] = 0;
+
+      $post['top10_login'] = empty($post['top10_login']) ? $post['name'] : $post['top10_login'];
       
       return $post;
     }
@@ -88,13 +88,6 @@ class Settings extends CI_Controller{
     return $post;
   }
 
-  function webmoneyInputError($wmr){
-    if(substr($wmr, 0, 1) != 'R' || strlen($wmr) != 13){
-      return false;
-    }
-    return true;
-  }
-
   function webmoneyDoubleSaveError($wmr){
     if( !is_null($this->curr_num) && $this->curr_num != $wmr ){
       return false;
@@ -102,8 +95,15 @@ class Settings extends CI_Controller{
     return true;
   }
 
+  function webmoneyInputError($wmr){
+    if(substr($wmr, 0, 1) != 'R' || strlen($wmr) != 13){
+      return false;
+    }
+    return true;
+  }
+
   function updateDataUserProfile($post){
-    $dataWhereArr['user_id'] = $this->userId;
+    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 
     return $this->update_models->update_set_one_where_column($post, $dataWhereArr, 'users');
   }

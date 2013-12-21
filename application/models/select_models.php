@@ -79,31 +79,78 @@
       return false;
     }
 
-    function select_all_row_where_column_selectcolumn($dataWhereArr, $selectcolumn, $dbTableName){
+    function select_all_row_selectcolumn_return_key_value($selectcolumn, $key, $value, $dbTableName){
 
-      if(is_array($dataWhereArr)){
+      $this->db->select($selectcolumn);
 
-        $this->db->select($selectcolumn);
+      $query = $this->db->get($this->prefixes.$dbTableName);
 
-        $this->db->where($dataWhereArr);
+      if($query->num_rows() > 0){
 
-        $query = $this->db->get($this->prefixes.$dbTableName);
+        foreach ($query->result() as $row) {
 
-        if($query->num_rows() > 0){
-
-          foreach ($query->result() as $row) {
-
-            $dataQuery[] = $row;
-          }
-
+          $dataQuery[$row->$key] = $row->$value;
         }
 
-        return $dataQuery;
       }
 
-      return false;
+      return $dataQuery;
     }
 
-  }
+    function select_all_row_selectcolumn_return_key_value_orderby($selectcolumn, $key, $value, $orderby, $dbTableName){
 
+      $this->db->select($selectcolumn);
+
+      $this->db->group_by($key);
+
+      $this->db->order_by("BINARY($value)", $orderby);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+
+          $dataQuery[$row->$key] = $row->$value;
+        }
+
+      }
+
+      return $dataQuery;
+    }
+
+    function select_all_row_where_column_selectcolumn($dataWhereArr, $selectcolumn, $orderby, $dbTableName){
+      $this->db->select($selectcolumn);
+      
+      $this->db->group_by($selectcolumn);
+
+      $this->db->order_by("BINARY($selectcolumn)", $orderby);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+          if(!empty($row->$selectcolumn)){
+
+            $dataQuery[] = $row->$selectcolumn;
+          }
+          
+        }
+
+      }
+
+      return $dataQuery;
+    }
+
+    function show_columns($dbTableName){
+      $fields = $this->db->list_fields($this->prefixes.$dbTableName);
+
+      foreach ($fields as $field) {
+        $row[$field] = null;
+      }
+
+      return $row;
+    }
+  }
 ?>

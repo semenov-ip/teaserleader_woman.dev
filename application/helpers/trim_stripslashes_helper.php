@@ -2,13 +2,17 @@
 
 if(!function_exists('trim_stripslashes')){
 
-  function trim_stripslashes($post){
+  function trim_stripslashes($post, $exceptionsKey = array()){
 
     if(is_array($post)){
       
       foreach ($post as $key => $value) {
 
-        $post[$key] = stripslashes(trim($value));
+        if(!in_array($key, $exceptionsKey)){
+
+          $post[$key] = stripslashes(trim($value));
+          
+        }
       }
 
       return $post;

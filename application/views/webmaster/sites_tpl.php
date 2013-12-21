@@ -1,8 +1,5 @@
-<?php var_dump($userSitesObj); ?>
-
-
-<?php foreach ($userSitesObj as $rowObj) {
-    echo "<a href=\"/webmaster/sites_edit/index/".$rowObj->sites_id."/\">".$rowObj->url."</a>";
+<?php foreach ($siteDataObj as $rowObj) {
+    echo "<a href=\"/webmaster/sites_edit/index/".$rowObj->site_id."/\">".$rowObj->url."</a>";
 } ?>
 
 <h4>Сайты</h4>

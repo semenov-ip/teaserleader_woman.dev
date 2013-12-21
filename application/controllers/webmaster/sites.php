@@ -17,14 +17,14 @@ class Sites extends CI_Controller{
 
     $data = template_builder('admin','sites_tpl',$this->who,true);
 
-    $data['userSitesObj'] = $this->getUserSites();
+    $data['siteDataObj'] = $this->getSiteData();
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
 
-  function getUserSites(){
+  function getSiteData(){
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 
-    return $this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'sites_id, url', 'sites');
+    return $this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'site_id, url', 'sites');
   }
 }

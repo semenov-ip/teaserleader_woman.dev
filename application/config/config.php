@@ -386,15 +386,36 @@ $config['error_message'] = array(
 
   "webmoney_double_save" =>"В целях безопасности, вы не можете изменить WMR-кошелек!",
 
-  "success_save_data" => "Изменения сохранены!",
-
-  "sites_add_title" => "Добавление сайта!",
+  "success_save_update_data" => "Изменения сохранены!",
 
   "empty_url" => "Не указан адрес сайта!",
 
-  "url_confirm" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!"
+  "empty_name" => "Не указано название компании!",
+
+  "url_confirm" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!",
+
+  "empty_subid" => "Есои Вы выбрали метку SubID, то необходимо указать {tiz_id} и {source}"
 );
 
+$config['title'] = array(
+  "site_add_title" => "Добавление сайта",
+  
+  "site_edit_title" => "Редактирование сайта",
+
+  "campaign_add_title" => "Создание кампании",
+
+  "campaign_edit_title" => "Редактирование кампании"
+);
+
+$config['daysWeek'] = array(
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота'
+);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

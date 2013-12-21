@@ -25,7 +25,9 @@ class Check_users_access {
   }
 
   function checkHashUserInDb(){
-    $dataWhereArr['hash'] = $this->getCurrentHashUser();
+    $dataWhereArr['hash'] = extract_key_this_array($this->ci->session->userdata('user'), 'hash');
+
+    if(!$dataWhereArr['hash']){ return $this->sendUserDistributor(); }
 
     return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who', 'users');
   }
@@ -42,12 +44,15 @@ class Check_users_access {
     return $currentUrl[1];
   }
 
-  function getCurrentHashUser(){
-    return extract_key_this_array($this->ci->session->userdata('user'), 'hash');
-  }
-
   function sendUserDistributor(){
     redirect( "/_shared/user_distributor/", 'location');
+  }
+
+  function partner(){
+    return array(
+      'partner',
+      'webmaster',
+    );
   }
 
   function webmaster(){
@@ -57,10 +62,10 @@ class Check_users_access {
     );
   }
 
-  function partner(){
+  function tiser(){
     return array(
-      'partner',
-      'webmaster'
+      'tiser',
+      'partner'
     );
   }
 

@@ -5,21 +5,21 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">URL</label>
     <div class="col-sm-10">
-      http://<input type="text" name="url" class="form-control" value="<?php  ?>" placeholder="URL">
+      http://<input type="text" name="url" class="form-control" value="<?php echo $siteDataObj->url ?>" placeholder="URL">
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-2 control-label">Алиасы</label>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="aliases" ></textarea>
+      <textarea class="form-control" rows="3" name="aliases" ><?php echo $siteDataObj->aliases ?></textarea>
     </div>
   </div>
 
   <div class="form-group">
     <label class="col-sm-2 control-label">Исключить показы тизеров, имеющих указанные идентификаторы (teaser_id)</label>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="ban_teaser"></textarea>
+      <textarea class="form-control" rows="3" name="ban_teaser"><?php echo $siteDataObj->ban_teaser ?></textarea>
     </div>
   </div>
 
@@ -27,9 +27,7 @@
     <label class="col-sm-2 control-label">Кодировка сайта</label>
     <div class="col-sm-10">
       <select name="url_encoding" class="form-control">
-        <option value="utf8">UTF-8</option>
-        <option value="cp1251">Windows-1251</option>
-        <option value="koi8r">KOI8-R</option>
+        <?php echo $selectChange; ?>
       </select>
     </div>
   </div>
@@ -37,7 +35,7 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">Данные для доступа к независимой статистике сайта</label>
     <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="stat_login">Адрес:\nЛогин:\nПароль:</textarea>
+      <textarea class="form-control" rows="3" name="stat_login"><?php echo is_null($siteDataObj->stat_login) ? "Адрес:\nЛогин:\nПароль:" : $siteDataObj->stat_login ?></textarea>
     </div>
   </div>
   
