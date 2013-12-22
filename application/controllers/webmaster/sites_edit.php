@@ -58,6 +58,8 @@ class Sites_edit extends CI_Controller {
   function getPostDataSiteEdit(){
     if(!empty($_POST)){
 
+      $_POST = trim_stripslashes($_POST);
+
       if($this->updateDataCollectionUserSite($_POST)){
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');

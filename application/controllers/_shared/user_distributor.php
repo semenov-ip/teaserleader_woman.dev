@@ -10,6 +10,8 @@ class User_distributor extends CI_Controller{
     $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
 
+    $this->checkEmptyUserSession();
+
     $dataUser = $this->checkUserHash();
 
     if( !$dataUser ) { return $this->registrationPag(); }
@@ -19,10 +21,14 @@ class User_distributor extends CI_Controller{
     $this->$functionName($dataUser);
   }
 
+  function checkEmptyUserSession(){
+    if( !extract_key_this_array($this->session->userdata('user'), 'hash') ){ return $this->registrationPag(); }
+
+    if( !extract_key_this_array($this->session->userdata('user'), 'user_id') ){ return $this->registrationPag(); }
+  }
+
   function checkUserHash(){
     $dataWhereArr['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
-
-    if(!$dataWhereArr['hash']){ return $this->registrationPag(); }
 
     return $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, moderator', 'users');
   }
@@ -39,7 +45,7 @@ class User_distributor extends CI_Controller{
     redirect( "/".$dataUser->who."/sites/", 'location');
   }
 
-  function tiser($dataUser){
+  function teaser($dataUser){
     redirect( "/".$dataUser->who."/campaigns/", 'location');
   }
 
@@ -52,10 +58,3 @@ class User_distributor extends CI_Controller{
     //if($dataUser->admin){  }
   }
 }
-
-
-
-
-
-
-

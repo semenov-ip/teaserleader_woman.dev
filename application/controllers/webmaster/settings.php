@@ -90,6 +90,7 @@ class Settings extends CI_Controller{
 
   function webmoneyDoubleSaveError($wmr){
     if( !is_null($this->curr_num) && $this->curr_num != $wmr ){
+      $_POST['curr_num'] = $this->curr_num;
       return false;
     }
     return true;

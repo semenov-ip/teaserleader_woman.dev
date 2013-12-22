@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-  class Tiser_query extends CI_Model{
+  class Teaser_query extends CI_Model{
 
     protected $prefixes;
 

@@ -11,6 +11,8 @@ class Check_users_access {
     $this->ci->load->helper('extract_key_this_array');
     $this->ci->load->model('select_models');
 
+    $this->checkEmptyUserSession();
+
     $permissionUserWho = $this->executeActionOverUserReturnWho($this->checkHashUserInDb());
 
     $permissionDirArr = $this->$permissionUserWho();
@@ -24,10 +26,14 @@ class Check_users_access {
     return $permissionUserWho;
   }
 
+  function checkEmptyUserSession(){
+    if( !extract_key_this_array($this->ci->session->userdata('user'), 'hash') ){ return $this->sendUserDistributor(); }
+
+    if( !extract_key_this_array($this->ci->session->userdata('user'), 'user_id') ){ return $this->sendUserDistributor(); }
+  }
+
   function checkHashUserInDb(){
     $dataWhereArr['hash'] = extract_key_this_array($this->ci->session->userdata('user'), 'hash');
-
-    if(!$dataWhereArr['hash']){ return $this->sendUserDistributor(); }
 
     return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who', 'users');
   }
@@ -62,9 +68,9 @@ class Check_users_access {
     );
   }
 
-  function tiser(){
+  function teaser(){
     return array(
-      'tiser',
+      'teaser',
       'partner'
     );
   }
@@ -74,7 +80,7 @@ class Check_users_access {
       'webmaster',
       'partner',
       'moderator',
-      'tiser'
+      'teaser'
     );
   }
 
@@ -83,7 +89,7 @@ class Check_users_access {
       'webmaster',
       'partner',
       'moderator',
-      'tiser',
+      'teaser',
       'admin'
     );
   }
