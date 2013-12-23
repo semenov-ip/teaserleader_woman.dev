@@ -23,8 +23,8 @@ class Campaigns_edit extends CI_Controller {
     $this->load->helper('setup_array_noisset_data');
     $this->load->model('select_models');
     $this->load->model('update_models');
-    $this->load->library('teaser/data_builder_campaign_html_elements');
-    $this->load->library('teaser/validation_data_campaig_and_builder_collection');
+    $this->load->library($this->who.'/data_builder_campaign_html_elements');
+    $this->load->library($this->who.'/validation_data_campaig_and_builder_collection');
 
     $this->getCampaignId($campaignId);
 
@@ -76,7 +76,7 @@ class Campaigns_edit extends CI_Controller {
       if($this->updateDataCollectionCampaign($_POST)){
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        redirect( "/teaser/campaigns_edit/index/$this->campaignId/", 'location');
+        redirect( "/".$this->who."/campaigns_edit/index/$this->campaignId/", 'location');
       }
     }
 

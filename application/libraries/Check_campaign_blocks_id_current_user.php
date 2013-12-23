@@ -14,11 +14,11 @@ class Check_campaign_blocks_id_current_user {
     $this->haveDataQuery($dataWhereArr, 'campaigns');
   }
 
-  function checkBlocks(){
-    //$dataWhereArr['campaign_id'] = $campaignId;
-    //$dataWhereArr['user_id'] = extract_key_this_array($this->ci->session->userdata('user'), 'user_id');
+  function checkBlocks($siteId){
+    $dataWhereArr['site_id'] = $siteId;
+    $dataWhereArr['user_id'] = extract_key_this_array($this->ci->session->userdata('user'), 'user_id');
 
-    //$this->haveDataQuery($dataWhereArr, 'campaigns');
+    $this->haveDataQuery($dataWhereArr, 'sites');
   }
 
   function haveDataQuery($dataWhereArr, $dbTableName){

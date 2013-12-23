@@ -375,54 +375,38 @@ $config['prefixes'] = 'leader_';
 $config['max_image_file_size'] = 120;
 
 $config['error_message'] = array(
-
   "empty_data" => "Все поля являются обязательными для заполнения.",
-
   "password_confirm" => "Ваши пароли не совпадают",
-
   "email_confirm" => "Указанный e-mail уже зарегистрирован!",
-
   "email_password_incorrect" => "Логин или пароль указаны не верно!",
-
   "webmoney_input_error" => "Не верно указан номер WMR-кошелька!",
-
   "webmoney_double_save" =>"В целях безопасности, вы не можете изменить WMR-кошелек!",
-
   "success_save_update_data" => "Изменения сохранены!",
-
   "success_save_data" => "Данные были успешно сохранены!",
-
   "empty_url" => "Не указан адрес сайта!",
-
   "empty_name" => "Не указано название компании!",
-
   "url_confirm" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!",
-
   "empty_subid" => "Есои Вы выбрали метку SubID, то необходимо указать {tiz_id} и {source}",
-
   "empty_image" => "Не выбрано изображение!",
-
   "error_image_type" => "Не допустимый тип изображения.",
-
   "more_image_file_size" => "Не допустимый размер изображения. Размер должен быть не более ".$config['max_image_file_size']." кб.!",
-
   "image_not_upload" => "Не удалось сохранить изображение.",
-
-  "more_text_size" => "Текст описания больше 75 символов."
+  "more_text_size" => "Текст описания больше 75 символов.",
+  "empty_name_block" => "Не указано название блока!",
+  "empty_position" => "Не выбрано положение изображения относительно текста!",
+  "empty_align" => "Не выбран способ выравнивания объявления!",
+  "empty_block_size" => "Не указана ширина блок!"
 );
 
 $config['title'] = array(
   "site_add_title" => "Добавление сайта",
-  
   "site_edit_title" => "Редактирование сайта",
-
   "campaign_add_title" => "Создание кампании",
-
   "campaign_edit_title" => "Редактирование кампании",
-
   "teaser_add_title" => "Добавление объявления",
-
-  "teaser_edit_title" => "Редактирование объявления"
+  "teaser_edit_title" => "Редактирование объявления",
+  "block_add_title" =>  "Добавление нового блок",
+  "block_edit_title" => "Редактирование блока"
 );
 
 $config['daysWeek'] = array(
@@ -434,6 +418,8 @@ $config['daysWeek'] = array(
   'Пятница',
   'Суббота'
 );
+
+$config['title_to_code'] = 'Тизерная сеть';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

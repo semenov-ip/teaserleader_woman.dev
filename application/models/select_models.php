@@ -169,11 +169,58 @@
       return $dataQuery;
     }
 
+    function select_from_where_column_selectcolumn_return_num_rows($dataWhereArr, $selectcolumn, $dbTableName){
+      if(is_array($dataWhereArr)){
+
+        $this->db->where($dataWhereArr);
+
+        $this->db->select($selectcolumn);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        return $query->num_rows();
+      }
+
+      return 0;
+    }
+
+    function select_from_all_limit_orderby($limit, $orderbycolumn, $orderbycommand, $dbTableName){
+
+      $this->db->limit($limit);
+
+      $this->db->order_by($orderbycolumn, $orderbycommand);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+
+          $dataQuery[] = $row;
+          
+        }
+
+        return $dataQuery;
+      }
+
+      return false;
+    }
+
     function show_columns($dbTableName){
       $fields = $this->db->list_fields($this->prefixes.$dbTableName);
 
       foreach ($fields as $field) {
         $row[$field] = null;
+      }
+
+      return $row;
+    }
+
+    function show_columns_return_default($dbTableName){
+      $fields = $this->db->field_data($this->prefixes.$dbTableName);
+
+      foreach ($fields as $field){
+        $row[$field->name] = $field->default;
       }
 
       return $row;
