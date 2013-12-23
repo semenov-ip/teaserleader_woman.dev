@@ -44,5 +44,6 @@
       <?php $this->load->view('/_shared/admin_footer'); ?>
 
     </div>
+    <?php $this->load->view('/_shared/footer'); ?>
   </body>
 </html>

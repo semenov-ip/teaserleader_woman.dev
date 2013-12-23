@@ -120,6 +120,6 @@
     </div>
 
 </div>
-  
+<?php $this->load->view('/_shared/footer'); ?>
 </body>
 </html>

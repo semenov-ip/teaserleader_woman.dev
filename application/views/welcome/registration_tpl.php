@@ -53,5 +53,6 @@
     <div class="copyright2">Copyright 2013 Ladyads. All rights reserved.</div>
       
   </div> 
+<?php $this->load->view('/_shared/footer'); ?>
 </body>
 </html>
