@@ -14,8 +14,9 @@ class Sites extends CI_Controller{
 
   function index(){
     $this->load->helper('template_builder');
+    $this->load->helper('status/incite_status_site_teaser_name');
 
-    $data = template_builder('admin','sites_tpl',$this->who,true);
+    $data = template_builder('admin','sites_tpl',$this->who, false);
 
     $data['siteDataObj'] = $this->getSiteData();
 
@@ -25,6 +26,18 @@ class Sites extends CI_Controller{
   function getSiteData(){
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 
-    return $this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'site_id, url', 'sites');
+    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'site_id, url, status', 'sites'));
+  }
+
+  function setDataProcessing($siteDataObj){
+    if(is_array($siteDataObj)){
+      foreach ($siteDataObj as $key => $currentSiteDataObj) {
+        $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
+      }
+
+      return $siteDataObj;
+    }
+
+    return false;
   }
 }

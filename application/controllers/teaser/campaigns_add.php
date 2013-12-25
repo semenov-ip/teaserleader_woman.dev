@@ -22,8 +22,8 @@ class Campaigns_add extends CI_Controller{
     $this->load->helper('setup_array_noisset_data');
     $this->load->model('select_models');
     $this->load->model('insert_models');
-    $this->load->library($this->who.'/data_builder_campaign_html_elements');
-    $this->load->library($this->who.'/validation_data_campaig_and_builder_collection');
+    $this->load->library('/teaser/data_builder_campaign_html_elements');
+    $this->load->library('/teaser/validation_data_campaig_and_builder_collection');
 
     $data = template_builder('admin','campaigns_add_update_tpl', $this->who);
 

@@ -22,7 +22,7 @@ class Blocks_add extends CI_Controller{
     $this->load->library('check_campaign_blocks_id_current_user');
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
-    $this->load->library($this->who."/data_builder_block_html_elements");
+    $this->load->library("webmaster/data_builder_block_html_elements");
     $this->load->library($this->who."/validation_data_block");
 
     $this->check_campaign_blocks_id_current_user->checkBlocks($siteId);
@@ -32,6 +32,8 @@ class Blocks_add extends CI_Controller{
     $data = template_builder('admin','blocks_add_update_tpl', $this->who);
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'block_add_title' );
+    $data['titleMinor'] = extract_key_this_array( $this->config->item('title'), 'block_view' );
+    $data['leftBlockHtml'] = false;
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->getPostDataBlockAdd() );
 

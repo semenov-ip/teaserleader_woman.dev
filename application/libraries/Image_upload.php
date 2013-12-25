@@ -16,6 +16,8 @@ class Image_upload {
 
   function getCorrectImageUpload($prefixesIdImageName, $nameInput, $newSrcImageUrl){
 
+    if( $this->emptyImage($_FILES) ) { return "empty_image"; }
+
     $standardSrcSave = $_FILES[$nameInput]['tmp_name'];
 
     $this->currentImageType = $_FILES[$nameInput]['type'];
@@ -38,7 +40,7 @@ class Image_upload {
   }
 
   function emptyImage($standardSrcSave){
-    if( !$standardSrcSave ) { return true; }
+    if( empty($standardSrcSave) ) { return true; }
 
     return false;
   }

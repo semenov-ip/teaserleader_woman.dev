@@ -1,49 +1,71 @@
-<h4><?php echo $titleH4 ?></h4>
-<?php if($error){ echo '<div class="alert alert-danger">'.$error.'</div>'; } ?>
-<form class="form-horizontal" role="form" method="post">
-  
-  <div class="form-group">
-    <label class="col-sm-2 control-label">URL</label>
-    <div class="col-sm-10">
-      http://<input type="text" name="url" class="form-control" value="<?php echo $siteDataObj->url ?>" placeholder="URL">
-    </div>
-  </div>
+<!-- Page title -->
+<div class="page-title">
+  <h2><i class="icon-desktop color"></i> <?php echo $titleH4 ?></h2>
+  <hr />
+</div>
+<!-- Page title -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="awidget">
+        <div class="awidget-head">
+        </div>
+        <div class="awidget-body">
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Алиасы</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="aliases" ><?php echo $siteDataObj->aliases ?></textarea>
-    </div>
-  </div>
+          <div class="form profile">
+            <!-- Edit profile form (not working)-->
+            <form class="form-horizontal" role="form" method="post">
+              <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
+              <div class="form-group">
+                <label class="control-label col-lg-4">URL</label>
+                <div class="col-lg-6 input-group">
+                  <span class="input-group-addon">http://</span><input type="text" name="url" class="form-control" value="<?php echo $siteDataObj->url ?>" placeholder="URL" <?php echo $desabledUrl ?>>
+                </div>
+              </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Исключить показы тизеров, имеющих указанные идентификаторы (teaser_id)</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="ban_teaser"><?php echo $siteDataObj->ban_teaser ?></textarea>
-    </div>
-  </div>
+              <div class="form-group">
+                <label class="control-label col-lg-4">Алиасы</label>
+                <div class="col-lg-6">
+                  <textarea class="form-control" rows="3" name="aliases" ><?php echo $siteDataObj->aliases ?></textarea>
+                  <small class="help-block font-size-85">По одному адресу с каждой новой строки.</small>
+                </div>
+              </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Кодировка сайта</label>
-    <div class="col-sm-10">
-      <select name="url_encoding" class="form-control">
-        <?php echo $selectChange; ?>
-      </select>
-    </div>
-  </div>
+              <div class="form-group">
+                <label class="control-label col-lg-4">Исключить показы тизеров, имеющих указанные идентификаторы (teaser_id)</label>
+                <div class="col-lg-6">
+                  <textarea class="form-control" rows="3" name="ban_teaser"><?php echo $siteDataObj->ban_teaser ?></textarea>
+                  <small class="help-block font-size-85">По одному через запятую «,»</small>
+                </div>
+              </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Данные для доступа к независимой статистике сайта</label>
-    <div class="col-sm-10">
-      <textarea class="form-control" rows="3" name="stat_login"><?php echo is_null($siteDataObj->stat_login) ? "Адрес:\nЛогин:\nПароль:" : $siteDataObj->stat_login ?></textarea>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Сохранить</button>
-      <a href="" class="btn btn-default">Отменить</a>
-    </div>
-  </div>
+              <div class="form-group">
+                <label class="control-label col-lg-4">Кодировка сайта</label>
+                <div class="col-lg-6">
+                  <select name="url_encoding" class="form-control">
+                    <?php echo $selectChange; ?>
+                  </select>
+                </div>
+              </div>
 
-</form>
+              <div class="form-group">
+                <label class="control-label col-lg-4">Данные для доступа к независимой статистике сайта</label>
+                <div class="col-lg-6">
+                  <textarea class="form-control" rows="3" name="stat_login"><?php echo is_null($siteDataObj->stat_login) ? "Адрес:\nЛогин:\nПароль:" : $siteDataObj->stat_login ?></textarea>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-sm-offset-4 col-lg-6">
+                  <button type="submit" class="btn btn-default">Сохранить</button>
+                  <a href="/webmaster/sites/" class="btn btn-default">Отменить</a>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/admin/include_page/site_add_update_tools.js"></script>

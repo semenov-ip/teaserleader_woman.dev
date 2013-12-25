@@ -1,49 +1,80 @@
 <?php
   $this->load->view('/_shared/header');
 ?>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="logo" href="/"></a>
-        </div>
+  <body>
+      <!-- Logo & Navigation starts -->
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                <a href="/_shared/user_distributor/"><div class="logodiv"></div></a>
+               </div>
+               <div class="col-md-2">
+               </div>
+               <div class="col-md-6">
+                  <div class="navbar navbar-inverse" role="banner">
+                      <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                          <span>Menu</span>
+                        </button>
+                      </div>
+                      <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                        <ul class="nav navbar-nav">
+                          <li class="dropdown">
+                            <a href="/_shared/settings/"><i class="icon-user"> </i><?php echo $email; ?></a>
+                          </li>
 
-        <div class="navbar-collapse collapse">
-          
-          <ul class="nav navbar-nav">
-            <?php $this->load->view($menu); ?>
-            <li><a href="#contact">ТОП10</a></li>
-          </ul>
-
-          <div class="float_right margin_top_10">
-            <a href="" class="btn btn-sm btn-info">Выход</a>
-          </div>
-          
-          <?php if(!isset($statistics)){ $this->load->view("/_shared/admin_user_left_info"); } ?>
-        
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container theme-showcase">
-      <?php if(isset($statistics)){ $this->load->view($statistics); } ?>
-
-
-      <div class="row well margin-top_-10">
-        <?php if(isset($body)){ $this->load->view($body); } ?>
+                          <li class="dropdown">
+                            <a href="#"><i class="icon-comments"></i> Баланс: <?php echo $count_rur; ?> Р</a>
+                          </li>
+                          
+                          <li class="dropdown logout">
+                            <a href="/welcome/authentication/"><span><span>Выйти</span></span></a>
+                          </li>
+                        </ul>
+                      </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
 
+      <!-- Logo & Navigation ends -->
+
+      <!-- Page content -->
+      <div class="page-content blocky">
+         <div class="container">
+            <div class="sidebar-dropdown"><a href="#">MENU</a></div>
+            <div class="sidey">
+               <div class="side-cont">
+                  <ul class="nav">
+                      <?php $this->load->view($menu); ?>
+                      <!-- Main menu -->
+                      <li><a href="index.html"><i class="icon-home"></i> Выплаты</a></li>
+                      <li><a href="index.html"><i class="icon-home"></i> Тикеты</a></li>
+                      <li><a href="index.html"><i class="icon-home"></i> Новости</a></li>
+                      <li><a href="/webmaster/settings/"><i class="icon-user"></i> Профиль</a></li>
+                      <li><a href="index.html"><i class="icon-home"></i> FAQ</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="mainy">
+              <?php if(isset($body)){ $this->load->view($body); } ?>
+            </div>
+
+            <div class="clearfix"></div>
+
+         </div>
+      </div>
+
+      <!-- Footer starts -->
       <?php $this->load->view('/_shared/admin_footer'); ?>
+      <!-- Footer ends -->
 
-    </div>
-    <?php $this->load->view('/_shared/footer'); ?>
-  </body>
+      <!-- Scroll to top -->
+      <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span> 
+
+      <?php $this->load->view('/_shared/footer'); ?>
+
+  </body> 
 </html>

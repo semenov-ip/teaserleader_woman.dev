@@ -17,7 +17,7 @@ class Validation_data_teaser_and_builder_collection {
 
     if( $booleanImageValidation ){
 
-      $statusImageUpload = $this->ci->image_upload->getCorrectImageUpload($campaignId, 'image', '/teaser_images/');
+      $statusImageUpload = $this->ci->image_upload->getCorrectImageUpload($campaignId, 'image', '/images_teaser/');
 
       if( $statusImageUpload !== true ){
         return $statusImageUpload;

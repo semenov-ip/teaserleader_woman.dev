@@ -15,16 +15,25 @@ class Campaigns extends CI_Controller{
   function index(){
     $this->load->helper('template_builder');
 
-    //$data = template_builder('admin','sites_tpl',$this->who,true);
+    $data = template_builder('admin','campaigns_tpl', 'teaser');
 
-    //$data['siteDataObj'] = $this->getSiteData();
+    $data['campaignDataObj'] = $this->getCampaignData();
 
-    //$this->load->view( '/_shared/admin_tpl.php', $data );
+    $this->load->view( '/_shared/admin_tpl.php', $data );
   }
 
-  function getSiteData(){
-    //$dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+  function getCampaignData(){
+    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 
-    //return $this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'site_id, url', 'sites');
+    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'campaign_id, name, status', 'campaigns'));
+  }
+
+  function setDataProcessing($campaignDataObj){
+    if(is_array($campaignDataObj)){
+
+      return $campaignDataObj;
+    }
+
+    return false;
   }
 }

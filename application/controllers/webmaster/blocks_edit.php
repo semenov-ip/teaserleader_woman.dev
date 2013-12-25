@@ -30,6 +30,8 @@ class Blocks_edit extends CI_Controller {
     $data = template_builder('admin','blocks_add_update_tpl', $this->who);
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'block_edit_title' );
+    $data['titleMinor'] = extract_key_this_array( $this->config->item('title'), 'html_view' );
+    $data['leftBlockHtml'] = true;
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->extractKeyErrorMessageInitializationPostQuery() );
 

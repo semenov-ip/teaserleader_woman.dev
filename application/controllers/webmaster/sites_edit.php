@@ -16,6 +16,7 @@ class Sites_edit extends CI_Controller {
     $this->load->helper('template_builder');
     $this->load->helper('extract_key_this_array');
     $this->load->helper('select_define_builder');
+    $this->load->helper('trim_stripslashes');
     $this->load->model('select_models');
     $this->load->model('update_models');
 
@@ -30,6 +31,8 @@ class Sites_edit extends CI_Controller {
     $data['siteDataObj'] = empty($_POST) ? $this->getSiteData() : (object)$_POST;
 
     $data['selectChange'] = select_define_builder(array($data['siteDataObj']->url_encoding), array('utf8', 'cp1251', 'koi8r'));
+
+    $data['desabledUrl'] = "disabled";
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }

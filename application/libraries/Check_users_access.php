@@ -58,20 +58,23 @@ class Check_users_access {
     return array(
       'partner',
       'webmaster',
+      '_shared'
     );
   }
 
   function webmaster(){
     return array(
       'webmaster',
-      'partner'
+      'partner',
+      '_shared'
     );
   }
 
   function teaser(){
     return array(
       'teaser',
-      'partner'
+      'partner',
+      '_shared'
     );
   }
 
@@ -80,7 +83,8 @@ class Check_users_access {
       'webmaster',
       'partner',
       'moderator',
-      'teaser'
+      'teaser',
+      '_shared'
     );
   }
 
@@ -90,7 +94,8 @@ class Check_users_access {
       'partner',
       'moderator',
       'teaser',
-      'admin'
+      'admin',
+      '_shared'
     );
   }
 }

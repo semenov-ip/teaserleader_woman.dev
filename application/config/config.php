@@ -375,27 +375,27 @@ $config['prefixes'] = 'leader_';
 $config['max_image_file_size'] = 120;
 
 $config['error_message'] = array(
-  "empty_data" => "Все поля являются обязательными для заполнения.",
-  "password_confirm" => "Ваши пароли не совпадают",
-  "email_confirm" => "Указанный e-mail уже зарегистрирован!",
-  "email_password_incorrect" => "Логин или пароль указаны не верно!",
-  "webmoney_input_error" => "Не верно указан номер WMR-кошелька!",
-  "webmoney_double_save" =>"В целях безопасности, вы не можете изменить WMR-кошелек!",
-  "success_save_update_data" => "Изменения сохранены!",
-  "success_save_data" => "Данные были успешно сохранены!",
-  "empty_url" => "Не указан адрес сайта!",
-  "empty_name" => "Не указано название компании!",
-  "url_confirm" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!",
-  "empty_subid" => "Есои Вы выбрали метку SubID, то необходимо указать {tiz_id} и {source}",
-  "empty_image" => "Не выбрано изображение!",
-  "error_image_type" => "Не допустимый тип изображения.",
-  "more_image_file_size" => "Не допустимый размер изображения. Размер должен быть не более ".$config['max_image_file_size']." кб.!",
-  "image_not_upload" => "Не удалось сохранить изображение.",
-  "more_text_size" => "Текст описания больше 75 символов.",
-  "empty_name_block" => "Не указано название блока!",
-  "empty_position" => "Не выбрано положение изображения относительно текста!",
-  "empty_align" => "Не выбран способ выравнивания объявления!",
-  "empty_block_size" => "Не указана ширина блок!"
+  "empty_data" => array( "text" => "Все поля являются обязательными для заполнения.", "class" => "alert-warning" ),
+  "password_confirm" => array( "text" => "Ваши пароли не совпадают", "class" => "alert-warning" ),
+  "email_confirm" => array( "text" => "Указанный e-mail уже зарегистрирован!", "class" => "alert-warning" ),
+  "email_password_incorrect" => array( "text" => "Логин или пароль указаны не верно!", "class" => "alert-warning" ),
+  "webmoney_input_error" => array( "text" => "Не верно указан номер WMR-кошелька!", "class" => "alert-warning" ),
+  "webmoney_double_save" => array( "text" => "В целях безопасности, вы не можете изменить WMR-кошелек!", "class" => "alert-warning" ),
+  "success_save_update_data" => array( "text" => "Изменения сохранены!", "class" => "alert-success" ),
+  "success_save_data" => array( "text" => "Данные были успешно сохранены!", "class" => "alert-success" ),
+  "empty_url" => array( "text" => "Не указан адрес сайта!", "class" => "alert-warning" ),
+  "empty_name" => array( "text" => "Не указано название компании!", "class" => "alert-warning" ),
+  "url_confirm" => array( "text" => "Указан недопустимый адрес сайта. Указанный сайт уже есть в системе!", "class" => "alert-warning" ),
+  "empty_subid" => array( "text" => "Есои Вы выбрали метку SubID, то необходимо указать {tiz_id} и {source}", "class" => "alert-warning" ),
+  "empty_image" => array( "text" => "Не выбрано изображение!", "class" => "alert-warning" ),
+  "error_image_type" => array( "text" => "Не допустимый тип изображения.", "class" => "alert-warning" ),
+  "more_image_file_size" => array( "text" => "Не допустимый размер изображения. Размер должен быть не более ".$config['max_image_file_size']." кб.!", "class" => "alert-warning" ),
+  "image_not_upload" => array( "text" => "Не удалось сохранить изображение.", "class" => "alert-warning" ),
+  "more_text_size" => array( "text" => "Текст описания больше 75 символов.", "class" => "alert-warning" ),
+  "empty_name_block" => array( "text" => "Не указано название блока!", "class" => "alert-warning" ),
+  "empty_position" => array( "text" => "Не выбрано положение изображения относительно текста!", "class" => "alert-warning" ),
+  "empty_align" => array( "text" => "Не выбран способ выравнивания объявления!", "class" => "alert-warning" ),
+  "empty_block_size" => array( "text" => "Не указана ширина блок!", "class" => "alert-warning" )
 );
 
 $config['title'] = array(
@@ -403,10 +403,12 @@ $config['title'] = array(
   "site_edit_title" => "Редактирование сайта",
   "campaign_add_title" => "Создание кампании",
   "campaign_edit_title" => "Редактирование кампании",
-  "teaser_add_title" => "Добавление объявления",
+  "teaser_add_title" => "Добавить объявление",
   "teaser_edit_title" => "Редактирование объявления",
   "block_add_title" =>  "Добавление нового блок",
-  "block_edit_title" => "Редактирование блока"
+  "block_edit_title" => "Редактирование блока",
+  "block_view" => "Текущее расположение:",
+  "html_view" => "HTML-код:"
 );
 
 $config['daysWeek'] = array(

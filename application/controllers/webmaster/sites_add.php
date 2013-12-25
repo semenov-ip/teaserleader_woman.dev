@@ -30,6 +30,8 @@ class Sites_add extends CI_Controller{
 
     $data['selectChange'] = select_define_builder(array($data['siteDataObj']->url_encoding), array('utf8', 'cp1251', 'koi8r'));
 
+    $data['desabledUrl'] = "";
+
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
 
@@ -78,7 +80,9 @@ class Sites_add extends CI_Controller{
     $siteId = $this->insert_models->insert_data_return_id($post, 'sites');
 
     if($siteId){
-      redirect( "/_shared/user_distributor/", 'location');
+      $this->session->set_flashdata('successSaveUpdateData', 'success_save_data');
+
+      redirect( "/webmaster/sites_edit/index/$siteId/", 'location');
     }
   }
 }
