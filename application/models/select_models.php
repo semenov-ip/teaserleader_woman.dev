@@ -97,9 +97,8 @@
             
           }
 
+          return $dataQuery;
         }
-
-        return $dataQuery;
       }
 
       return false;
@@ -118,9 +117,10 @@
           $dataQuery[$row->$key] = $row->$value;
         }
 
+        return $dataQuery;
       }
 
-      return $dataQuery;
+      return false;
     }
 
     function select_all_row_selectcolumn_return_key_value_orderby($selectcolumn, $key, $value, $orderby, $dbTableName){
@@ -140,9 +140,10 @@
           $dataQuery[$row->$key] = $row->$value;
         }
 
+        return $dataQuery;
       }
 
-      return $dataQuery;
+      return false;
     }
 
     function select_all_row_where_column_selectcolumn_orderby_groupby($dataWhereArr, $selectcolumn, $orderby, $dbTableName){
@@ -161,12 +162,13 @@
 
             $dataQuery[] = $row->$selectcolumn;
           }
-          
+
         }
 
+        return $dataQuery;
       }
 
-      return $dataQuery;
+      return false;
     }
 
     function select_from_where_column_selectcolumn_return_num_rows($dataWhereArr, $selectcolumn, $dbTableName){

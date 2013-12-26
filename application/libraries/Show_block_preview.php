@@ -19,6 +19,7 @@ class Show_block_preview {
   }
 
   function builderTeserBlock($teaserDataObj, $blockDataObj){
+    if( !is_array($teaserDataObj) ){ return false; }
     $trColumnCount = 0;
 
     $teaserBlockTableHtml = '<table id="teaser_block_table" width="100%" cellspacing="5"><tr>';
