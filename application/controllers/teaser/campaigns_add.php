@@ -13,9 +13,7 @@ class Campaigns_add extends CI_Controller{
   }
 
   function index(){
-    $this->load->helper('template_builder');
     $this->load->helper('trim_stripslashes');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('select_define_builder');
     $this->load->helper('checkbox_table_builder');
     $this->load->helper('setup_array_empty_data');

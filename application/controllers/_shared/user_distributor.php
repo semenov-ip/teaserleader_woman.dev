@@ -27,14 +27,22 @@ class User_distributor extends CI_Controller{
     if( !extract_key_this_array($this->session->userdata('user'), 'user_id') ){ return $this->registrationPag(); }
   }
 
+  function registrationPag(){
+    redirect( "/welcome/authentication/", 'location');
+  }
+
   function checkUserHash(){
     $dataWhereArr['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
 
-    return $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, moderator', 'users');
+    return $this->checkCurrentHashWithDb($this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, moderator, hash', 'users'));
   }
 
-  function registrationPag(){
-    redirect( "/welcome/authentication/", 'location');
+  function checkCurrentHashWithDb($dataUser){
+    if( $dataUser->hash === extract_key_this_array($this->session->userdata('user'), 'hash') ){
+      return $dataUser;
+    }
+
+    return $this->registrationPag();
   }
 
   function partner(){
@@ -55,6 +63,7 @@ class User_distributor extends CI_Controller{
 
   function admin($dataUser){
     /* определенный редирект в администратора */
-    //if($dataUser->admin){  }
+    if($dataUser->admin){ return registrationPag(); }
+    redirect("/".$dataUser->who"/sites/", 'location');
   }
 }

@@ -13,10 +13,9 @@ class Sites extends CI_Controller{
   }
 
   function index(){
-    $this->load->helper('template_builder');
     $this->load->helper('status/incite_status_site_teaser_name');
 
-    $data = template_builder('admin','sites_tpl',$this->who, false);
+    $data = template_builder('admin','sites_tpl',$this->who);
 
     $data['siteDataObj'] = $this->getSiteData();
 

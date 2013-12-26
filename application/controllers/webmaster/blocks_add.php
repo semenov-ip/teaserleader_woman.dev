@@ -13,8 +13,6 @@ class Blocks_add extends CI_Controller{
   }
 
   function index($siteId){
-    $this->load->helper('template_builder');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('trim_stripslashes_helper');
     $this->load->helper('select_define_builder');
     $this->load->model('select_models');
@@ -23,7 +21,7 @@ class Blocks_add extends CI_Controller{
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
     $this->load->library("webmaster/data_builder_block_html_elements");
-    $this->load->library($this->who."/validation_data_block");
+    $this->load->library("webmaster/validation_data_block");
 
     $this->check_campaign_blocks_id_current_user->checkBlocks($siteId);
 

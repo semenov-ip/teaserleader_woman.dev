@@ -21,11 +21,11 @@
                       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
                           <li class="dropdown">
-                            <a href="/_shared/settings/"><i class="icon-user"> </i><?php echo $email; ?></a>
+                            <a class="margin-right-10" href="/_shared/settings/"><i class="icon-user font-size-20"> </i><?php echo $email; ?></a>
                           </li>
 
                           <li class="dropdown">
-                            <a href="#"><i class="icon-comments"></i> Баланс: <?php echo $count_rur; ?> Р</a>
+                            <a href="#"><div class="my-icon-money"></div> <div class="margin-top-2">Баланс: <?php echo $count_rur; ?> Р</div></a>
                           </li>
                           
                           <li class="dropdown logout">
@@ -53,8 +53,8 @@
                       <li><a href="index.html"><i class="icon-home"></i> Выплаты</a></li>
                       <li><a href="index.html"><i class="icon-home"></i> Тикеты</a></li>
                       <li><a href="index.html"><i class="icon-home"></i> Новости</a></li>
-                      <li><a href="/webmaster/settings/"><i class="icon-user"></i> Профиль</a></li>
-                      <li><a href="index.html"><i class="icon-home"></i> FAQ</a></li>
+                      <li><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
+                      <li><a class="last-ellement" href="index.html"><i class="icon-home"></i> FAQ</a></li>
                   </ul>
                </div>
             </div>

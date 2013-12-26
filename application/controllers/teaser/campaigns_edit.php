@@ -13,9 +13,7 @@ class Campaigns_edit extends CI_Controller {
   }
 
   function index($campaignId){
-    $this->load->helper('template_builder');
     $this->load->helper('trim_stripslashes');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('select_define_builder');
     $this->load->helper('checkbox_table_builder');
     $this->load->helper('convert_data_array_this_db');
@@ -23,8 +21,8 @@ class Campaigns_edit extends CI_Controller {
     $this->load->helper('setup_array_noisset_data');
     $this->load->model('select_models');
     $this->load->model('update_models');
-    $this->load->library($this->who.'/data_builder_campaign_html_elements');
-    $this->load->library($this->who.'/validation_data_campaig_and_builder_collection');
+    $this->load->library('/teaser/data_builder_campaign_html_elements');
+    $this->load->library('/teaser/validation_data_campaig_and_builder_collection');
 
     $this->getCampaignId($campaignId);
 

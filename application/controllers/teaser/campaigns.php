@@ -13,9 +13,8 @@ class Campaigns extends CI_Controller{
   }
 
   function index(){
-    $this->load->helper('template_builder');
 
-    $data = template_builder('admin','campaigns_tpl', 'teaser');
+    $data = template_builder('admin','campaigns_tpl', $this->who);
 
     $data['campaignDataObj'] = $this->getCampaignData();
 

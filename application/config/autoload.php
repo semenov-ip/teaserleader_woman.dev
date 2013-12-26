@@ -69,7 +69,10 @@ $autoload['libraries'] = array(
 */
 
 $autoload['helper'] = array(
-  'url'
+  'url',
+  'template_builder',
+  'extract_key_this_array',
+  'current_dir_extract'
 );
 
 

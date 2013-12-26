@@ -13,15 +13,13 @@ class Blocks_edit extends CI_Controller {
   }
 
   function index($blockId){
-    $this->load->helper('template_builder');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('trim_stripslashes_helper');
     $this->load->helper('select_define_builder');
     $this->load->model('update_models');
     $this->load->model('insert_models');
-    $this->load->library($this->who."/data_builder_block_html_elements");
-    $this->load->library($this->who."/validation_data_block");
-    $this->load->library($this->who.'/referral_code_builder');
+    $this->load->library('webmaster/data_builder_block_html_elements');
+    $this->load->library('webmaster/validation_data_block');
+    $this->load->library('webmaster/referral_code_builder');
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
 

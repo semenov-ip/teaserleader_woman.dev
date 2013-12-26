@@ -13,9 +13,7 @@ class Teasers_edit extends CI_Controller {
   }
 
   function index($teaserId){
-    $this->load->helper('template_builder');
     $this->load->helper('execute_trim_empty_form');
-    $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
     $this->load->model('update_models');
     $this->load->library('image_upload');

@@ -78,7 +78,7 @@ class Check_users_access {
     );
   }
 
-  function moderator($dataUser){
+  function moderator(){
     return array(
       'webmaster',
       'partner',
@@ -88,7 +88,7 @@ class Check_users_access {
     );
   }
 
-  function admin($dataUser){
+  function admin(){
     return array(
       'webmaster',
       'partner',

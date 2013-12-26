@@ -13,12 +13,11 @@ class Sites_edit extends CI_Controller {
   }
 
   function index($siteId){
-    $this->load->helper('template_builder');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('select_define_builder');
     $this->load->helper('trim_stripslashes');
     $this->load->model('select_models');
     $this->load->model('update_models');
+    $this->load->library('webmaster/data_builder_site_html_elements');
 
     $this->getSiteId($siteId);
 
@@ -30,7 +29,7 @@ class Sites_edit extends CI_Controller {
 
     $data['siteDataObj'] = empty($_POST) ? $this->getSiteData() : (object)$_POST;
 
-    $data['selectChange'] = select_define_builder(array($data['siteDataObj']->url_encoding), array('utf8', 'cp1251', 'koi8r'));
+    $data = $this->data_builder_site_html_elements->data($data);
 
     $data['desabledUrl'] = "disabled";
 
@@ -76,6 +75,8 @@ class Sites_edit extends CI_Controller {
   }
 
   function updateDataCollectionUserSite($post){
+    unset($post['url']);
+    
     $dataWhereArr['site_id'] = $this->siteId;
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 

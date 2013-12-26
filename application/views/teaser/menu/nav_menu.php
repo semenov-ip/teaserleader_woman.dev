@@ -1,5 +1,5 @@
 <li class="has_submenu">
-  <a href="#">
+  <a class="fierst-ellement" href="#">
     <i class="icon-sitemap"></i> Кампании
     <span class="caret pull-right"></span>
   </a>

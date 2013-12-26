@@ -2,7 +2,7 @@
 
 if(!function_exists('template_builder')){
 
-  function template_builder($template, $body, $who, $booleanShared = false){
+  function template_builder($template, $body, $who){
     $ci =& get_instance();
 
     $ci->load->helper('header_src_css_js');
@@ -13,7 +13,7 @@ if(!function_exists('template_builder')){
 
     $data['menu'] =  "/$who/menu/nav_menu";
 
-    $data['body'] = !$booleanShared ? "/$who/$body" : "/_shared/$body";
+    $data['body'] = "/".current_dir_extract()."/$body";
 
     return $data;
   }

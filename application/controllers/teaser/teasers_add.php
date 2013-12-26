@@ -13,8 +13,6 @@ class Teasers_add extends CI_Controller{
   }
 
   function index($campaignId){
-    $this->load->helper('template_builder');
-    $this->load->helper('extract_key_this_array');
     $this->load->helper('execute_trim_empty_form');
     $this->load->model('select_models');
     $this->load->model('insert_models');
