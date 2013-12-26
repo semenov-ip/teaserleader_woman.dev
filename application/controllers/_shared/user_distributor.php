@@ -7,7 +7,6 @@ class User_distributor extends CI_Controller{
   }
 
   function index(){
-    $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
 
     $this->checkEmptyUserSession();
@@ -64,6 +63,6 @@ class User_distributor extends CI_Controller{
   function admin($dataUser){
     /* определенный редирект в администратора */
     if($dataUser->admin){ return registrationPag(); }
-    redirect("/".$dataUser->who"/sites/", 'location');
+    redirect("/".$dataUser->who."/sites/", 'location');
   }
 }

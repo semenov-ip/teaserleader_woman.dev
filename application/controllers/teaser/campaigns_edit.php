@@ -74,7 +74,7 @@ class Campaigns_edit extends CI_Controller {
       if($this->updateDataCollectionCampaign($_POST)){
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        redirect( "/".$this->who."/campaigns_edit/index/$this->campaignId/", 'location');
+        redirect( "/teaser/campaigns_edit/index/$this->campaignId/", 'location');
       }
     }
 

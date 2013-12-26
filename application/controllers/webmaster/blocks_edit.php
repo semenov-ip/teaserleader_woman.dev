@@ -17,6 +17,7 @@ class Blocks_edit extends CI_Controller {
     $this->load->helper('select_define_builder');
     $this->load->model('update_models');
     $this->load->model('insert_models');
+    $this->load->model('select_models');
     $this->load->library('webmaster/data_builder_block_html_elements');
     $this->load->library('webmaster/validation_data_block');
     $this->load->library('webmaster/referral_code_builder');

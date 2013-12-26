@@ -20,7 +20,7 @@ class Sites_add extends CI_Controller{
     $this->load->library('webmaster/data_builder_site_html_elements');
     $this->load->library('webmaster/validation_data_site');
 
-    $data = template_builder('admin','sites_add_update_tpl',$this->who;
+    $data = template_builder('admin','sites_add_update_tpl',$this->who);
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->getPostDataSiteAdd() );
 

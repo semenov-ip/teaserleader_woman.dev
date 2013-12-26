@@ -104,6 +104,33 @@
       return false;
     }
 
+    function select_all_row_where_column_selectcolumn_orderby($dataWhereArr, $orderbycolumn, $orderbycommand, $selectcolumn, $dbTableName){
+      
+      if(is_array($dataWhereArr)){
+
+        $this->db->where($dataWhereArr);
+
+        $this->db->select($selectcolumn);
+
+        $this->db->order_by($orderbycolumn, $orderbycommand);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() > 0){
+
+          foreach ($query->result() as $row) {
+
+            $dataQuery[] = $row;
+            
+          }
+
+          return $dataQuery;
+        }
+      }
+
+      return false;
+    }
+
     function select_all_row_selectcolumn_return_key_value($selectcolumn, $key, $value, $dbTableName){
 
       $this->db->select($selectcolumn);

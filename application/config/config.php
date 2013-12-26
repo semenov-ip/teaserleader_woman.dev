@@ -395,7 +395,15 @@ $config['error_message'] = array(
   "empty_name_block" => array( "text" => "Не указано название блока!", "class" => "alert-warning" ),
   "empty_position" => array( "text" => "Не выбрано положение изображения относительно текста!", "class" => "alert-warning" ),
   "empty_align" => array( "text" => "Не выбран способ выравнивания объявления!", "class" => "alert-warning" ),
-  "empty_block_size" => array( "text" => "Не указана ширина блок!", "class" => "alert-warning" )
+  "empty_block_size" => array( "text" => "Не указана ширина блок!", "class" => "alert-warning" ),
+
+  "show_referer" => "Неопределённая ссылка",
+  "emprt_remote_port" => "Удалённый порт не обнаружен",
+  "emprt_user_agen" => "Проблемы работы браузера",
+  "empty_blockid_referer" => "Нету данных по блоку или сайту",
+  "empty_blockid_referer_db" => "Данные по блоку и сайту не обнаруженны",
+  "block_status_off" => "Сайт находиться на модерации.",
+  "empty_campaign" => "Компании не обнаруженны"
 );
 
 $config['title'] = array(

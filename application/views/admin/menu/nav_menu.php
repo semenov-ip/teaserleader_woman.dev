@@ -10,7 +10,7 @@
 </li>
 
 <li class="has_submenu">
-  <a class="fierst-ellement" href="#">
+  <a href="#">
     <i class="icon-sitemap"></i> Кампании
     <span class="caret pull-right"></span>
   </a>

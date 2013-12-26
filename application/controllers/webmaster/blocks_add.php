@@ -80,7 +80,7 @@ class Blocks_add extends CI_Controller{
     if($blockId){
       $this->session->set_flashdata('successSaveUpdateData', 'success_save_data');
 
-      redirect( "/".$this->who."/blocks_edit/index/$blockId/", 'location');
+      redirect( "/webmaster/blocks_edit/index/$blockId/", 'location');
     }
   }
 }
