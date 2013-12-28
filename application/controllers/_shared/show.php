@@ -36,7 +36,7 @@ class Show extends CI_Controller{
 
     $teaserDataObj = $this->getTeaserDataObj($campaignDataObj, $siteDataObj->ban_teaser);
 
-    return $this->riderConstructedDataJs(print_r($campaignDataObj));
+    return $this->riderConstructedDataJs(print_r($teaserDataObj));
   }
 
   function getBlockId($blockId){
