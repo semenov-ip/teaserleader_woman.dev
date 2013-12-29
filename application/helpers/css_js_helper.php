@@ -4,17 +4,17 @@ $GLOBALS['countEmptyDataThisCurrentDirectory'] = 2;
 
 if(!function_exists('css_js')){
 
-  function css_js( $typeFile, $directory, $sharedBoolean = true ){
+  function css_js( $typeFile, $directory, $sharedBoolean ){
 
-    $cssFileArr['_shared'] = extractSharedHeader($typeFile, $sharedBoolean);
+    $fileArr['_shared'] = extractSharedHeader($typeFile, $sharedBoolean);
 
-    $cssFileArr[$directory] = scanDirectory($typeFile, $directory);
+    $fileArr[$directory] = scanDirectory($typeFile, $directory);
 
-    $cssFileGeneralArr =  array_merge($cssFileArr['_shared'], $cssFileArr[$directory]);
+    $fileGeneralArr =  array_merge($fileArr['_shared'], $fileArr[$directory]);
 
-    if(count($cssFileGeneralArr) > $GLOBALS['countEmptyDataThisCurrentDirectory']){
+    if(count($fileGeneralArr) > $GLOBALS['countEmptyDataThisCurrentDirectory']){
 
-      foreach ($cssFileGeneralArr as $key => $value) {
+      foreach ($fileGeneralArr as $key => $value) {
 
         if( preg_match("/\.$typeFile/si", $value) ){
 

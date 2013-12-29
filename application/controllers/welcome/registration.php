@@ -13,51 +13,37 @@ class Registration extends CI_Controller{
 
   function index($referral = NULL){
     $this->load->helper('execute_trim_empty_form');
-    $this->load->helper('header_src_css_js');
-    $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
     $this->load->model('insert_models');
+    $this->load->library('welcome/validation_data_registration');
 
     if(isset($referral)){ $this->referral = $referral; }
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->getPostDataRegistration() );
 
     $data['header'] = header_src_css_js('welcome', false);
-    
+
+    $data['userDataObj'] = empty($_POST) ? (object)$this->getUserData() : (object)$_POST;
+
     $this->load->view( '/welcome/registration_tpl', $data );
   }
 
+  function getUserData(){
+    return $this->select_models->show_columns_return_default('users');
+  }
+
   function getPostDataRegistration(){
-    
+
     if(!empty($_POST)){
 
-      if( !execute_trim_empty_form($_POST) ) return "empty_data";
-      
-      if( !$this->passwordConfirm($_POST) ) return "password_confirm";
+      $submitStatus = $this->validation_data_registration->getCorrectData();
 
-      if( $this->emailConfirmDb($_POST['email']) ) return "email_confirm";
-
-      unset($_POST['password_confirm']);
+      if( $submitStatus !== true ){ return $submitStatus; }
 
       $this->saveDataCollectionUserRegistration($_POST);
     }
 
     return false;
-  }
-
-  function passwordConfirm($post){
-    if($post['password'] === $post['password_confirm']){
-      
-      return true;
-    
-    }
-    return false;
-  }
-
-  function emailConfirmDb($emailUser){
-    $whereEmalData['email'] = $emailUser;
-
-    return $this->select_models->select_one_row_where_column($whereEmalData, 'users');
   }
 
   function saveDataCollectionUserRegistration($post){

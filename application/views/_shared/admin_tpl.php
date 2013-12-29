@@ -1,5 +1,5 @@
 <?php
-  $this->load->view('/_shared/header');
+  $this->load->view('/_shared/header_tpl');
 ?>
   <body>
       <!-- Logo & Navigation starts -->
@@ -50,11 +50,11 @@
                   <ul class="nav">
                       <?php $this->load->view($menu); ?>
                       <!-- Main menu -->
-                      <li><a href="index.html"><i class="icon-home"></i> Выплаты</a></li>
-                      <li><a href="index.html"><i class="icon-home"></i> Тикеты</a></li>
-                      <li><a href="index.html"><i class="icon-home"></i> Новости</a></li>
+                      <li><a href="index.html"><div class="my-icon-money"></div> <div class="margin-top-2"> Выплаты</div></a></li>
+                      <li><a href="index.html"><i class="icon-envelope-alt"></i> Тикеты</a></li>
+                      <li><a href="index.html"><i class="icon-volume-down"></i> Новости</a></li>
                       <li><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
-                      <li><a class="last-ellement" href="index.html"><i class="icon-home"></i> FAQ</a></li>
+                      <li><a class="last-ellement" href="index.html"><i class="icon-book"></i> FAQ</a></li>
                   </ul>
                </div>
             </div>
@@ -68,13 +68,13 @@
       </div>
 
       <!-- Footer starts -->
-      <?php $this->load->view('/_shared/admin_footer'); ?>
+      <?php $this->load->view('/_shared/admin_footer_details_tpl'); ?>
       <!-- Footer ends -->
 
       <!-- Scroll to top -->
       <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span> 
 
-      <?php $this->load->view('/_shared/footer'); ?>
+      <?php $this->load->view('/_shared/admin_footer_tpl'); ?>
 
   </body> 
 </html>

@@ -33,7 +33,7 @@ class User_distributor extends CI_Controller{
   function checkUserHash(){
     $dataWhereArr['hash'] = extract_key_this_array($this->session->userdata('user'), 'hash');
 
-    return $this->checkCurrentHashWithDb($this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, moderator, hash', 'users'));
+    return $this->checkCurrentHashWithDb($this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'who, admin, hash', 'users'));
   }
 
   function checkCurrentHashWithDb($dataUser){

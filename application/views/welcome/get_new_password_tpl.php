@@ -1,5 +1,5 @@
 <?php
-  $this->load->view('/_shared/header');
+  $this->load->view('/_shared/header_tpl');
 ?>
 <body>
 <div class="form">
@@ -28,8 +28,6 @@
   <div class="copyright2">Copyright 2013 Ladyads. All rights reserved.</div>
   
 </div>
-<?php $this->load->view('/_shared/footer'); ?>
-
-  
+<?php $this->load->view('/_shared/welcome_footer_details_tpl'); ?>
 </body>
 </html>

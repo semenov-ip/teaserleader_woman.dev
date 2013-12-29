@@ -49,12 +49,12 @@ class Validation_data_show {
 
   function blockIdAndRefererEmptyDb($blockId, $referer){
     $dataWhereArr = array( 'b.block_id' => $blockId, 's.url' => $referer);
-    
+
     $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join($dataWhereArr, 'b.block_id, s.status', 'blocks b');
 
-    $this->status = $blockDataObj->status;
-
     if( !$blockDataObj ){ return true; }
+
+    $this->status = $blockDataObj->status;
 
     return false;
   }

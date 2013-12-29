@@ -1,6 +1,6 @@
 <li class="has_submenu">
   <a class="fierst-ellement" href="#">
-    <i class="icon-sitemap"></i> Площадки
+    <i class="icon-list-alt"></i> Площадки
     <span class="caret pull-right"></span>
   </a>
   <ul>
@@ -22,7 +22,7 @@
 
 <li class="has_submenu">
   <a href="#">
-    <i class="icon-sitemap"></i> Статистика
+    <i class="icon-signal"></i> Статистика
     <span class="caret pull-right"></span>
   </a>
   <ul>

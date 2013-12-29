@@ -70,6 +70,7 @@ $autoload['libraries'] = array(
 
 $autoload['helper'] = array(
   'url',
+  'header_src_css_js',
   'template_builder',
   'extract_key_this_array',
   'current_dir_extract'

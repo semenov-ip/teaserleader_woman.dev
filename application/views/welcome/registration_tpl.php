@@ -1,5 +1,5 @@
 <?php
-  $this->load->view('/_shared/header');
+  $this->load->view('/_shared/header_tpl');
 ?>
 <body>
   <div class="form">
@@ -13,24 +13,28 @@
         <a href="/welcome/authentication/"><span><span>Войти</span></span></a>
       </div>
 
-      <?php if($error){ echo '<div class="alert alert-danger">'.$error.'</div>'; } ?>
+      <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
       <form class="authentication_form" role="form" method="post">
 
         <div class="input">
-          <input type="text" name="name" value="" placeholder="Имя" />
+          <input type="text" name="name" placeholder="Имя" value="<?php echo $userDataObj->name; ?>" />
         </div>
 
         <div class="input">
-          <input type="email" name="email" value="" placeholder="Email">
+          <input type="email" name="email" placeholder="Email" value="<?php echo $userDataObj->email; ?>" />
         </div>
 
         <div class="input">
-          <input type="password" name="password" value="" placeholder="Пароль">
+          <input type="curr_num" name="curr_num" placeholder="WMR" value="<?php echo $userDataObj->curr_num; ?>" />
         </div>
 
         <div class="input">
-          <input type="password" name="password_confirm" value="" placeholder="Повторить пароль">
+          <input type="password" name="password" placeholder="Пароль" />
+        </div>
+
+        <div class="input">
+          <input type="password" name="password_confirm" placeholder="Повторить пароль" />
         </div>
         
         <div class="rules">
@@ -52,7 +56,7 @@
       
     <div class="copyright2">Copyright 2013 Ladyads. All rights reserved.</div>
       
-  </div> 
-<?php $this->load->view('/_shared/footer'); ?>
+  </div>
+  <?php $this->load->view('/_shared/welcome_footer_details_tpl'); ?>
 </body>
 </html>

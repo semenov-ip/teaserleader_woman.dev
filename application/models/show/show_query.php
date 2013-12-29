@@ -64,7 +64,7 @@
       return false;
     }
 
-    function select_all_from_teaser_banlike($campaignDataObj, $banTeaser, $selectcolumn, $dbTableName){
+    function select_all_from_teaser_banlike($campaignDataObj, $limit, $banTeaser, $selectcolumn, $dbTableName){
 
       $this->db->select($selectcolumn);
 
@@ -72,6 +72,7 @@
         $this->db->where($dataWhereArr);
       }
 
+      $this->db->limit($limit);
 
       $query = $this->db->get($this->prefixes.$dbTableName);
 

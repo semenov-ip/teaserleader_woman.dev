@@ -2,7 +2,7 @@
     
 class Settings extends CI_Controller{
 
-  private $who, $top10Login, $curr_num;
+  private $who, $curr_num;
 
   function __construct(){
 
@@ -38,10 +38,6 @@ class Settings extends CI_Controller{
   function cleanAddDataInput($dataUserObj){
     $this->curr_num = $dataUserObj->curr_num;
 
-    $this->top10Login = $dataUserObj->top10_login;
-
-    $dataUserObj->curr_num = is_null($dataUserObj->curr_num) ? "R" : $dataUserObj->curr_num;
-
     return $dataUserObj;
   }
 
@@ -52,7 +48,7 @@ class Settings extends CI_Controller{
   function getPostDataSettingsUpdate(){
     if(!empty($_POST)){
 
-      $submitStatus = $this->validation_data_settings->getCorrectData($this->top10Login, $this->curr_num);
+      $submitStatus = $this->validation_data_settings->getCorrectData($this->curr_num);
 
       if( $submitStatus !== true ){ return $submitStatus; }
 

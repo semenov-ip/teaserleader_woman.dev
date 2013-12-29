@@ -53,7 +53,7 @@ class Sites_add extends CI_Controller{
   }
 
   function saveDataCollectionSite($post){
-    $post['dataadd'] = $this->ci->config->item('datetime');
+    $post['dataadd'] = $this->config->item('datetime');
 
     $post['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 

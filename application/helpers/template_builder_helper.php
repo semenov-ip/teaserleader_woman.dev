@@ -5,8 +5,6 @@ if(!function_exists('template_builder')){
   function template_builder($template, $body, $who){
     $ci =& get_instance();
 
-    $ci->load->helper('header_src_css_js');
-
     $data = getUserDataObjHelper();
 
     $data['header'] = header_src_css_js($template);
