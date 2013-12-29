@@ -8,7 +8,7 @@ if(!function_exists('convert_data_string_this_db')){
 
       if( empty($generalArr[$value]) ) { 
 
-        unset($generalArr[$value]);
+        $generalArr[$value] = "~";
 
       } else{
 

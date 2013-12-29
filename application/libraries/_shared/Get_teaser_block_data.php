@@ -29,9 +29,9 @@ class Get_teaser_block_data {
 
     $teaserDataObj = $this->increaseTeaserDataEnoughBlock($teaserDataObj, ($blockDataObj->ver*$blockDataObj->hor));
 
-    $viewStyle = $this->ci->block_style_builder->getStyle($blockDataObj);
+    $viewStyle = $this->ci->block_style_builder->getStyle($blockDataObj, '_'.$blockDataObj->block_id);
 
-    $viewTeaser = $this->ci->show_block_preview->builderTeserBlock($teaserDataObj, $blockDataObj);
+    $viewTeaser = $this->ci->show_block_preview->builderTeserBlock($teaserDataObj, $blockDataObj, '_'.$blockDataObj->block_id);
 
     return array( 'teaser' => $teaserDataObj, 'block' => $blockDataObj, 'view' => $viewStyle.$viewTeaser );
   }
