@@ -76,7 +76,7 @@ class Blocks_edit extends CI_Controller {
       if($this->updateDataCollectionBlock($_POST)){
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        redirect( "/".$this->who."/blocks_edit/index/$this->blockId/", 'location');
+        redirect( "/webmaster/blocks_edit/index/$this->blockId/", 'location');
       }
     }
 

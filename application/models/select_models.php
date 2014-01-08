@@ -236,6 +236,7 @@
     }
 
     function show_columns($dbTableName){
+
       $fields = $this->db->list_fields($this->prefixes.$dbTableName);
 
       foreach ($fields as $field) {
@@ -253,6 +254,10 @@
       }
 
       return $row;
+    }
+
+    function database_exists_dbname($dbTableName){
+      return $this->db->table_exists($this->prefixes.$dbTableName);
     }
   }
 ?>

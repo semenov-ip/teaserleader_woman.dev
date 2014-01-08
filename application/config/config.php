@@ -370,6 +370,8 @@ $config['datetime']  = date("Y-m-d H:i:s", time());
 
 $config['date']  = date("Y-m-d H:i:s");
 
+$config['day']  = mktime(0, 0, 0, date('n'), date('j'), date('Y'));
+
 $config['prefixes'] = 'leader_';
 
 $config['max_image_file_size'] = 120;

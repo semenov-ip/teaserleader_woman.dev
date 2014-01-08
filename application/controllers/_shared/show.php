@@ -10,14 +10,17 @@ class Show extends CI_Controller{
 
   function index($blockId){
     $this->load->helper('referer_url_extract');
+    $this->load->helper('country_extratc_column_name');
     $this->load->library('/_shared/validation_data_show');
     $this->load->library('_shared/ip_geo_base');
     $this->load->library('_shared/get_teaser_block_data');
+    $this->load->library('_shared/logsave_count_statistiques');
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
     $this->load->model('show/show_query');
     $this->load->model('select_models');
     $this->load->model('update_models');
+    $this->load->model('insert_models');
 
     $this->getBlockId($blockId); $this->getReferer();
 
@@ -27,20 +30,38 @@ class Show extends CI_Controller{
 
     $teaserBlockDataObj = $this->get_teaser_block_data->getTeaserBlockData($this->blockId, $this->referer);
 
-    return $this->riderConstructedDataJs($teaserBlockDataObj['view']);
+    return $this->riderConstructedDataJs($teaserBlockDataObj['view'], $teaserBlockDataObj);
   }
 
   function getBlockId($blockId){
+    if(!isset($blockId)){ $this->userDistributor(); }
+
     $this->blockId = $blockId;
   }
 
   function getReferer(){
+    if(!isset($_SERVER['HTTP_REFERER'])){ $this->userDistributor(); }
+
     $this->referer = referer_url_extract($_SERVER['HTTP_REFERER']);
   }
 
-  function riderConstructedDataJs($text){
+  function riderConstructedDataJs($text, $teaserBlockDataObj = false){
+
+    if( $this->checkTeaserBlock($teaserBlockDataObj) ){ $this->logsave_count_statistiques->saveDataLogAndStat($teaserBlockDataObj['teaser'], $teaserBlockDataObj['block']); }
+
     echo 'var block = document.getElementById(\'teaser_'.$this->blockId.'\'); var text = \''.$text.'\'; if(block){block.innerHTML = text;}';
+
     exit();
   }
 
+  function checkTeaserBlock($teaserBlockDataObj){
+
+    if( is_array($teaserBlockDataObj['teaser']) && is_object($teaserBlockDataObj['block']) ){ return true; }
+
+    return false;
+  }
+
+  function userDistributor(){
+    redirect( "/_shared/user_distributor/", 'location');
+  }
 }
