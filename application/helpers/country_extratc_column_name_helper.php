@@ -10,6 +10,6 @@ if(!function_exists('country_extratc_column_name')){
 
     if( $key !== false ){ return $countryKeyArr[$key]; }
 
-    return false;
+    return "";
   }
 }

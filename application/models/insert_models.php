@@ -14,7 +14,7 @@
     function insert_data_return_id($addDataArr, $dbTableName){
       if(is_array($addDataArr)){
 
-        $this->db->insert($this->prefixes.$dbTableName, $addDataArr);
+       $this->db->insert($this->prefixes.$dbTableName, $addDataArr);
 
         return $this->db->insert_id();
       }

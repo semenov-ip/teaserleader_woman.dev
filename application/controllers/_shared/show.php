@@ -3,7 +3,6 @@
 class Show extends CI_Controller{
   public $blockId, $referer;
 
-
   function __construct(){
     parent::__construct();
   }
