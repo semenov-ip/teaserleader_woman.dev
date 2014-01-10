@@ -376,6 +376,8 @@ $config['prefixes'] = 'leader_';
 
 $config['max_image_file_size'] = 120;
 
+$config['referral_pct'] = 3;
+
 $config['error_message'] = array(
   "empty_data" => array( "text" => "Все поля являются обязательными для заполнения.", "class" => "alert-warning" ),
   "password_confirm" => array( "text" => "Ваши пароли не совпадают", "class" => "alert-warning" ),

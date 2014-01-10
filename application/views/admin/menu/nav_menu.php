@@ -16,7 +16,7 @@
   </a>
   <ul>
     <li><a href="/teaser/campaigns/">Рекламные кампании</a></li>
-    <li><a href="/webmaster/blocks/">Объявления</a></li>
+    <li><a href="/teaser/teasers/">Объявления</a></li>
   </ul>
 </li>
 
