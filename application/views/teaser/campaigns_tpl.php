@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> Площадки</h2>
+  <h2><i class="icon-desktop color"></i> Рекламные кампании</h2>
   <hr />
 </div>
 <!-- Page title -->
@@ -8,9 +8,7 @@
     <div class="col-md-12">
 
       <div class="awidget">
-        <div class="awidget-head">
-          <h3>Площадки /</h3>
-        </div>
+        <div class="awidget-head"></div>
         <div class="awidget-body">
         <?php if($campaignDataObj){ ?>
           <table class="table table-hover">

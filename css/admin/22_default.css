@@ -40,10 +40,23 @@
 .margin-right-10{
   margin-right: 10px;
 }
+.margin-right-20{
+  margin-right: 20px;
+}
 .margin-top-2{
   margin-top: 2px;
 }
 
 .font-size-20{
   font-size: 20px;
+}
+
+.margin-left-24 {
+  margin-left: 24px;
+}
+.display-inline-block{
+  display: inline-block;
+}
+.vertical-align-baseline{
+  vertical-align: baseline;
 }

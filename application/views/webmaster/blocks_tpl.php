@@ -8,9 +8,7 @@
     <div class="col-md-12">
 
       <div class="awidget">
-        <div class="awidget-head">
-          <h3>Блоки /</h3>
-        </div>
+        <div class="awidget-head"></div>
         <div class="awidget-body">
         <?php if($blockDataObj){ ?>
           <table class="table table-hover">
@@ -48,8 +46,7 @@
             <?php } ?>
           </table>
         <?php } ?>
-        <?php if(!$blockDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент список площадок пуст, Вы еще не добавили ни одного сайта.</div><?php } ?>
-        <a href="/webmaster/sites_add/" class="btn btn-default float_right">Добавить блок</a>
+        <?php if(!$blockDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент Вы еще не добавили ни одного блока.</div><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

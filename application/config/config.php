@@ -245,7 +245,7 @@ $config['encryption_key'] = 'lxrcJfytV3';
 |
 */
 $config['sess_cookie_name']   = 'ci_session';
-$config['sess_expiration']    = 7200;
+$config['sess_expiration']    = 60*60*24*24;
 $config['sess_expire_on_close'] = FALSE;
 $config['sess_encrypt_cookie']  = FALSE;
 $config['sess_use_database']  = FALSE;
@@ -370,6 +370,8 @@ $config['datetime']  = date("Y-m-d H:i:s", time());
 
 $config['date']  = date("Y-m-d H:i:s");
 
+$config['dateDay']  = date("Y-m-d");
+
 $config['day']  = mktime(0, 0, 0, date('n'), date('j'), date('Y'));
 
 $config['prefixes'] = 'leader_';
@@ -400,6 +402,8 @@ $config['error_message'] = array(
   "empty_position" => array( "text" => "Не выбрано положение изображения относительно текста!", "class" => "alert-warning" ),
   "empty_align" => array( "text" => "Не выбран способ выравнивания объявления!", "class" => "alert-warning" ),
   "empty_block_size" => array( "text" => "Не указана ширина блок!", "class" => "alert-warning" ),
+  "emprt_title_ticket" => array( "text" => "Не указан заголовок!", "class" => "alert-warning" ),
+  "emprt_text_ticket" => array( "text" => "Не указано описание!", "class" => "alert-warning" ),
 
   "show_referer" => "Неопределённая ссылка",
   "emprt_remote_port" => "Удалённый порт не обнаружен",
@@ -421,7 +425,8 @@ $config['title'] = array(
   "block_add_title" =>  "Добавление нового блок",
   "block_edit_title" => "Редактирование блока",
   "block_view" => "Текущее расположение:",
-  "html_view" => "HTML-код:"
+  "html_view" => "HTML-код:",
+  "tickets_add_title" => "Создание тикета"
 );
 
 $config['daysWeek'] = array(

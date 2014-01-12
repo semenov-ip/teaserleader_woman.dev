@@ -359,7 +359,7 @@ $(document).ready(function(){
 /* Date and picker starts */
 
   $(function() {
-    $('#datetimepicker1').datetimepicker({
+    $('.datetimepicker').datetimepicker({
       pickTime: false
     });
   });

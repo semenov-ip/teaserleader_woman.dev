@@ -208,11 +208,11 @@
 
 
             <div class="form-group">
-                <div class="col-sm-offset-4 col-lg-6">
-                  <button type="submit" class="btn btn-default">Сохранить</button>
-                  <a href="/webmaster/sites/" class="btn btn-default">Отменить</a>
-                </div>
+              <div class="col-sm-offset-4 col-lg-6">
+                <button type="submit" class="btn btn-default">Сохранить</button>
+                <a href="/webmaster/sites/" class="btn btn-default">Отменить</a>
               </div>
+            </div>
           </form>
         </div>
 

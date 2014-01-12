@@ -26,8 +26,10 @@
     <span class="caret pull-right"></span>
   </a>
   <ul>
-    <li><a href="ui.html">По площадкам</a></li>
-    <li><a href="tables.html">По блокам</a></li>
+    <li><a href="/webmaster/statistiques_site/">По площадкам</a></li>
+    <li><a href="/webmaster/statistiques_block/">По блокам</a></li>
+    <li><a href="/webmaster/statistiques_site/">По кампаниям</a></li>
+    <li><a href="/webmaster/statistiques_site/">По объявлениям</a></li>
     <li><a href="tables.html">По гео</a></li>
     <li><a href="tables.html">По рефералам</a></li>
   </ul>

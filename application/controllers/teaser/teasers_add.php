@@ -69,7 +69,7 @@ class Teasers_add extends CI_Controller{
     if($teaserId){
       $this->session->set_flashdata('successSaveUpdateData', 'success_save_data');
 
-      redirect( "/teaser/teasers_edit/index/$teaserId/", 'location');
+      redirect( "/teaser/teasers/", 'location');
     }
   }
 }

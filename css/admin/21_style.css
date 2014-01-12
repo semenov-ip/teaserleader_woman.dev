@@ -438,8 +438,9 @@ strong{
 }
 
 .sidey .nav > li > ul > li > a:hover{
-   background:#188B88;
-   color:#fff;
+   background: #fff;
+   color: #0E4F61;
+   font-weight: bold;
    border-bottom:0px;
 }
 
@@ -1190,6 +1191,16 @@ footer .copy{
 }
 
 /* New Icon */
+.my-icon-money-menu{
+   background-image: url(/css/admin/font/money_b.png);
+   width: 15px;
+   height: 19px;
+   position: absolute;
+   left: -4px;
+   background-size: 15px;
+   margin-left: 20px;
+}
+
 .my-icon-money{
    background-image: url(/css/admin/font/money.png);
    width: 15px;
@@ -1198,4 +1209,3 @@ footer .copy{
    left: -6px;
    background-size: 15px;
 }
-

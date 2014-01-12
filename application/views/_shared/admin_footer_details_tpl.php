@@ -1,6 +1,8 @@
 <!-- Javascript files -->
       <script src="/js/admin/include_page/bootstrap.min.js"></script>
 
+      <script src="/js/admin/include_page/hover_money.js"></script>
+
       <?php if ($header['js']) { foreach( $header['js'] as $js ){ echo '<script type="text/javascript" src="'.$js.'"></script>
       '; } } ?>
 

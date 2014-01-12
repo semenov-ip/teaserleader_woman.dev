@@ -29,7 +29,7 @@
                           </li>
                           
                           <li class="dropdown logout">
-                            <a href="/welcome/authentication/"><span><span>Выйти</span></span></a>
+                            <a href="/_shared/log_out/"><span><span>Выйти</span></span></a>
                           </li>
                         </ul>
                       </nav>
@@ -50,11 +50,11 @@
                   <ul class="nav">
                       <?php $this->load->view($menu); ?>
                       <!-- Main menu -->
-                      <li><a href="index.html"><div class="my-icon-money"></div> <div class="margin-top-2"> Выплаты</div></a></li>
-                      <li><a href="index.html"><i class="icon-envelope-alt"></i> Тикеты</a></li>
-                      <li><a href="index.html"><i class="icon-volume-down"></i> Новости</a></li>
+                      <li class="money_hover"><a href="#"><div class="my-icon-money-menu"></div> <div class="margin-left-24 margin-top-2"> Выплаты</div></a></li>
+                      <li><a href="/_shared/tickets/"><i class="icon-envelope-alt"></i> Тикеты</a></li>
+                      <li><a href="/_shared/news/"><i class="icon-volume-down"></i> Новости</a></li>
                       <li><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
-                      <li><a class="last-ellement" href="index.html"><i class="icon-book"></i> FAQ</a></li>
+                      <li><a class="last-ellement" href="/_shared/faq/"><i class="icon-book"></i> FAQ</a></li>
                   </ul>
                </div>
             </div>

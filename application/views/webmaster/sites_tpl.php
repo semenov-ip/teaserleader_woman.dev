@@ -8,9 +8,7 @@
     <div class="col-md-12">
 
       <div class="awidget">
-        <div class="awidget-head">
-          <h3>Площадки /</h3>
-        </div>
+        <div class="awidget-head"></div>
         <div class="awidget-body">
         <?php if($siteDataObj){ ?>
           <table class="table table-hover">
