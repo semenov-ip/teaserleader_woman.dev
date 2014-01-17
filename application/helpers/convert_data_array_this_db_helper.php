@@ -6,7 +6,7 @@ if(!function_exists('convert_data_array_this_db')){
 
     foreach ($setupTypeStringCurrentArray as $value) {
 
-      if( is_null($generalArr->$value) ) {
+      if( is_null($generalArr->$value) || $generalArr->$value == "~" ) {
 
         $generalArr->$value = array();
 

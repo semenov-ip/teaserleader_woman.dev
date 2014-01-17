@@ -3,7 +3,7 @@
 if(!function_exists('checkbox_table_builder')){
 
   function checkbox_table_builder($valueCurrentArr, $valueAllDataArr, $trCount, $name, $includeKeyThisValBoolean = false){
-    
+
     $checkboxStr = "<table>";
 
     $countDataOneRow = round(count($valueAllDataArr)/$trCount);

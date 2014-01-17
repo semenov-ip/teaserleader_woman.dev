@@ -40,7 +40,7 @@
                 <label class="control-label col-lg-3">Исключить показы на сайтах</label>
                 <div class="col-lg-6">
                   <textarea class="form-control" rows="3" name="ban_site" ><?php echo $campaignDataObj->ban_site ?></textarea>
-                  <small class="help-block font-size-85">По одному адресу с каждой новой строки.</small>
+                  <small class="help-block font-size-85">По одному адресу с каждой новой строки, через "Enter"</small>
                 </div>
               </div>
 

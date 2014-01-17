@@ -18,6 +18,7 @@ class Campaigns_add extends CI_Controller{
     $this->load->helper('checkbox_table_builder');
     $this->load->helper('setup_array_empty_data');
     $this->load->helper('setup_array_noisset_data');
+    $this->load->helper('get_ban_site_convert_db');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->library('/teaser/data_builder_campaign_html_elements');
@@ -62,7 +63,9 @@ class Campaigns_add extends CI_Controller{
   function saveDataCollectionCampaign($post){
     $this->load->helper('convert_data_string_this_db');
 
-    $post = convert_data_string_this_db($post, array('ban_site', 'ban_country', 'ban_region', 'ban_hour', 'ban_week_day'));
+    $post = convert_data_string_this_db($post, array('ban_country', 'ban_region', 'ban_hour', 'ban_week_day'));
+
+    $post['ban_site'] = get_ban_site_convert_db($post['ban_site']);
 
     $post['dataadd'] = $this->config->item('datetime');
 

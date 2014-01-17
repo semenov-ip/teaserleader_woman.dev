@@ -19,6 +19,8 @@ class Campaigns_edit extends CI_Controller {
     $this->load->helper('convert_data_array_this_db');
     $this->load->helper('convert_data_string_this_db');
     $this->load->helper('setup_array_noisset_data');
+    $this->load->helper('get_ban_site_convert_db');
+    $this->load->helper('get_ban_site_convert_view');
     $this->load->model('select_models');
     $this->load->model('update_models');
     $this->load->library('/teaser/data_builder_campaign_html_elements');
@@ -51,8 +53,11 @@ class Campaigns_edit extends CI_Controller {
   }
 
   function checkDataImplementCurrentCampaign($campaignDataObj){
-    if(is_object($campaignDataObj)){ 
+    if(is_object($campaignDataObj)){
+
       $campaignDataObj = convert_data_array_this_db($campaignDataObj, array('ban_country', 'ban_region', 'ban_hour', 'ban_week_day'));
+
+      $campaignDataObj->ban_site = get_ban_site_convert_view($campaignDataObj->ban_site);
 
       return $campaignDataObj; 
     }
@@ -83,6 +88,8 @@ class Campaigns_edit extends CI_Controller {
 
   function updateDataCollectionCampaign($post){
     $post = convert_data_string_this_db($post, array('ban_country', 'ban_region', 'ban_hour', 'ban_week_day'));
+
+    $post['ban_site'] = get_ban_site_convert_db($post['ban_site']);
 
     $dataWhereArr['campaign_id'] = $this->campaignId;
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
