@@ -15,6 +15,8 @@ class Statistiques_site extends CI_Controller{
   function index(){
     $this->load->helper('webmaster_statistiq_default_data');
     $this->load->helper('select_define_builder');
+    $this->load->helper('extract_select_key_this_array');
+    $this->load->helper('timestamp_of_date_formt');
     $this->load->library('/statistiques/statistiques_frompost_count_data');
     $this->load->library('/webmaster/data_builder_statistiq_site_html_elements');
     $this->load->model('/statistiques/statistiques_query');
@@ -30,7 +32,7 @@ class Statistiques_site extends CI_Controller{
 
     $data['urlError'] = $this->getBooleanPostUrl();
 
-    $data['siteStatistiqDataArr'] = $this->getSiteStatistiqDataArr();
+    $data['siteStatistiqDataArr'] = $this->getSiteStatistiqDataArr();    
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
@@ -59,14 +61,15 @@ class Statistiques_site extends CI_Controller{
   }
 
   function getSiteStatistiqDataArr(){
+    if( $this->getBooleanPostUrl() ){ return false; }
 
     $statistiqConfig = array(
-      'select_column' => 'site_id, url',
+      'select_column' => 'site_id, view, click, money_ru, money_sng, money_referral, dataadd',
       'table_name' => 'sites',
       'column_id' => 'site_id',
     );
 
-    return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig);
+    return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($_POST, array('site_id', 'date_start', 'date_end')));
 
   }
 }

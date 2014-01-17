@@ -9,58 +9,60 @@ class Statistiques_frompost_count_data {
     $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_rur' => 0);
   }
 
-  function getStatistiqCount($statistiqConfig){
-    $curentDataArr = $this->getCurentDataArr($statistiqConfig);
+  function getStatistiqCount($statistiqConfig, $searchData){
+    $curentDataStatistiqArr = $this->getCurentDataStatistiqArr($statistiqConfig, $searchData);
 
-    if(!$curentDataArr){ return false; }
+    if(!$curentDataStatistiqArr){ return false; }
 
-    $addStatistiqData = $this->getStatistiqData($curentDataArr, $statistiqConfig);
-    
-    if( !$addStatistiqData ){ return false; }
+    $statistiqCountRurCtr = $this->getStatistiqCountRurCtr($curentDataStatistiqArr);
 
-    return array('current' => $addStatistiqData, 'common' => $this->commonStatistiqArr);
+    $this->getCommonStatistiqCtrRur();
+
+    return array('current' => $statistiqCountRurCtr, 'common' => $this->commonStatistiqArr);
   }
 
-  function getCurentDataArr($statistiqConfig){
-    $dataWhereArr['user_id'] = extract_key_this_array($this->ci->session->userdata('user'), 'user_id');
+  function getCurentDataStatistiqArr($statistiqConfig, $searchData){
+    $dataWhereArr = array($statistiqConfig['column_id'] => $searchData['url'], 'dataadd >=' => timestamp_of_date_formt($searchData['date_start']), 'dataadd <=' => timestamp_of_date_formt($searchData['date_end']));
 
-    return $this->setDataProcessing($this->ci->select_models->select_all_row_where_column_selectcolumn_return_arr($dataWhereArr, $statistiqConfig['select_column'], $statistiqConfig['table_name']));
+    return $this->setDataProcessing($this->ci->statistiques_query->select_all_row_where_and_where_or_column_selectcolumn($dataWhereArr, $statistiqConfig['select_column'], $statistiqConfig['table_name']."_stat"));
   }
 
-  function setDataProcessing($curentDataArr){
-    if(is_array($curentDataArr)){ return $curentDataArr; }
+  function setDataProcessing($curentDataStatistiqArr){
+    if(is_array($curentDataStatistiqArr)){ return $curentDataStatistiqArr; }
 
     return false;
   }
 
-  function getStatistiqData($curentDataArr, $statistiqConfig){
-    foreach ($curentDataArr as $key => $oneDataObj) {
+  function getStatistiqCountRurCtr($curentDataStatistiqArr){
+    if( is_array($curentDataStatistiqArr) ){
 
-      $dataWhereArr[ $statistiqConfig['column_id'] ] = $oneDataObj[$statistiqConfig['column_id']];
+      foreach ($curentDataStatistiqArr as $key => $statistiq) {
 
-      $statistiq = $this->statCountRurCtr($this->ci->statistiques_query->select_all_row_where_column_selectcolumn_count($dataWhereArr, $statistiqConfig['table_name']."_stat"));
+        $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-      if( !$statistiq ){ return false; }
+        $statistiq['count_rur'] = number_format($statistiq['money_ru'] + $statistiq['money_sng'], 2);
 
-      $curentStatistiqDataArr[] = array_merge($curentDataArr[$key], $statistiq);
-    }
+        $statistiq['dataadd'] = date('d-m-Y', $statistiq['dataadd']);
 
-    return $curentStatistiqDataArr;
-  }
+        $this->calculationTotalStatistiq($statistiq);
 
-  function statCountRurCtr($statistiq){
-    if( is_array($statistiq) ){
-      $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
-
-      $statistiq['count_rur'] = number_format($statistiq['money_ru'] + $statistiq['money_sng'], 2);
-
-      $this->commonStatistiqArr['view'] += $statistiq['view'];
-      $this->commonStatistiqArr['click'] += $statistiq['click'];
-      $this->commonStatistiqArr['ctr'] += $statistiq['ctr'];
-      $this->commonStatistiqArr['count_rur'] += $statistiq['count_rur'];
-
-      return $statistiq;
+        $count[] = $statistiq;
+      }
+      
+      return $count;
     }
     return false;
+  }
+
+  function calculationTotalStatistiq($statistiq){
+    $this->commonStatistiqArr['view'] += $statistiq['view'];
+    $this->commonStatistiqArr['click'] += $statistiq['click'];
+    $this->commonStatistiqArr['count_rur'] += $statistiq['count_rur'];
+  }
+
+  function getCommonStatistiqCtrRur(){
+    $this->commonStatistiqArr['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $this->commonStatistiqArr['view']) * $this->commonStatistiqArr['click']));
+
+    $this->commonStatistiqArr['count_rur'] = number_format($this->commonStatistiqArr['count_rur'], 2);
   }
 }

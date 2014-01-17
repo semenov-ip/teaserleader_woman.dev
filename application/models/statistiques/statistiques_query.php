@@ -34,4 +34,27 @@
       }
       return false;
     }
+
+    function select_all_row_where_and_where_or_column_selectcolumn($dataWhereArr, $selectcolumn, $dbTableName){
+      if( is_array($dataWhereArr) ){
+
+        $this->db->where($dataWhereArr);
+
+        $this->db->select($selectcolumn);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() > 0){
+
+          foreach ($query->result_array() as $row) {
+
+            $dataQuery[] = $row;
+          }
+
+          return $dataQuery;
+        }
+      }
+
+      return false;
+    }
   }
