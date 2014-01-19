@@ -30,6 +30,8 @@ class Statistiques_site extends CI_Controller{
 
     $data = $this->data_builder_statistiq_site_html_elements->data($data);
 
+    $data['keyformname'] = 'url';
+
     $data['urlError'] = $this->getBooleanPostUrl();
 
     $data['siteStatistiqDataArr'] = $this->getSiteStatistiqDataArr();    
@@ -67,6 +69,7 @@ class Statistiques_site extends CI_Controller{
       'select_column' => 'site_id, view, click, money_ru, money_sng, money_referral, dataadd',
       'table_name' => 'sites',
       'column_id' => 'site_id',
+      'keyformname' => 'url'
     );
 
     return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($_POST, array('site_id', 'date_start', 'date_end')));

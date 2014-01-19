@@ -22,7 +22,11 @@ class Statistiques_frompost_count_data {
   }
 
   function getCurentDataStatistiqArr($statistiqConfig, $searchData){
-    $dataWhereArr = array($statistiqConfig['column_id'] => $searchData['url'], 'dataadd >=' => timestamp_of_date_formt($searchData['date_start']), 'dataadd <=' => timestamp_of_date_formt($searchData['date_end']));
+    if(isset($statistiqConfig['keyformname'])) { $dataWhereArr[$statistiqConfig['column_id']] = $searchData[$statistiqConfig['keyformname']]; }
+
+    $dataWhereArr['dataadd >='] = timestamp_of_date_formt($searchData['date_start']);
+
+    $dataWhereArr['dataadd <='] = timestamp_of_date_formt($searchData['date_end']);
 
     return $this->setDataProcessing($this->ci->statistiques_query->select_all_row_where_and_where_or_column_selectcolumn($dataWhereArr, $statistiqConfig['select_column'], $statistiqConfig['table_name']."_stat"));
   }

@@ -9,7 +9,7 @@ class Data_builder_statistiq_site_html_elements {
 
   function data($data){
 
-  $data['selectDataValue'] = select_define_builder( array($data['statistiqData']['url']), $this->getSiteDataAll($data['siteDataAllArrObj']), true );
+    $data['selectDataValue'] = select_define_builder( array($data['statistiqData']['url']), $this->getSiteDataAll($data['siteDataAllArrObj']), true );
 
     return $data;
   }

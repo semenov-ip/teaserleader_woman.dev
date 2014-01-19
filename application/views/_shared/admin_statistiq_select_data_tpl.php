@@ -1,20 +1,6 @@
 <form class="form-horizontal" role="form" method="post">
   <div class="row">
-    <div class="col-md-4">
-
-    <div class="form-group">
-      <div class="col-lg-7">
-        <select name="<?php echo $keyformname; ?>" class="form-control">
-          <?php echo $selectDataValue; ?>
-        </select>
-      </div>
-
-      <div class="display-inline-block">
-        <input type="submit" name="select" class="btn btn-default vertical-align-baseline" value="Выбрать" />
-      </div>
-    </div>
-
-    </div>
+    <div class="col-md-4">&nbsp;</div>
     <div class="col-md-8">
         <div class="form-group">
           <div class="col-lg-12">
