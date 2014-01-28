@@ -2,7 +2,7 @@
     
 class Settings extends CI_Controller{
 
-  private $who, $curr_num;
+  private $who, $purse;
 
   function __construct(){
 
@@ -36,7 +36,7 @@ class Settings extends CI_Controller{
   }
 
   function cleanAddDataInput($dataUserObj){
-    $this->curr_num = $dataUserObj->curr_num;
+    $this->purse = $dataUserObj->purse;
 
     return $dataUserObj;
   }
@@ -48,7 +48,7 @@ class Settings extends CI_Controller{
   function getPostDataSettingsUpdate(){
     if(!empty($_POST)){
 
-      $submitStatus = $this->validation_data_settings->getCorrectData($this->curr_num);
+      $submitStatus = $this->validation_data_settings->getCorrectData($this->purse);
 
       if( $submitStatus !== true ){ return $submitStatus; }
 

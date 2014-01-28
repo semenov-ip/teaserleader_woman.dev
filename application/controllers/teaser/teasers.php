@@ -33,6 +33,8 @@ class Teasers extends CI_Controller{
 
       foreach ($teaserDataObj as $key => $currentTeaserDataObj) {
 
+        $teaserDataObj[$key]->playStatus = $currentTeaserDataObj->status == 0 ? "disabled" : "onclick=\"playPauseElement('".$currentTeaserDataObj->teaser_id."', 'teaser_id', '".$currentTeaserDataObj->status."', 'teasers');\"";
+
         $currentTeaserDataObj->status = incite_status_site_teaser_name($currentTeaserDataObj->status);
 
       }

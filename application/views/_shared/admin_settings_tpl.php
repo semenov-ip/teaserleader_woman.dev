@@ -44,7 +44,7 @@
               <div class="form-group">
                 <label class="control-label col-lg-3">WMR-кошелек*</label>
                 <div class="col-lg-6">
-                  <input type="text" class="form-control" name="curr_num" value="<?php echo $userDataObj->curr_num ?>">
+                  <input type="text" class="form-control" name="purse" value="<?php echo $userDataObj->purse ?>">
                 </div>
               </div>
               

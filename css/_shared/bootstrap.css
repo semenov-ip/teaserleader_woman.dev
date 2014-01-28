@@ -4806,8 +4806,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #ffffff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
+  vertical-align: super;
+  border-radius: 1.25em;
 }
 
 .label[href]:hover,

@@ -36,11 +36,11 @@
 
                     <div class="btn-group">
 
-                      <button class="btn btn-default btn-xs"><i class="icon-play"></i> </button>
+                      <button class="btn btn-default btn-xs" <?php echo $currentTeaserDataObj->playStatus; ?>><i class="<?php echo $currentTeaserDataObj->status['icon']; ?>"></i> </button>
 
                       <a title="Редактировать объявления" href="/teaser/teasers_edit/index/<?php echo $currentTeaserDataObj->teaser_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i></a>
 
-                      <button title="Удалить сайт" class="btn btn-default btn-xs"><i class="icon-remove"></i> </button>
+                      <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentTeaserDataObj->teaser_id ?>', 'teaser_id', 'teasers');"><i class="icon-remove"></i> </button>
                     </div>
                   </td>
 
@@ -57,3 +57,4 @@
     </div>
   </div>
 </div>
+<script src="/js/admin/include_page/play_pause_element.js"></script>

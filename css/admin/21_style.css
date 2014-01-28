@@ -432,9 +432,10 @@ strong{
 }
 
 .sidey .nav > li > ul > li.active > a{
-   background:#188B88;
+   background: #fff;
+   font-weight: bold;
+   color: #0E4F61;
    border-top:0px;
-   color:#fff;
 }
 
 .sidey .nav > li > ul > li > a:hover{
@@ -495,7 +496,7 @@ strong{
    margin-left: 240px;
    margin-right: 0px;
    width: auto;
-   min-height: 600px;
+   min-height: 620px;
 }
 
 .mainy .container{

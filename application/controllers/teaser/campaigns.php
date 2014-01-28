@@ -13,6 +13,7 @@ class Campaigns extends CI_Controller{
   }
 
   function index(){
+    $this->load->helper('status/incite_status_site_teaser_name');
 
     $data = template_builder('admin','campaigns_tpl', $this->who);
 
@@ -29,6 +30,14 @@ class Campaigns extends CI_Controller{
 
   function setDataProcessing($campaignDataObj){
     if(is_array($campaignDataObj)){
+
+      foreach ($campaignDataObj as $key => $currentCampaignDataObj) {
+
+        $campaignDataObj[$key]->playStatus = $currentCampaignDataObj->status == 0 ? "disabled" : "onclick=\"playPauseElement('".$currentCampaignDataObj->campaign_id."', 'campaign_id', '".$currentCampaignDataObj->status."', 'campaigns');\"";
+
+        $currentCampaignDataObj->status = incite_status_site_teaser_name($currentCampaignDataObj->status);
+
+      }
 
       return $campaignDataObj;
     }

@@ -6,7 +6,19 @@
 
       parent::__construct();
 
+      $this->prefixes = $this->config->item('prefixes');
+
+    }
+
+    function delete_one_where_column($dataWhereArr, $dbTableName){
+
+      if(is_array($dataWhereArr)){
+
+        $this->db->where($dataWhereArr);
+
+        return $this->db->delete( $this->prefixes.$dbTableName );
+      }
+
+      return false;
     }
   }
-
-?>

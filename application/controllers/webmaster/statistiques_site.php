@@ -66,7 +66,7 @@ class Statistiques_site extends CI_Controller{
     if( $this->getBooleanPostUrl() ){ return false; }
 
     $statistiqConfig = array(
-      'select_column' => 'site_id, view, click, money_ru, money_sng, money_referral, dataadd',
+      'select_column' => 'site_id, view, click, money, dataadd',
       'table_name' => 'sites',
       'column_id' => 'site_id',
       'keyformname' => 'url'

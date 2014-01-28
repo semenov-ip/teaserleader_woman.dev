@@ -10,10 +10,12 @@
   <link href="/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-  
+
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600italic,600' rel='stylesheet' type='text/css'>
 
   <script src="/js/admin/include_page/jquery.js"></script>
+
+  <script src="/js/admin/include_page/jquery.json-2.4.min.js"></script>
   <?php
     if ($header['css']) {
       foreach( $header['css'] as $css ){ echo '<link rel="stylesheet" type="text/css" href="'.$css.'" />

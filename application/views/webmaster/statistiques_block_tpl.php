@@ -41,7 +41,7 @@
 
                   <td><?php echo $currentBlockStatistiq['ctr']; ?> %</td>
 
-                  <td><?php echo $currentBlockStatistiq['count_rur']; ?> руб.</td>
+                  <td><?php echo $currentBlockStatistiq['count_money']; ?> руб.</td>
 
                 </tr>
 
@@ -51,7 +51,7 @@
                   <td><?php echo $blockStatistiqDataArr['common']['view']; ?></td>
                   <td><?php echo $blockStatistiqDataArr['common']['click']; ?></td>
                   <td><?php echo $blockStatistiqDataArr['common']['ctr']; ?> %</td>
-                  <td><?php echo $blockStatistiqDataArr['common']['count_rur']; ?> руб.</td>
+                  <td><?php echo $blockStatistiqDataArr['common']['count_money']; ?> руб.</td>
                 </tr>
               </tbody>
           </table>

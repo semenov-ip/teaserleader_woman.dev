@@ -1,32 +1,32 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Validation_data_settings {
-  public $ci, $curr_num;
+  public $ci, $purse;
 
   function __construct(){
     $this->ci =& get_instance();
   }
 
-  function getCorrectData($curr_num){
+  function getCorrectData($purse){
 
-    $this->getCurrNum($curr_num);
+    $this->getPurse($purse);
 
     if( !execute_trim_empty_form( $_POST, array('icq', 'skype') ) ) return "empty_data";
 
-    if( !$this->webmoneyDoubleSaveError($_POST['curr_num']) ) return "webmoney_double_save";
+    if( !$this->webmoneyDoubleSaveError($_POST['purse']) ) return "webmoney_double_save";
 
     return true;
   }
 
-  function getCurrNum($curr_num){
-    $this->curr_num = $curr_num;
+  function getPurse($purse){
+    $this->purse = $purse;
   }
 
   function webmoneyDoubleSaveError($wmr){
     
-    if( $this->curr_num != $wmr ){
+    if( $this->purse != $wmr ){
       
-      $_POST['curr_num'] = $this->curr_num;
+      $_POST['purse'] = $this->purse;
       
       return false;
     }

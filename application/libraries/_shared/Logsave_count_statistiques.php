@@ -25,7 +25,7 @@ class Logsave_count_statistiques {
   }
 
   function getCountryColumnName($country){
-    $this->countryColumnName = country_extratc_column_name($country);
+    $this->countryColumnName = country_extratc_column_name_view($country);
   }
 
   function blocksStat($blockId){
@@ -35,9 +35,17 @@ class Logsave_count_statistiques {
   function siteStat($siteId, $blockId){
     $countIdBlockOnSite = $this->getCountBlockOnSite($siteId);
 
-    if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){ $this->countStatistics($siteId, 'site_id', 'sites_stat'); }
+    if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){ 
+      $this->countStatistics($siteId, 'site_id', 'sites_stat');
 
-    if( count($countIdBlockOnSite) === 1 ){ $this->countStatistics($siteId, 'site_id', 'sites_stat'); }
+      if( $this->countryColumnName ){ $this->geoStat('geo_stat'); };
+    }
+
+    if( count($countIdBlockOnSite) === 1 ){ 
+      $this->countStatistics($siteId, 'site_id', 'sites_stat');
+
+      if( $this->countryColumnName ){ $this->geoStat('geo_stat'); };
+    }
   }
 
   function getCountBlockOnSite($siteId){
@@ -73,6 +81,8 @@ class Logsave_count_statistiques {
 
       $this->countStatistics( $oneTeaserDataObj->teaser_id, 'teaser_id', 'teasers_stat' );
 
+      $this->updateTeaserDataLastShow($oneTeaserDataObj->teaser_id);
+
       if(array_search($oneTeaserDataObj->campaign_id, $campaignIdCollectionArr) === false){ $campaignIdCollectionArr[] = $oneTeaserDataObj->campaign_id; }
     }
 
@@ -98,13 +108,11 @@ class Logsave_count_statistiques {
   }
 
   function getDataStatisticsObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'view, '.$this->countryColumnName, $dbTableName);
+    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'view', $dbTableName);
   }
 
   function saveCountStatistics($addDataArr, $dbTableName){
     $addDataArr['view'] = 1;
-
-    if( !empty($this->countryColumnName) ) { $addDataArr[$this->countryColumnName] = 1; }
 
     $this->ci->insert_models->insert_data_return_id($addDataArr, $dbTableName);
   }
@@ -112,10 +120,39 @@ class Logsave_count_statistiques {
   function updateCountStatistics($dataWhereArr, $dataStatisticsObj, $dbTableName){
     $dataUpdateArr = array('view' => $dataStatisticsObj->view + 1);
 
-    $countryColumnName = $this->countryColumnName;
+    $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, $dbTableName);
+  }
 
-    if( !empty($countryColumnName) ) { $dataUpdateArr[$countryColumnName] = $dataStatisticsObj->$countryColumnName + 1; }
+  function updateTeaserDataLastShow($teaserId){
+    $dataWhereArr['teaser_id'] = $teaserId;
+    $dataUpdateArr['last_show'] = $this->ci->config->item('date');
+
+    $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'teasers');
+  }
+
+  function geoStat($dbTableName){
+    $dataWhereArr['dataadd'] = $this->ci->config->item('day');
+
+    $dataStatisticsGeoObj = $this->getDataStatisticsGeoObj($dataWhereArr, $dbTableName);
+
+    is_object($dataStatisticsGeoObj) ? $this->updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName) : $this->saveCountStatisticsGeo($dataWhereArr, $dbTableName);
+  }
+
+  function getDataStatisticsGeoObj($dataWhereArr, $dbTableName){
+    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, $dbTableName);
+  }
+
+  function updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName){
+    $column = $this->countryColumnName;
+
+    $dataUpdateArr = array($column => $dataStatisticsGeoObj->$column + 1);
 
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, $dbTableName);
+  }
+
+  function saveCountStatisticsGeo($addDataArr, $dbTableName){
+    $addDataArr[$this->countryColumnName] = 1;
+
+    $this->ci->insert_models->insert_data_return_id($addDataArr, $dbTableName);
   }
 }

@@ -33,6 +33,8 @@ class Blocks extends CI_Controller{
 
       foreach ($blockDataObj as $key => $currentBlockDataObj) {
 
+        $blockDataObj[$key]->playStatus = $currentBlockDataObj->status == 0 ? "disabled" : "onclick=\"playPauseElement('".$currentBlockDataObj->block_id."', 'block_id', '".$currentBlockDataObj->status."', 'blocks');\"";
+
         $currentBlockDataObj->status = incite_status_site_teaser_name($currentBlockDataObj->status);
 
         $currentBlockDataObj->itemsNumber = $currentBlockDataObj->ver * $currentBlockDataObj->hor;

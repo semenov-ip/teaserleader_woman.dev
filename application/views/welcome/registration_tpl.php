@@ -26,7 +26,7 @@
         </div>
 
         <div class="input">
-          <input type="curr_num" name="curr_num" placeholder="WMR" value="<?php echo $userDataObj->curr_num; ?>" />
+          <input type="text" name="purse" placeholder="WMR" value="<?php echo $userDataObj->purse; ?>" />
         </div>
 
         <div class="input">

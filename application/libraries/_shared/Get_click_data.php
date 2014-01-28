@@ -62,12 +62,12 @@ class Get_click_data {
   function geoBaseCountry($sitePrice, $country){
     if( $country == "RU" ){
       $this->priceStatArr = array('money_ru' => $sitePrice->price);
-      
+
       return $sitePrice->price; 
     }
 
     $this->priceStatArr = array('money_sng' => $sitePrice->price_sng);
-    
+
     return $sitePrice->price_sng;
   }
 }

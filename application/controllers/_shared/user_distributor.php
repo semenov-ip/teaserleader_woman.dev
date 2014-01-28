@@ -62,7 +62,8 @@ class User_distributor extends CI_Controller{
 
   function admin($dataUser){
     /* определенный редирект в администратора */
-    if($dataUser->admin){ return registrationPag(); }
-    redirect("/".$dataUser->who."/sites/", 'location');
+    if( !$dataUser->admin ){ return $this->registrationPag(); }
+
+    redirect("/".$dataUser->who."/sites_admin/", 'location');
   }
 }

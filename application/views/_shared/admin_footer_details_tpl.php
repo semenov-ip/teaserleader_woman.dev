@@ -71,3 +71,4 @@
 
          });
       </script>
+      <script> $('.active').closest('.has_submenu').addClass('open'); </script>

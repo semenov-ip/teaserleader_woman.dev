@@ -8,7 +8,7 @@ class Click extends CI_Controller{
 
   function index($hash){
     $this->load->helper('extract_key_this_object');
-    $this->load->helper('country_extratc_column_name');
+    $this->load->helper('country_extratc_column_name_click');
     $this->load->model('select_models');
     $this->load->model('update_models');
     $this->load->model('ckick/ckick_query');

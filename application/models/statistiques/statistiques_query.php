@@ -15,8 +15,7 @@
       if( $dataWhereArr ){
         $this->db->select_sum('view');
         $this->db->select_sum('click');
-        $this->db->select_sum('money_ru');
-        $this->db->select_sum('money_sng');
+        $this->db->select_sum('money');
 
         $this->db->where($dataWhereArr);
 

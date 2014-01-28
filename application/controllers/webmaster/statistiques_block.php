@@ -66,7 +66,7 @@ class Statistiques_block extends CI_Controller{
     if( $this->getBooleanPostUrl() ){ return false; }
 
     $statistiqConfig = array(
-      'select_column' => 'block_id, view, click, money_ru, money_sng, money_referral, dataadd',
+      'select_column' => 'block_id, view, click, money, dataadd',
       'table_name' => 'blocks',
       'column_id' => 'block_id',
       'keyformname' => 'name'

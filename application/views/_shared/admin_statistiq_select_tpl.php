@@ -3,7 +3,7 @@
     <div class="col-md-4">
 
     <div class="form-group">
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <select name="<?php echo $keyformname; ?>" class="form-control">
           <?php echo $selectDataValue; ?>
         </select>

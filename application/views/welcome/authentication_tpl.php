@@ -14,7 +14,7 @@
           <a class="active" href="/welcome/authentication/"><span><span>Войти</span></span></a>
         </div>
 
-        <?php if($error){ echo '<div class="alert alert-danger">'.$error.'</div>'; } ?>
+        <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
         <form class="form-horizontal" role="form" method="post">
           

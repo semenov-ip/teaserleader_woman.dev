@@ -6,7 +6,7 @@ class Statistiques_count_data {
   function __construct(){
     $this->ci =& get_instance();
 
-    $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_rur' => 0);
+    $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_money' => 0);
   }
 
   function getStatistiqCount($statistiqConfig){
@@ -52,12 +52,12 @@ class Statistiques_count_data {
     if( is_array($statistiq) ){
       $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-      $statistiq['count_rur'] = number_format($statistiq['money_ru'] + $statistiq['money_sng'], 2);
+      $statistiq['count_money'] = number_format($statistiq['money'], 2);
 
       $this->commonStatistiqArr['view'] += $statistiq['view'];
       $this->commonStatistiqArr['click'] += $statistiq['click'];
       $this->commonStatistiqArr['ctr'] += $statistiq['ctr'];
-      $this->commonStatistiqArr['count_rur'] += $statistiq['count_rur'];
+      $this->commonStatistiqArr['count_money'] += $statistiq['count_money'];
 
       return $statistiq;
     }

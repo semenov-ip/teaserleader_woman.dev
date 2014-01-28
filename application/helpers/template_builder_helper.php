@@ -13,6 +13,12 @@ if(!function_exists('template_builder')){
 
     $data['body'] = "/".current_dir_extract()."/$body";
 
+    $data['active_class'] = $ci->router->fetch_class();
+
+    $data['ticketCount'] = getTicketCount($who);
+
+    $data['who'] = $who;
+
     return $data;
   }
 
@@ -21,6 +27,20 @@ if(!function_exists('template_builder')){
 
     $dataWhereArr['hash'] = extract_key_this_array($ci->session->userdata('user'), 'hash');
 
-    return (array) $ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'email, count_rur', 'users');
+    return (array) $ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'email, count_money', 'users');
+  }
+
+  function getTicketCount($who){
+    $ci =& get_instance();
+
+    $who == "admin" ? $dataWhereArr['admin_status'] = 0 : $dataWhereArr['status'] = 1;
+    
+    $dataWhereArr['upid'] = 0;
+
+    $count = $ci->select_models->select_from_where_column_selectcolumn_return_num_rows($dataWhereArr, 'user_id', 'tickets');
+
+    if($count){ return "<span class='label label-success'>".$count."</span>"; }
+
+    return "";
   }
 }

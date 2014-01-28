@@ -15,7 +15,7 @@ class Validation_data_registration {
 
     if( $this->emailConfirmDb($_POST['email']) ) return "email_confirm";
 
-    if( !$this->webmoneyInputError($_POST['curr_num']) ) return "webmoney_input_error";
+    if( !$this->webmoneyInputError($_POST['purse']) ) return "webmoney_input_error";
 
     unset($_POST['password_confirm']);
 

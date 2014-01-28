@@ -25,7 +25,7 @@
                           </li>
 
                           <li class="dropdown">
-                            <a href="#"><div class="my-icon-money"></div> <div class="margin-top-2">Баланс: <?php echo $count_rur; ?> Р</div></a>
+                            <a href="#"><div class="my-icon-money"></div> <div class="margin-top-2">Баланс: <?php echo $count_money; ?> Р</div></a>
                           </li>
                           
                           <li class="dropdown logout">
@@ -51,10 +51,10 @@
                       <?php $this->load->view($menu); ?>
                       <!-- Main menu -->
                       <li class="money_hover"><a href="#"><div class="my-icon-money-menu"></div> <div class="margin-left-24 margin-top-2"> Выплаты</div></a></li>
-                      <li><a href="/_shared/tickets/"><i class="icon-envelope-alt"></i> Тикеты</a></li>
-                      <li><a href="/_shared/news/"><i class="icon-volume-down"></i> Новости</a></li>
-                      <li><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
-                      <li><a class="last-ellement" href="/_shared/faq/"><i class="icon-book"></i> FAQ</a></li>
+                      <li class="<?php echo $active_class === "tickets" ? "current" : "" ?>"><a href="/_shared/tickets/"><i class="icon-envelope-alt"></i> Тикеты <?php if($who != "admin"){ echo $ticketCount; } ?></a></li>
+                      <li class="<?php echo $active_class === "news" ? "current" : "" ?>"><a href="/_shared/news/"><i class="icon-volume-down"></i> Новости</a></li>
+                      <li class="<?php echo $active_class === "settings" ? "current" : "" ?>"><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
+                      <li class="<?php echo $active_class === "faq" ? "current" : "" ?>"><a class="last-ellement" href="/_shared/faq/"><i class="icon-book"></i> FAQ</a></li>
                   </ul>
                </div>
             </div>

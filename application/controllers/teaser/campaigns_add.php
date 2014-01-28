@@ -74,7 +74,7 @@ class Campaigns_add extends CI_Controller{
     $campaignId = $this->insert_models->insert_data_return_id($post, 'campaigns');
 
     if($campaignId){
-      redirect( "/_shared/user_distributor/", 'location');
+      redirect( "/teaser/campaigns/", 'location');
     }
   }
 }

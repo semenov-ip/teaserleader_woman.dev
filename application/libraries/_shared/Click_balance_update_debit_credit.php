@@ -21,11 +21,11 @@ class Click_balance_update_debit_credit {
   }
 
   function advertiserBalanceDebit($advertiserId, $price){
-    $this->ci->update_models->update_set_one_where_column_debit($price, 'count_rur', array('user_id' => $advertiserId), 'users');
+    $this->ci->update_models->update_set_one_where_column_debit($price, 'count_money', array('user_id' => $advertiserId), 'users');
   }
 
   function webmasterBalanceCredit($webmasterId, $price){
-    $this->ci->update_models->update_set_one_where_column_credit($price, 'count_rur', array('user_id' => $webmasterId), 'users');
+    $this->ci->update_models->update_set_one_where_column_credit($price, 'count_money', array('user_id' => $webmasterId), 'users');
   }
 
   function referralBalanceCredit($webmasterId, $advertiserId, $price){
@@ -33,9 +33,9 @@ class Click_balance_update_debit_credit {
 
       $this->priceReferral = ( $price * $this->ci->config->item('referral_pct')) / 100;
 
-      $this->ci->update_models->update_set_one_where_column_debit($this->priceReferral, 'count_rur', array('user_id' => $advertiserId), 'users');
+      $this->ci->update_models->update_set_one_where_column_debit($this->priceReferral, 'count_money', array('user_id' => $advertiserId), 'users');
 
-      $this->ci->update_models->update_set_one_where_column_credit($this->priceReferral, 'count_rur', array('user_id' => $this->referralId), 'users');
+      $this->ci->update_models->update_set_one_where_column_credit($this->priceReferral, 'count_money', array('user_id' => $this->referralId), 'users');
     }
   }
 

@@ -32,11 +32,11 @@
                   
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-default btn-xs"><i class="icon-play"></i> </button>
+                      <button class="btn btn-default btn-xs" <?php echo $currentBlockDataObj->playStatus; ?>><i class="<?php echo $currentBlockDataObj->status['icon']; ?>"></i> </button>
                       
                       <a title="Редактировать блок" href="/webmaster/blocks_edit/index/<?php echo $currentBlockDataObj->block_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
                       
-                      <button title="Удалить блок" class="btn btn-default btn-xs"><i class="icon-remove"></i> </button>
+                      <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentBlockDataObj->block_id ?>', 'block_id', 'blocks');"><i class="icon-remove"></i> </button>
                     </div>
                   </td>
                 
@@ -53,3 +53,4 @@
     </div>
   </div>
 </div>
+<script src="/js/admin/include_page/play_pause_element.js"></script>

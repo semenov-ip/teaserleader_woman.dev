@@ -31,9 +31,12 @@ class Sites extends CI_Controller{
   function setDataProcessing($siteDataObj){
     if(is_array($siteDataObj)){
       foreach ($siteDataObj as $key => $currentSiteDataObj) {
-        $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
-      }
 
+        $siteDataObj[$key]->playStatus = $currentSiteDataObj->status == 0 || $currentSiteDataObj->status == 3 ? "disabled" : "onclick=\"playPauseElement('".$currentSiteDataObj->site_id."', 'site_id', '".$currentSiteDataObj->status."', 'sites');\"";
+
+        $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
+
+      }
       return $siteDataObj;
     }
 

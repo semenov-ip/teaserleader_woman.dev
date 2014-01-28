@@ -6,7 +6,7 @@ class Statistiques_frompost_count_data {
   function __construct(){
     $this->ci =& get_instance();
 
-    $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_rur' => 0);
+    $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_money' => 0);
   }
 
   function getStatistiqCount($statistiqConfig, $searchData){
@@ -44,7 +44,7 @@ class Statistiques_frompost_count_data {
 
         $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-        $statistiq['count_rur'] = number_format($statistiq['money_ru'] + $statistiq['money_sng'], 2);
+        $statistiq['count_money'] = number_format($statistiq['money'], 2);
 
         $statistiq['dataadd'] = date('d-m-Y', $statistiq['dataadd']);
 
@@ -61,12 +61,12 @@ class Statistiques_frompost_count_data {
   function calculationTotalStatistiq($statistiq){
     $this->commonStatistiqArr['view'] += $statistiq['view'];
     $this->commonStatistiqArr['click'] += $statistiq['click'];
-    $this->commonStatistiqArr['count_rur'] += $statistiq['count_rur'];
+    $this->commonStatistiqArr['count_money'] += $statistiq['count_money'];
   }
 
   function getCommonStatistiqCtrRur(){
     $this->commonStatistiqArr['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $this->commonStatistiqArr['view']) * $this->commonStatistiqArr['click']));
 
-    $this->commonStatistiqArr['count_rur'] = number_format($this->commonStatistiqArr['count_rur'], 2);
+    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2);
   }
 }

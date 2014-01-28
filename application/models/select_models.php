@@ -11,6 +11,26 @@
       $this->prefixes = $this->config->item('prefixes');
     }
 
+    function select_all_row_selectcilumn_orderby($select, $orderbycolumn, $orderbycommand, $dbTableName){
+      $this->db->select($select);
+
+      $this->db->order_by($orderbycolumn, $orderbycommand);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+
+          $dataQuery[] = $row;
+        }
+
+        return $dataQuery;
+      }
+
+      return false;
+    }
+
     function select_one_row_where_column($dataWhereArr, $dbTableName){
 
       if(is_array($dataWhereArr)){
@@ -144,6 +164,35 @@
 
             $dataQuery[] = $row;
             
+          }
+
+          return $dataQuery;
+        }
+      }
+
+      return false;
+    }
+
+    function select_all_row_where_or_where_column_selectcolumn($dataORWhereArr, $dataANDWhereArr, $selectcolumn, $dbTableName){
+
+      if(is_array($dataORWhereArr)){
+
+        foreach ($dataORWhereArr as $key => $value) {
+          $this->db->or_where($key, $value);
+
+          $this->db->where($dataANDWhereArr);
+        }
+
+        $this->db->select($selectcolumn);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() > 0){
+
+          foreach ($query->result() as $row) {
+
+            $dataQuery[] = $row;
+
           }
 
           return $dataQuery;

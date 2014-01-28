@@ -29,10 +29,13 @@
                   <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-default btn-xs"><i class="icon-play"></i> </button>
+                      <button class="btn btn-default btn-xs" <?php echo $currentSiteDataObj->playStatus; ?>><i class="<?php echo $currentSiteDataObj->status['icon']; ?>"></i> </button>
+
                       <a href="/webmaster/blocks_add/index/<?php echo $currentSiteDataObj->site_id; ?>/" title="Добавить блок" class="btn btn-default btn-xs"><i class="icon-plus"></i> </a>
+
                       <a title="Редактировать сайт" href="/webmaster/sites_edit/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
-                      <button title="Удалить сайт" class="btn btn-default btn-xs"><i class="icon-remove"></i> </button>
+
+                      <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentSiteDataObj->site_id ?>', 'site_id', 'sites');"><i class="icon-remove"></i> </button>
                     </div>
                   </td>
                 </tr>
@@ -49,3 +52,4 @@
     </div>
   </div>
 </div>
+<script src="/js/admin/include_page/play_pause_element.js"></script>
