@@ -24,7 +24,7 @@ class Campaigns_add extends CI_Controller{
     $this->load->library('/teaser/data_builder_campaign_html_elements');
     $this->load->library('/teaser/validation_data_campaig_and_builder_collection');
 
-    $data = template_builder('admin','campaigns_add_update_tpl', $this->who);
+    $data = template_builder('admin','campaigns_add_update_tpl', $this->who, 'campaigns');
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'campaign_add_title' );
 

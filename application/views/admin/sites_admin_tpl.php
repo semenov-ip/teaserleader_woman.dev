@@ -14,9 +14,10 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>ID</th>
                 <th width="50%">URL</th>
                 <th>Рекламные блоки</th>
-                <th>Статус</th>
+                <th width="15%">Статус</th>
                 <th></th>
               </tr>
             </thead>
@@ -24,7 +25,8 @@
 
               <tbody>
                 <tr>
-                  <td><?php echo $currentSiteDataObj->url ?></td>
+                  <th><?php echo $currentSiteDataObj->site_id; ?></th>
+                  <td><?php echo $currentSiteDataObj->url; ?></td>
                   <td></td>
                   <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
                   <td>
@@ -42,7 +44,7 @@
             <?php } ?>
           </table>
         <?php } ?>
-        <?php if(!$siteDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент список площадок пуст, Вы еще не добавили ни одного сайта.</div><?php } ?>
+        <?php if(!$siteDataObj) { ?><div class="alert alert-warning">На данный момент список площадок пуст</div><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

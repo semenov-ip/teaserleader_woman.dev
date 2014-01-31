@@ -21,7 +21,7 @@ class Sites_edit extends CI_Controller {
 
     $this->getSiteId($siteId);
 
-    $data = template_builder('admin','sites_add_update_tpl',$this->who);
+    $data = template_builder('admin','sites_add_update_tpl', $this->who, 'sites');
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->extractKeyErrorMessageInitializationPostQuery() );
 

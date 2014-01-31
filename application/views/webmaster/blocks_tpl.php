@@ -25,28 +25,31 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentBlockDataObj->name; ?></td>
-                  
+
                   <td><?php echo $currentBlockDataObj->itemsNumber; ?></td>
-                  
+
                   <td><span class="label <?php echo $currentBlockDataObj->status['class'] ?>"><?php echo $currentBlockDataObj->status['name'] ?></span></td>
-                  
+
                   <td>
                     <div class="btn-group">
                       <button class="btn btn-default btn-xs" <?php echo $currentBlockDataObj->playStatus; ?>><i class="<?php echo $currentBlockDataObj->status['icon']; ?>"></i> </button>
-                      
+
                       <a title="Редактировать блок" href="/webmaster/blocks_edit/index/<?php echo $currentBlockDataObj->block_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
-                      
+
                       <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentBlockDataObj->block_id ?>', 'block_id', 'blocks');"><i class="icon-remove"></i> </button>
                     </div>
                   </td>
-                
+
                 </tr>
               </tbody>
 
             <?php } ?>
           </table>
         <?php } ?>
+
         <?php if(!$blockDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент Вы еще не добавили ни одного блока.</div><?php } ?>
+
+        <?php if($addBlockButtonSiteId){ ?><a href="/webmaster/blocks_add/index/<?php echo $addBlockButtonSiteId; ?>/" class="btn btn-default float_right">Добавить блок</a><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

@@ -23,7 +23,7 @@ class Users_admin extends CI_Controller{
   }
 
   function getUserAllData(){
-    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('user_id, email, name, skype, count_money, dataadd', 'user_id', 'asc', 'users'));
+    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('user_id, email, name, skype, count_money, dataadd', 'user_id', 'desc', 'users'));
   }
 
   function setDataProcessing($siteDataObj){

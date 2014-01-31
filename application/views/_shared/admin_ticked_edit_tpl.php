@@ -57,7 +57,7 @@
                   <div class="col-lg-6 col-lg-offset-1">
                     <input type="hidden" name="author_name" class="form-control" value="<?php echo $email; ?>">
                     <button type="submit" class="btn btn-default">Добавить</button>
-                    <a href="/webmaster/sites/" type="reset" class="btn btn-default">Отменить</a>
+                    <a href="/_shared/tickets/" type="reset" class="btn btn-default">Отменить</a>
                  </div>
               </div>
             </form>

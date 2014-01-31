@@ -21,7 +21,7 @@ class Tickets_edit extends CI_Controller {
 
     $this->getTickedId($ticketId);
 
-    $data = template_builder('admin','admin_ticked_edit_tpl',$this->who);
+    $data = template_builder('admin','admin_ticked_edit_tpl',$this->who, 'tickets');
 
     $data['error'] = extract_key_this_array($this->config->item('error_message'), $this->extractKeyErrorMessageInitializationPostQuery());
 

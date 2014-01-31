@@ -10,6 +10,8 @@
         <div class="awidget-head"></div>
         <div class="awidget-body">
         <?php if($campaignDataObj){ ?>
+          <?php /*if($statistiqData){*/ $this->load->view('/_shared/admin_statistiq_tpl'); /*}*/ ?>
+
           <table class="table table-hover">
             <thead>
               <tr>
@@ -25,18 +27,20 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentCampaignDataObj->campaign_id; ?></td>
-                  <td><?php echo $currentCampaignDataObj->name ?></td>
-                  <td></td>
+                  <td><?php echo $currentCampaignDataObj->name; ?></td>
+                  <td><a href="/teaser/teasers/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/"><?php echo $currentCampaignDataObj->countTeaser; ?></a></td>
                   <td><span class="label <?php echo $currentCampaignDataObj->status['class'] ?>"><?php echo $currentCampaignDataObj->status['name'] ?></span></td>
+
                   <td>
                     <div class="btn-group">
-                      
                       <button class="btn btn-default btn-xs" <?php echo $currentCampaignDataObj->playStatus; ?>><i class="<?php echo $currentCampaignDataObj->status['icon']; ?>"></i> </button>
-                      
-                      <a href="/teaser/teasers_add/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/" title="Добавить объявление" class="btn btn-default btn-xs"><i class="icon-plus"></i> </a>
-                      
-                      <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentCampaignDataObj->campaign_id ?>', 'campaign_id', 'campaigns');"><i class="icon-remove"></i> </button>
-                    <div>
+
+                     <a href="/teaser/teasers_add/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/" title="Добавить объявление" class="btn btn-default btn-xs"><i class="icon-plus"></i> </a>
+
+                      <a href="/teaser/campaigns_edit/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/" title="Редактировать компанию" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
+
+                      <button title="Удалить компанию" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentCampaignDataObj->campaign_id ?>', 'campaign_id', 'campaigns');"><i class="icon-remove"></i> </button>
+                    </div>
                   </td>
                 </tr>
               </tbody>

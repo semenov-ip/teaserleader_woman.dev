@@ -2,7 +2,7 @@
     
 class Blocks extends CI_Controller{
 
-  private $who;
+  private $who, $siteId;
 
   function __construct(){
 
@@ -12,18 +12,27 @@ class Blocks extends CI_Controller{
     $this->who = $this->check_users_access->checkUsers();
   }
 
-  function index(){
+  function index($siteId=false){
     $this->load->helper('status/incite_status_site_teaser_name');
+
+    $this->getSiteId($siteId);
 
     $data = template_builder('admin','blocks_tpl',$this->who);
 
     $data['blockDataObj'] = $this->getBlockData();
 
+    $data['addBlockButtonSiteId'] = $this->siteId;
+
     $this->load->view( '/_shared/admin_tpl.php', $data );
+  }
+
+  function getSiteId($siteId){
+    $this->siteId = $siteId;
   }
 
   function getBlockData(){
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+    if( $this->siteId ) { $dataWhereArr['site_id'] = $this->siteId; }
 
     return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'block_id, name, hor, ver, status', 'blocks'));
   }

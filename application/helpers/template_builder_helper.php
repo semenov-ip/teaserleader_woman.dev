@@ -2,7 +2,7 @@
 
 if(!function_exists('template_builder')){
 
-  function template_builder($template, $body, $who){
+  function template_builder($template, $body, $who, $activeLink = false){
     $ci =& get_instance();
 
     $data = getUserDataObjHelper();
@@ -13,7 +13,7 @@ if(!function_exists('template_builder')){
 
     $data['body'] = "/".current_dir_extract()."/$body";
 
-    $data['active_class'] = $ci->router->fetch_class();
+    $data['active_class'] = $activeLink == false ? $ci->router->fetch_class() : $activeLink;
 
     $data['ticketCount'] = getTicketCount($who);
 

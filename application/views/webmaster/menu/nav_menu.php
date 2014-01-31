@@ -5,21 +5,20 @@
   </a>
   <!-- Sub menu -->
   <ul>
-    <li><a href="/webmaster/sites/">Площадки</a></li>
-    <li><a href="/webmaster/blocks/">Блоки</a></li>
+    <li class="<?php echo $active_class === "sites" ? "active" : "" ?>"><a href="/webmaster/sites/">Площадки</a></li>
+    <li class="<?php echo $active_class === "blocks" ? "active" : "" ?>"><a href="/webmaster/blocks/">Блоки</a></li>
   </ul>
 </li>
 
 <li class="has_submenu">
   <a href="#">
-    <i class="icon-sitemap"></i> Статистика
+    <i class="icon-signal"></i> Статистика
     <span class="caret pull-right"></span>
   </a>
-  <!-- Sub menu -->
   <ul>
-    <li><a href="ui.html">По площадкам</a></li>
-    <li><a href="tables.html">По блокам</a></li>
-    <li><a href="tables.html">По гео</a></li>
-    <li><a href="tables.html">По рефералам</a></li>
+    <li class="<?php echo $active_class === "statistiques_site" ? "active" : "" ?>"><a href="/webmaster/statistiques_site/">По площадкам</a></li>
+    <li class="<?php echo $active_class === "statistiques_block" ? "active" : "" ?>"><a href="/webmaster/statistiques_block/">По блокам</a></li>
+    <li class="<?php echo $active_class === "statistiques_geo" ? "active" : "" ?>"><a href="/webmaster/statistiques_geo/">По гео</a></li>
+    <li class="<?php echo $active_class === "statistiques_referral" ? "active" : "" ?>"><a href="/webmaster/statistiques_referral/">По рефералам</a></li>
   </ul>
 </li>

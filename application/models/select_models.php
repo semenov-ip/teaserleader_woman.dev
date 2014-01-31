@@ -11,6 +11,24 @@
       $this->prefixes = $this->config->item('prefixes');
     }
 
+    function select_all_row_selectcilumn($select, $dbTableName){
+      $this->db->select($select);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+
+          $dataQuery[] = $row;
+        }
+
+        return $dataQuery;
+      }
+
+      return false;
+    }
+
     function select_all_row_selectcilumn_orderby($select, $orderbycolumn, $orderbycommand, $dbTableName){
       $this->db->select($select);
 
@@ -309,6 +327,35 @@
       }
 
       return 0;
+    }
+
+    function select_count_where_fromtable($dataWhereArr, $dbTableName){
+      if( is_array($dataWhereArr) ){
+        $this->db->where($dataWhereArr);
+
+        return $this->db->count_all_results($this->prefixes.$dbTableName);
+      }
+      
+      return false;
+    }
+
+    function select_mindata_where_fromtable($dataWhereArr, $mincolumn, $dbTableName){
+      
+      $this->db->select_min($mincolumn);
+
+      $this->db->where($dataWhereArr);
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() == 1){
+
+        foreach ($query->result() as $row) {
+
+          return $row->$mincolumn;
+
+        }
+      }
+      return false;
     }
 
     function select_from_all_limit_orderby($limit, $orderbycolumn, $orderbycommand, $dbTableName){

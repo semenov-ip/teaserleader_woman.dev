@@ -18,7 +18,7 @@
 
           <div class="form profile">
             <!-- Edit profile form (not working)-->
-            На данный момент новостей нет
+            <div class="alert alert-warning">К сожалению на данный момент новостей нет.</div>
           </div>
              
        </div>

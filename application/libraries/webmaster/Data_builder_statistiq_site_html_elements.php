@@ -18,11 +18,14 @@ class Data_builder_statistiq_site_html_elements {
 
     $getSiteDataAllKeyValue['-1'] = "Выберите сайт";
     
-    foreach ($siteDataAllArrObj as $key => $siteDataCurentObj) {
+    if( is_array($siteDataAllArrObj) ){
+      foreach ($siteDataAllArrObj as $key => $siteDataCurentObj) {
 
-      $getSiteDataAllKeyValue[$siteDataCurentObj->site_id] = $siteDataCurentObj->url;
+        $getSiteDataAllKeyValue[$siteDataCurentObj->site_id] = $siteDataCurentObj->url;
 
+      }
     }
+    
 
     return $getSiteDataAllKeyValue;
   }

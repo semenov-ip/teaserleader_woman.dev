@@ -28,7 +28,7 @@ class Campaigns_edit extends CI_Controller {
 
     $this->getCampaignId($campaignId);
 
-    $data = template_builder('admin','campaigns_add_update_tpl', $this->who);
+    $data = template_builder('admin','campaigns_add_update_tpl', $this->who, 'campaigns');
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'campaign_edit_title' );
 

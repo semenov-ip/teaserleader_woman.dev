@@ -23,7 +23,7 @@ class Teasers_edit extends CI_Controller {
 
     $teaserDataObj = $this->getTeaserData();
 
-    $data = template_builder('admin','teasers_add_update_tpl', $this->who);
+    $data = template_builder('admin','teasers_add_update_tpl', $this->who, 'teasers');
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'teaser_edit_title' );
 

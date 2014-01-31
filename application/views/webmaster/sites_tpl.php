@@ -25,7 +25,7 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentSiteDataObj->url ?></td>
-                  <td></td>
+                  <td><a href="/webmaster/blocks/index/<?php echo $currentSiteDataObj->site_id ?>/"><?php echo $currentSiteDataObj->countBlock ?></a></td>
                   <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
                   <td>
                     <div class="btn-group">

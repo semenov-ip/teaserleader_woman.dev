@@ -14,6 +14,7 @@ class Sites extends CI_Controller{
 
   function index(){
     $this->load->helper('status/incite_status_site_teaser_name');
+    $this->load->helper('return_word_end');
 
     $data = template_builder('admin','sites_tpl',$this->who);
 
@@ -35,6 +36,8 @@ class Sites extends CI_Controller{
         $siteDataObj[$key]->playStatus = $currentSiteDataObj->status == 0 || $currentSiteDataObj->status == 3 ? "disabled" : "onclick=\"playPauseElement('".$currentSiteDataObj->site_id."', 'site_id', '".$currentSiteDataObj->status."', 'sites');\"";
 
         $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
+
+        $siteDataObj[$key]->countBlock = return_word_end($this->select_models->select_count_where_fromtable(array('site_id' => $currentSiteDataObj->site_id), 'blocks'), '', 'блок', 'блока', 'блоков');
 
       }
       return $siteDataObj;

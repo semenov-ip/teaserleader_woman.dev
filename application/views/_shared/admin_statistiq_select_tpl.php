@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-4">
 
-    <div class="form-group">
-      <div class="col-lg-8">
-        <select name="<?php echo $keyformname; ?>" class="form-control">
-          <?php echo $selectDataValue; ?>
-        </select>
-      </div>
+      <div class="form-group">
+        <div class="col-lg-8">
+          <select name="<?php echo $keyformname; ?>" class="form-control">
+            <?php echo $selectDataValue; ?>
+          </select>
+        </div>
 
-      <div class="display-inline-block">
-        <input type="submit" name="select" class="btn btn-default vertical-align-baseline" value="Выбрать" />
+        <div class="display-inline-block">
+          <input type="submit" name="select" class="btn btn-default vertical-align-baseline" value="Выбрать" />
+        </div>
       </div>
-    </div>
 
     </div>
     <div class="col-md-8">

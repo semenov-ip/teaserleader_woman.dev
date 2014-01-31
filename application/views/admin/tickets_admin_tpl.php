@@ -36,7 +36,6 @@
           </table>
         <?php } ?>
         <?php if(!$ticketDataObj) { ?><div class="alert alert-warning">На данный момент нет сформированных тикетов.</div><?php } ?>
-        <a href="/_shared/tickets_add/" class="btn btn-default float_right">Добавить тикет</a>
         <div class="clearfix"></div>
         </div>
       </div>

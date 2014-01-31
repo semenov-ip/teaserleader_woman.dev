@@ -44,7 +44,7 @@ class Statistiques_teaser extends CI_Controller{
   }
 
   function getTeaserData(){
-    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+    $dataWhereArr = $this->who != "admin" ? array('user_id' => extract_key_this_array($this->session->userdata('user'), 'user_id')) : array();
 
     return $this->checkData($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'teaser_id, url', 'teasers'));
   }

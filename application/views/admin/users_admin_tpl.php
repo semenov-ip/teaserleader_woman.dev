@@ -14,6 +14,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Дата</th>
                 <th>E-mail</th>
                 <th>Имя</th>
@@ -25,11 +26,12 @@
 
               <tbody>
                 <tr>
-                  <td><?php echo $currentUserDataObj->dataadd ?></td>
-                  <td><?php echo $currentUserDataObj->email ?></td>
-                  <td><?php echo $currentUserDataObj->name ?></td>
-                  <td><?php echo $currentUserDataObj->skype ?></td>
-                  <td><?php echo $currentUserDataObj->count_money ?> руб.</td>
+                  <td><?php echo $currentUserDataObj->user_id; ?></td>
+                  <td><?php echo $currentUserDataObj->dataadd; ?></td>
+                  <td><?php echo $currentUserDataObj->email; ?></td>
+                  <td><?php echo $currentUserDataObj->name; ?></td>
+                  <td><?php echo $currentUserDataObj->skype; ?></td>
+                  <td><?php echo $currentUserDataObj->count_money; ?> руб.</td>
                 </tr>
               </tbody>
 

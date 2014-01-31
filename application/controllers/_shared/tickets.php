@@ -28,7 +28,7 @@ class Tickets extends CI_Controller{
     $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
     $dataWhereArr['upid'] = 0;
 
-    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'ticket_id, title, text, dataadd, status', 'tickets'));
+    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_orderby($dataWhereArr, 'dataadd', 'desc', 'ticket_id, title, text, dataadd, status', 'tickets'));
   }
 
   function setDataProcessing($ticketDataObj){

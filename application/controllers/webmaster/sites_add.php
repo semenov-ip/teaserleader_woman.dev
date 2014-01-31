@@ -62,7 +62,7 @@ class Sites_add extends CI_Controller{
     if($siteId){
       $this->session->set_flashdata('successSaveUpdateData', 'success_save_data');
 
-      redirect( "/webmaster/sites_edit/index/$siteId/", 'location');
+      redirect( "/webmaster/sites/", 'location');
     }
   }
 }

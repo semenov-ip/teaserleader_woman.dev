@@ -17,7 +17,7 @@ class Tickets_add extends CI_Controller{
     $this->load->model('insert_models');
     $this->load->library('/_shared/validation_data_ticket');
 
-    $data = template_builder('admin','admin_tickets_add_tpl', $this->who);
+    $data = template_builder('admin','admin_tickets_add_tpl', $this->who, 'tickets');
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->getPostDataTicketAdd() );
 

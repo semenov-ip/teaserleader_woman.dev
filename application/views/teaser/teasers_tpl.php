@@ -51,6 +51,7 @@
           </table>
         <?php } ?>
         <?php if(!$teaserDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент нет добавленных объявлений.</div><?php } ?>
+        <?php if($addTeaserButtonCampaignId){ ?><a href="/teaser/teasers_add/index/<?php echo $addTeaserButtonCampaignId; ?>/" class="btn btn-default float_right">Добавить объявление</a><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

@@ -17,12 +17,16 @@ class Data_builder_statistiq_teaser_html_elements {
   function getTeaserDataAll($teaserDataAllArrObj){
 
     $getTeaserDataAllKeyValue['-1'] = "Выберите объявление";
-    
-    foreach ($teaserDataAllArrObj as $key => $teaserDataCurentObj) {
 
-      $getTeaserDataAllKeyValue[$teaserDataCurentObj->teaser_id] = $teaserDataCurentObj->url;
+    if( is_array($teaserDataAllArrObj) ){
 
+      foreach ($teaserDataAllArrObj as $key => $teaserDataCurentObj) {
+
+        $getTeaserDataAllKeyValue[$teaserDataCurentObj->teaser_id] = $teaserDataCurentObj->url;
+
+      }
     }
+    
 
     return $getTeaserDataAllKeyValue;
   }

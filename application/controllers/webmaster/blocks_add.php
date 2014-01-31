@@ -27,7 +27,7 @@ class Blocks_add extends CI_Controller{
 
     $this->getSiteId($siteId);
 
-    $data = template_builder('admin','blocks_add_update_tpl', $this->who);
+    $data = template_builder('admin','blocks_add_update_tpl', $this->who, 'blocks');
 
     $data['titleH4'] = extract_key_this_array( $this->config->item('title'), 'block_add_title' );
     $data['titleMinor'] = extract_key_this_array( $this->config->item('title'), 'block_view' );

@@ -98,7 +98,7 @@
                  <!-- Buttons -->
                   <div class="col-lg-6 col-lg-offset-3">
                     <button type="submit" class="btn btn-default">Сохранить</button>
-                    <a href="/webmaster/sites/" type="reset" class="btn btn-default">Отменить</a>
+                    <a href="/teaser/campaigns/" type="reset" class="btn btn-default">Отменить</a>
                  </div>
               </div>
             </form>

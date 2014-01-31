@@ -388,6 +388,9 @@ $config['error_message'] = array(
   "webmoney_input_error" => array( "text" => "Не верно указан номер WMR-кошелька!", "class" => "alert-warning" ),
   "webmoney_double_save" => array( "text" => "В целях безопасности, вы не можете изменить WMR-кошелек!", "class" => "alert-warning" ),
   "success_save_update_data" => array( "text" => "Изменения сохранены!", "class" => "alert-success" ),
+
+  "success_save_send_mail" => array( "text" => "Рассылка завершена!", "class" => "alert-success" ),
+
   "success_save_data" => array( "text" => "Данные были успешно сохранены!", "class" => "alert-success" ),
   "empty_url" => array( "text" => "Не указан адрес сайта!", "class" => "alert-warning" ),
   "empty_name" => array( "text" => "Не указано название компании!", "class" => "alert-warning" ),
@@ -440,6 +443,8 @@ $config['daysWeek'] = array(
 );
 
 $config['title_to_code'] = 'Тизерная сеть';
+
+$config['url'] = 'ladyads.ru';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
