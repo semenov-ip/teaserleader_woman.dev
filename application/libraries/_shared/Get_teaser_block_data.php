@@ -83,7 +83,7 @@ class Get_teaser_block_data {
   }
 
   function getTeaserDataObj($campaignDataObj, $limit, $banTeaser){
-    return $this->ci->show_query->select_all_from_teaser_banlike($campaignDataObj, $limit, $banTeaser, 'teaser_id, user_id, campaign_id, image, text, url', 'teasers');
+    return $this->ci->show_query->select_all_from_teaser_banlike_orderby($campaignDataObj, 'last_show', 'asc', $limit, $banTeaser, 'teaser_id, user_id, campaign_id, image, text, url', 'teasers');
   }
 
   function checkTeaserData($teaserDataObj){

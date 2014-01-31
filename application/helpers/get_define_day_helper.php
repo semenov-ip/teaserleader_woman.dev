@@ -10,17 +10,17 @@ if(!function_exists('get_define_day')){
     $day = $ci->config->item('day');
 
     return array(
-      'today' => '\''.$day.'\', \''.($day+86400).'\'',
+      'today' => '\''.date( "d-m-Y" , $day).'\', \''.date( "d-m-Y", $day ).'\'',
 
-      'yesterday' => '\''.($day - 86400).'\', \''.$day.'\'',
+      'yesterday' => '\''.date( "d-m-Y" , ($day - 86400) ).'\', \''.date( "d-m-Y" , $day - 60*60*24 ).'\'',
 
-      'current_week' => '\''.($day - (86400 * $week_day[date("w", $day)])).'\', \''.$day.'\'',
+      'current_week' => '\''.date( "d-m-Y" , ($day - (86400 * $week_day[date("w", $day)]))).'\', \''.date( "d-m-Y" , $day ).'\'',
 
-      'current_month' => '\''.($day - (86400 * (date("j", $day) - 1))).'\', \''.$day.'\'',
+      'current_month' => '\''.date( "d-m-Y" , ($day - (86400 * (date("j", $day) - 1)))).'\', \''.date( "d-m-Y" , $day).'\'',
 
-      'last_week' => '\''.($day - (86400 * ($week_day[date("w", $day)] + 7))).'\', \''.($day - (86400 * ($week_day[date("w", $day)]))).'\'',
+      'last_week' => '\''.date( "d-m-Y" , ($day - (86400 * ($week_day[date("w", $day)] + 7)))).'\', \''.date( "d-m-Y" , ($day - (86400 * ($week_day[date("w", $day)])) - 86400 )).'\'',
 
-      'last_month' => '\''.(strtotime(date("Y", $day).'-'.(date("m", $day) - 1).'-01')).'\', \''.($day - (86400 * (date("j", $day)))).'\''
+      'last_month' => '\''.date( "d-m-Y", (strtotime(date("Y", $day).'-'.(date("m", $day) - 1).'-01'))).'\', \''.date( "d-m-Y" , ($day - (86400 * (date("j", $day))))).'\''
     );
 
   }

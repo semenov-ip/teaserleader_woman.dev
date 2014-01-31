@@ -64,7 +64,7 @@
       return false;
     }
 
-    function select_all_from_teaser_banlike($campaignDataObj, $limit, $banTeaser, $selectcolumn, $dbTableName){
+    function select_all_from_teaser_banlike_orderby($campaignDataObj, $orderbycolumn, $orderbycommand,  $limit, $banTeaser, $selectcolumn, $dbTableName){
 
       $this->db->select($selectcolumn);
 
@@ -73,6 +73,8 @@
       }
 
       $this->db->limit($limit);
+
+      $this->db->order_by($orderbycolumn, $orderbycommand);
 
       $query = $this->db->get($this->prefixes.$dbTableName);
 

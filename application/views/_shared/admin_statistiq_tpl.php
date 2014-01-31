@@ -13,7 +13,7 @@
 
   <div class="col-md-8">
 
-    <form class="form-horizontal" role="form" method="post">
+    <form id="statistiq" class="form-horizontal" role="form" method="post">
 
       <div class="form-group">
         <!-- <div class="col-lg-8"> -->

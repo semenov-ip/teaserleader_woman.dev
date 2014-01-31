@@ -2,7 +2,7 @@
     
 class Campaigns extends CI_Controller{
 
-  private $who;
+  private $who, $statistiqData, $commonStatistiqArr;
 
   function __construct(){
 
@@ -10,6 +10,9 @@ class Campaigns extends CI_Controller{
 
     $this->load->library('check_users_access');
     $this->who = $this->check_users_access->checkUsers();
+
+
+    $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_money' => 0);
   }
 
   function index(){
@@ -17,16 +20,29 @@ class Campaigns extends CI_Controller{
     $this->load->helper('return_word_end');
     $this->load->helper('get_define_day');
     $this->load->helper('campaign_statistiq_default_data');
+    $this->load->helper('extract_select_key_this_array');
+    $this->load->helper('data_where_user_id');
+    $this->load->helper('timestamp_of_date_formt');
+    $this->load->library('statistiques/statistiques_count_data');
+    $this->load->model('statistiques/statistiques_query');
 
     $data = template_builder('admin','campaigns_tpl', $this->who);
 
-    $data['campaignDataObj'] = $this->getCampaignData();
-
-    $data['statistiqData'] = empty($_POST) ? $this->getFormDataDefault() : $_POST;
+    $data['statistiqData'] = $this->getStatistiqFormData();
 
     $data['defineDay'] = get_define_day();
 
+    $data['campaignDataObj'] = $this->getCampaignData();
+
+    $data['totalStatistiq'] = $this->getCommonStatistiqCtrRur();
+
     $this->load->view( '/_shared/admin_tpl.php', $data );
+  }
+
+  function getStatistiqFormData(){
+    $this->statistiqData = empty($_POST) ? campaign_statistiq_default_data() : $_POST;
+
+    return $this->statistiqData;
   }
 
   function getCampaignData(){
@@ -46,6 +62,13 @@ class Campaigns extends CI_Controller{
 
         $campaignDataObj[$key]->countTeaser = return_word_end($this->select_models->select_count_where_fromtable(array('campaign_id' => $currentCampaignDataObj->campaign_id), 'teasers'), 'объявлен', 'ие', 'ия', 'ий');
 
+        $this->statistiqData['campaign_id'] = $currentCampaignDataObj->campaign_id;
+
+        $statistiqCount =  $this->getCampaignStatistiqDataArr();
+
+        $campaignDataObj[$key] = (object) array_merge( (array) $campaignDataObj[$key], $statistiqCount);
+
+        $this->totalStatistiq($statistiqCount);
       }
 
       return $campaignDataObj;
@@ -54,7 +77,27 @@ class Campaigns extends CI_Controller{
     return false;
   }
 
-  function getFormDataDefault(){
-    return campaign_statistiq_default_data();
+  function getCampaignStatistiqDataArr(){
+    $statistiqConfig = array(
+      'select_column' => 'campaign_id, view, click, money, dataadd',
+      'table_name' => 'campaigns',
+      'column_id' => 'campaign_id'
+    );
+
+    return $this->statistiques_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($this->statistiqData, array('campaign_id', 'date_start', 'date_end')));
+  }
+
+  function totalStatistiq($statistiqCount){
+    $this->commonStatistiqArr['view'] += $statistiqCount['view'];
+    $this->commonStatistiqArr['click'] += $statistiqCount['click'];
+    $this->commonStatistiqArr['count_money'] += $statistiqCount['count_money'];
+  }
+
+  function getCommonStatistiqCtrRur(){
+    $this->commonStatistiqArr['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $this->commonStatistiqArr['view']) * $this->commonStatistiqArr['click']));
+
+    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2);
+
+    return $this->commonStatistiqArr;
   }
 }
