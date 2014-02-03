@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> <?php echo $titleH4 ?></h2>
+  <h2><div class="icon_style icon_block"></div> <?php echo $titleH4 ?></h2>
   <hr />
 </div>
  
@@ -210,7 +210,7 @@
             <div class="form-group">
               <div class="col-sm-offset-4 col-lg-6">
                 <button type="submit" class="btn btn-default">Сохранить</button>
-                <a href="/webmaster/sites/" class="btn btn-default">Отменить</a>
+                <a href="/webmaster/blocks/" class="btn btn-default">Отменить</a>
               </div>
             </div>
           </form>

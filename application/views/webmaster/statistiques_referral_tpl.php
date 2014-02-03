@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> Площадки</h2>
+  <h2><div class="icon_style icon_referal_stat"></div> Статистика по рефералам</h2>
   <hr />
 </div>
 <!-- Page title -->
@@ -40,7 +40,7 @@
               </tbody>
           </table>
         <?php } ?>
-        <?php if( true /*!$referralStatistiqDataArr */ ) { ?><div class="alert alert-warning">Данный раздел находится в стадии разработки.</div><?php } ?>
+        <?php if( true /*!$referralStatistiqDataArr */ ) { ?><div class="alert alert-warning">Данный раздел находится в разработки.</div><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

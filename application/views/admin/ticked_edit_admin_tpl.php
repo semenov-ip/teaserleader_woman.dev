@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i><?php echo $ticketDataObj[0]->title; ?></h2>
+  <h2><div class="icon_style icon_ticket"></div><?php echo $ticketDataObj[0]->title; ?></h2>
   <hr />
 </div>
  

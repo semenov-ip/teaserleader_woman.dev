@@ -27,7 +27,7 @@ if(!function_exists('template_builder')){
 
     $dataWhereArr['hash'] = extract_key_this_array($ci->session->userdata('user'), 'hash');
 
-    return (array) $ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'email, count_money', 'users');
+    return (array) $ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'email, count_money, purse', 'users');
   }
 
   function getTicketCount($who){

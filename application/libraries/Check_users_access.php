@@ -58,7 +58,8 @@ class Check_users_access {
     return array(
       'partner',
       'webmaster',
-      '_shared'
+      '_shared',
+      'balance'
     );
   }
 
@@ -66,7 +67,8 @@ class Check_users_access {
     return array(
       'webmaster',
       'partner',
-      '_shared'
+      '_shared',
+      'balance'
     );
   }
 
@@ -74,7 +76,8 @@ class Check_users_access {
     return array(
       'teaser',
       'partner',
-      '_shared'
+      '_shared',
+      'balance'
     );
   }
 
@@ -84,7 +87,8 @@ class Check_users_access {
       'partner',
       'moderator',
       'teaser',
-      '_shared'
+      '_shared',
+      'balance'
     );
   }
 
@@ -95,7 +99,8 @@ class Check_users_access {
       'moderator',
       'teaser',
       'admin',
-      '_shared'
+      '_shared',
+      'balance'
     );
   }
 }

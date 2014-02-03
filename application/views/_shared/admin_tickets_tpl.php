@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> Тикеты</h2>
+  <h2><div class="icon_style icon_ticket"></div> Тикеты</h2>
   <hr />
 </div>
 <!-- Page title -->

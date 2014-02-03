@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> Площадки</h2>
+  <h2><div class="icon_style icon_geo_stat"></div> Статистика по Гео</h2>
   <hr />
 </div>
 <!-- Page title -->

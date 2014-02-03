@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> <?php echo $titleH4 ?></h2>
+  <h2><div class="icon_style icon_site"></div> <?php echo $titleH4 ?></h2>
   <hr />
 </div>
 <!-- Page title -->

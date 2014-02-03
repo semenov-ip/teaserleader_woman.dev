@@ -364,6 +364,17 @@ $config['proxy_ips'] = '';
 |--------------------------------------------------------------------------
 |
 */
+
+$config['title_to_code'] = 'Тизерная сеть';
+
+$config['url'] = 'ladyads.ru';
+
+$config['paytitle']   = 'ladyads';
+
+$config['min_payout'] = 99;
+
+
+
 $config['base_url'] = '';
 
 $config['datetime']  = date("Y-m-d H:i:s", time());
@@ -407,6 +418,9 @@ $config['error_message'] = array(
   "empty_block_size" => array( "text" => "Не указана ширина блок!", "class" => "alert-warning" ),
   "emprt_title_ticket" => array( "text" => "Не указан заголовок!", "class" => "alert-warning" ),
   "emprt_text_ticket" => array( "text" => "Не указано описание!", "class" => "alert-warning" ),
+  "empty_summ" => array( "text" => "Не указана сумма выплаты!", "class" => "alert-warning" ),
+  "check_min_payout_summ" => array( "text" => "Минимальная сумма выплаты ".$config['min_payout']." руб.!", "class" => "alert-warning" ),
+  "check_user_count_money" => array( "text" => "У Вас недостаточно средств на балансе!", "class" => "alert-warning" ),
 
   "show_referer" => "Неопределённая ссылка",
   "emprt_remote_port" => "Удалённый порт не обнаружен",
@@ -443,11 +457,5 @@ $config['daysWeek'] = array(
   'Пятница',
   'Суббота'
 );
-
-$config['title_to_code'] = 'Тизерная сеть';
-
-$config['url'] = 'ladyads.ru';
-
-$config['paytitle']   = 'ladyads';
 /* End of file config.php */
 /* Location: ./application/config/config.php */

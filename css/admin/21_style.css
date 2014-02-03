@@ -1210,3 +1210,46 @@ footer .copy{
    left: -6px;
    background-size: 15px;
 }
+
+.icon_style {
+   width: 44px;
+   height: 43px;
+   background-size: 49px 46px;
+   display: inline-block;
+   vertical-align: middle;
+   margin-right: 4px;
+}
+
+.icon_site {
+   background-image: url(/img/title_icon/site.png);
+}
+.icon_block{
+   background-image: url(/img/title_icon/blocki.png);
+}
+.icon_site_stat{
+   background-image: url(/img/title_icon/stat_site.png);
+}
+.icon_block_stat{
+   background-image: url(/img/title_icon/stat_block.png);
+}
+.icon_geo_stat{
+   background-image: url(/img/title_icon/stat_geo.png);
+}
+.icon_referal_stat{
+   background-image: url(/img/title_icon/stat_referal.png);
+}
+.icon_balans{
+   background-image: url(/img/title_icon/balans.png);
+}
+.icon_ticket{
+   background-image: url(/img/title_icon/ticket.png);
+}
+.icon_news{
+   background-image: url(/img/title_icon/novosti.png);
+}
+.icon_settings{
+   background-image: url(/img/title_icon/user_setting.png);
+}
+.icon_faq{
+   background-image: url(/img/title_icon/faq.png);
+}
