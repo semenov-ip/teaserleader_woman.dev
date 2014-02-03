@@ -46,7 +46,7 @@ class Campaigns extends CI_Controller{
   }
 
   function getCampaignData(){
-    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+    $dataWhereArr = data_where_user_id($this->who);
 
     return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'campaign_id, name, status', 'campaigns'));
   }

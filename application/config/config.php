@@ -415,7 +415,9 @@ $config['error_message'] = array(
   "empty_blockid_referer_db" => "Данные по блоку и сайту не обнаруженны",
   "block_status_off" => "Сайт находиться на модерации.",
   "empty_campaign" => "Компании не обнаруженны",
-  "empty_teaser" => "Тизеры не обнаруженны"
+  "empty_teaser" => "Тизеры не обнаруженны",
+  "empty_block" => "Данный блок приостановлен или заблокирован",
+  "empty_site" => "Данный сайт приостановлен или заблокирован",
 );
 
 $config['title'] = array(
@@ -446,5 +448,6 @@ $config['title_to_code'] = 'Тизерная сеть';
 
 $config['url'] = 'ladyads.ru';
 
+$config['paytitle']   = 'ladyads';
 /* End of file config.php */
 /* Location: ./application/config/config.php */

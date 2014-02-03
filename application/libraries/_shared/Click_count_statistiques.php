@@ -24,7 +24,7 @@ class Click_count_statistiques {
 
     $this->countStatistics($clickData['logDataObj']->site_id, 'site_id', 'sites_stat');
 
-    $this->countStatisticsGeo('geo_stat');
+    $this->countStatisticsGeo($clickData['logDataObj']->webmaster_id, 'geo_stat');
   }
 
   function getPriceStatArr($price){
@@ -72,8 +72,9 @@ class Click_count_statistiques {
     $this->ci->insert_models->insert_data_return_id($addDataArr, $dbTableName);
   }
 
-  function countStatisticsGeo($dbTableName){
+  function countStatisticsGeo($webmasterId, $dbTableName){
     $dataWhereArr['dataadd'] = $this->ci->config->item('day');
+    $dataWhereArr['user_id'] = $webmasterId;
 
     $dataStatisticsGeoObj = $this->getDataStatisticsGeoObj($dataWhereArr, $dbTableName);
 

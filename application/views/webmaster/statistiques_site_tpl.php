@@ -22,11 +22,11 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th width="50%">Дата</th>
-                <th>Показов</th>
-                <th>Кликов</th>
-                <th>CTR</th>
-                <th>Доход</th>
+                <th width="40%">Дата</th>
+                <th class="text-align-center">Показов</th>
+                <th class="text-align-center">Кликов</th>
+                <th class="text-align-center">CTR</th>
+                <th class="text-align-center">Доход</th>
               </tr>
             </thead>
             <?php foreach ($siteStatistiqDataArr['current'] as $key => $currentSiteStatistiq) {?>
@@ -35,23 +35,23 @@
                 <tr>
                   <td><?php echo $currentSiteStatistiq['dataadd']; ?></td>
 
-                  <td><?php echo $currentSiteStatistiq['view']; ?></td>
+                  <td class="text-align-center"><?php echo $currentSiteStatistiq['view']; ?></td>
 
-                  <td><?php echo $currentSiteStatistiq['click']; ?></td>
+                  <td class="text-align-center"><?php echo $currentSiteStatistiq['click']; ?></td>
 
-                  <td><?php echo $currentSiteStatistiq['ctr']; ?> %</td>
+                  <td class="text-align-center"><?php echo $currentSiteStatistiq['ctr']; ?> %</td>
 
-                  <td><?php echo $currentSiteStatistiq['count_money']; ?> руб.</td>
+                  <td class="text-align-center"><?php echo $currentSiteStatistiq['count_money']; ?> руб.</td>
 
                 </tr>
 
             <?php } ?>
                 <tr>
                   <td></td>
-                  <td><?php echo $siteStatistiqDataArr['common']['view']; ?></td>
-                  <td><?php echo $siteStatistiqDataArr['common']['click']; ?></td>
-                  <td><?php echo $siteStatistiqDataArr['common']['ctr']; ?> %</td>
-                  <td><?php echo $siteStatistiqDataArr['common']['count_money']; ?> руб.</td>
+                  <td class="text-align-center"><?php echo $siteStatistiqDataArr['common']['view']; ?></td>
+                  <td class="text-align-center"><?php echo $siteStatistiqDataArr['common']['click']; ?></td>
+                  <td class="text-align-center"><?php echo $siteStatistiqDataArr['common']['ctr']; ?> %</td>
+                  <td class="text-align-center"><?php echo $siteStatistiqDataArr['common']['count_money']; ?> руб.</td>
                 </tr>
               </tbody>
           </table>

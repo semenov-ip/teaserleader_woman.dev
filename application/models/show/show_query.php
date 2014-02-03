@@ -38,7 +38,7 @@
     function select_all_from_campaign_banlike($geoLocation, $referer, $selectcolumn, $dbTableName){
 
       $this->db->select($selectcolumn);
-      
+
       $this->db->not_like('ban_week_day', date("w"));
 
       $this->db->not_like('ban_hour', intval(date("H")));
@@ -48,6 +48,8 @@
       $this->db->not_like('ban_country', $geoLocation['country']);
 
       $this->db->not_like('ban_site', $referer);
+
+      $this->db->where('status', 1);
 
       $query = $this->db->get($this->prefixes.$dbTableName);
 
@@ -70,6 +72,7 @@
 
       foreach ($campaignDataObj as $key => $dataWhereArr) {
         $this->db->or_where($dataWhereArr);
+        $this->db->where('status', 1);
       }
 
       $this->db->limit($limit);

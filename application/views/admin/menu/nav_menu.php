@@ -29,7 +29,6 @@
     <span class="caret pull-right"></span>
   </a>
   <ul>
-    <li class="<?php echo $active_class === "statistiques_site" ? "active" : "" ?>"><a href="/webmaster/statistiques_site/">По площадкам</a></li>
-    <li class="<?php echo $active_class === "statistiques_block" ? "active" : "" ?>"><a href="/webmaster/statistiques_block/">По блокам</a></li>
+    <li class="<?php echo $active_class === "statistiques_site_admin" ? "active" : "" ?>"><a href="/admin/statistiques_site_admin/">По площадкам</a></li>
   </ul>
 </li>

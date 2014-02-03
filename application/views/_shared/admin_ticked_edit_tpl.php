@@ -19,9 +19,9 @@
              <table class="table table-hover">
               <thead>
                 <tr>
-                  <th width="30%">Дата создания</th>
-                  <th width="30%">Автор</th>
-                  <th>Текст</th>
+                  <th width="40%">Дата создания</th>
+                  <th width="30%" class="text-align-center">Автор</th>
+                  <th width="30%">Текст</th>
                 </tr>
               </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                   <tr>
                     <td><?php echo $currentTicketDataObj->dataadd; ?></td>
 
-                    <td><?php echo $currentTicketDataObj->author_name; ?></td>
+                    <td class="text-align-center"><?php echo $currentTicketDataObj->author_name; ?></td>
 
                     <td><?php echo $currentTicketDataObj->text; ?></span></td>
                   </tr>

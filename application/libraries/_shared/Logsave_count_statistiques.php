@@ -15,7 +15,7 @@ class Logsave_count_statistiques {
 
     $this->blocksStat($blockDataObj->block_id);
 
-    $this->siteStat($blockDataObj->site_id, $blockDataObj->block_id);
+    $this->siteStat($blockDataObj->site_id, $blockDataObj->block_id, $blockDataObj->user_id);
 
     $this->saveLogDataObjAndTeaserStatCompaingStat($teaserDataObj, $blockDataObj);
   }
@@ -32,19 +32,19 @@ class Logsave_count_statistiques {
     $this->countStatistics($blockId, 'block_id', 'blocks_stat');
   }
 
-  function siteStat($siteId, $blockId){
+  function siteStat($siteId, $blockId, $userId){
     $countIdBlockOnSite = $this->getCountBlockOnSite($siteId);
 
     if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){ 
       $this->countStatistics($siteId, 'site_id', 'sites_stat');
 
-      if( $this->countryColumnName ){ $this->geoStat('geo_stat'); };
+      if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
     }
 
     if( count($countIdBlockOnSite) === 1 ){ 
       $this->countStatistics($siteId, 'site_id', 'sites_stat');
 
-      if( $this->countryColumnName ){ $this->geoStat('geo_stat'); };
+      if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
     }
   }
 
@@ -62,7 +62,7 @@ class Logsave_count_statistiques {
       $addDataArr = array(
         'advertiser_id' => $oneTeaserDataObj->user_id,
 
-        'webmaster_id' => $oneTeaserDataObj->user_id,
+        'webmaster_id' => $blockDataObj->user_id,
 
         'site_id' => $blockDataObj->site_id,
 
@@ -130,8 +130,9 @@ class Logsave_count_statistiques {
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'teasers');
   }
 
-  function geoStat($dbTableName){
+  function geoStat($userId, $dbTableName){
     $dataWhereArr['dataadd'] = $this->ci->config->item('day');
+    $dataWhereArr['user_id'] = $userId;
 
     $dataStatisticsGeoObj = $this->getDataStatisticsGeoObj($dataWhereArr, $dbTableName);
 

@@ -14,9 +14,9 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th width="50%">Дата создания</th>
+                <th width="40%">Дата создания</th>
                 <th width="30%">Заголовок</th>
-                <th>Статус</th>
+                <th width="30%" class="text-align-center">Статус</th>
               </tr>
             </thead>
             <?php foreach ($ticketDataObj as $key => $currentTicketDataObj) {?>
@@ -27,7 +27,7 @@
                   
                   <td><a href="/_shared/tickets_edit/index/<?php echo $currentTicketDataObj->ticket_id; ?>/"><?php echo $currentTicketDataObj->title; ?></a></td>
                   
-                  <td><span class="label <?php echo $currentTicketDataObj->status['class'] ?>"><?php echo $currentTicketDataObj->status['name'] ?></span></td>
+                  <td class="text-align-center"><span class="label <?php echo $currentTicketDataObj->status['class'] ?>"><?php echo $currentTicketDataObj->status['name'] ?></span></td>
                 
                 </tr>
               </tbody>

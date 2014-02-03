@@ -13,21 +13,21 @@ class Statistiques_referral extends CI_Controller{
   }
 
   function index(){
-    $this->load->helper('webmaster_statistiq_default_data');
-    $this->load->helper('extract_select_key_this_array');
-    $this->load->helper('timestamp_of_date_formt');
-    $this->load->library('/statistiques/statistiques_frompost_countdate_data');
+    // $this->load->helper('webmaster_statistiq_default_data');
+    // $this->load->helper('extract_select_key_this_array');
+    // $this->load->helper('timestamp_of_date_formt');
+    // $this->load->library('/statistiques/statistiques_frompost_countdate_data');
     // $this->load->library('/webmaster/data_builder_statistiq_site_html_elements');
-    $this->load->model('/statistiques/statistiques_query');
+    // $this->load->model('/statistiques/statistiques_query');
     // $this->load->model('select_models');
 
     $data = template_builder('admin','statistiques_referral_tpl',$this->who);
 
-    $data['statistiqData'] = empty($_POST) ? $this->getFormDefaultData() : $_POST;
+    // $data['statistiqData'] = empty($_POST) ? $this->getFormDefaultData() : $_POST;
 
-    $data['dataAllArrObjThere'] = $this->getDataAllArrObjThere();
+    // $data['dataAllArrObjThere'] = $this->getDataAllArrObjThere();
 
-    $data['referralStatistiqDataArr'] = $this->getReferralStatistiqDataArr($data['statistiqData']);
+    // $data['referralStatistiqDataArr'] = $this->getReferralStatistiqDataArr($data['statistiqData']);
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }

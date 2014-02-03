@@ -14,9 +14,9 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th width="50%">URL</th>
-                <th>Рекламные блоки</th>
-                <th>Статус</th>
+                <th width="40%">URL</th>
+                <th width="20%" class="text-align-center">Рекламные блоки</th>
+                <th width="16%" class="text-align-center">Статус</th>
                 <th></th>
               </tr>
             </thead>
@@ -25,9 +25,12 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentSiteDataObj->url ?></td>
-                  <td><a href="/webmaster/blocks/index/<?php echo $currentSiteDataObj->site_id ?>/"><?php echo $currentSiteDataObj->countBlock ?></a></td>
-                  <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
-                  <td>
+                  
+                  <td class="text-align-center"><a href="/webmaster/blocks/index/<?php echo $currentSiteDataObj->site_id ?>/"><?php echo $currentSiteDataObj->countBlock ?></a></td>
+                  
+                  <td class="text-align-center"><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
+                  
+                  <td class="text-align-center">
                     <div class="btn-group">
                       <button class="btn btn-default btn-xs" <?php echo $currentSiteDataObj->playStatus; ?>><i class="<?php echo $currentSiteDataObj->status['icon']; ?>"></i> </button>
 

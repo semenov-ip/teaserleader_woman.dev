@@ -11,9 +11,9 @@
         <div class="awidget-head"></div>
         <div class="awidget-body">
 
-        <?php if($statistiqData){ $this->load->view('/_shared/admin_statistiq_select_data_tpl'); }?>
+        <?php // if($statistiqData){ $this->load->view('/_shared/admin_statistiq_select_data_tpl'); }?>
 
-        <?php if($statistiqData && $referralStatistiqDataArr){ ?>
+        <?php if(  false/*$statistiqData && $referralStatistiqDataArr*/  ){ ?>
 
         <div class="clearfix"></div>
 
@@ -40,7 +40,7 @@
               </tbody>
           </table>
         <?php } ?>
-        <?php if(!$referralStatistiqDataArr) { ?><div class="alert alert-warning">На данный момент нет статистической информации.</div><?php } ?>
+        <?php if( true /*!$referralStatistiqDataArr */ ) { ?><div class="alert alert-warning">Данный раздел находится в стадии разработки.</div><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>

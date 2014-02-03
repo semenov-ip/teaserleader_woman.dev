@@ -33,8 +33,10 @@ if(!function_exists('template_builder')){
   function getTicketCount($who){
     $ci =& get_instance();
 
-    $who == "admin" ? $dataWhereArr['admin_status'] = 0 : $dataWhereArr['status'] = 1;
-    
+    $dataWhereArr = ($who != "admin") ? array('user_id' => extract_key_this_array($ci->session->userdata('user'), 'user_id')) : array();
+
+    ($who == "admin") ? $dataWhereArr['admin_status'] = 0 : $dataWhereArr['status'] = 1;
+
     $dataWhereArr['upid'] = 0;
 
     $count = $ci->select_models->select_from_where_column_selectcolumn_return_num_rows($dataWhereArr, 'user_id', 'tickets');

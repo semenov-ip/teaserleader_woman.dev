@@ -3739,7 +3739,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .input-group-addon:first-child {
-  border-right: 0;
+  /*border-right: 0;*/
 }
 
 .input-group .form-control:last-child,
@@ -3749,6 +3749,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .input-group-btn:first-child > .btn:not(:first-child) {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  border-left: 0px;
 }
 
 .input-group-addon:last-child {

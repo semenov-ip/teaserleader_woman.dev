@@ -50,8 +50,15 @@ class Get_teaser_block_data {
 
   function getBlockData(){
     $dataWhereArr['block_id'] = $this->blockId;
+    $dataWhereArr['status'] = 1;
 
-    return $this->ci->select_models->select_one_row_where_column($dataWhereArr, 'blocks');
+    return $this->checkEmptyBlockData($this->ci->select_models->select_one_row_where_column($dataWhereArr, 'blocks'));
+  }
+
+  function checkEmptyBlockData($blockData){
+    if(is_object($blockData)){ return $blockData; }
+
+    return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_block"));
   }
 
   function addCountryBlockObj($blockDataObj, $geoLocation){
@@ -63,8 +70,15 @@ class Get_teaser_block_data {
   function getSiteData($siteId, $userId){
     $dataWhereArr['site_id'] = $siteId;
     $dataWhereArr['user_id'] = $userId;
+    $dataWhereArr['status'] = 1;
 
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'ban_teaser', 'sites');
+    return $this->checkEmptySiteData($this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'ban_teaser', 'sites'));
+  }
+
+  function checkEmptySiteData($siteData){
+    if( is_object($siteData) ){ return $siteData; }
+
+    return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_site"));
   }
 
   function lastLoadSites($siteId){

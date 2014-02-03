@@ -15,8 +15,8 @@
             <thead>
               <tr>
                 <th width="30%">Название</th>
-                <th width="30%">Количество объявлений</th>
-                <th>Статус</th>
+                <th width="30%" class="text-align-center">Количество объявлений</th>
+                <th width="16%" class="text-align-center">Статус</th>
                 <th></th>
               </tr>
             </thead>
@@ -26,11 +26,11 @@
                 <tr>
                   <td><?php echo $currentBlockDataObj->name; ?></td>
 
-                  <td><?php echo $currentBlockDataObj->itemsNumber; ?></td>
+                  <td class="text-align-center"><?php echo $currentBlockDataObj->itemsNumber; ?></td>
 
-                  <td><span class="label <?php echo $currentBlockDataObj->status['class'] ?>"><?php echo $currentBlockDataObj->status['name'] ?></span></td>
+                  <td class="text-align-center"><span class="label <?php echo $currentBlockDataObj->status['class'] ?>"><?php echo $currentBlockDataObj->status['name'] ?></span></td>
 
-                  <td>
+                  <td class="text-align-center">
                     <div class="btn-group">
                       <button class="btn btn-default btn-xs" <?php echo $currentBlockDataObj->playStatus; ?>><i class="<?php echo $currentBlockDataObj->status['icon']; ?>"></i> </button>
 

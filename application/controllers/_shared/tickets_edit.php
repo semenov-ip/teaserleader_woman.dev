@@ -51,7 +51,7 @@ class Tickets_edit extends CI_Controller {
 
       }
 
-      $this->statusUpdate();
+      if ($ticketDataObj[0]->status == 1){ $this->statusUpdate(2); }
 
       return $ticketDataObj; 
     }
@@ -59,8 +59,8 @@ class Tickets_edit extends CI_Controller {
     redirect( "/_shared/user_distributor/", 'location'); 
   }
 
-  function statusUpdate(){
-    $dataUpdateArr['status'] = 2;
+  function statusUpdate($statusNum){
+    $dataUpdateArr['status'] = $statusNum;
     $dataWhereArr['ticket_id'] = $this->ticketId;
 
     $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
@@ -80,6 +80,8 @@ class Tickets_edit extends CI_Controller {
       if($this->updateTicketData($_POST)){
 
         $this->statusAdminUpdate();
+
+        $this->statusUpdate(0);
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 

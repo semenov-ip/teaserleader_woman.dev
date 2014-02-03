@@ -10,6 +10,6 @@ if(!function_exists('country_extratc_column_name_click')){
 
     if( $key !== false ){ return $key; }
 
-    return false;
+    return "Other_click";
   }
 }
