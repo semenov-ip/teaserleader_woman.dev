@@ -45,7 +45,7 @@
             </tbody>
           </table>
         <?php } ?>
-        <?php if(!$balanceDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент список выплот отсутствует.</div><?php } ?>
+        <?php if(!$balanceDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент выплоты отсутствует.</div><?php } ?>
         <div class="clearfix"></div>
         </div>
       </div>
