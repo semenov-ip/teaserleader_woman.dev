@@ -411,7 +411,7 @@ $config['error_message'] = array(
   "error_image_type" => array( "text" => "Не допустимый тип изображения.", "class" => "alert-warning" ),
   "more_image_file_size" => array( "text" => "Не допустимый размер изображения. Размер должен быть не более ".$config['max_image_file_size']." кб.!", "class" => "alert-warning" ),
   "image_not_upload" => array( "text" => "Не удалось сохранить изображение.", "class" => "alert-warning" ),
-  "more_text_size" => array( "text" => "Текст описания больше 75 символов.", "class" => "alert-warning" ),
+  "more_text_size" => array( "text" => "Текст описания больше 100 символов.", "class" => "alert-warning" ),
   "empty_name_block" => array( "text" => "Не указано название блока!", "class" => "alert-warning" ),
   "empty_position" => array( "text" => "Не выбрано положение изображения относительно текста!", "class" => "alert-warning" ),
   "empty_align" => array( "text" => "Не выбран способ выравнивания объявления!", "class" => "alert-warning" ),

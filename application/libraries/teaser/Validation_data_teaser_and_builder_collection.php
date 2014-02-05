@@ -32,9 +32,9 @@ class Validation_data_teaser_and_builder_collection {
   }
 
   function checkTextSize(){
-    if(strlen($_POST['text']) > 75){
+    if(strlen($_POST['text']) > 100){
       
-      $_POST['text'] = substr($_POST['text'], 0, 75);
+      $_POST['text'] = substr($_POST['text'], 0, 100);
       
       return true;
     }

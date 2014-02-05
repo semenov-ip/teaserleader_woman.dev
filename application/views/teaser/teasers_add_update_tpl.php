@@ -37,7 +37,7 @@
               <div class="form-group">
                 <label class="control-label col-lg-3">Текст</label>
                 <div class="col-lg-6">
-                  <textarea class="form-control" rows="3" name="text" ><?php echo $teaserDataObj->text ?></textarea>
+                  <textarea class="form-control" maxlength="100" rows="3" name="text" ><?php echo $teaserDataObj->text ?></textarea>
                 </div>
               </div>
               
