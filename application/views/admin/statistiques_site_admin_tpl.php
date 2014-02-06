@@ -20,6 +20,7 @@
             <table class="table table-hover">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th width="20%">Площадка</th>
                   <th width="15%">Пользователь</th>
                   <th>Показов</th>
@@ -30,9 +31,10 @@
               </thead>
               <?php foreach ($siteDataObj as $key => $currentSiteStatistiq) {?>
 
-
                 <tbody>
                   <tr>
+                    <td><?php echo $currentSiteStatistiq->site_id; ?></td>
+
                     <td><?php echo $currentSiteStatistiq->url; ?></td>
 
                     <td><?php echo $currentSiteStatistiq->email; ?></td>
@@ -50,7 +52,7 @@
 
               <?php } ?>
                   <tr>
-                    <td colspan="2"></td>
+                    <td colspan="3"></td>
                     <td><?php echo $totalStatistiq['view']; ?></td>
                     <td><?php echo $totalStatistiq['click']; ?></td>
                     <td><?php echo $totalStatistiq['ctr']; ?> %</td>

@@ -31,14 +31,10 @@
             <div class="form-group">
               <label class="control-label col-lg-4">Ширина блока</label>
               <div class="col-lg-7">
-                <div class="input-group">
-                  <input type="text" name="block_size_num" class="form-control" value="<?php echo $blockDataObj->block_size_num ?>" placeholder="Название блока">
-                  <span class="input-group-addon">
-                    <select name="block_size_value" class="form-control width_50 height_20">
-                      <?php echo $selectChangeBlockSizeValue ?>
-                    </select>
-                  </span>
-                </div>
+                <input type="text" name="block_size_num" class="form-control display-inline-block width_210" value="<?php echo $blockDataObj->block_size_num ?>" placeholder="Название блока">
+                <select name="block_size_value" class="form-control width_50 display-inline-block">
+                  <?php echo $selectChangeBlockSizeValue ?>
+                </select>
               </div>
             </div>
 
@@ -52,19 +48,16 @@
             <div class="form-group">
               <label class="control-label col-lg-4">Размер, стиль и цвет рамки вокруг блока</label>
               <div class="col-lg-7 margin-top-14">
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <select name="table_border_width" class="form-control width_50 height_20">
-                      <?php echo $selectChangeTableBorderWidth ?>
-                    </select>
-                  </span>
-                  <span class="input-group-addon border-right_0">
-                    <select name="table_border_style" class="form-control width_94 height_20">
-                      <?php echo $selectChangeTableBorderStyle ?>
-                    </select>
-                  </span>
-                    <input type="text" name="table_border_color" class="form-control" value="<?php echo $blockDataObj->table_border_color ?>" placeholder="Название блока">
-                </div>
+
+                <select name="table_border_width" class="form-control width_50 display-inline-block">
+                  <?php echo $selectChangeTableBorderWidth ?>
+                </select>
+
+                <select name="table_border_style" class="form-control width_94 display-inline-block">
+                  <?php echo $selectChangeTableBorderStyle ?>
+                </select>
+
+                <input type="text" name="table_border_color" class="form-control width_112 display-inline-block" value="<?php echo $blockDataObj->table_border_color ?>" placeholder="Название блока">
               </div>
             </div>
             
@@ -100,19 +93,17 @@
             <div class="form-group">
               <label class="control-label col-lg-4">Размер, стиль и цвет рамки вокруг изображения</label>
               <div class="col-lg-7 margin-top-26">
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <select name="image_border_width" class="form-control width_50 height_20">
-                      <?php echo $selectChangeImageBorderWidth ?>
-                    </select>
-                  </span>
-                  <span class="input-group-addon border-right_0">
-                    <select name="image_border_style" class="form-control width_94 height_20">
-                      <?php echo $selectChangeImageBorderStyle ?>
-                    </select>
-                  </span>
-                    <input type="text" name="image_border_color" class="form-control" value="<?php echo $blockDataObj->image_border_color ?>" placeholder="Название блока">
-                </div>
+
+                <select name="image_border_width" class="form-control width_50 display-inline-block">
+                  <?php echo $selectChangeImageBorderWidth ?>
+                </select>
+
+                <select name="image_border_style" class="form-control width_94 display-inline-block">
+                  <?php echo $selectChangeImageBorderStyle ?>
+                </select>
+
+                <input type="text" name="image_border_color" class="form-control display-inline-block width_112" value="<?php echo $blockDataObj->image_border_color ?>" placeholder="Название блока">
+                
               </div>
             </div>
 
@@ -181,19 +172,17 @@
             <div class="form-group">
               <label class="control-label col-lg-4">Размер, стиль и цвет рамки вокруг объявления</label>
               <div class="col-lg-7 margin-top-14">
-                <div class="input-group">
-                  <span class="input-group-addon">
-                    <select name="cell_border_width" class="form-control width_50 height_20">
-                      <?php echo $selectChangeCellBorderWidth ?>
-                    </select>
-                  </span>
-                  <span class="input-group-addon border-right_0">
-                    <select name="cell_border_style" class="form-control width_94 height_20">
-                      <?php echo $selectChangeCellBorderStyle ?>
-                    </select>
-                  </span>
-                  <input type="text" name="cell_border_color" class="form-control" value="<?php echo $blockDataObj->cell_border_color ?>" placeholder="Название блока">
-                </div>
+
+                <select name="cell_border_width" class="form-control width_50 display-inline-block">
+                  <?php echo $selectChangeCellBorderWidth ?>
+                </select>
+
+                <select name="cell_border_style" class="form-control width_94 display-inline-block">
+                  <?php echo $selectChangeCellBorderStyle ?>
+                </select>
+
+                <input type="text" name="cell_border_color" class="form-control display-inline-block width_112" value="<?php echo $blockDataObj->cell_border_color ?>" placeholder="Название блока">
+
               </div>
             </div>
 

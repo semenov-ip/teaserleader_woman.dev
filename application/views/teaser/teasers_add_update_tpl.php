@@ -37,7 +37,11 @@
               <div class="form-group">
                 <label class="control-label col-lg-3">Текст</label>
                 <div class="col-lg-6">
-                  <textarea class="form-control" maxlength="100" name="text" ><?php echo $teaserDataObj->text ?></textarea>
+
+                  <textarea id="text" class="form-control" onKeyUp="checkLen('text', 100);" name="text" ><?php echo $teaserDataObj->text ?></textarea>
+
+                  <small class="help-block font-size-85 dsc">Максимум 100 символов. Осталось: <span class="red b" id="text_indicator"><?php echo (100 - strlen(utf8_decode($teaserDataObj->text))); ?></span></small>
+
                 </div>
               </div>
               
@@ -57,3 +61,4 @@
                         
   </div>
 </div>
+<script src="/js/admin/include_page/check_len.js"></script>

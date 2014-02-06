@@ -68,3 +68,17 @@
 .left_32 {
   left: 32px;
 }
+
+.width_210 {
+  width: 210px;
+}
+
+.width_112{
+  width: 112px;
+}
+.red {
+  color: #cc0000;
+}
+.b {
+  font-weight: bold;
+}
