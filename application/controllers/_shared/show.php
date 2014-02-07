@@ -10,6 +10,7 @@ class Show extends CI_Controller{
   function index($blockId){
     $this->load->helper('referer_url_extract');
     $this->load->helper('country_extratc_column_name_view');
+    $this->load->helper('extract_key_this_object');
     $this->load->library('/_shared/validation_data_show');
     $this->load->library('_shared/ip_geo_base');
     $this->load->library('_shared/get_teaser_block_data');
@@ -48,7 +49,7 @@ class Show extends CI_Controller{
 
     if( $this->checkTeaserBlock($teaserBlockDataObj) ){ $this->logsave_count_statistiques->saveDataLogAndStat($teaserBlockDataObj['teaser'], $teaserBlockDataObj['block']); }
 
-    echo 'var block = document.getElementById(\'teaser_'.$this->blockId.'\'); var text = \''.$text.'\'; if(block){block.innerHTML = text;}';
+    echo 'var block = document.getElementById(\'teaser_'.$this->blockId.'\'); var text = \''.$this->codingData($text, $teaserBlockDataObj['block']->site_id).'\'; if(block){block.innerHTML = text;}';
 
     exit();
   }
@@ -57,6 +58,18 @@ class Show extends CI_Controller{
     if( is_array($teaserBlockDataObj['teaser']) && is_object($teaserBlockDataObj['block']) ){ return true; }
 
     return false;
+  }
+
+  function codingData($text, $siteId){
+    $urlEncoding = extract_key_this_object($this->getUrlEncoding($siteId), "url_encoding");
+
+    return iconv('utf-8', $urlEncoding, $text);
+  }
+
+  function getUrlEncoding($siteId){
+    $dataWhereArr['site_id'] = $siteId;
+
+    return $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'url_encoding', 'sites');
   }
 
   function userDistributor(){
