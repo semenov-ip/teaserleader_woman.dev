@@ -37,7 +37,7 @@
 
                     <td><?php echo $currentSiteStatistiq->url; ?></td>
 
-                    <td><?php echo $currentSiteStatistiq->email; ?></td>
+                    <td><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteStatistiq->user_id; ?>/"><?php echo $currentSiteStatistiq->email; ?></a></td>
 
                     <td><?php echo $currentSiteStatistiq->view; ?></td>
 

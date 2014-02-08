@@ -47,6 +47,14 @@
 .margin-right-20{
   margin-right: 20px;
 }
+
+.margin-r-m-20{
+  margin-right: -20px;
+}
+
+.margin-right-30{
+  margin-right: -30px;
+}
 .margin-top-2{
   margin-top: 2px;
 }
@@ -59,6 +67,9 @@
   margin-left: 24px;
 }
 .display-inline-block{
+  display: inline-block;
+}
+.dropdown .display-i-b{
   display: inline-block;
 }
 .vertical-align-baseline{

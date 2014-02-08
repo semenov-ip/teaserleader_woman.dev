@@ -20,6 +20,7 @@
                       </div>
                       <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
+
                           <li class="dropdown">
                             <a class="margin-right-10" href="/_shared/settings/"><i class="icon-user font-size-20"> </i><?php echo $email; ?></a>
                           </li>
@@ -27,7 +28,11 @@
                           <li class="dropdown">
                             <a href="/balance/balance_history/"><div class="my-icon-money"></div> <div class="margin-top-2">Баланс: <?php echo $count_money; ?> Р</div></a>
                           </li>
-                          
+
+                          <?php
+                            if($userRedirected) { $this->load->view($userRedirected); }
+                          ?>
+
                           <li class="dropdown logout">
                             <a href="/_shared/log_out/"><span><span>Выйти</span></span></a>
                           </li>

@@ -15,6 +15,7 @@ class Sites_admin extends CI_Controller{
   function index(){
     $this->load->helper('status/incite_status_site_teaser_name');
     $this->load->model('select_models');
+    $this->load->model('statistiques/admin_statistiques_query');
 
     $data = template_builder('admin','sites_admin_tpl',$this->who);
 
@@ -24,7 +25,9 @@ class Sites_admin extends CI_Controller{
   }
 
   function getSiteAllData(){
-    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('site_id, url, status', 'status', 'asc', 'sites'));
+    $dataWhereArr = array();
+
+    return $this->setDataProcessing($this->admin_statistiques_query->select_all_row_where_column_selectcolumn_join($dataWhereArr, 'users lu', 'ls.user_id = lu.user_id', 'ls.site_id, ls.user_id, ls.status, ls.url, lu.email', 'sites ls'));
   }
 
   function setDataProcessing($siteDataObj){

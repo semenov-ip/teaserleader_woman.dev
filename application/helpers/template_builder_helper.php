@@ -7,6 +7,8 @@ if(!function_exists('template_builder')){
 
     $data = getUserDataObjHelper();
 
+    $userdata = $ci->session->userdata('user');
+
     $data['header'] = header_src_css_js($template);
 
     $data['menu'] =  "/$who/menu/nav_menu";
@@ -18,6 +20,8 @@ if(!function_exists('template_builder')){
     $data['ticketCount'] = getTicketCount($who);
 
     $data['who'] = $who;
+
+    $data['userRedirected'] = isset($userdata['who']) ? '/'.$userdata['who'].'/menu/users_redirected_menu' : false;
 
     return $data;
   }

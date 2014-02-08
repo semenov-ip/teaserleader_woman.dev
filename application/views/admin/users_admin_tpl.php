@@ -28,7 +28,7 @@
                 <tr>
                   <td><?php echo $currentUserDataObj->user_id; ?></td>
                   <td><?php echo $currentUserDataObj->dataadd; ?></td>
-                  <td><?php echo $currentUserDataObj->email; ?></td>
+                  <td><a href="/admin/users_redirected_admin/index/<?php echo $currentUserDataObj->user_id; ?>/"><?php echo $currentUserDataObj->email; ?></a></td>
                   <td><?php echo $currentUserDataObj->name; ?></td>
                   <td><?php echo $currentUserDataObj->skype; ?></td>
                   <td><?php echo $currentUserDataObj->count_money; ?> руб.</td>

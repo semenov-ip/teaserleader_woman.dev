@@ -15,7 +15,8 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th width="50%">URL</th>
+                <th width="30%">URL</th>
+                <th width="25%">Пользователь</th>
                 <th>Рекламные блоки</th>
                 <th width="15%">Статус</th>
                 <th></th>
@@ -25,8 +26,9 @@
 
               <tbody>
                 <tr>
-                  <th><?php echo $currentSiteDataObj->site_id; ?></th>
+                  <td><?php echo $currentSiteDataObj->site_id; ?></td>
                   <td><?php echo $currentSiteDataObj->url; ?></td>
+                  <td><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
                   <td></td>
                   <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
                   <td>
