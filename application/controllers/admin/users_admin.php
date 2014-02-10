@@ -13,9 +13,11 @@ class Users_admin extends CI_Controller{
   }
 
   function index(){
+    $this->load->helper('status/incite_status_user_name');
+    $this->load->helper('date2str');
     $this->load->model('select_models');
 
-    $data = template_builder('admin','users_admin_tpl',$this->who);
+    $data = template_builder('admin', 'users_admin_tpl', $this->who);
 
     $data['userDataObj'] = $this->getUserAllData();
 
@@ -23,11 +25,22 @@ class Users_admin extends CI_Controller{
   }
 
   function getUserAllData(){
-    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('user_id, email, name, skype, count_money, dataadd', 'user_id', 'desc', 'users'));
+    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('user_id, email, name, count_money, dataadd, status', 'user_id', 'desc', 'users'));
   }
 
-  function setDataProcessing($siteDataObj){
-    if(is_array($siteDataObj)){ return $siteDataObj; }
+  function setDataProcessing($userDataObj){
+    if(is_array($userDataObj)){ 
+
+      foreach ($userDataObj as $key => $currentUserDataObj) {
+
+        $currentUserDataObj->dataadd = date2str($currentUserDataObj->dataadd);
+
+        $currentUserDataObj->status = incite_status_user_name($currentUserDataObj->status);
+
+      }
+
+      return $userDataObj;
+    }
 
     return false;
   }

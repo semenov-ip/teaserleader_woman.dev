@@ -2,7 +2,7 @@
     
 class Balance_payout_admin extends CI_Controller{
 
-  private $who;
+  private $who, $totalSumm;
 
   function __construct(){
 
@@ -11,7 +11,7 @@ class Balance_payout_admin extends CI_Controller{
     $this->load->library('check_users_access');
     $this->who = $this->check_users_access->checkUsers();
 
-    $this->totalSumm = array('incoming' => 0, 'expenditure' => 0);
+    $this->totalSumm = array('summ' => 0);
   }
 
   function index(){
@@ -28,9 +28,7 @@ class Balance_payout_admin extends CI_Controller{
   }
 
   function getBalanceDataObj(){
-    $dataWhereArr['trans_type'] = 0;
-
-    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_orderby($dataWhereArr, "dataadd", "desc", 'description, dataadd, status, trans_type, summ', 'count_history'));
+    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_join_orderby(array(), "ch.dataadd", "desc", 'users lu', 'ch.user_id = lu.user_id', 'ch.user_id, ch.count_history_id, ch.description, ch.dataadd, ch.status, ch.trans_type, ch.summ, lu.email', 'count_history ch'));
   }
 
   function setDataProcessing($balanceDataObj){
@@ -41,11 +39,7 @@ class Balance_payout_admin extends CI_Controller{
 
         $currentBalanceDataObj->status = incite_status_balance_name($currentBalanceDataObj->status);
 
-        $balanceDataObj[$key]->incoming = ($currentBalanceDataObj->trans_type) ? $currentBalanceDataObj->summ : "-";
-
-        $balanceDataObj[$key]->expenditure = ($currentBalanceDataObj->trans_type) ? "-" : $currentBalanceDataObj->summ;
-
-        $this->totalSum($currentBalanceDataObj->trans_type, $currentBalanceDataObj->summ);
+        $this->totalSum($currentBalanceDataObj->summ);
 
       }
 
@@ -55,9 +49,9 @@ class Balance_payout_admin extends CI_Controller{
     return false;
   }
 
-  function totalSum($transType, $summ){
-    if( $transType ){ return $this->totalSumm['incoming'] += $summ; }
+  function totalSum($summ){
+    $this->totalSumm['summ'] += $summ;
 
-    return $this->totalSumm['expenditure'] += $summ;
+    $this->totalSumm['summ'] = number_format($this->totalSumm['summ'], 2);
   }
 }

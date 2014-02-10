@@ -21,12 +21,18 @@
               <thead>
                 <tr>
                   <th>ID</th>
+
                   <th width="20%">Площадка</th>
-                  <th width="15%">Пользователь</th>
-                  <th>Показов</th>
-                  <th>Кликов</th>
-                  <th>CTR</th>
-                  <th>Доход</th>
+
+                  <th width="20%" class="text-align-center">Пользователь</th>
+
+                  <th class="text-align-center">Показов</th>
+
+                  <th class="text-align-center">Кликов</th>
+
+                  <th class="text-align-center">CTR</th>
+
+                  <th class="text-align-center">Доход</th>
                 </tr>
               </thead>
               <?php foreach ($siteDataObj as $key => $currentSiteStatistiq) {?>
@@ -35,32 +41,34 @@
                   <tr>
                     <td><?php echo $currentSiteStatistiq->site_id; ?></td>
 
-                    <td><?php echo $currentSiteStatistiq->url; ?></td>
+                    <td><a href="http://<?php echo $currentSiteStatistiq->url; ?>"><?php echo $currentSiteStatistiq->url; ?></a></td>
 
-                    <td><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteStatistiq->user_id; ?>/"><?php echo $currentSiteStatistiq->email; ?></a></td>
+                    <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteStatistiq->user_id; ?>/"><?php echo $currentSiteStatistiq->email; ?></a></td>
 
-                    <td><?php echo $currentSiteStatistiq->view; ?></td>
+                    <td class="text-align-center"><?php echo $currentSiteStatistiq->view; ?></td>
 
-                    <td><?php echo $currentSiteStatistiq->click; ?></td>
+                    <td class="text-align-center"><?php echo $currentSiteStatistiq->click; ?></td>
 
-                    <td><?php echo $currentSiteStatistiq->ctr; ?> %</td>
+                    <td class="text-align-center"><?php echo $currentSiteStatistiq->ctr; ?> %</td>
 
-                    <td><?php echo $currentSiteStatistiq->count_money; ?> руб.</td>
+                    <td class="text-align-center"><?php echo $currentSiteStatistiq->count_money; ?> руб.</td>
 
                   </tr>
-
 
               <?php } ?>
                   <tr>
                     <td colspan="3"></td>
-                    <td><?php echo $totalStatistiq['view']; ?></td>
-                    <td><?php echo $totalStatistiq['click']; ?></td>
-                    <td><?php echo $totalStatistiq['ctr']; ?> %</td>
-                    <td><?php echo $totalStatistiq['count_money']; ?> руб.</td>
+
+                    <td class="text-align-center"><?php echo $totalStatistiq['view']; ?></td>
+
+                    <td class="text-align-center"><?php echo $totalStatistiq['click']; ?></td>
+
+                    <td class="text-align-center"><?php echo $totalStatistiq['ctr']; ?> %</td>
+
+                    <td class="text-align-center"><?php echo $totalStatistiq['count_money']; ?> руб.</td>
                   </tr>
                 </tbody>
             </table>
-
 
           <?php } ?>
         <?php if(!$siteDataObj) { ?><div class="alert alert-warning">На данный момент нет статистической информации.</div><?php } ?>

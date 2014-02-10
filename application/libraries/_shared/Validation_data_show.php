@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Validation_data_show {
-  public $ci, $status;
+  public $ci, $status, $userStatus;
 
   function __construct(){
     $this->ci =& get_instance();
@@ -20,6 +20,8 @@ class Validation_data_show {
     if( $this->blockIdAndRefererEmptyDb($blockId, $referer) ){ return "empty_blockid_referer_db"; }
 
     if( $this->blockStatus() ){ return "block_status_off"; }
+
+    if( $this->blockUsers() ){ return "block_users_off"; }
 
     return true;
   }
@@ -50,17 +52,29 @@ class Validation_data_show {
   function blockIdAndRefererEmptyDb($blockId, $referer){
     $dataWhereArr = array( 'b.block_id' => $blockId, 's.url' => $referer);
 
-    $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join($dataWhereArr, 'b.block_id, s.status', 'blocks b');
+    $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join($dataWhereArr, 'b.block_id, s.status, b.user_id', 'blocks b');
 
     if( !$blockDataObj ){ return true; }
 
     $this->status = $blockDataObj->status;
 
+    $this->userStatus = extract_key_this_object($this->getUserStatus($blockDataObj->user_id), 'status');
+
     return false;
   }
 
+  function getUserStatus($userId){
+    return $this->ci->select_models->select_one_row_where_column_selectcolumn(array('user_id' => $userId), 'status', 'users');
+  }
+
   function blockStatus(){
-    if($this->status === "0"){return true; }
+    if($this->status === "0"){ return true; }
+
+    return false;
+  }
+
+  function blockUsers(){
+    if($this->userStatus !== "1" ){ return true; }
 
     return false;
   }

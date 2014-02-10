@@ -14,8 +14,8 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th width="50%">Дата создания</th>
-                <th width="30%">Заголовок</th>
+                <th width="30%">Дата создания</th>
+                <th width="50%">Заголовок</th>
                 <th>Статус</th>
               </tr>
             </thead>

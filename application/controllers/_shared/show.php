@@ -49,7 +49,9 @@ class Show extends CI_Controller{
 
     if( $this->checkTeaserBlock($teaserBlockDataObj) ){ $this->logsave_count_statistiques->saveDataLogAndStat($teaserBlockDataObj['teaser'], $teaserBlockDataObj['block']); }
 
-    echo 'var block = document.getElementById(\'teaser_'.$this->blockId.'\'); var text = \''.$this->codingData($text, $teaserBlockDataObj['block']->site_id).'\'; if(block){block.innerHTML = text;}';
+    $siteId = isset($teaserBlockDataObj['block']->site_id) ? $teaserBlockDataObj['block']->site_id : false;
+
+    echo 'var block = document.getElementById(\'teaser_'.$this->blockId.'\'); var text = \''.$this->codingData($text, $siteId).'\'; if(block){block.innerHTML = text;}';
 
     exit();
   }
@@ -61,9 +63,13 @@ class Show extends CI_Controller{
   }
 
   function codingData($text, $siteId){
-    $urlEncoding = extract_key_this_object($this->getUrlEncoding($siteId), "url_encoding");
+    if($siteId){
+      $urlEncoding = extract_key_this_object($this->getUrlEncoding($siteId), "url_encoding");
 
-    return iconv('utf-8', $urlEncoding, $text);
+      return iconv('utf-8', $urlEncoding, $text);
+    }
+
+    return $text;
   }
 
   function getUrlEncoding($siteId){

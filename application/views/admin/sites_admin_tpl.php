@@ -15,11 +15,11 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th width="30%">URL</th>
-                <th width="25%">Пользователь</th>
-                <th>Рекламные блоки</th>
-                <th width="15%">Статус</th>
-                <th></th>
+                <th width="15%">URL</th>
+                <th width="30%" class="text-align-center">Пользователь</th>
+                <th>Доступ к статистике</th>
+                <th width="15%" class="text-align-center" >Статус</th>
+                <th class="text-align-center"></th>
               </tr>
             </thead>
             <?php foreach ($siteDataObj as $key => $currentSiteDataObj) {?>
@@ -27,17 +27,22 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentSiteDataObj->site_id; ?></td>
-                  <td><?php echo $currentSiteDataObj->url; ?></td>
-                  <td><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
-                  <td></td>
-                  <td><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
-                  <td>
+
+                  <td><a href="http://<?php echo $currentSiteDataObj->url; ?>"><?php echo $currentSiteDataObj->url; ?></a></td>
+
+                  <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
+
+                  <td><?php echo $currentSiteDataObj->stat_login; ?></td>
+
+                  <td class="text-align-center"><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
+
+                  <td class="text-align-center">
                     <div class="btn-group">
                       <?php echo $currentSiteDataObj->statusModerateBlock; ?>
 
                       <a title="Редактировать цену" href="/admin/sites_edit_rates/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
 
-                      <button title="Удалить сайт" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentSiteDataObj->site_id ?>', 'site_id', 'sites');"><i class="icon-remove"></i> </button>
+                      <button title="Удалить площадку" class="btn btn-default btn-xs" onclick="deleteElement('<?php echo $currentSiteDataObj->site_id ?>', 'site_id', 'sites');"><i class="icon-remove"></i> </button>
                     </div>
                   </td>
                 </tr>

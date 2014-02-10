@@ -16,7 +16,7 @@ class Data_builder_statistiq_geo_html_elements {
 
   function getSiteDataAll(){
     return array(
-      '-1' => "Выберите страну", 'RU' => "Россия", 'UA' => "Украина", 'BY' => "Белоруссия", 'KZ' => "Казахстан"
+      '-1' => "Выберите страну", 'RU' => "Россия", 'UA' => "Украина", 'BY' => "Белоруссия", 'KZ' => "Казахстан", 'Other' => "Другие страны"
     );
   }
 }

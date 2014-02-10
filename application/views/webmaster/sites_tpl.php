@@ -24,7 +24,7 @@
 
               <tbody>
                 <tr>
-                  <td><?php echo $currentSiteDataObj->url ?></td>
+                  <td><a href="http://<?php echo $currentSiteDataObj->url ?>"><?php echo $currentSiteDataObj->url ?></a></td>
                   
                   <td class="text-align-center"><a href="/webmaster/blocks/index/<?php echo $currentSiteDataObj->site_id ?>/"><?php echo $currentSiteDataObj->countBlock ?></a></td>
                   

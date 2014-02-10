@@ -16,14 +16,14 @@
             <thead>
               <tr>
                 <th width="5%">ID</th>
-                <th width="30%">Название</th>
-                <th>Объявления</th>
-                <th>Статус</th>
-                <th width="8%">Показы</th>
-                <th width="8%">Клики</th>
-                <th width="8%">CTR</th>
-                <th width="8%">Расход</th>
-                <th width="18%"></th>
+                <th width="20%">Название</th>
+                <th width="7%" class="text-align-center">Объявления</th>
+                <th width="13%" class="text-align-center">Статус</th>
+                <th width="8%" class="text-align-center">Показы</th>
+                <th width="8%" class="text-align-center">Клики</th>
+                <th width="8%" class="text-align-center">CTR</th>
+                <th width="8%" class="text-align-center">Расход</th>
+                <th width="18%" class="text-align-center"></th>
               </tr>
             </thead>
             <?php foreach ($campaignDataObj as $key => $currentCampaignDataObj) {?>
@@ -32,15 +32,15 @@
                 <tr>
                   <td><?php echo $currentCampaignDataObj->campaign_id; ?></td>
                   <td><?php echo $currentCampaignDataObj->name; ?></td>
-                  <td><a href="/teaser/teasers/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/"><?php echo $currentCampaignDataObj->countTeaser; ?></a></td>
-                  <td><span class="label <?php echo $currentCampaignDataObj->status['class'] ?>"><?php echo $currentCampaignDataObj->status['name'] ?></span></td>
+                  <td  class="text-align-center"><a href="/teaser/teasers/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/"><?php echo $currentCampaignDataObj->countTeaser; ?></a></td>
+                  <td  class="text-align-center"><span class="label <?php echo $currentCampaignDataObj->status['class'] ?>"><?php echo $currentCampaignDataObj->status['name'] ?></span></td>
 
-                  <td><?php echo $currentCampaignDataObj->view; ?></td>
-                  <td><?php echo $currentCampaignDataObj->click; ?></td>
-                  <td><?php echo $currentCampaignDataObj->ctr; ?> %</td>
-                  <td><?php echo $currentCampaignDataObj->count_money; ?></td>
+                  <td class="text-align-center"><?php echo $currentCampaignDataObj->view; ?></td>
+                  <td class="text-align-center"><?php echo $currentCampaignDataObj->click; ?></td>
+                  <td class="text-align-center"><?php echo $currentCampaignDataObj->ctr; ?> %</td>
+                  <td class="text-align-center"><?php echo $currentCampaignDataObj->count_money; ?></td>
 
-                  <td>
+                  <td class="text-align-center">
                     <div class="btn-group">
                       <button class="btn btn-default btn-xs" <?php echo $currentCampaignDataObj->playStatus; ?>><i class="<?php echo $currentCampaignDataObj->status['icon']; ?>"></i> </button>
 
@@ -55,12 +55,12 @@
 
             <?php } ?>
                 <tr>
-                  <td colspan="4">Итого</td>
-                  <td><?php echo $totalStatistiq['view']; ?></td>
-                  <td><?php echo $totalStatistiq['click']; ?></td>
-                  <td><?php echo $totalStatistiq['ctr']; ?> %</td>
-                  <td><?php echo $totalStatistiq['count_money']; ?></td>
-                  <td></td>
+                  <th colspan="4">Итого</th>
+                  <th class="text-align-center"><?php echo $totalStatistiq['view']; ?></th>
+                  <th class="text-align-center"><?php echo $totalStatistiq['click']; ?></th>
+                  <th class="text-align-center"><?php echo $totalStatistiq['ctr']; ?> %</th>
+                  <th class="text-align-center"><?php echo $totalStatistiq['count_money']; ?></th>
+                  <th></td>
                 </tr>
 
               </tbody>

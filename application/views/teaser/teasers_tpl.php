@@ -17,14 +17,14 @@
             <thead>
               <tr>
                 <th width="5%">ID</th>
-                <th width="20%">Изображение</th>
-                <th width="30%">Текст</th>
-                <th>Статус</th>
-                <th width="8%">Показы</th>
-                <th width="8%">Клики</th>
-                <th width="8%">CTR</th>
-                <th width="8%">Расход</th>
-                <th width="18%"></th>
+                <th width="20%" class="text-align-center">Изображение</th>
+                <th width="20%">Текст</th>
+                <th width="8%" class="text-align-center">Статус</th>
+                <th width="8%" class="text-align-center">Показы</th>
+                <th width="8%" class="text-align-center">Клики</th>
+                <th width="8%" class="text-align-center">CTR</th>
+                <th width="8%" class="text-align-center">Расход</th>
+                <th width="18%" class="text-align-center"></th>
               </tr>
             </thead>
             <?php foreach ($teaserDataObj as $key => $currentTeaserDataObj) {?>
@@ -33,18 +33,18 @@
                 <tr>
                   <td><?php echo $currentTeaserDataObj->teaser_id; ?></td>
 
-                  <td><a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><img id="teaser_block_img_1" src="<?php echo $currentTeaserDataObj->image; ?>" width="70" height="70"></a></td>
+                  <td class="text-align-center"><a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><img id="teaser_block_img_1" src="<?php echo $currentTeaserDataObj->image; ?>" width="70" height="70"></a></td>
 
                   <td><?php echo $currentTeaserDataObj->text; ?></td>
 
-                  <td><span class="label <?php echo $currentTeaserDataObj->status['class'] ?>"><?php echo $currentTeaserDataObj->status['name'] ?></span></td>
+                  <td class="text-align-center"><span class="label <?php echo $currentTeaserDataObj->status['class'] ?>"><?php echo $currentTeaserDataObj->status['name'] ?></span></td>
                   
-                  <td><?php echo $currentTeaserDataObj->view; ?></td>
-                  <td><?php echo $currentTeaserDataObj->click; ?></td>
-                  <td><?php echo $currentTeaserDataObj->ctr; ?> %</td>
-                  <td><?php echo $currentTeaserDataObj->count_money; ?></td>
+                  <td class="text-align-center"><?php echo $currentTeaserDataObj->view; ?></td>
+                  <td class="text-align-center"><?php echo $currentTeaserDataObj->click; ?></td>
+                  <td class="text-align-center"><?php echo $currentTeaserDataObj->ctr; ?> %</td>
+                  <td class="text-align-center"><?php echo $currentTeaserDataObj->count_money; ?></td>
 
-                  <td>
+                  <td class="text-align-center">
 
                     <div class="btn-group">
 
@@ -61,12 +61,12 @@
             <?php } ?>
 
               <tr>
-                <td colspan="4">Итого</td>
-                <td><?php echo $totalStatistiq['view']; ?></td>
-                <td><?php echo $totalStatistiq['click']; ?></td>
-                <td><?php echo $totalStatistiq['ctr']; ?> %</td>
-                <td><?php echo $totalStatistiq['count_money']; ?></td>
-                <td></td>
+                <th colspan="4">Итого</th>
+                <th class="text-align-center"><?php echo $totalStatistiq['view']; ?></th>
+                <th class="text-align-center"><?php echo $totalStatistiq['click']; ?></th>
+                <th class="text-align-center"><?php echo $totalStatistiq['ctr']; ?> %</th>
+                <th class="text-align-center"><?php echo $totalStatistiq['count_money']; ?></th>
+                <th></th>
               </tr>
 
             </tbody>

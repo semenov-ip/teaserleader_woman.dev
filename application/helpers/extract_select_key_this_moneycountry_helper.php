@@ -6,7 +6,7 @@ if(!function_exists('extract_select_key_this_moneycountry')){
 
     $moneyRuArray = array('RU');
 
-    $moneySngArray = array('UA', 'BY', 'KZ');
+    $moneySngArray = array('UA', 'BY', 'KZ', 'Other');
 
     if( in_array($country, $moneyRuArray) ){ return "money_ru"; }
 

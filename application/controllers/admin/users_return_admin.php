@@ -10,11 +10,21 @@ class Users_return_admin extends CI_Controller {
   }
 
   function index(){
+    $this->checkUser();
+
     $this->load->model('select_models');
 
     $this->getUserId();
 
     return $this->setUserSession($this->getUserAllData());
+  }
+
+  function checkUser(){
+    $userData = $this->session->userdata('user');
+
+    if( isset($userData['who']) ){ if( $userData['who'] == "admin" ){ return true; } }
+
+    return redirect( "/_shared/user_distributor/", 'location'); 
   }
 
   function getUserId(){

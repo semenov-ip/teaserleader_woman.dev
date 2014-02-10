@@ -14,12 +14,13 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Дата</th>
-                <th>E-mail</th>
-                <th>Имя</th>
-                <th>Skype</th>
-                <th>Баланс</th>
+                <th width="5%">ID</th>
+                <th width="10%" class="text-align-center">Дата</th>
+                <th width="30%" class="text-align-center">E-mail</th>
+                <th width="15%" class="text-align-center">Имя</th>
+                <th width="15%" class="text-align-center">Баланс</th>
+                <th width="15%" class="text-align-center">Статус</th>
+                <th width="10%"></th>
               </tr>
             </thead>
             <?php foreach ($userDataObj as $key => $currentUserDataObj) {?>
@@ -27,11 +28,26 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentUserDataObj->user_id; ?></td>
-                  <td><?php echo $currentUserDataObj->dataadd; ?></td>
-                  <td><a href="/admin/users_redirected_admin/index/<?php echo $currentUserDataObj->user_id; ?>/"><?php echo $currentUserDataObj->email; ?></a></td>
-                  <td><?php echo $currentUserDataObj->name; ?></td>
-                  <td><?php echo $currentUserDataObj->skype; ?></td>
-                  <td><?php echo $currentUserDataObj->count_money; ?> руб.</td>
+
+                  <td class="text-align-center"><?php echo $currentUserDataObj->dataadd; ?></td>
+
+                  <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentUserDataObj->user_id; ?>/"><?php echo $currentUserDataObj->email; ?></a></td>
+
+                  <td class="text-align-center"><?php echo $currentUserDataObj->name; ?></td>
+
+                  <td class="text-align-center"><?php echo $currentUserDataObj->count_money; ?> руб.</td>
+
+                  <td class="text-align-center"><span class="label <?php echo $currentUserDataObj->status['class'] ?>"><?php echo $currentUserDataObj->status['name'] ?></span></td>
+
+                  <td class="text-align-center">
+                    <div class="btn-group">
+
+                      <button title='Принять' class='btn btn-default btn-xs' onclick="statusModerateBlock('<?php echo $currentUserDataObj->user_id; ?>', 'user_id', '1', 'users')"><i class='icon-ok'></i> </button>
+
+                      <button title='Заблокировать' class='btn btn-default btn-xs' onclick="statusModerateBlock('<?php echo $currentUserDataObj->user_id; ?>', 'user_id', '3', 'users')"><i class='icon-minus-sign'></i> </button>
+
+                    </div>
+                  </td>
                 </tr>
               </tbody>
 

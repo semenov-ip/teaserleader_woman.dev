@@ -21,7 +21,6 @@ class Statistiques_geo extends CI_Controller {
     $this->load->library('/statistiques/statistiques_frompost_countdata_country');
     $this->load->library('/webmaster/data_builder_statistiq_geo_html_elements');
     $this->load->model('/statistiques/statistiques_query');
-    // $this->load->model('select_models');
 
     $data = template_builder('admin','statistiques_geo_tpl',$this->who);
 

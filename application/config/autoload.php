@@ -73,6 +73,7 @@ $autoload['helper'] = array(
   'header_src_css_js',
   'template_builder',
   'extract_key_this_array',
+  'extract_key_this_object',
   'current_dir_extract'
 );
 

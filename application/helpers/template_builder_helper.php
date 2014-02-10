@@ -23,6 +23,8 @@ if(!function_exists('template_builder')){
 
     $data['userRedirected'] = isset($userdata['who']) ? '/'.$userdata['who'].'/menu/users_redirected_menu' : false;
 
+    if(isset($userdata['who'])){ $data['statusModerateBlock'] = getUserAcceptBlock(); }
+
     return $data;
   }
 
@@ -48,5 +50,29 @@ if(!function_exists('template_builder')){
     if($count){ return "<span class='label label-success'>".$count."</span>"; }
 
     return "";
+  }
+
+  function getUserAcceptBlock(){
+    $status = extract_key_this_object(getUserStatus(), 'status');
+
+    return ($status == 0 || $status == 3) ? statusModerate() : statusBlock();
+  }
+
+  function getUserStatus(){
+    $ci =& get_instance();
+
+    return $ci->select_models->select_one_row_where_column_selectcolumn(array('user_id' => extract_key_this_array($ci->session->userdata('user'), 'user_id')), 'status', 'users');
+  }
+
+  function statusModerate(){
+    $ci =& get_instance();
+
+    return "<a title='Принять' class='display-i-b' onclick=\"statusModerateBlock('".extract_key_this_array($ci->session->userdata('user'), 'user_id')."', 'user_id', '1', 'users')\" href='#'><i class='icon-ok font-size-20'></i></a>";
+  }
+
+  function statusBlock(){
+    $ci =& get_instance();
+
+    return "<a title='Заблокировать' class='display-i-b' onclick=\"statusModerateBlock('".extract_key_this_array($ci->session->userdata('user'), 'user_id')."', 'user_id', '3', 'users')\" href='#'><i class='icon-minus-sign font-size-20'></i></a>";
   }
 }

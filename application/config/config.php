@@ -428,6 +428,7 @@ $config['error_message'] = array(
   "empty_blockid_referer" => "Нету данных по блоку или сайту",
   "empty_blockid_referer_db" => "Данные по блоку и сайту не обнаруженны",
   "block_status_off" => "Сайт находиться на модерации.",
+  "block_users_off" => "Пользователь заблокирован",
   "empty_campaign" => "Компании не обнаруженны",
   "empty_teaser" => "Тизеры не обнаруженны",
   "empty_block" => "Данный блок приостановлен или заблокирован",
