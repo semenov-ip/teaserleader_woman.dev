@@ -52,6 +52,14 @@ class Redirect_click_url {
     return 'sub1='.$clickData['logDataObj']->teaser_id.'&sub2='.$clickData['logDataObj']->site_id.'';
   }
 
+  function _subid_utm($clickData, $campaignDataObj){
+    if(!empty($campaignDataObj->subid)){
+      return $this->subidDesigner( $campaignDataObj->subid, $clickData['logDataObj']->teaser_id, $clickData['logDataObj']->site_id ).'?'.$this->_utm($clickData);
+    }
+
+    return 'sub1='.$clickData['logDataObj']->teaser_id.'&sub2='.$clickData['logDataObj']->site_id.'?'.$this->_utm($clickData);
+  }
+
   function subidDesigner($subid, $teaser_id, $site_id){
     $subid_rename = str_replace("{tiz_id}", $teaser_id, $subid);
 
@@ -61,7 +69,8 @@ class Redirect_click_url {
   }
 
   function redirectPages($labelFunction, $labelUrl){
-    if( $labelFunction == '_subid' ){ redirect( $this->clickUrl.$labelUrl, 'location'); } 
+    if( $labelFunction == '_subid' ){ redirect( $this->clickUrl.$labelUrl, 'location'); }
+    if( $labelFunction == '_subid_utm' ){ redirect( $this->clickUrl.$labelUrl, 'location'); } 
 
     redirect( $this->clickUrl.$this->labelUrlStart.$labelUrl, 'location');
   }

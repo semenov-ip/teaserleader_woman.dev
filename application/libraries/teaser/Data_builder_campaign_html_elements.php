@@ -38,7 +38,7 @@ class Data_builder_campaign_html_elements {
   }
 
   function getLabelsKeyIdValueName(){
-    return array( '_utm'=> 'Utm', '_openstat' => 'Openstat', '_from' => 'From', '_subid' => 'SubID' );
+    return array( '_utm'=> 'Utm', '_openstat' => 'Openstat', '_from' => 'From', '_subid' => 'SubID', '_subid_utm' => 'SubID + UTM' );
   }
 
   function getBanHourKeyIdValueName(){

@@ -16,6 +16,8 @@ class Validation_data_campaig_and_builder_collection {
 
     if( $this->issetSubidNotSubid() ) return "empty_subid";
 
+    if( $this->issetSubidUTMNotSubidUTM() ) return "empty_subid";
+
     return true;
   }
 
@@ -27,6 +29,14 @@ class Validation_data_campaig_and_builder_collection {
 
   function issetSubidNotSubid(){
     if( $_POST['labels'] == "_subid" && empty($_POST['subid']) ){
+      return true;
+    }
+
+    return false;
+  }
+
+  function issetSubidUTMNotSubidUTM(){
+    if( $_POST['labels'] == "_subid_utm" && empty($_POST['subid']) ){
       return true;
     }
 
