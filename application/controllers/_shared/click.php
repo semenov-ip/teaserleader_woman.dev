@@ -11,6 +11,7 @@ class Click extends CI_Controller{
     $this->load->helper('country_extratc_column_name_click');
     $this->load->model('select_models');
     $this->load->model('update_models');
+    $this->load->model('insert_models');
     $this->load->model('ckick/ckick_query');
     $this->load->library('_shared/get_click_data');
     $this->load->library('_shared/click_balance_update_debit_credit');
