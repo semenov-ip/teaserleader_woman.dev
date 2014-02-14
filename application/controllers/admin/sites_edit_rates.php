@@ -17,7 +17,6 @@ class Sites_edit_rates extends CI_Controller {
     $this->load->helper('trim_stripslashes');
     $this->load->model('select_models');
     $this->load->model('update_models');
-    $this->load->library('webmaster/data_builder_site_html_elements');
 
     $this->getSiteId($siteId);
 
@@ -26,8 +25,6 @@ class Sites_edit_rates extends CI_Controller {
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->extractKeyErrorMessageInitializationPostQuery() );
 
     $data['siteDataObj'] = empty($_POST) ? $this->getSiteData() : (object)$_POST;
-
-    $data = $this->data_builder_site_html_elements->data($data);
 
     $data['desabledUrl'] = "disabled";
 

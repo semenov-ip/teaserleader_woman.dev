@@ -421,6 +421,7 @@ $config['error_message'] = array(
   "empty_summ" => array( "text" => "Не указана сумма выплаты!", "class" => "alert-warning" ),
   "check_min_payout_summ" => array( "text" => "Минимальная сумма выплаты ".$config['min_payout']." руб.!", "class" => "alert-warning" ),
   "check_user_count_money" => array( "text" => "У Вас недостаточно средств на балансе!", "class" => "alert-warning" ),
+  "empty_text_blocking" => array( "text" => "Не указанна причина блокировки сайта!", "class" => "alert-warning" ),
 
   "show_referer" => "Неопределённая ссылка",
   "emprt_remote_port" => "Удалённый порт не обнаружен",

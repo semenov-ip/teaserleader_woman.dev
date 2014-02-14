@@ -1,6 +1,6 @@
 <li class="has_submenu">
   <a class="fierst-ellement" href="#">
-    <i class="icon-sitemap"></i> Площадки
+    <i class="icon-list-alt"></i> Площадки
     <span class="caret pull-right"></span>
   </a>
   <!-- Sub menu -->

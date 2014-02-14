@@ -55,7 +55,7 @@
               <div class="form-group">
                  <!-- Buttons -->
                   <div class="col-lg-6 col-lg-offset-1">
-                    <input type="hidden" name="author_name" class="form-control" value="<?php echo $email; ?>">
+                    <input type="hidden" name="author_name" class="form-control" value="Администратор">
                     <button type="submit" class="btn btn-default">Добавить</button>
                     <a href="/webmaster/sites/" type="reset" class="btn btn-default">Отменить</a>
                  </div>

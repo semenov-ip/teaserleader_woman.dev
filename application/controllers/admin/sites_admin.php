@@ -33,8 +33,6 @@ class Sites_admin extends CI_Controller{
     if(is_array($siteDataObj)){
       foreach ($siteDataObj as $key => $currentSiteDataObj) {
 
-        $siteDataObj[$key]->statusModerateBlock = $currentSiteDataObj->status == 0 || $currentSiteDataObj->status == 3 ? $this->statusModerate($currentSiteDataObj) : $this->statusBlock($currentSiteDataObj);
-
         $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
 
         $currentSiteDataObj->stat_login = preg_replace("/\n|\r|\r\n|(\r\n)+/u", "<br />", $currentSiteDataObj->stat_login);
@@ -44,13 +42,5 @@ class Sites_admin extends CI_Controller{
     }
 
     return false;
-  }
-
-  function statusModerate($currentSiteDataObj){
-    return "<button title='Принять' class='btn btn-default btn-xs' onclick=\"statusModerateBlock('".$currentSiteDataObj->site_id."', 'site_id', '1', 'sites')\"><i class='icon-ok'></i> </button>";
-  }
-
-  function statusBlock($currentSiteDataObj){
-    return "<button title='Заблокировать' class='btn btn-default btn-xs' onclick=\"statusModerateBlock('".$currentSiteDataObj->site_id."', 'site_id', '3', 'sites')\"><i class='icon-minus-sign'></i> </button>";
   }
 }
