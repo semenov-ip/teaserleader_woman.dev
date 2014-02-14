@@ -13,15 +13,18 @@ function playPauseElement(element_id, column, current_status, bd_table_name){
 }
 
 function deleteElement(element_id, column, bd_table_name){
-  var data = {
-    element_id : element_id,
 
-    column : column,
+  if (confirm("Вы действительно хотите выполнить УДАЛЕНИЕ текущего элемента?")) {
+    var data = {
+      element_id : element_id,
 
-    'dbTableName' : bd_table_name
+      column : column,
+
+      'dbTableName' : bd_table_name
+    }
+
+    ajax_record_play_pause( data, '/_shared/play_pause_delet_js/deleteelement/' );
   }
-
-  ajax_record_play_pause( data, '/_shared/play_pause_delet_js/deleteelement/' );
 }
 
 function statusModerateBlock(element_id, column, current_status, bd_table_name){
