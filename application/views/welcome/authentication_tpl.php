@@ -1,6 +1,15 @@
 <?php
   $this->load->view('/_shared/header_tpl');
 ?>
+<script>
+  $( document ).ready(function() {
+    if (event.keyCode == 13) document.authform.submit();
+  });
+  
+
+  
+</script>
+
 <body>
   <div class="form">
     <div class="wrap2">
@@ -16,7 +25,7 @@
 
         <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
-        <form class="form-horizontal" role="form" method="post">
+        <form action="/welcome/authentication/" id="authform" class="form-horizontal" role="form" method="post">
           
           <div class="input">
             <input type="email" name="email" value="" placeholder="Email">
@@ -31,7 +40,7 @@
           </div>
           
           <div class="button_login">
-            <a href="javascript:void(0);" onclick="formSubmit(this);"></a>
+            <a type="submit" href="javascript:void(0);" onclick="formSubmit(this);"></a>
           </div>
 
         </form>

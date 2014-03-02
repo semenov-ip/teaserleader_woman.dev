@@ -423,6 +423,14 @@ $config['error_message'] = array(
   "check_user_count_money" => array( "text" => "У Вас недостаточно средств на балансе!", "class" => "alert-warning" ),
   "empty_text_blocking" => array( "text" => "Не указанна причина блокировки сайта!", "class" => "alert-warning" ),
 
+  "empty_email" => array( "text" => "Необходимо указать свой E-mail!", "class" => "alert-warning" ),
+
+  "email_check_validation" => array( "text" => "Необходимо указать правильный E-mail!", "class" => "alert-warning" ),
+
+  "non_existent_email" => array( "text" => "Вы указали не существующий e-mail!", "class" => "alert-warning" ), 
+
+  "success_sand" => array( "text" => "Новый пароль отправлен!", "class" => "alert-success" ), 
+
   "show_referer" => "Неопределённая ссылка",
   "emprt_remote_port" => "Удалённый порт не обнаружен",
   "emprt_user_agen" => "Проблемы работы браузера",

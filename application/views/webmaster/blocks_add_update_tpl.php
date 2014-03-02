@@ -195,6 +195,13 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <label class="control-label col-lg-4">Добавить ссылку</label>
+              <div class="col-lg-7 margin-top-4">
+                <input name="second_link" type="checkbox" <?php echo $checkboxChangeSecondLink; ?> /> "Читать далее"
+              </div>
+            </div>
+
 
             <div class="form-group">
               <div class="col-sm-offset-4 col-lg-6">

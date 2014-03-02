@@ -19,6 +19,8 @@ if(!function_exists('template_builder')){
 
     $data['ticketCount'] = getTicketCount($who);
 
+    $data['newsCount'] = getNewsCount();
+
     $data['who'] = $who;
 
     $data['userRedirected'] = isset($userdata['who']) ? '/'.$userdata['who'].'/menu/users_redirected_menu' : false;
@@ -74,5 +76,17 @@ if(!function_exists('template_builder')){
     $ci =& get_instance();
 
     return "<a title='Заблокировать' class='display-i-b' onclick=\"statusModerateBlock('".extract_key_this_array($ci->session->userdata('user'), 'user_id')."', 'user_id', '3', 'users')\" href='#'><i class='icon-minus-sign font-size-20'></i></a>";
+  }
+
+  function getNewsCount(){
+    $ci =& get_instance();
+
+    $dataWhereArr = array('user_id' => extract_key_this_array($ci->session->userdata('user'), 'user_id'));
+
+    $count = $ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'status_news', 'users');
+
+    if($count->status_news){ return "<span class='label label-success'>".$count->status_news."</span>"; }
+
+    return "";
   }
 }

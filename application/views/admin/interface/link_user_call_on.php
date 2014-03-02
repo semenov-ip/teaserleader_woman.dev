@@ -1,0 +1,1 @@
+<a href="/admin/users_redirected_admin/index/<?php echo $currentTicketDataObj->user_id; ?>/"><?php echo $currentTicketDataObj->author_name; ?></a>

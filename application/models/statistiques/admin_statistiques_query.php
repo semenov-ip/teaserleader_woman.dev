@@ -11,14 +11,18 @@
       $this->prefixes = $this->config->item('prefixes');
     }
 
-    function select_all_row_where_column_selectcolumn_join($dataWhereArr, $leftjoin, $equalityjoin, $selectcolumn, $dbTableName){
+    function select_all_row_where_foreach_column_selectcolumn_join($dataWhereArr, $leftjoin, $equalityjoin, $selectcolumn, $dbTableName){
       if(is_array($dataWhereArr)){
 
         $this->db->select($selectcolumn);
 
         $this->db->join($this->prefixes.$leftjoin, $equalityjoin);
 
-        $this->db->where($dataWhereArr);
+        if(!empty($dataWhereArr)){
+          foreach ($dataWhereArr as $key => $where) {
+            $this->db->or_where($where);
+          }
+        }
 
         $query = $this->db->get($this->prefixes.$dbTableName);
 
@@ -27,7 +31,7 @@
           foreach ($query->result() as $row) {
 
             $dataQuery[] = $row;
-            
+
           }
 
           return $dataQuery;

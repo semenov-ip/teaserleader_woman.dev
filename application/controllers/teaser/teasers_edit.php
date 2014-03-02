@@ -65,7 +65,7 @@ class Teasers_edit extends CI_Controller {
   function getPostDataTeaserEdit(){
     if(!empty($_POST)){
 
-      $submitStatus = $this->validation_data_teaser_and_builder_collection->getCorrectData($this->campaignId, isset($_FILES['image']['type']));
+      $submitStatus = $this->validation_data_teaser_and_builder_collection->getCorrectData($this->campaignId, isset($_FILES['image']['type']), false);
 
       if( !isset($_POST['image']) ){ $_POST['image'] = $this->image; }
 

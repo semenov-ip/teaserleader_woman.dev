@@ -9,37 +9,39 @@ class Data_builder_block_html_elements {
 
   function data($data){
 
-  $data['selectChangeBlockSizeValue'] = select_define_builder(array($data['blockDataObj']->block_size_value), $this->getBlockSizeValueKeyIdValueName());
+    $data['selectChangeBlockSizeValue'] = select_define_builder(array($data['blockDataObj']->block_size_value), $this->getBlockSizeValueKeyIdValueName());
 
-  $data['selectChangeTableBorderWidth'] = select_define_builder(array($data['blockDataObj']->table_border_width), $this->getBorderWidthKeyIdValueName(), true);
+    $data['selectChangeTableBorderWidth'] = select_define_builder(array($data['blockDataObj']->table_border_width), $this->getBorderWidthKeyIdValueName(), true);
 
-  $data['selectChangeTableBorderStyle'] = select_define_builder(array($data['blockDataObj']->table_border_style), $this->getBorderStyleKeyIdValueName(), true);
+    $data['selectChangeTableBorderStyle'] = select_define_builder(array($data['blockDataObj']->table_border_style), $this->getBorderStyleKeyIdValueName(), true);
 
-  $data['selectChangeHor'] = select_define_builder(array($data['blockDataObj']->hor), $this->getHorKeyIdValueName());
+    $data['selectChangeHor'] = select_define_builder(array($data['blockDataObj']->hor), $this->getHorKeyIdValueName());
 
-  $data['selectChangeVer'] = select_define_builder(array($data['blockDataObj']->ver), $this->getVerKeyIdValueName());
+    $data['selectChangeVer'] = select_define_builder(array($data['blockDataObj']->ver), $this->getVerKeyIdValueName());
 
-  $data['selectChangeSize'] = select_define_builder(array($data['blockDataObj']->size), $this->getSizeKeyIdValueName() ,true);
+    $data['selectChangeSize'] = select_define_builder(array($data['blockDataObj']->size), $this->getSizeKeyIdValueName() ,true);
 
-  $data['selectChangeImageBorderWidth'] = select_define_builder(array($data['blockDataObj']->image_border_width), $this->getBorderWidthKeyIdValueName(), true);
+    $data['selectChangeImageBorderWidth'] = select_define_builder(array($data['blockDataObj']->image_border_width), $this->getBorderWidthKeyIdValueName(), true);
 
-  $data['selectChangeImageBorderStyle'] = select_define_builder(array($data['blockDataObj']->image_border_color), $this->getBorderStyleKeyIdValueName(), true);
+    $data['selectChangeImageBorderStyle'] = select_define_builder(array($data['blockDataObj']->image_border_color), $this->getBorderStyleKeyIdValueName(), true);
 
-  $data['selectChangePosition'] = select_define_builder(array($data['blockDataObj']->position), $this->getPositionKeyIdValueName(), true);
+    $data['selectChangePosition'] = select_define_builder(array($data['blockDataObj']->position), $this->getPositionKeyIdValueName(), true);
 
-  $data['selectChangeFontFamily'] = select_define_builder(array($data['blockDataObj']->font_family), $this->getFontFamilyKeyIdValueName(), true);
+    $data['selectChangeFontFamily'] = select_define_builder(array($data['blockDataObj']->font_family), $this->getFontFamilyKeyIdValueName(), true);
 
-  $data['selectChangeFontSize'] = select_define_builder(array($data['blockDataObj']->font_size), $this->getFontSizeKeyIdValueName(), true);
+    $data['selectChangeFontSize'] = select_define_builder(array($data['blockDataObj']->font_size), $this->getFontSizeKeyIdValueName(), true);
 
-  $data['selectChangeCellBorderWidth'] = select_define_builder(array($data['blockDataObj']->cell_border_width), $this->getBorderWidthKeyIdValueName(), true);
+    $data['selectChangeCellBorderWidth'] = select_define_builder(array($data['blockDataObj']->cell_border_width), $this->getBorderWidthKeyIdValueName(), true);
 
-  $data['selectChangeCellBorderStyle'] = select_define_builder(array($data['blockDataObj']->cell_border_style), $this->getBorderStyleKeyIdValueName(), true);
+    $data['selectChangeCellBorderStyle'] = select_define_builder(array($data['blockDataObj']->cell_border_style), $this->getBorderStyleKeyIdValueName(), true);
 
-  $data['selectChangeAlign'] = select_define_builder(array($data['blockDataObj']->align), $this->getAlignKeyIdValueName(), true);
+    $data['selectChangeAlign'] = select_define_builder(array($data['blockDataObj']->align), $this->getAlignKeyIdValueName(), true);
 
-  $data['style'] = $this->ci->block_style_builder->getStyle($data['blockDataObj']);
+    $data['checkboxChangeSecondLink'] = $this->getSecondLinkDataChecked($data['blockDataObj']->second_link);
 
-  $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml($data['blockDataObj']);
+    $data['style'] = $this->ci->block_style_builder->getStyle($data['blockDataObj']);
+
+    $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml( $data['blockDataObj'], array(50, 51, 52, 53, 54, 55, 56) );
 
     return $data;
   }
@@ -82,5 +84,9 @@ class Data_builder_block_html_elements {
 
   function getAlignKeyIdValueName(){
     return array("center" => "По центру", "left" => "По левому краю", "right" => "По правому краю");
+  }
+
+  function getSecondLinkDataChecked($secondLink){
+    if($secondLink){ return "checked='checked'"; }
   }
 }

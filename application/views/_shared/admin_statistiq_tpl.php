@@ -1,23 +1,23 @@
 <div class="row">
-<div class="col-md-2">&nbsp;</div>
-<div class="col-md-10">
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['today']; ?>);">Сегодня</a>
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['yesterday']; ?>);">Вчера</a>
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['current_week']; ?>);">Текущая неделя</a>
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['current_month']; ?>);">Текущий месяц</a>
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['last_week']; ?>);">Прошлая неделя</a>
-  <a class="btn btn-primary" onclick="setdate(<?php echo $defineDay['last_month']; ?>);">Прошлый месяц</a>
+<div class="col-md-4">&nbsp;</div>
+<div class="col-md-8 link_stat">
+  <a class="" onclick="setdate(<?php echo $defineDay['today']; ?>);">Сегодня</a>
+  <a class="" onclick="setdate(<?php echo $defineDay['yesterday']; ?>);">Вчера</a>
+  <a class="" onclick="setdate(<?php echo $defineDay['current_week']; ?>);">Текущая неделя</a>
+  <a class="" onclick="setdate(<?php echo $defineDay['current_month']; ?>);">Текущий месяц</a>
+  <a class="" onclick="setdate(<?php echo $defineDay['last_week']; ?>);">Прошлая неделя</a>
+  <a class="" onclick="setdate(<?php echo $defineDay['last_month']; ?>);">Прошлый месяц</a>
 </div>
 <br><br>
-<div class="col-md-4">&nbsp;</div>
+<div class="col-md-3">&nbsp;</div>
 
-  <div class="col-md-8">
+  <div class="col-md-8 col-md-offset-1">
 
     <form id="statistiq" class="form-horizontal" role="form" method="post">
 
       <div class="form-group">
         <!-- <div class="col-lg-8"> -->
-          <div class="input-group left_32">
+          <div class="input-group left__21">
 
             <div class="datetimepicker input-append display-inline-block margin-right-20">
               От: <input data-format="dd-MM-yyyy" name="date_start" class="picker" type="text" value="<?php echo $statistiqData['date_start']; ?>">

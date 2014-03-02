@@ -434,3 +434,12 @@ BODY.main {
   padding: 45px 15px 15px 26px;
 }
 /* end form */
+
+.alert{
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+}
+.alert-warning{
+  color: red;
+}

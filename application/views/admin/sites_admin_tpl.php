@@ -1,3 +1,9 @@
+<script>
+  $( document ).ready(function() {
+    console.log($('.stat_login').html());
+  });
+</script>
+
 <!-- Page title -->
 <div class="page-title">
   <h2><i class="icon-desktop color"></i> Площадки</h2>
@@ -16,10 +22,10 @@
               <tr>
                 <th>ID</th>
                 <th width="15%">URL</th>
-                <th width="30%" class="text-align-center">Пользователь</th>
-                <th>Доступ к статистике</th>
+                <th width="25%" class="text-align-center">Пользователь</th>
+                <th width="30%">Доступ к статистике</th>
                 <th width="15%" class="text-align-center" >Статус</th>
-                <th class="text-align-center"></th>
+                <th width="15%" class="text-align-center"></th>
               </tr>
             </thead>
             <?php foreach ($siteDataObj as $key => $currentSiteDataObj) {?>
@@ -32,7 +38,7 @@
 
                   <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
 
-                  <td><?php echo $currentSiteDataObj->stat_login; ?></td>
+                  <td class="stat_login"><?php echo $currentSiteDataObj->stat_login; ?></td>
 
                   <td class="text-align-center"><span class="label <?php echo $currentSiteDataObj->status['class'] ?>"><?php echo $currentSiteDataObj->status['name'] ?></span></td>
 
@@ -41,7 +47,7 @@
 
                       <button title="Принять" class="btn btn-default btn-xs" onclick="statusModerateBlock('<?php echo $currentSiteDataObj->site_id; ?>', 'site_id', '1', 'sites')"><i class='icon-ok'></i> </button>
 
-                      <a title="Заблокировать" href="/admin/sites_block_admin/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-minus-sign"></i></a>
+                      <a title="Отклонить" href="/admin/sites_block_admin/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-minus-sign"></i></a>
 
                       <a title="Редактировать цену" href="/admin/sites_edit_rates/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
 

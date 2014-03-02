@@ -9,17 +9,23 @@
 
     <div class="forgot">ВОСТАНОВЛЕНИЕ ПАРОЛЯ</div>
 
-    <div class="input">
-      <input type="text" value="E-mail" />
-    </div>
+    <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
-    <div class="button_send">
-      <a  href="#"></a>
-    </div>
+    <form class="authentication_form" role="form" method="post">
 
-    <div class="link_return">
-      <a href="/">Вернутся на главную</a>
-    </div>
+      <div class="input">
+        <input type="text" name="email" placeholder="E-mail" value="<?php echo $userDataObj->email; ?>" />
+      </div>
+
+      <div class="button_send">
+        <a href="javascript:void(0);" onclick="formSubmit(this);"></a>
+      </div>
+
+      <div class="link_return">
+        <a href="#">Вернутся на главную</a>
+      </div>
+
+    </form>
 
   </div>
 

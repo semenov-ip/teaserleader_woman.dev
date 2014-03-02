@@ -16,29 +16,26 @@
        <!-- Profile form -->
 
           <div class="form profile">
-             <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th width="30%">Дата создания</th>
-                  <th width="30%">Автор</th>
-                  <th>Текст</th>
-                </tr>
-              </thead>
-                <tbody>
+             <div class="awidget-body">
+              <ul class="chats">
+                <?php foreach ($ticketDataObj as $key => $currentTicketDataObj) { ?> 
 
-                <?php foreach ($ticketDataObj as $key => $currentTicketDataObj) { ?>                
-                  <tr>
-                    <td><?php echo $currentTicketDataObj->dataadd; ?></td>
+                  <li class="<?php echo $currentTicketDataObj->user_roles['by']; ?>">
+                    <div class="avatar <?php echo $currentTicketDataObj->user_roles['align_name']; ?>">
+                      <img src="/images/<?php echo $currentTicketDataObj->user_roles['img']; ?>" alt="" class="img-responsive"/>
+                    </div>
 
-                    <td><?php echo $currentTicketDataObj->author_name; ?></td>
+                    <div class="chat-content">
+                      <div class="chat-meta"><?php echo $currentTicketDataObj->user_call; ?> <span class="<?php echo $currentTicketDataObj->user_roles['align_text']; ?>"><?php echo $currentTicketDataObj->dataadd; ?></span></div>
+                      <?php echo $currentTicketDataObj->text; ?>
 
-                    <td><?php echo $currentTicketDataObj->text; ?></span></td>
-                  </tr>
+                      <div class="clearfix"></div>
+                    </div>
+                  </li>
                 <?php } ?>
 
-                </tbody>
-            </table>
-
+              </ul>
+            </div>
 
             <div class="awidget-head"><h3>Добавление быстрого ответа</h3></div>
             <!-- Edit profile form (not working)-->

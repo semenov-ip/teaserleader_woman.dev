@@ -415,12 +415,10 @@ $(".peity-bar").peity("bar", {
   width:100
 });
 
+
+
+
+
+
+
 /* Peity ends */
-
-
-
-
-  
-
-
-

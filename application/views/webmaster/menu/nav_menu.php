@@ -23,14 +23,6 @@
   </ul>
 </li>
 
-<li class="has_submenu">
-  <a href="#">
-    <div class="my-icon-money-menu"></div> <div class="margin-left-24 margin-top-2"> Выплаты <span class="caret pull-right"></span></div>
-    
-  </a>
-  <ul>
-    <li class="<?php echo $active_class === "balance_history" ? "active" : "" ?>"><a href="/balance/balance_history/">История баланса</a></li>
-    <li class="<?php echo $active_class === "balance_payout" ? "active" : "" ?>"><a href="/balance/balance_payout/">Заказать выплату</a></li>
-  </ul>
-</li>
+<li class="money_hover_activ <?php echo $active_class === "balance_history" ? "current" : "" ?>"><a class="money_hover" href="/balance/balance_history/"><div class="my-icon-money-menu"></div> <div class="margin-left-24 margin-top-2"> Выплаты</div></a></li>
+
 <li class="<?php echo $active_class === "tickets" ? "current" : "" ?>"><a href="/_shared/tickets/"><i class="icon-envelope-alt"></i> Тикеты <?php if($who != "admin"){ echo $ticketCount; } ?></a></li>

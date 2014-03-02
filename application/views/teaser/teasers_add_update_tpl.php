@@ -22,8 +22,8 @@
               <div class="form-group">
                 <label class="control-label col-lg-3">Изображение</label>
                 <div class="col-lg-6">
-                  <img src="<?php echo $teaserDataObj->image; ?>" />
-                  <input type="file" name="image" />
+                  <img class="max-width" src="<?php echo $teaserDataObj->image; ?>" />
+                  <input type="file" name="image" value="<?php echo $teaserDataObj->image; ?>" />
                 </div>
               </div>
 

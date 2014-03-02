@@ -70,7 +70,7 @@ class Blocks_add extends CI_Controller{
   }
 
   function saveDataCollectionBlock($post){
-
+    $post['second_link'] = isset($post['second_link']) ? 1 : 0;
     $post['site_id'] = $this->siteId;
     $post['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
     $post['dataadd'] = $this->config->item('datetime');

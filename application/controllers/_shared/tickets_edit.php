@@ -14,6 +14,7 @@ class Tickets_edit extends CI_Controller {
 
   function index($ticketId){
     $this->load->helper('date2str');
+    $this->load->helper('tickets_function');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->model('update_models');
@@ -48,6 +49,8 @@ class Tickets_edit extends CI_Controller {
       foreach ($ticketDataObj as $key => $currentTicketDataObj) {
 
         $currentTicketDataObj->dataadd = date2str($currentTicketDataObj->dataadd);
+
+        $ticketDataObj[$key]->user_roles = ($currentTicketDataObj->author_name !== "Администратор") ? byUserRoles() : byAdminRoles();
 
       }
 
@@ -107,5 +110,4 @@ class Tickets_edit extends CI_Controller {
 
     $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
-
 }

@@ -55,7 +55,7 @@
                   <ul class="nav">
                       <?php $this->load->view($menu); ?>
                       <!-- Main menu -->
-                      <li class="<?php echo $active_class === "news" ? "current" : "" ?>"><a href="/_shared/news/"><i class="icon-volume-down"></i> Новости</a></li>
+                      <li class="<?php echo $active_class === "news" ? "current" : "" ?>"><a href="/_shared/news/"><i class="icon-volume-down"></i> Новости <?php echo $newsCount ?></a></li>
                       <li class="<?php echo $active_class === "settings" ? "current" : "" ?>"><a href="/_shared/settings/"><i class="icon-user"></i> Профиль</a></li>
                       <li class="<?php echo $active_class === "faq" ? "current" : "" ?>"><a class="last-ellement" href="/_shared/faq/"><i class="icon-book"></i> FAQ</a></li>
                   </ul>

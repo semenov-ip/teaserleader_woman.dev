@@ -35,12 +35,27 @@ class Sites_admin extends CI_Controller{
 
         $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
 
-        $currentSiteDataObj->stat_login = preg_replace("/\n|\r|\r\n|(\r\n)+/u", "<br />", $currentSiteDataObj->stat_login);
-
+        $currentSiteDataObj->stat_login = $this->splitString($currentSiteDataObj->stat_login);
       }
       return $siteDataObj;
     }
 
     return false;
+  }
+
+  function splitString($statLogin){
+    $statLogin = preg_replace("/\n|\r|\r\n|(\r\n)+/u", "<br />", $statLogin);
+
+    $statLoginArray = explode("<br />", $statLogin);
+
+    foreach ($statLoginArray as $key => $statData) {
+      
+      $statWord = preg_split('/(\w{25})/', $statData, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
+
+      $statLoginArray[$key] = implode("<br />", $statWord);
+    }
+
+
+    return implode("<br />", $statLoginArray);
   }
 }

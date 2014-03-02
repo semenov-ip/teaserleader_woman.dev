@@ -7,7 +7,7 @@ class Validation_data_teaser_and_builder_collection {
     $this->ci =& get_instance();
   }
 
-  function getCorrectData($campaignId, $booleanImageValidation = true){
+  function getCorrectData($campaignId, $booleanImageValidation = true, $image = true){
 
     if( !execute_trim_empty_form( $_POST, array('image') ) ) return "empty_data";
 
@@ -19,7 +19,7 @@ class Validation_data_teaser_and_builder_collection {
 
       $statusImageUpload = $this->ci->image_upload->getCorrectImageUpload($campaignId, 'image', '/images_teaser/');
 
-      if( $statusImageUpload !== true ){
+      if( $statusImageUpload !== true && $image ){
         return $statusImageUpload;
       }
     }

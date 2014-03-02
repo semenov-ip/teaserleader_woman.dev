@@ -24,7 +24,7 @@
 
               <tbody>
                 <tr>
-                  <td><?php echo $currentBlockDataObj->name; ?></td>
+                  <td><a title="<?php echo $currentBlockDataObj->name; ?>" href="/webmaster/blocks_edit/index/<?php echo $currentBlockDataObj->block_id; ?>/"><?php echo $currentBlockDataObj->name; ?></a></td>
 
                   <td class="text-align-center"><?php echo $currentBlockDataObj->itemsNumber; ?></td>
 

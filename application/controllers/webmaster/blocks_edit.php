@@ -84,8 +84,9 @@ class Blocks_edit extends CI_Controller {
   }
 
   function updateDataCollectionBlock($post){
-    $dataWhereArr['block_id'] = $this->blockId;
-    $dataWhereArr['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+    $post['second_link'] = isset($post['second_link']) ? 1 : 0;
+
+    $dataWhereArr = array( 'block_id' => $this->blockId, 'user_id' => extract_key_this_array($this->session->userdata('user'), 'user_id') );
 
     return $this->update_models->update_set_one_where_column($post, $dataWhereArr, 'blocks');
   }

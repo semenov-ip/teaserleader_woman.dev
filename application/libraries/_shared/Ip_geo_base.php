@@ -8,7 +8,7 @@ class Ip_geo_base {
   }
 
   function determineLocationSite(){
-    
+
     if( !isset($_COOKIE['user_city']) ){ return $this->setUpExtractUserLocationCookie(); }
 
     $location['country'] = $_COOKIE['user_country'];
@@ -62,5 +62,4 @@ class Ip_geo_base {
     @setcookie('user_region', $location['region'], time() + 2592000, '/');
     @setcookie('user_country', $location['country'], time() + 2592000, '/');
   }
-
 }

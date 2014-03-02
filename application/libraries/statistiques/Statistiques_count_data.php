@@ -1,14 +1,13 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Statistiques_count_data {
-  public $ci, $commonStatistiqArr;
+  public $ci;
 
   function __construct(){
     $this->ci =& get_instance();
   }
 
   function getStatistiqCount($statistiqConfig, $searchData){
-
     return $this->getStatistiqData($statistiqConfig, $searchData);
   }
 

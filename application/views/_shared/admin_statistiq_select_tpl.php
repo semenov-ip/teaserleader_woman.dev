@@ -20,16 +20,16 @@
           <div class="col-lg-12">
             <div class="input-group">
 
-              <div class="datetimepicker input-append display-inline-block margin-right-10">
-                От: <input data-format="dd-MM-yyyy" name="date_start" class="picker" type="text" value="<?php echo $statistiqData['date_start']; ?>" />
+              <div class="datetimepicker input-append display-inline-block width-41-pr">
+                От: <input data-format="dd-MM-yyyy" name="date_start" class="picker width-70-pr" type="text" value="<?php echo $statistiqData['date_start']; ?>" />
                 <span class="add-on">
                    &nbsp;<i data-time-icon="icon-time" data-date-icon="icon-calendar">
                    </i>
                 </span>
               </div>
 
-              <div class="datetimepicker input-append display-inline-block margin-right-10">
-                До: <input data-format="dd-MM-yyyy" name="date_end" class="picker" type="text" value="<?php echo $statistiqData['date_end']; ?>" />
+              <div class="datetimepicker input-append display-inline-block width-41-pr">
+                До: <input data-format="dd-MM-yyyy" name="date_end" class="picker width-70-pr" type="text" value="<?php echo $statistiqData['date_end']; ?>" />
                 <span class="add-on">
                    &nbsp;<i data-time-icon="icon-time" data-date-icon="icon-calendar">
                    </i>

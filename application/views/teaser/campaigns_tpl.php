@@ -31,7 +31,7 @@
               <tbody>
                 <tr>
                   <td><?php echo $currentCampaignDataObj->campaign_id; ?></td>
-                  <td><?php echo $currentCampaignDataObj->name; ?></td>
+                  <td><a href="/teaser/campaigns_edit/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/"><?php echo $currentCampaignDataObj->name; ?></a></td>
                   <td  class="text-align-center"><a href="/teaser/teasers/index/<?php echo $currentCampaignDataObj->campaign_id; ?>/"><?php echo $currentCampaignDataObj->countTeaser; ?></a></td>
                   <td  class="text-align-center"><span class="label <?php echo $currentCampaignDataObj->status['class'] ?>"><?php echo $currentCampaignDataObj->status['name'] ?></span></td>
 

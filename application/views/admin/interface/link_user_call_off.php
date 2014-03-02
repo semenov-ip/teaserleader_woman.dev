@@ -1,0 +1,1 @@
+<?php echo $currentTicketDataObj->author_name; ?>

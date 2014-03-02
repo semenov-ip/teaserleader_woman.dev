@@ -1,6 +1,6 @@
 <!-- Page title -->
 <div class="page-title">
-  <h2><i class="icon-desktop color"></i> Блокировка сайта <a href="http://<?php echo $siteDataObj->url; ?>"><?php echo $siteDataObj->url; ?></a></h2>
+  <h2><i class="icon-desktop color"></i> Отклонение сайта <a href="http://<?php echo $siteDataObj->url; ?>"><?php echo $siteDataObj->url; ?></a></h2>
   <hr />
 </div>
 <!-- Page title -->
@@ -23,9 +23,9 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-lg-4">Причина блокировки</label>
+                <label class="control-label col-lg-4">Причина отклонение сайта</label>
                 <div class="col-lg-6">
-                	<textarea name="text" class="form-control" rows="3">Ваш сайт <?php echo $siteDataObj->url; ?> заблокирован по причине</textarea>
+                	<textarea name="text" class="form-control" rows="3">Ваш сайт <?php echo $siteDataObj->url; ?> отклонен по причине</textarea>
                 </div>
               </div>
 
@@ -33,7 +33,7 @@
                 <div class="col-sm-offset-4 col-lg-6">
                 	<input type="hidden" name="author_name" value="Администратор">
 
-                	<input type="hidden" name="title" value="Блокировка сайта <?php echo $siteDataObj->url; ?>">
+                	<input type="hidden" name="title" value="Отклонение сайта <?php echo $siteDataObj->url; ?>">
 
                   <button type="submit" class="btn btn-default">Сохранить</button>
                   <a href="/admin/sites_admin/" class="btn btn-default">Отменить</a>
@@ -47,8 +47,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-<!-- <button title="Заблокировать" class="btn btn-default btn-xs" onclick="statusModerateBlock('<?php //echo$currentSiteDataObj->site_id; ?>', 'site_id', '3', 'sites')"><i class='icon-minus-sign'></i> </button> -->

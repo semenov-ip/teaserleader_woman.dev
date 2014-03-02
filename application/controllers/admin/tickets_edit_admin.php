@@ -14,6 +14,7 @@ class Tickets_edit_admin extends CI_Controller {
 
   function index($ticketId){
     $this->load->helper('date2str');
+    $this->load->helper('tickets_function');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->model('update_models');
@@ -38,7 +39,7 @@ class Tickets_edit_admin extends CI_Controller {
     $dataWhereArr['ticket_id'] = $this->ticketId;
     $dataWhereArr['upid'] = $this->ticketId;
 
-    return $this->checkDataImplementCurrentSite($this->select_models->select_all_row_or_where_column_selectcolumn($dataWhereArr, 'ticket_id, author_name, title, text, dataadd, status', 'tickets'));
+    return $this->checkDataImplementCurrentSite($this->select_models->select_all_row_or_where_column_selectcolumn($dataWhereArr, 'ticket_id, user_id, author_name, title, text, dataadd, status', 'tickets'));
   }
 
   function checkDataImplementCurrentSite($ticketDataObj){
@@ -47,6 +48,10 @@ class Tickets_edit_admin extends CI_Controller {
       foreach ($ticketDataObj as $key => $currentTicketDataObj) {
 
         $currentTicketDataObj->dataadd = date2str($currentTicketDataObj->dataadd);
+
+        $ticketDataObj[$key]->user_call = ($currentTicketDataObj->author_name !== "Администратор") ? linkUserCallOn($currentTicketDataObj->user_id, $currentTicketDataObj->author_name) : linkUserCallOff($currentTicketDataObj->author_name);
+
+        $ticketDataObj[$key]->user_roles = ($currentTicketDataObj->author_name !== "Администратор") ? byUserRoles() : byAdminRoles();
 
       }
 
@@ -112,5 +117,4 @@ class Tickets_edit_admin extends CI_Controller {
 
     $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
-
 }

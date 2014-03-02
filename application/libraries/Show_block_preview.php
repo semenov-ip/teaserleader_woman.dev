@@ -7,15 +7,15 @@ class Show_block_preview {
     $this->ci =& get_instance();
   }
 
-  function getBlockHtml($blockDataObj){
+  function getBlockHtml($blockDataObj, $dataWhereIdTeaser = array()){
 
-    $teaserDataObj = $this->getTeaserDataObj($blockDataObj->hor*$blockDataObj->ver);
+    $teaserDataObj = $this->getTeaserDataObj($blockDataObj->hor*$blockDataObj->ver, $dataWhereIdTeaser);
 
     return $this->builderTeserBlock($teaserDataObj, $blockDataObj);
   }
 
-  function getTeaserDataObj($limit){
-    return $this->ci->select_models->select_from_all_limit_orderby($limit, "last_show", "asc", 'teasers');
+  function getTeaserDataObj($limit, $dataWhereIdTeaser){
+    return $this->ci->select_models->select_from_where_in_limit_orderby('teaser_id', $dataWhereIdTeaser, $limit, "last_show", "asc", 'teasers');
   }
 
   function builderTeserBlock($teaserDataObj, $blockDataObj, $id = ""){
@@ -46,6 +46,7 @@ class Show_block_preview {
     $teaserBlockTableTd .= '<img id="teaser_block_img'.$id.'" src="http://'.$_SERVER['SERVER_NAME'].$teaser->image.'"></a>';
     $teaserBlockTableTd .= ($blockDataObj->position == 'top' ? '<br/>' : '');
     $teaserBlockTableTd .= '<a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">'.$teaserText.'</a>';
+    $teaserBlockTableTd .= ($blockDataObj->second_link) ? '<br><br><b><a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">читать далее &raquo;</a></b>' : "";
     $teaserBlockTableTd .= '</td>';
 
     return $teaserBlockTableTd;
@@ -58,9 +59,3 @@ class Show_block_preview {
     return $teaserText;
   }
 }
-
-
-
-
-
-

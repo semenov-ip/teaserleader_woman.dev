@@ -21,6 +21,7 @@ class Statistiques_site_admin extends CI_Controller{
     $this->load->helper('data_where_user_id');
     $this->load->helper('timestamp_of_date_formt');
     $this->load->library('statistiques/statistiques_count_data');
+    $this->load->library('admin/search_id_url_mail');
     $this->load->model('statistiques/statistiques_query');
     $this->load->model('statistiques/admin_statistiques_query');
 
@@ -42,9 +43,9 @@ class Statistiques_site_admin extends CI_Controller{
   }
 
   function getSiteData(){
-    $dataWhereArr = array();
+    $dataWhereArr = ( !empty($_POST['search']) ) ? $this->search_id_url_mail->getSearchData($_POST['search']) : array();
 
-    return $this->setDataProcessing($this->admin_statistiques_query->select_all_row_where_column_selectcolumn_join($dataWhereArr, 'users lu', 'ls.user_id = lu.user_id', 'ls.site_id, ls.user_id, ls.url, lu.email', 'sites ls'));
+    return $this->setDataProcessing($this->admin_statistiques_query->select_all_row_where_foreach_column_selectcolumn_join($dataWhereArr, 'users lu', 'ls.user_id = lu.user_id', 'ls.site_id, ls.user_id, ls.url, lu.email', 'sites ls'));
   }
 
   function setDataProcessing($siteDataObj){
@@ -75,7 +76,7 @@ class Statistiques_site_admin extends CI_Controller{
       'column_id' => 'site_id'
     );
 
-    return $this->statistiques_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($this->statistiqData, array( 'search', 'site_id', 'date_start', 'date_end')));
+    return $this->statistiques_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($this->statistiqData, array( 'search', 'date_start', 'date_end')));
   }
 
   function totalStatistiq($statistiqCount){

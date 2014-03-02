@@ -14,7 +14,7 @@ body{
 }
 
 h1,h2,h3,h4{
-   font-family: 'Open Sans Condensed', sans-serif;
+   /*font-family: 'Open Sans Condensed', sans-serif;*/
 }
 
 h5,h6{
@@ -1252,4 +1252,28 @@ footer .copy{
 }
 .icon_faq{
    background-image: url(/img/title_icon/faq.png);
+}
+
+.max-width{
+   max-width: 400px;
+}
+
+.link_stat a{
+   
+   cursor: pointer;
+   margin-right: 11px;
+   text-align: right;
+}
+
+.form-group .summ_order{
+   padding-top: 4px;
+}
+
+.current .my-icon-money-menu{
+   background-image: url(/css/admin/font/money.png);
+   width: 15px;
+   height: 19px;
+   position: absolute;
+   left: -6px;
+   background-size: 15px;
 }
