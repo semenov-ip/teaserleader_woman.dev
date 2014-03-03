@@ -51,6 +51,7 @@
                 <label class="control-label col-lg-4">Данные для доступа к независимой статистике сайта</label>
                 <div class="col-lg-6">
                   <textarea class="form-control" rows="3" name="stat_login"><?php echo is_null($siteDataObj->stat_login) ? "Адрес:\nЛогин:\nПароль:" : $siteDataObj->stat_login ?></textarea>
+                  <small class="help-block font-size-85">Liveinternet, или другие..</small>
                 </div>
               </div>
               

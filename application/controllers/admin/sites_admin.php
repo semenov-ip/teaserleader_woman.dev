@@ -14,6 +14,7 @@ class Sites_admin extends CI_Controller{
 
   function index(){
     $this->load->helper('status/incite_status_site_teaser_name');
+    $this->load->library('admin/search_id_url_mail');
     $this->load->model('select_models');
 
     $data = template_builder('admin','sites_admin_tpl',$this->who);
@@ -24,9 +25,9 @@ class Sites_admin extends CI_Controller{
   }
 
   function getSiteAllData(){
-    $dataWhereArr = array();
+    $dataWhereArr = ( !empty($_POST['search']) ) ? $this->search_id_url_mail->getSearchData($_POST['search']) : array();
 
-    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_join_orderby($dataWhereArr, 'ls.status', 'asc', 'users lu', 'ls.user_id = lu.user_id', 'ls.site_id, ls.user_id, ls.status, ls.url, ls.stat_login, lu.email', 'sites ls'));
+    return $this->setDataProcessing($this->select_models->select_all_row_where_foreach_column_selectcolumn_join_orderby($dataWhereArr, 'ls.status', 'asc', 'users lu', 'ls.user_id = lu.user_id', 'ls.site_id, ls.user_id, ls.status, ls.url, ls.stat_login, lu.email', 'sites ls'));
   }
 
   function setDataProcessing($siteDataObj){
@@ -49,7 +50,7 @@ class Sites_admin extends CI_Controller{
     $statLoginArray = explode("<br />", $statLogin);
 
     foreach ($statLoginArray as $key => $statData) {
-      
+
       $statWord = preg_split('/(\w{25})/', $statData, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
 
       $statLoginArray[$key] = implode("<br />", $statWord);

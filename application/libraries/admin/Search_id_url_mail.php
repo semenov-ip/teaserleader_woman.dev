@@ -28,7 +28,7 @@ class Search_id_url_mail {
   }
 
   function defineElement($search){
-    if( strpos($search, '@') ){ $this->searchElementEmailArray[]['email'] = trim($search); return true; }
+    if( preg_match( "/^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$/", $search) ){ $this->searchElementEmailArray[]['email'] = trim($search); return true; }
 
     if( strpos($search, '.') ){ $this->searchElementUrlArray[]['url'] = trim($search); return true; }
 

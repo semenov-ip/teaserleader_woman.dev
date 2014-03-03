@@ -431,6 +431,8 @@ $config['error_message'] = array(
 
   "success_sand" => array( "text" => "Новый пароль отправлен!", "class" => "alert-success" ), 
 
+  "empty_stat_login" => array( "text" => "Не указанны данные для доступа к независимой статистике сайта!", "class" => "alert-warning" ),
+
   "show_referer" => "Неопределённая ссылка",
   "emprt_remote_port" => "Удалённый порт не обнаружен",
   "emprt_user_agen" => "Проблемы работы браузера",
