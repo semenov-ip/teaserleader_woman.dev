@@ -48,6 +48,15 @@
               </div>
 
               <div class="form-group">
+                <label class="control-label col-lg-4">Укажите тематики, которые вы разрешаете к показу на сайте.</label>
+                <div class="col-lg-6 margin-top-14">
+                  <select name="section_id" class="form-control">
+                    <?php echo $selectSectionIdChange; ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label class="control-label col-lg-4">Данные для доступа к независимой статистике сайта</label>
                 <div class="col-lg-6">
                   <textarea class="form-control" rows="3" name="stat_login"><?php echo is_null($siteDataObj->stat_login) ? "Адрес:\nЛогин:\nПароль:" : $siteDataObj->stat_login ?></textarea>

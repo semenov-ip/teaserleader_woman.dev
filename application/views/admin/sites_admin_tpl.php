@@ -53,7 +53,7 @@
                   <th width="15%">URL</th>
                   <th width="25%" class="text-align-center">Пользователь</th>
                   <th width="30%">Доступ к статистике</th>
-                  <th width="15%" class="text-align-center" >Статус</th>
+                  <th width="15%" class="text-align-center">Статус</th>
                   <th width="15%" class="text-align-center"></th>
                 </tr>
               </thead>

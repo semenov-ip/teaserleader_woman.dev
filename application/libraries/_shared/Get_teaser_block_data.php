@@ -19,7 +19,7 @@ class Get_teaser_block_data {
 
     $this->lastLoadSites($blockDataObj->site_id);
 
-    $campaignDataObj = $this->getCampaignDataObj($geoLocation);
+    $campaignDataObj = $this->getCampaignDataObj($geoLocation, $siteDataObj);
 
     $this->checkUserAndCampaignDataObj($campaignDataObj);
 
@@ -72,7 +72,7 @@ class Get_teaser_block_data {
     $dataWhereArr['user_id'] = $userId;
     $dataWhereArr['status'] = 1;
 
-    return $this->checkEmptySiteData($this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'ban_teaser', 'sites'));
+    return $this->checkEmptySiteData($this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'ban_teaser, section_id', 'sites'));
   }
 
   function checkEmptySiteData($siteData){
@@ -88,8 +88,10 @@ class Get_teaser_block_data {
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'sites');
   }
 
-  function getCampaignDataObj($geoLocation){
-    return $this->ci->show_query->select_all_from_campaign_banlike($geoLocation, $this->referer, 'campaign_id', 'campaigns');
+  function getCampaignDataObj($geoLocation, $siteDataObj){
+    $dataWhereArr['section_id'] = $siteDataObj->section_id;
+
+    return $this->ci->show_query->select_all_from_campaign_banlike($dataWhereArr, $geoLocation, $this->referer, 'campaign_id', 'campaigns');
   }
 
   function checkUserAndCampaignDataObj($campaignDataObj){

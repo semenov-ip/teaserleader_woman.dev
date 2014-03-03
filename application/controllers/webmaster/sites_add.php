@@ -15,6 +15,7 @@ class Sites_add extends CI_Controller{
   function index(){
     $this->load->helper('trim_stripslashes');
     $this->load->helper('select_define_builder');
+    $this->load->helper('data_builder/foreach_bigarray_return_key_value');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->library('webmaster/data_builder_site_html_elements');
@@ -36,7 +37,7 @@ class Sites_add extends CI_Controller{
   }
 
   function getSiteKey(){
-    return $this->select_models->show_columns('sites');
+    return $this->select_models->show_columns_return_default('sites');
   }
 
   function getPostDataSiteAdd(){

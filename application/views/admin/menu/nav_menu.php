@@ -8,8 +8,9 @@
     <li class="<?php echo $active_class === "users_admin" ? "active" : "" ?>"><a href="/admin/users_admin/">Пользователи</a></li>
     <li class="<?php echo $active_class === "tickets_admin" ? "active" : "" ?>"><a href="/admin/tickets_admin/">Тикеты <?php echo $ticketCount ?></a></li>
     <li class="<?php echo $active_class === "news_admin" ? "active" : "" ?>"><a href="/admin/news_admin/">Новости</a></li>
-    <li class="<?php echo $active_class === "balance_payout_admin" ? "active" : "" ?>"><a href="/admin/balance_payout_admin/">Заявки</a></li>
     <li class="<?php echo $active_class === "sending_mail_admin" ? "active" : "" ?>"><a href="/admin/sending_mail_admin/">Рассылка</a></li>
+    <li class="<?php echo $active_class === "balance_payout_admin" ? "active" : "" ?>"><a href="/admin/balance_payout_admin/">Заявки</a></li>
+    <li class="<?php echo $active_class === "section_admin" ? "active" : "" ?>"><a href="/admin/section_admin/">Тематики</a></li>
   </ul>
 </li>
 

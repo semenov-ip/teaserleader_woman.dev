@@ -35,7 +35,7 @@
       return false;
     }
 
-    function select_all_from_campaign_banlike($geoLocation, $referer, $selectcolumn, $dbTableName){
+    function select_all_from_campaign_banlike($dataWhereArr, $geoLocation, $referer, $selectcolumn, $dbTableName){
 
       $this->db->select($selectcolumn);
 
@@ -50,6 +50,8 @@
       $this->db->not_like('ban_site', $referer);
 
       $this->db->where('status', 1);
+
+      $this->db->where($dataWhereArr);
 
       $query = $this->db->get($this->prefixes.$dbTableName);
 

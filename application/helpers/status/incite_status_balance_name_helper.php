@@ -11,4 +11,13 @@ if(!function_exists('incite_status_balance_name')){
 
     return $statusName[$statusNum];
   }
+
+  function status_balance_name_key_value(){
+    return array( 
+      -1 => "Все",
+      0 => "В обработке",
+      1 => "Завершена",
+      2 => "Отклонен"
+    );
+  }
 }
