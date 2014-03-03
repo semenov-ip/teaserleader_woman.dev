@@ -51,7 +51,7 @@ class Sites_admin extends CI_Controller{
 
     foreach ($statLoginArray as $key => $statData) {
 
-      $statWord = preg_split('/(\w{25})/', $statData, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
+      $statWord = preg_split('/(.{40})/', $statData, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
 
       $statLoginArray[$key] = implode("<br />", $statWord);
     }

@@ -15,6 +15,7 @@ class Users_admin extends CI_Controller{
   function index(){
     $this->load->helper('status/incite_status_user_name');
     $this->load->helper('date2str');
+    $this->load->library('admin/search_id_mail');
     $this->load->model('select_models');
 
     $data = template_builder('admin', 'users_admin_tpl', $this->who);
@@ -25,7 +26,9 @@ class Users_admin extends CI_Controller{
   }
 
   function getUserAllData(){
-    return $this->setDataProcessing($this->select_models->select_all_row_selectcilumn_orderby('user_id, email, name, count_money, dataadd, status', 'user_id', 'desc', 'users'));
+    $dataWhereArr = ( !empty($_POST['search']) ) ? $this->search_id_mail->getSearchData($_POST['search']) : array();
+
+    return $this->setDataProcessing($this->select_models->select_all_row_whereforeach_selectcilumn_orderby($dataWhereArr, 'user_id, email, name, count_money, dataadd, status', 'user_id', 'desc', 'users'));
   }
 
   function setDataProcessing($userDataObj){

@@ -20,6 +20,6 @@
 
   if(!function_exists('byAdminRoles')){
     function byAdminRoles(){
-      return array( "by" => "by-other", "img" => "user_admin.php", "align_name" => "pull-right", "align_text" => "pull-right");
+      return array( "by" => "by-other", "img" => "user_admin.png", "align_name" => "pull-right", "align_text" => "pull-right");
     }
   }

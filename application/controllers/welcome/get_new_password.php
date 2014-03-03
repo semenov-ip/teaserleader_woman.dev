@@ -51,9 +51,9 @@ class Get_new_password extends CI_Controller {
   }
 
   function saveDataNewPassword($post){
-    $this->password = md5($post['email'].rand(1000000, 9999999));
+    $this->password = rand(1000000, 9999999);
 
-    $dataUpdateArr['password'] = $this->password;
+    $dataUpdateArr['password'] = md5($post['email'].$this->password);
 
     $dataUpdateArr['dataadd'] = $this->config->item('datetime');
 

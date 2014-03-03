@@ -9,7 +9,8 @@ class Send_mail {
 
   function sendMailMessage($userEmail, $subject, $text, $from){
 
-    $headers = "Content-type: text/html; charset=utf-8 \r\n"."From: =".'?UTF-8?B?'.base64_encode($from).'?='." <".$from."> \r\n";
+    $headers = "Content-type: text/html; charset=utf-8 \r\n"
+    ."From: =".'?UTF-8?B?'.base64_encode($from).'?='." <".$from."> \r\n";
 
     $status = mail($userEmail, $subject, $text, $headers);
   }

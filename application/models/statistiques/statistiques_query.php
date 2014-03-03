@@ -39,6 +39,8 @@
 
         $this->db->where($dataWhereArr);
 
+        $this->db->order_by('dataadd', 'desc');
+
         $this->db->select($selectcolumn);
 
         $query = $this->db->get($this->prefixes.$dbTableName);

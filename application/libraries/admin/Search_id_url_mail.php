@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Search_id_url_mail {
-  public $ci, $searchDataWhereArray, $commonStatistiqArr, $searchElementUrlArray, $searchElementIdArray, $searchElementEmailArray;
+  public $ci, $searchDataWhereArray, $searchElementUrlArray, $searchElementIdArray, $searchElementEmailArray;
 
   function __construct(){
     $this->ci =& get_instance();

@@ -429,7 +429,7 @@ $config['error_message'] = array(
 
   "non_existent_email" => array( "text" => "Вы указали не существующий e-mail!", "class" => "alert-warning" ), 
 
-  "success_sand" => array( "text" => "Новый пароль отправлен!", "class" => "alert-success" ), 
+  "success_sand" => array( "text" => "Новый пароль отправлен Вам на почту!", "class" => "alert-success" ), 
 
   "empty_stat_login" => array( "text" => "Не указанны данные для доступа к независимой статистике сайта!", "class" => "alert-warning" ),
 
