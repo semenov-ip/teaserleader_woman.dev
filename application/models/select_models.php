@@ -94,6 +94,31 @@
       return false;
     }
 
+    function select_limit_row_where_column_selectcolumn($dataWhereArr, $selectcolumn, $limit, $dbTableName){
+      if(is_array($dataWhereArr)){
+
+        $this->db->select($selectcolumn);
+
+        $this->db->limit($limit);
+
+        $this->db->where($dataWhereArr);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() == 1){
+
+          foreach ($query->result() as $row) {
+
+            return $row;
+          }
+
+        }
+
+      }
+
+      return false;
+    }
+
     function select_all_row_where_column($dataWhereArr, $dbTableName){
 
       if(is_array($dataWhereArr)){

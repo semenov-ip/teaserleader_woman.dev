@@ -108,7 +108,7 @@ class Logsave_count_statistiques {
   }
 
   function getDataStatisticsObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'view', $dbTableName);
+    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, 'view', 1, $dbTableName);
   }
 
   function saveCountStatistics($addDataArr, $dbTableName){
