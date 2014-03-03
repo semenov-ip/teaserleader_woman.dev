@@ -55,19 +55,10 @@ class Tickets_edit_admin extends CI_Controller {
 
       }
 
-      $this->statusAdminUpdate();
-
       return $ticketDataObj; 
     }
 
     redirect( "/_shared/user_distributor/", 'location'); 
-  }
-
-  function statusAdminUpdate(){
-    $dataUpdateArr['admin_status'] = 1;
-    $dataWhereArr['ticket_id'] = $this->ticketId;
-
-    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
 
   function extractKeyErrorMessageInitializationPostQuery(){
@@ -84,6 +75,8 @@ class Tickets_edit_admin extends CI_Controller {
       if($this->updateTicketData($_POST)){
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
+
+        $this->statusAdminUpdate();
 
         $this->statusUpdate();
 
@@ -109,6 +102,13 @@ class Tickets_edit_admin extends CI_Controller {
     $userIdTicketsArr = $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'user_id', 'tickets');
 
     return $userIdTicketsArr->user_id;
+  }
+
+  function statusAdminUpdate(){
+    $dataUpdateArr['admin_status'] = 1;
+    $dataWhereArr['ticket_id'] = $this->ticketId;
+
+    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
 
   function statusUpdate(){
