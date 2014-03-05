@@ -58,11 +58,9 @@ class News_admin extends CI_Controller{
   function sendMailNewsData($sendDataArr){
     $userDataObj = $this->getUserDataObj();
 
-    $from = 'no-reply@'.$this->config->item('url');
-
     foreach ($userDataObj as $key => $userEmail) {
 
-      $this->send_mail->sendMailMessage($userEmail->email, $sendDataArr['title'], $sendDataArr['text'], $from );
+      $this->send_mail->sendMailMessage($userEmail->email, $sendDataArr['title'], $sendDataArr['text'] );
 
       $this->update_models->update_set_one_where_column_credit(1, 'status_news', array('user_id' => $userEmail->user_id), 'users');
     }

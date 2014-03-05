@@ -52,11 +52,9 @@ class Sending_mail_admin extends CI_Controller{
   function sendingMailData($sendDataArr){
     $userDataObj = $this->getUserDataObj();
 
-    $from = 'no-reply@'.$this->config->item('url');
-
     foreach ($userDataObj as $key => $userEmail) {
 
-      $this->send_mail->sendMailMessage($userEmail->email, $sendDataArr['title'], $sendDataArr['text'], $from );
+      $this->send_mail->sendMailMessage($userEmail->email, $sendDataArr['title'], $sendDataArr['text']);
 
     }
 

@@ -64,7 +64,7 @@ class Get_new_password extends CI_Controller {
 
   function sendDataNewPassword($post){
 
-    $this->send_mail->sendMailMessage($post['email'], 'Ваш новый пароль', 'Ваш новый пароль: '.$this->password, 'no-reply@'.$this->config->item('url'));
+    $this->send_mail->sendMailMessage($post['email'], 'Ваш новый пароль', 'Ваш новый пароль: '.$this->password);
 
     $this->session->set_flashdata('successSaveUpdateData', 'success_sand');
 

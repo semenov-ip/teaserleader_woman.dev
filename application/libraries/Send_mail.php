@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
+﻿<?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Send_mail {
   public $ci;
@@ -7,11 +7,13 @@ class Send_mail {
     $this->ci =& get_instance();
   }
 
-  function sendMailMessage($userEmail, $subject, $text, $from){
+  function sendMailMessage($userEmail, $subject, $text){
 
-    $headers = "Content-type: text/html; charset=utf-8 \r\n"
-    ."From: =".'?UTF-8?B?'.base64_encode($from).'?='." <".$from."> \r\n";
+    $subject = '=?UTF-8?B?'.trim(@imap_binary($subject)).'?=';
 
-    $status = mail($userEmail, $subject, $text, $headers);
+    $headers = "Content-type: text/html; charset=UTF-8 \r\n"
+        ."From: =".'?UTF-8?B?'.base64_encode('Ladyads').'?='." <support@ladyads.ru> \r\n";
+
+    return mail($userEmail, $subject, $text, $headers);
   }
 }

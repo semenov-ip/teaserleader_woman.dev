@@ -67,7 +67,7 @@ class Sites_block_admin extends CI_Controller {
 
         $this->updateDataSiteStatus();
 
-        $this->send_mail->sendMailMessage($this->siteDataObj->email, $_POST['title'], $_POST['text'], 'no-reply@'.$this->config->item('url'));
+        $this->send_mail->sendMailMessage($this->siteDataObj->email, $_POST['title'], $_POST['text']);
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
