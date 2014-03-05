@@ -544,6 +544,28 @@
       return false;
     }
 
+     function select_from_where_in($whereincolumn, $dataWhereArr, $dbTableName){
+
+      if( !empty($dataWhereArr) ){
+        $this->db->where_in($whereincolumn, $dataWhereArr);
+      }
+
+      $query = $this->db->get($this->prefixes.$dbTableName);
+
+      if($query->num_rows() > 0){
+
+        foreach ($query->result() as $row) {
+
+          $dataQuery[] = $row;
+
+        }
+
+        return $dataQuery;
+      }
+
+      return false;
+    }
+
     function show_columns($dbTableName){
 
       $fields = $this->db->list_fields($this->prefixes.$dbTableName);
