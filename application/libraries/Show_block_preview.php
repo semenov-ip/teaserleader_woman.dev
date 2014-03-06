@@ -42,10 +42,10 @@ class Show_block_preview {
     $teaserText = $this->cleanTextTeaser($teaser->text);
 
     $teaserBlockTableTd = '<td id="teaser_block_td'.$id.'">';
-    $teaserBlockTableTd .= '<a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">';
+    $teaserBlockTableTd .= '<a rel="nofollow" href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">';
     $teaserBlockTableTd .= '<img id="teaser_block_img'.$id.'" src="http://'.$_SERVER['SERVER_NAME'].$teaser->image.'"></a>';
     $teaserBlockTableTd .= ($blockDataObj->position == 'top' ? '<br/>' : '');
-    $teaserBlockTableTd .= '<a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">'.$teaserText.'</a>';
+    $teaserBlockTableTd .= '<a rel="nofollow" href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">'.$teaserText.'</a>';
     $teaserBlockTableTd .= ($blockDataObj->second_link) ? '<br><br><b><a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">читать далее &raquo;</a></b>' : "";
     $teaserBlockTableTd .= '</td>';
 

@@ -5,7 +5,6 @@ class Registration extends CI_Controller{
   private $referral;
 
   function __construct(){
-    
     parent::__construct();
 
     $this->referral = 0;

@@ -14,6 +14,7 @@ class Sites_admin extends CI_Controller{
 
   function index(){
     $this->load->helper('status/incite_status_site_teaser_name');
+    $this->load->helper('wordwrap2');
     $this->load->library('admin/search_id_url_mail');
     $this->load->model('select_models');
 
@@ -50,10 +51,7 @@ class Sites_admin extends CI_Controller{
     $statLoginArray = explode("<br />", $statLogin);
 
     foreach ($statLoginArray as $key => $statData) {
-
-      $statWord = preg_split('/(.{35})/', $statData, -1, PREG_SPLIT_DELIM_CAPTURE|PREG_SPLIT_NO_EMPTY);
-
-      $statLoginArray[$key] = implode("<br />", $statWord);
+      $statLoginArray[$key] = wordwrap2($statData, 25);
     }
 
 

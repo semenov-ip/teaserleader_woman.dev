@@ -127,7 +127,7 @@ class Get_teaser_block_data {
       $oneTeaserDataObj->hash = md5($oneTeaserDataObj->teaser_id.time().mt_rand());
 
       $oneTeaserDataObj->url = "http://".$_SERVER['SERVER_NAME']."/_shared/click/index/".$oneTeaserDataObj->hash."/";
-      
+
       $teaserDataObjNew[] = $oneTeaserDataObj;
     }
 
