@@ -74,9 +74,9 @@
                     <td class="text-align-center">
                       <div class="btn-group">
 
-                        <button title="Принять" class="btn btn-default btn-xs" onclick="statusModerateBlock('<?php echo $currentSiteDataObj->site_id; ?>', 'site_id', '1', 'sites')"><i class='icon-ok'></i> </button>
+                        <a title="Принять" href="/admin/sites_take_block_admin/index/<?php echo $currentSiteDataObj->site_id; ?>/1/" class="btn btn-default btn-xs"><i class="icon-ok"></i></a>
 
-                        <a title="Отклонить" href="/admin/sites_block_admin/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-minus-sign"></i></a>
+                        <a title="Отклонить" href="/admin/sites_take_block_admin/index/<?php echo $currentSiteDataObj->site_id; ?>/3/" class="btn btn-default btn-xs"><i class="icon-minus-sign"></i></a>
 
                         <a title="Редактировать цену" href="/admin/sites_edit_rates/index/<?php echo $currentSiteDataObj->site_id; ?>/" class="btn btn-default btn-xs"><i class="icon-pencil"></i> </a>
 

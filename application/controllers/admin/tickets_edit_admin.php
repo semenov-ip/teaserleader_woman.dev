@@ -2,7 +2,7 @@
 
 class Tickets_edit_admin extends CI_Controller {
 
-  private $who, $ticketId;
+  private $who, $ticketId, $userAuthorEmail;
 
   function __construct(){
 
@@ -15,12 +15,13 @@ class Tickets_edit_admin extends CI_Controller {
   function index($ticketId){
     $this->load->helper('date2str');
     $this->load->helper('tickets_function');
+    $this->load->library('send_mail');
+    $this->load->library('/_shared/validation_data_ticket_edit');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->model('update_models');
-    $this->load->library('/_shared/validation_data_ticket_edit');
 
-    $this->getTickedId($ticketId);
+    $this->getTickedId($ticketId); $this->getUserAuthorEmail();
 
     $data = template_builder('admin','ticked_edit_admin_tpl',$this->who, 'tickets_admin');
 
@@ -33,6 +34,15 @@ class Tickets_edit_admin extends CI_Controller {
 
   function getTickedId($ticketId){
     $this->ticketId = $ticketId;
+  }
+
+  function getUserAuthorEmail(){
+    if( isset($_POST['user_author_email']) ){
+
+      $this->userAuthorEmail = $_POST['user_author_email'];
+
+      unset($_POST['user_author_email']);
+    }
   }
 
   function getTicketData(){
@@ -52,6 +62,10 @@ class Tickets_edit_admin extends CI_Controller {
         $ticketDataObj[$key]->user_call = ($currentTicketDataObj->author_name !== "Администратор") ? linkUserCallOn($currentTicketDataObj->user_id, $currentTicketDataObj->author_name) : linkUserCallOff($currentTicketDataObj->author_name);
 
         $ticketDataObj[$key]->user_roles = ($currentTicketDataObj->author_name !== "Администратор") ? byUserRoles() : byAdminRoles();
+
+        if($currentTicketDataObj->author_name !== "Администратор"){
+          $ticketDataObj[0]->user_author_email = $currentTicketDataObj->author_name;
+        }
 
       }
 
@@ -79,6 +93,8 @@ class Tickets_edit_admin extends CI_Controller {
         $this->statusAdminUpdate();
 
         $this->statusUpdate();
+
+        $this->send_mail->sendMailMessage($this->userAuthorEmail, $_POST['title'], $_POST['text']);
 
         redirect( "/admin/tickets_edit_admin/index/$this->ticketId/", 'location');
       }

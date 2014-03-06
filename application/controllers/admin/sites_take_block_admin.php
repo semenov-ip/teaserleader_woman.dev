@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Sites_block_admin extends CI_Controller {
+class Sites_take_block_admin extends CI_Controller {
 
-  private $who, $siteId, $siteDataObj;
+  private $who, $siteId, $status, $siteDataObj;
 
   function __construct(){
 
@@ -12,7 +12,7 @@ class Sites_block_admin extends CI_Controller {
     $this->who = $this->check_users_access->checkUsers();
   }
 
-  function index($siteId){
+  function index($siteId, $status){
     $this->load->helper('get_clean_data_form');
     $this->load->library('send_mail');
     $this->load->library('/admin/validation_data_sites_block');
@@ -20,9 +20,9 @@ class Sites_block_admin extends CI_Controller {
     $this->load->model('insert_models');
     $this->load->model('update_models');
 
-    $this->getSiteId($siteId);
+    $this->getSiteId($siteId); $this->getStatusId($status);
 
-    $data = template_builder('admin','sites_block_admin_tpl', $this->who, 'sites_admin');
+    $data = template_builder('admin','sites_take_block_admin_tpl', $this->who, 'sites_admin');
 
     $data['siteDataObj'] = $this->getSiteData();
 
@@ -35,6 +35,10 @@ class Sites_block_admin extends CI_Controller {
     $this->siteId = $siteId;
   }
 
+  function getStatusId($status){
+    $this->status = $status;
+  }
+
   function getSiteData(){
     $dataWhereArr['site_id'] = $this->siteId;
 
@@ -43,6 +47,10 @@ class Sites_block_admin extends CI_Controller {
 
   function checkDataImplementCurrentSite($siteDataObj){
     if(is_object($siteDataObj)){
+
+      $siteDataObj->title = ($this->status == 1) ? "Приняте" : "Отклонение";
+
+      $siteDataObj->text = ($this->status == 1) ? "принят." : "отклонен по причине";
 
       $this->siteDataObj = $siteDataObj;
 

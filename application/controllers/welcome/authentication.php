@@ -29,7 +29,7 @@ class Authentication extends CI_Controller{
     if(!empty($_POST)){
 
       if( !execute_trim_empty_form($_POST) ) return "empty_data";
-      
+
       if( !is_object($this->check_user_mail_password($_POST)) ) return "email_password_incorrect";
 
       $this->updateLastDataAuthentication();
