@@ -72,9 +72,19 @@
 
       $this->db->select($selectcolumn);
 
+      if(!empty($banTeaser)){
+        $banTeaserDataArray = (strpos($banTeaser, ',')  === false) ? array($banTeaser) : explode( ',', $banTeaser );
+        
+        $banTeaserDataArray = trim_stripslashes($banTeaserDataArray);
+      }
+
       foreach ($campaignDataObj as $key => $dataWhereArr) {
+
         $this->db->or_where($dataWhereArr);
+
         $this->db->where('status', 1);
+
+        if( isset($banTeaserDataArray) ){ $this->db->where_not_in('teaser_id', $banTeaserDataArray); }
       }
 
       $this->db->limit($limit);

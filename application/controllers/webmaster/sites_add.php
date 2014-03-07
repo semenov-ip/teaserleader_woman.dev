@@ -12,9 +12,9 @@ class Sites_add extends CI_Controller{
     $this->who = $this->check_users_access->checkUsers();
   }
 
-  function index(){
-    $this->load->helper('trim_stripslashes');
+  function index()
     $this->load->helper('select_define_builder');
+    $this->load->helper('get_ban_site_convert_db');
     $this->load->helper('data_builder/foreach_bigarray_return_key_value');
     $this->load->model('select_models');
     $this->load->model('insert_models');

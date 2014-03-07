@@ -11,6 +11,7 @@ class Show extends CI_Controller{
     $this->load->helper('referer_url_extract');
     $this->load->helper('country_extratc_column_name_view');
     $this->load->helper('extract_key_this_object');
+    $this->load->helper('trim_stripslashes');
     $this->load->library('/_shared/validation_data_show');
     $this->load->library('_shared/ip_geo_base');
     $this->load->library('_shared/get_teaser_block_data');
