@@ -48,7 +48,7 @@ class Sites_take_block_admin extends CI_Controller {
   function checkDataImplementCurrentSite($siteDataObj){
     if(is_object($siteDataObj)){
 
-      $siteDataObj->title = ($this->status == 1) ? "Приняте" : "Отклонение";
+      $siteDataObj->title = ($this->status == 1) ? "Принятие" : "Отклонение";
 
       $siteDataObj->text = ($this->status == 1) ? "принят." : "отклонен по причине";
 
@@ -79,7 +79,7 @@ class Sites_take_block_admin extends CI_Controller {
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        redirect( "admin/sites_block_admin/index/$this->siteId/", 'location');
+        redirect( "/admin/sites_admin/", 'location');
       }
 
     }
@@ -97,7 +97,7 @@ class Sites_take_block_admin extends CI_Controller {
   }
 
   function updateDataSiteStatus(){
-    $dataUpdateArr['status'] = 3;
+    $dataUpdateArr['status'] = $this->status;
     $dataWhereArr['site_id'] = $this->siteId;
 
     return $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'sites');

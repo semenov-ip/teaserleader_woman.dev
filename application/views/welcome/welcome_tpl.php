@@ -10,7 +10,7 @@
         
       <div class="links">
         <a href="/welcome/authentication/"><span><span>Войти</span></span></a>
-        <a class="active" href="/welcome/registration/"><span><span>Зарегестрироваться</span></span></a>
+        <a class="active" href="/welcome/registration/"><span><span>Зарегистрироваться</span></span></a>
       </div>
         
       <div class="text_block">
@@ -23,7 +23,7 @@
     
     </div>
     
-    <div id="text_block1">Мы являемся прямым рекламодателем, что позволяет предложить вам наивысшую цену,<br />за счет реализации собственных товаров, инфопродуктов ориентированных на женскую аудиторию.</div>
+    <div id="text_block1">Мы выкупаем трафик напрямую без комиссии, гарантируя вам максимальную ставку за клик!<br />Реализуем товары, инфопродукты повышенного спроса ориентированные на женскую аудиторию.</div>
     
     <div id="blocks">
         

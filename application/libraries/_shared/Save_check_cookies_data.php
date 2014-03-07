@@ -7,16 +7,10 @@
       $this->ci =& get_instance();
     }
 
-    function checkCookies($url){
-      $this->getUrl($url);
-
+    function checkCookies(){
       if( !isset($_COOKIE['ladyads_teaser']) ){ return $this->saveCookies(); }
 
       return false;
-    }
-
-    function getUrl($url){
-      $this->url = $url;
     }
 
     function saveCookies(){

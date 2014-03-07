@@ -23,7 +23,7 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-lg-4">Причина отклонение сайта</label>
+                <label class="control-label col-lg-4">Причина <?php echo mb_strtolower($siteDataObj->title); ?> сайта</label>
                 <div class="col-lg-6">
                   <textarea name="text" class="form-control" rows="3">Ваш сайт <?php echo $siteDataObj->url." ".$siteDataObj->text; ?></textarea>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="col-sm-offset-4 col-lg-6">
                   <input type="hidden" name="author_name" value="Администратор">
 
-                  <input type="hidden" name="title" value="Отклонение сайта <?php echo $siteDataObj->url; ?>">
+                  <input type="hidden" name="title" value="<?php echo $siteDataObj->title." сайта ".$siteDataObj->url; ?>">
 
                   <button type="submit" class="btn btn-default">Отправить</button>
                   <a href="/admin/sites_admin/" class="btn btn-default">Отменить</a>

@@ -15,13 +15,14 @@ class Tickets_edit_admin extends CI_Controller {
   function index($ticketId){
     $this->load->helper('date2str');
     $this->load->helper('tickets_function');
+    $this->load->helper('extract_key_this_object');
     $this->load->library('send_mail');
     $this->load->library('/_shared/validation_data_ticket_edit');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->model('update_models');
 
-    $this->getTickedId($ticketId); $this->getUserAuthorEmail();
+    $this->getTickedId($ticketId); $this->getPostUserAuthorEmail();
 
     $data = template_builder('admin','ticked_edit_admin_tpl',$this->who, 'tickets_admin');
 
@@ -36,7 +37,7 @@ class Tickets_edit_admin extends CI_Controller {
     $this->ticketId = $ticketId;
   }
 
-  function getUserAuthorEmail(){
+  function getPostUserAuthorEmail(){
     if( isset($_POST['user_author_email']) ){
 
       $this->userAuthorEmail = $_POST['user_author_email'];
@@ -63,16 +64,18 @@ class Tickets_edit_admin extends CI_Controller {
 
         $ticketDataObj[$key]->user_roles = ($currentTicketDataObj->author_name !== "Администратор") ? byUserRoles() : byAdminRoles();
 
-        if($currentTicketDataObj->author_name !== "Администратор"){
-          $ticketDataObj[0]->user_author_email = $currentTicketDataObj->author_name;
-        }
-
       }
+
+      $ticketDataObj[0]->user_author_email = $this->getUserAuthorEmail($ticketDataObj[0]->user_id);
 
       return $ticketDataObj; 
     }
 
     redirect( "/_shared/user_distributor/", 'location'); 
+  }
+
+  function getUserAuthorEmail($userId){
+    return extract_key_this_object($this->select_models->select_one_row_where_column_selectcolumn(array('user_id' => $userId),'email', 'users'), 'email');
   }
 
   function extractKeyErrorMessageInitializationPostQuery(){

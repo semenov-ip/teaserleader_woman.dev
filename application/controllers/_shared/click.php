@@ -22,7 +22,7 @@ class Click extends CI_Controller{
 
     $clickData = $this->get_click_data->clickData($hash);
 
-    if($this->save_check_cookies_data->checkCookies($clickData['teaserDataObj']->url)){
+    if($this->save_check_cookies_data->checkCookies()){
 
       $priceReferral = $this->click_balance_update_debit_credit->balanceUpdate($clickData);
 

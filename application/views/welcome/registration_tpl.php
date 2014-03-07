@@ -8,7 +8,7 @@
       <a class="logo" href="/"></a>
 
       <div class="links">
-        <a class="active" href="/welcome/registration/"><span><span>Зарегестрироваться</span></span></a>
+        <a class="active" href="/welcome/registration/"><span><span>Зарегистрироваться</span></span></a>
 
         <a href="/welcome/authentication/"><span><span>Войти</span></span></a>
       </div>

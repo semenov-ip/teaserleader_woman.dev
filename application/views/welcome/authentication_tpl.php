@@ -18,7 +18,7 @@
         
         <div class="links">
           
-          <a href="/welcome/registration/"><span><span>Зарегестрироваться</span></span></a>
+          <a href="/welcome/registration/"><span><span>Зарегистрироваться</span></span></a>
           
           <a class="active" href="/welcome/authentication/"><span><span>Войти</span></span></a>
         </div>

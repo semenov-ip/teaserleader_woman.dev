@@ -7,7 +7,7 @@
 
     <a class="logo" href="/"></a>
 
-    <div class="forgot">ВОСТАНОВЛЕНИЕ ПАРОЛЯ</div>
+    <div class="forgot">ВОССТАНОВЛЕНИЕ ПАРОЛЯ</div>
 
     <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
