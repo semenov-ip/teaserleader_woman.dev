@@ -74,6 +74,7 @@
 
                         <button title='Заблокировать' class='btn btn-default btn-xs' onclick="statusModerateBlock('<?php echo $currentUserDataObj->user_id; ?>', 'user_id', '3', 'users')"><i class='icon-minus-sign'></i> </button>
 
+                        <a title="Написать в тикет" href="/admin/tickets_add_admin/index/<?php echo $currentUserDataObj->user_id; ?>/" class="btn btn-default btn-xs"><i class="icon-envelope-alt"></i> </a>
                       </div>
                     </td>
                   </tr>

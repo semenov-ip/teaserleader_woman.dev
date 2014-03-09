@@ -422,6 +422,7 @@ BODY.main {
 }
 .form .rules .txt {
   margin-left: 30px;
+  margin-top: -4px;
   font-size: 12px;
 }
 .form .forgot {
@@ -442,4 +443,35 @@ BODY.main {
 }
 .alert-warning{
   color: red;
+}
+
+.txt a{
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.regulations{
+  text-align: center;
+  margin-bottom: 4px;
+  margin-top: 30px;
+}
+.float-l{
+  float: left;
+}
+.float-r{
+  float: right;
+}
+
+.display-ib{
+  display: inline-block;
+}
+
+.regulations-r{
+  width: 90%;
+  text-align: justify;
+}
+
+.regulations-l{
+  width: 5%;
+  text-align: justify;
 }

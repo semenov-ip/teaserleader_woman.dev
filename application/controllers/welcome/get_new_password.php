@@ -8,10 +8,10 @@ class Get_new_password extends CI_Controller {
 
     parent::__construct();
 
+    check_users_authentication();
   }
 
   public function index() {
-    $this->load->helper('header_src_css_js');
     $this->load->library('welcome/validation_data_new_password');
     $this->load->library('send_mail');
     $this->load->model('select_models');

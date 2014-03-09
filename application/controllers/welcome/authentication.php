@@ -9,12 +9,13 @@ class Authentication extends CI_Controller{
     parent::__construct();
 
     $this->userIdHash = 0;
+
+    $this->load->helper('check_users_authentication');
+    check_users_authentication();
   }
   
   function index(){
     $this->load->helper('execute_trim_empty_form');
-    $this->load->helper('header_src_css_js');
-    $this->load->helper('extract_key_this_array');
     $this->load->model('select_models');
     $this->load->model('update_models');
 

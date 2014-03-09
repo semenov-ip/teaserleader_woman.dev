@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Regulations extends CI_Controller {
 
   function __construct(){
 
@@ -12,6 +12,6 @@ class Welcome extends CI_Controller {
   public function index() {
     $data['header'] = header_src_css_js('welcome', false);
 
-    $this->load->view('/welcome/welcome_tpl.php', $data);
+    $this->load->view('/welcome/regulations_tpl.php', $data);
   }
 }

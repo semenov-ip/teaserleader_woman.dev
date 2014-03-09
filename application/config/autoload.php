@@ -55,7 +55,8 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
   'database',
   'session',
-  'pagination'
+  'pagination',
+  'check_users_access'
 );
 
 
@@ -74,7 +75,8 @@ $autoload['helper'] = array(
   'template_builder',
   'extract_key_this_array',
   'extract_key_this_object',
-  'current_dir_extract'
+  'current_dir_extract',
+  'check_users_authentication'
 );
 
 

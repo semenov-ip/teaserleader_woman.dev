@@ -39,7 +39,7 @@
 
         <div class="rules">
           <div class="checkbox checked"></div>
-          <div class="txt">Регистрируясь в системе вы ознакомллены<br />с правилами работы с системой</div>
+          <div class="txt"><a href="/welcome/regulations/">Регистрируясь в системе вы ознакомллены<br />с правилами работы с системой</a></div>
         </div>
 
         <div class="button_reg">

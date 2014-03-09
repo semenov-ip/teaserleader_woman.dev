@@ -17,7 +17,6 @@ if(!function_exists('trim_stripslashes')){
 
       return $post;
     }
-    
 
     return false;
   }

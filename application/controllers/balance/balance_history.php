@@ -8,7 +8,6 @@ class Balance_history extends CI_Controller{
 
     parent::__construct();
 
-    $this->load->library('check_users_access');
     $this->who = $this->check_users_access->checkUsers();
 
     $this->totalSumm = array('incoming' => 0, 'expenditure' => 0);

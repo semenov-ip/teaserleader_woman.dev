@@ -8,7 +8,6 @@ class Teasers extends CI_Controller{
 
     parent::__construct();
 
-    $this->load->library('check_users_access');
     $this->who = $this->check_users_access->checkUsers();
 
     $this->commonStatistiqArr = array('view' => 0, 'click' => 0, 'ctr' => 0, 'count_money' => 0);

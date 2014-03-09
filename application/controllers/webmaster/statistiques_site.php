@@ -8,7 +8,6 @@ class Statistiques_site extends CI_Controller{
 
     parent::__construct();
 
-    $this->load->library('check_users_access');
     $this->who = $this->check_users_access->checkUsers();
   }
 

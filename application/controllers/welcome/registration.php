@@ -8,6 +8,8 @@ class Registration extends CI_Controller{
     parent::__construct();
 
     $this->referral = 0;
+
+    check_users_authentication();
   }
 
   function index($referral = NULL){
