@@ -41,7 +41,7 @@ class Data_builder_block_html_elements {
 
     $data['style'] = $this->ci->block_style_builder->getStyle($data['blockDataObj']);
 
-    $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml( $data['blockDataObj'], array(50, 51, 52, 53, 54, 55, 56) );
+    $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml( $data['blockDataObj'] );
 
     return $data;
   }
