@@ -11,7 +11,8 @@ class Sites_add extends CI_Controller{
     $this->who = $this->check_users_access->checkUsers();
   }
 
-  function index()
+  function index(){
+    $this->load->helper('trim_stripslashes');
     $this->load->helper('select_define_builder');
     $this->load->helper('get_ban_site_convert_db');
     $this->load->helper('data_builder/foreach_bigarray_return_key_value');
