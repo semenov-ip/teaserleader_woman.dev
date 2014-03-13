@@ -16,7 +16,7 @@
       if( is_array($dataWhereArr) ){
         $this->db->select($selectcolumn);
 
-        $this->db->join($this->prefixes."sections s", 'c.section_id = s.section_id');
+        $this->db->join($this->prefixes."sections sec", 'sit.section_id = sec.section_id');
 
         $this->db->where($dataWhereArr);
 

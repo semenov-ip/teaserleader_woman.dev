@@ -15,7 +15,7 @@ class Get_click_data {
 
       'teaserDataObj' => $this->getTeaserDataObj($logDataObj->teaser_id),
 
-      'price' => $this->getPrice($logDataObj->site_id, $logDataObj->campaign_id, $logDataObj->country),
+      'price' => $this->getPrice($logDataObj->site_id, $logDataObj->country),
 
       'money_stat' => $this->priceStatArr
     );
@@ -43,11 +43,11 @@ class Get_click_data {
     return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'url', 'teasers');
   }
 
-  function getPrice($siteId, $campaignId, $country){
+  function getPrice($siteId, $country){
     $sitePrice = $this->ci->select_models->select_one_row_where_column_selectcolumn(array('site_id' => $siteId), 'price, price_sng', 'sites');
 
     if( $this->checkIndividualSitePrice($sitePrice) ){
-      $sitePrice = $this->ci->ckick_query->select_one_from_where_column_selectcolumn_join(array('c.campaign_id' => $campaignId), 's.price, s.price_sng', 'campaigns c');
+      $sitePrice = $this->ci->ckick_query->select_one_from_where_column_selectcolumn_join( array('sit.site_id' => $siteId), 'sec.price, sec.price_sng', 'sites sit' );
     }
 
     return $this->geoBaseCountry($sitePrice, $country);

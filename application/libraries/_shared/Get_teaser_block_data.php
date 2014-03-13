@@ -97,22 +97,7 @@ class Get_teaser_block_data {
   }
 
   function getTeaserDataObj($campaignDataObj, $sectionId, $limit, $banTeaser){
-    $teaserDataObj = $this->ci->show_query->select_all_from_teaser_banlike_orderby($campaignDataObj, $sectionId, 'last_show', 'asc', $limit, $banTeaser, 'teaser_id, section_id, user_id, campaign_id, image, text, url', 'teasers');
-
-    $teaserNewDataObj = array();
-
-    foreach ( $teaserDataObj as $key => $teaser ){
-
-      $banTeaserDataArray = explode('~', $teaser->section_id);
-
-      if( in_array( $sectionId, $banTeaserDataArray) && count($teaserNewDataObj) < $limit ){ 
-
-        $teaserNewDataObj[] = $teaser;
-
-      }
-    }
-
-    return $teaserNewDataObj;
+    return $this->ci->show_query->select_all_from_teaser_banlike_orderby($campaignDataObj, $sectionId, 'last_show', 'asc', $limit, $banTeaser, 'teaser_id, section_id, user_id, campaign_id, image, text, url', 'teasers');
   }
 
   function checkTeaserData($teaserDataObj){
