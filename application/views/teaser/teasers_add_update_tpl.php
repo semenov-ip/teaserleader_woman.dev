@@ -24,6 +24,7 @@
                 <div class="col-lg-6">
                   <img class="max-width" src="<?php echo $teaserDataObj->image; ?>" />
                   <input type="file" name="image" value="<?php echo $teaserDataObj->image; ?>" />
+                  <input type="hidden" name="image_name" value="<?php echo $teaserDataObj->image; ?>" />
                 </div>
               </div>
 
@@ -42,6 +43,16 @@
 
                   <small class="help-block font-size-85 dsc">Максимум 100 символов. Осталось: <span class="red b" id="text_indicator"><?php echo (100 - strlen(utf8_decode($teaserDataObj->text))); ?></span></small>
 
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-lg-3">Тематика</label>
+                <div class="col-lg-6">
+                  <select name="section_id[]" class="form-control" multiple>
+                    <?php echo $selectChangeSection; ?>
+                  </select>
+                  <small class="help-block font-size-85 dsc">Вы можете указать несколько тематик, удерживая клавишу Ctrl.</small>
                 </div>
               </div>
               

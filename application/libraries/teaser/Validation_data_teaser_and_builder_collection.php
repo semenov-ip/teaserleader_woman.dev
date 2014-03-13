@@ -9,11 +9,9 @@ class Validation_data_teaser_and_builder_collection {
 
   function getCorrectData($campaignId, $booleanImageValidation = true, $image = true){
 
-    if( !execute_trim_empty_form( $_POST, array('image') ) ) return "empty_data";
+    $_POST = setup_array_noisset_data($_POST, array('section_id'));
 
-    $this->urlBuilder();
-
-    if( $this->checkTextSize() ){ return "more_text_size"; }
+    if( !execute_trim_empty_form( $_POST, array('image', 'section_id', 'image_name') ) ) return "empty_data";
 
     if( $booleanImageValidation ){
 
@@ -23,6 +21,12 @@ class Validation_data_teaser_and_builder_collection {
         return $statusImageUpload;
       }
     }
+
+    $this->urlBuilder();
+
+    if( $this->checkTextSize() ){ return "more_text_size"; }
+
+    if( $this->checkEmptySection() ){ return "check_empty_section"; }
 
     return true;
   }
@@ -38,6 +42,12 @@ class Validation_data_teaser_and_builder_collection {
       
       return true;
     }
+
+    return false;
+  }
+
+  function checkEmptySection(){
+    if( empty($_POST['section_id']) ){ return true; }
 
     return false;
   }

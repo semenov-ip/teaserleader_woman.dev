@@ -6,7 +6,7 @@ if(!function_exists('execute_trim_empty_form')){
 
     foreach ($post as $key => $value) {
 
-      $post[$key] = trim($value);
+      if( !in_array($key, $exceptionsKey) ){ $post[$key] = trim($value); }
 
       if( !in_array($key, $exceptionsKey) && empty($post[$key]) ){
 

@@ -28,15 +28,6 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-lg-3">Тематика</label>
-                <div class="col-lg-6">
-                  <select name="section_id" class="form-control">
-                    <?php echo $selectChangeSection; ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
                 <label class="control-label col-lg-3">Исключить показы на сайтах</label>
                 <div class="col-lg-6">
                   <textarea class="form-control" rows="3" name="ban_site" ><?php echo $campaignDataObj->ban_site ?></textarea>
@@ -90,7 +81,7 @@
               <div class="form-group">
                 <label class="control-label col-lg-3">Метка для SubID {tiz_id} - id тизера {source} - id источника</label>
                 <div class="col-lg-6">
-                  <input type="text" name="subid" class="form-control" value="<?php echo $campaignDataObj->subid ?>" placeholder="Название">
+                  <input type="text" name="subid" class="form-control margin-top-14" value="<?php echo $campaignDataObj->subid ?>" placeholder="Название">
                 </div>
               </div>
               

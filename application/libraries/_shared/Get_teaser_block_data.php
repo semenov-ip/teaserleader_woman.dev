@@ -19,11 +19,11 @@ class Get_teaser_block_data {
 
     $this->lastLoadSites($blockDataObj->site_id);
 
-    $campaignDataObj = $this->getCampaignDataObj($geoLocation, $siteDataObj);
+    $campaignDataObj = $this->getCampaignDataObj($geoLocation);
 
     $this->checkUserAndCampaignDataObj($campaignDataObj);
 
-    $teaserDataObj = $this->getTeaserDataObj($campaignDataObj, ($blockDataObj->ver*$blockDataObj->hor), $siteDataObj->ban_teaser);
+    $teaserDataObj = $this->getTeaserDataObj($campaignDataObj, $siteDataObj->section_id, ($blockDataObj->ver*$blockDataObj->hor), $siteDataObj->ban_teaser);
 
     $this->checkTeaserData($teaserDataObj);
 
@@ -88,22 +88,37 @@ class Get_teaser_block_data {
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'sites');
   }
 
-  function getCampaignDataObj($geoLocation, $siteDataObj){
-    $dataWhereArr['section_id'] = $siteDataObj->section_id;
-
-    return $this->ci->show_query->select_all_from_campaign_banlike($dataWhereArr, $geoLocation, $this->referer, 'campaign_id', 'campaigns');
+  function getCampaignDataObj($geoLocation){
+    return $this->ci->show_query->select_all_from_campaign_banlike(array(), $geoLocation, $this->referer, 'campaign_id', 'campaigns');
   }
 
   function checkUserAndCampaignDataObj($campaignDataObj){
     if( !is_array($campaignDataObj) ){ return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_campaign")); }
   }
 
-  function getTeaserDataObj($campaignDataObj, $limit, $banTeaser){
-    return $this->ci->show_query->select_all_from_teaser_banlike_orderby($campaignDataObj, 'last_show', 'asc', $limit, $banTeaser, 'teaser_id, user_id, campaign_id, image, text, url', 'teasers');
+  function getTeaserDataObj($campaignDataObj, $sectionId, $limit, $banTeaser){
+    $teaserDataObj = $this->ci->show_query->select_all_from_teaser_banlike_orderby($campaignDataObj, $sectionId, 'last_show', 'asc', $limit, $banTeaser, 'teaser_id, section_id, user_id, campaign_id, image, text, url', 'teasers');
+
+    $teaserNewDataObj = array();
+
+    foreach ( $teaserDataObj as $key => $teaser ){
+
+      $banTeaserDataArray = explode('~', $teaser->section_id);
+
+      if( in_array( $sectionId, $banTeaserDataArray) && count($teaserNewDataObj) < $limit ){ 
+
+        $teaserNewDataObj[] = $teaser;
+
+      }
+    }
+
+    return $teaserNewDataObj;
   }
 
   function checkTeaserData($teaserDataObj){
-    if( !is_array($teaserDataObj) ){ return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_teaser")); }
+    if( !is_array($teaserDataObj) ){ 
+      return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_teaser")); 
+    }
   }
 
   function increaseTeaserDataEnoughBlock( $teaserDataObj, $countTeaserDataObj ){

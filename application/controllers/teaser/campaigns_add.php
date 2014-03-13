@@ -41,9 +41,7 @@ class Campaigns_add extends CI_Controller{
   }
 
   function setUpDefaultsValue($campaignDataObj){
-    $campaignDataObj = setup_array_empty_data( $campaignDataObj, array('ban_country', 'ban_region', 'ban_hour', 'ban_week_day', 'labels') );
-
-    return $campaignDataObj;
+    return setup_array_empty_data( $campaignDataObj, array('ban_country', 'ban_region', 'ban_hour', 'ban_week_day', 'labels') );
   }
 
   function getPostDataCampaignAdd(){

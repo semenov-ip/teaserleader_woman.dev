@@ -20,4 +20,9 @@ if(!function_exists('convert_data_array_this_db')){
 
     return $generalArr;
   }
+
+
+  function convert_one_data_array($setupTypeStringCurrentArray){
+    return explode("~", $setupTypeStringCurrentArray);
+  }
 }

@@ -35,7 +35,11 @@
 
                   <td class="text-align-center"><a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><img id="teaser_block_img_1" src="<?php echo $currentTeaserDataObj->image; ?>" width="70" height="70"></a></td>
 
-                  <td><?php echo $currentTeaserDataObj->text; ?></td>
+                  <td>
+                    <?php echo $currentTeaserDataObj->text; ?>
+                    <br />
+                    <a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><?php echo $currentTeaserDataObj->url; ?></a>
+                  </td>
 
                   <td class="text-align-center"><span class="label <?php echo $currentTeaserDataObj->status['class'] ?>"><?php echo $currentTeaserDataObj->status['name'] ?></span></td>
                   

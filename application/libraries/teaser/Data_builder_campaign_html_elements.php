@@ -8,8 +8,6 @@ class Data_builder_campaign_html_elements {
   }
 
   function data($data){
-    $data['selectChangeSection'] = select_define_builder(array($data['campaignDataObj']->section_id), $this->getSectionKeyIdValueName(), true);
-
     $data['selectChangeBanCountrys'] = select_define_builder($data['campaignDataObj']->ban_country, $this->getBanCountrysKeyIdValueName(), true);
 
     $data['selectChangeBanRegions'] = select_define_builder($data['campaignDataObj']->ban_region, $this->getBanRegionsKeyIdValueName());
@@ -23,10 +21,6 @@ class Data_builder_campaign_html_elements {
     return $data;
   }
 
-  function getSectionKeyIdValueName(){
-    return $this->ci->select_models->select_all_row_selectcolumn_return_key_value('section_id, section_name', 'section_id', 'section_name', 'sections');
-  }
-
   function getBanCountrysKeyIdValueName(){
     return $this->ci->select_models->select_all_row_selectcolumn_return_key_value_orderby('country, country_name', 'country', 'country_name', 'asc', 'ipgeobase');
   }
@@ -35,10 +29,6 @@ class Data_builder_campaign_html_elements {
     $dataWhereArr['country'] = "RU";
 
     return $this->ci->select_models->select_all_row_where_column_selectcolumn_orderby_groupby($dataWhereArr, 'region', 'asc', 'ipgeobase');
-  }
-
-  function getLabelsKeyIdValueName(){
-    return array( '_utm'=> 'Utm', '_openstat' => 'Openstat', '_from' => 'From', '_subid' => 'SubID', '_subid_utm' => 'SubID + UTM' );
   }
 
   function getBanHourKeyIdValueName(){
@@ -51,5 +41,9 @@ class Data_builder_campaign_html_elements {
 
   function getBanWeekDayKeyIdValueName(){
     return $this->ci->config->item('daysWeek');
+  }
+
+  function getLabelsKeyIdValueName(){
+    return array( '_utm'=> 'Utm', '_openstat' => 'Openstat', '_from' => 'From', '_subid' => 'SubID', '_subid_utm' => 'SubID + UTM' );
   }
 }

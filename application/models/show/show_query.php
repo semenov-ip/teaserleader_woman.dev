@@ -68,13 +68,13 @@
       return false;
     }
 
-    function select_all_from_teaser_banlike_orderby($campaignDataObj, $orderbycolumn, $orderbycommand,  $limit, $banTeaser, $selectcolumn, $dbTableName){
+    function select_all_from_teaser_banlike_orderby($campaignDataObj, $sectionId, $orderbycolumn, $orderbycommand,  $limit, $banTeaser, $selectcolumn, $dbTableName){
 
       $this->db->select($selectcolumn);
 
-      if(!empty($banTeaser)){
+      if( !empty($banTeaser) ){
         $banTeaserDataArray = (strpos($banTeaser, ',')  === false) ? array($banTeaser) : explode( ',', $banTeaser );
-        
+
         $banTeaserDataArray = trim_stripslashes($banTeaserDataArray);
       }
 
@@ -87,17 +87,16 @@
         if( isset($banTeaserDataArray) ){ $this->db->where_not_in('teaser_id', $banTeaserDataArray); }
       }
 
-      $this->db->limit($limit);
+      // $this->db->limit($limit);
 
       $this->db->order_by($orderbycolumn, $orderbycommand);
 
       $query = $this->db->get($this->prefixes.$dbTableName);
-
+      
       if($query->num_rows() > 0){
 
         foreach ($query->result() as $row) {
-
-          $dataQuery[] = $row;
+            $dataQuery[] = $row;
         }
 
         return $dataQuery;
