@@ -226,7 +226,7 @@
       
       <div class="awidget-body">
         <?php if($leftBlockHtml){ ?>
-          <textarea class="form-control" rows="12" readonly><?php echo $referralCode; ?></textarea>
+          <textarea class="form-control" rows="12"><?php echo $referralCode; ?></textarea>
         <?php } else {
           echo $style;
           echo $teaserPreview; } ?>

@@ -19,6 +19,7 @@ class Show extends CI_Controller{
     $this->load->library('_shared/logsave_count_statistiques');
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
+    $this->load->library('idna_convert');
     $this->load->model('show/show_query');
     $this->load->model('select_models');
     $this->load->model('update_models');

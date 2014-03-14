@@ -50,6 +50,8 @@ class Validation_data_show {
   }
 
   function blockIdAndRefererEmptyDb($blockId, $referer){
+    $referer = (stripos($referer, 'xn--') !== false) ? $this->ci->idna_convert->decode($referer) : $referer;
+
     $dataWhereArr = array( 'b.block_id' => $blockId, 's.url' => $referer);
 
     $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join($dataWhereArr, 'b.block_id, s.status, b.user_id', 'blocks b');
