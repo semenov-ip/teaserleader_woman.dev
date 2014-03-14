@@ -1,12 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
   function return_word_end($num, $word, $end1, $end2, $end3){
-    $len = strlen($num);
-    if($len == 2 and $num < 21){
+    $len = (int) strlen($num);
+
+    if($len === 2 && $num < 21){
+
       $end_word = $end3;
-    }else{
-      $num = substr($num, ($len-1));
-      switch ($num){
+    
+    } else {
+      $num_second = substr($num, ($len-1));
+      
+      switch ($num_second){
         case '0':{
           $end_word = $end3;
           break;

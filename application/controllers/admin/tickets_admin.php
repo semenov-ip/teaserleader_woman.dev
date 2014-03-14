@@ -26,7 +26,7 @@ class Tickets_admin extends CI_Controller{
   function getTicketData(){
     $dataWhereArr['upid'] = 0;
 
-    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_orderby($dataWhereArr,'dataadd', 'desc', 'ticket_id, title, text, dataadd, status', 'tickets'));
+    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_orderby($dataWhereArr,'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', 'tickets'));
   }
 
   function setDataProcessing($ticketDataObj){
@@ -38,6 +38,7 @@ class Tickets_admin extends CI_Controller{
 
         $currentTicketDataObj->dataadd = date2str($currentTicketDataObj->dataadd);
 
+        $currentTicketDataObj->email = $this->getUserAuthorEmail($currentTicketDataObj->user_id);
       }
 
       return $ticketDataObj;
@@ -45,5 +46,9 @@ class Tickets_admin extends CI_Controller{
     }
 
     return false;
+  }
+
+  function getUserAuthorEmail($userId){
+    return extract_key_this_object($this->select_models->select_one_row_where_column_selectcolumn(array('user_id' => $userId),'email', 'users'), 'email');
   }
 }
