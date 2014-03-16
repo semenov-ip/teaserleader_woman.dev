@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="control-label col-lg-4">Кодировка сайта</label>
                 <div class="col-lg-6">
                   <select name="url_encoding" class="form-control">
