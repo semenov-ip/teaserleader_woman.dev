@@ -435,17 +435,17 @@ $config['error_message'] = array(
 
   "check_empty_section" => array( "text" => "Необходимо указать хотя бы одну тематику!", "class" => "alert-warning" ),
 
-  "show_referer" => "Неопределённая ссылка",
-  "emprt_remote_port" => "Удалённый порт не обнаружен",
-  "emprt_user_agen" => "Проблемы работы браузера",
-  "empty_blockid_referer" => "Нету данных по блоку или сайту",
-  "empty_blockid_referer_db" => "Данные по блоку и сайту не обнаруженны",
-  "block_status_off" => "Сайт находиться на модерации.",
-  "block_users_off" => "Пользователь заблокирован",
-  "empty_campaign" => "Компании не обнаруженны",
-  "empty_teaser" => "Тизеры не обнаруженны",
-  "empty_block" => "Данный блок приостановлен или заблокирован",
-  "empty_site" => "Данный сайт приостановлен или заблокирован",
+  "show_referer" => '<span style="display: none;">Неопределённая ссылка</span>',
+  "emprt_remote_port" => '<span style="display: none;">Удалённый порт не обнаружен</span>',
+  "emprt_user_agen" => '<span style="display: none;">Проблемы работы браузера</span>',
+  "empty_blockid_referer" => '<span style="display: none;">Нету данных по блоку или сайту</span>',
+  "empty_blockid_referer_db" => '<span style="display: none;">Данные по блоку и сайту не обнаруженны</span>',
+  "block_status_off" => '<span style="display: none;">Сайт находиться на модерации.</span>',
+  "block_users_off" => '<span style="display: none;">Пользователь заблокирован</span>',
+  "empty_campaign" => '<span style="display: none;">Компании не обнаруженны</span>',
+  "empty_teaser" => '<span style="display: none;">Тизеры не обнаруженны</span>',
+  "empty_block" => '<span style="display: none;">Данный блок приостановлен или заблокирован</span>',
+  "empty_site" => '<span style="display: none;">Данный сайт приостановлен или заблокирован</span>',
 );
 
 $config['title'] = array(
