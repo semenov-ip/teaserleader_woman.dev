@@ -95,7 +95,7 @@ class Campaigns extends CI_Controller{
   function getCommonStatistiqCtrRur(){
     $this->commonStatistiqArr['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $this->commonStatistiqArr['view']) * $this->commonStatistiqArr['click']));
 
-    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2);
+    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2, '.', '');
 
     return $this->commonStatistiqArr;
   }

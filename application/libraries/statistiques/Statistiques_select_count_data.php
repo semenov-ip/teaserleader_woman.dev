@@ -52,7 +52,7 @@ class Statistiques_select_count_data {
     if( is_array($statistiq) ){
       $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-      $statistiq['count_money'] = number_format($statistiq['money'], 2);
+      $statistiq['count_money'] = number_format($statistiq['money'], 2, '.', '');
 
       $this->commonStatistiqArr['view'] += $statistiq['view'];
       $this->commonStatistiqArr['click'] += $statistiq['click'];

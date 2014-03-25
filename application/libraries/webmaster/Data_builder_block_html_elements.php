@@ -67,7 +67,7 @@ class Data_builder_block_html_elements {
   }
 
   function getSizeKeyIdValueName(){
-    return array('50'=>'50x50 px', '60'=>'60x60 px', '70'=>'70x70 px', '80'=>'80x80 px', '90'=>'90x90 px', '100'=>'100x100 px', '110'=>'110x110 px', '120'=>'120x120 px', '130'=>'130x130 px', '140'=>'140x140 px', '150'=>'150x150 px');
+    return array('50'=>'50x50 px', '60'=>'60x60 px', '70'=>'70x70 px', '80'=>'80x80 px', '90'=>'90x90 px', '100'=>'100x100 px', '110'=>'110x110 px', '120'=>'120x120 px', '130'=>'130x130 px', '140'=>'140x140 px', '150'=>'150x150 px', '200'=>'200x200 px');
   }
 
   function getPositionKeyIdValueName(){

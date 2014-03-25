@@ -9,9 +9,7 @@
                <div class="col-md-4">
                 <a href="/_shared/user_distributor/"><div class="logodiv"></div></a>
                </div>
-               <div class="col-md-2">
-               </div>
-               <div class="col-md-6">
+               <div class="col-md-8">
                   <div class="navbar navbar-inverse" role="banner">
                       <div class="navbar-header">
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">

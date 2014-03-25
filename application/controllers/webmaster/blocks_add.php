@@ -19,8 +19,8 @@ class Blocks_add extends CI_Controller{
     $this->load->library('check_campaign_blocks_id_current_user');
     $this->load->library('block_style_builder');
     $this->load->library('show_block_preview');
-    $this->load->library("webmaster/data_builder_block_html_elements");
-    $this->load->library("webmaster/validation_data_block");
+    $this->load->library('webmaster/data_builder_block_html_elements');
+    $this->load->library('webmaster/validation_data_block');
 
     $this->check_campaign_blocks_id_current_user->checkBlocks($siteId);
 

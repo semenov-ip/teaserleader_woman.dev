@@ -10,6 +10,7 @@ class Check_users_access {
   function checkUsers(){
     $this->ci->load->helper('extract_key_this_array');
     $this->ci->load->model('select_models');
+    $this->ci->load->model('insert_models');
 
     $this->checkEmptyUserSession();
 
@@ -64,6 +65,8 @@ class Check_users_access {
   }
 
   function webmaster(){
+    $this->saveWebmasterIp();
+
     return array(
       'webmaster',
       'partner',
@@ -102,5 +105,16 @@ class Check_users_access {
       '_shared',
       'balance'
     );
+  }
+
+  function saveWebmasterIp(){
+    $dataWhereArr['userip'] = sprintf('%u', ip2long(getenv("REMOTE_ADDR")));
+    $dataWhereArr['user_id'] = extract_key_this_array($this->ci->session->userdata('user'), 'user_id');
+
+    if(!$this->ci->select_models->selectcolumn_limit_where_return_boolean($dataWhereArr, 'userip_id', 1, 'userip')){
+
+      $this->ci->insert_models->insert_data_return_id($dataWhereArr, 'userip');
+
+    }
   }
 }

@@ -61,7 +61,7 @@ class Balance_payout_admin extends CI_Controller{
   function totalSum($summ){
     $this->totalSumm['summ'] += $summ;
 
-    $this->totalSumm['summ'] = number_format($this->totalSumm['summ'], 2);
+    $this->totalSumm['summ'] = number_format($this->totalSumm['summ'], 2, '.', '');
   }
 
   function getPostEventOperations(){    

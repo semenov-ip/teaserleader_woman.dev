@@ -590,5 +590,27 @@
     function database_exists_dbname($dbTableName){
       return $this->db->table_exists($this->prefixes.$dbTableName);
     }
+
+    function selectcolumn_limit_where_return_boolean($dataWhereArr, $selectcolumn, $limit, $dbTableName){
+
+      if(is_array($dataWhereArr)){
+
+        $this->db->select($selectcolumn);
+
+        $this->db->limit($limit);
+
+        $this->db->where($dataWhereArr);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() == 1){
+
+          return true;
+        }
+
+      }
+
+      return false;
+    }
   }
 ?>

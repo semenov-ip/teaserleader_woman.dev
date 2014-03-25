@@ -43,9 +43,13 @@
 
       $this->db->not_like('ban_hour', intval(date("H")));
 
-      $this->db->not_like('ban_region', $geoLocation['region']);
+      if( is_array($geoLocation) ){
 
-      $this->db->not_like('ban_country', $geoLocation['country']);
+        $this->db->not_like('ban_region', $geoLocation['region']);
+
+        $this->db->not_like('ban_country', $geoLocation['country']);
+
+      }
 
       $this->db->not_like('ban_site', $referer);
 

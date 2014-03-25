@@ -19,7 +19,7 @@ class Get_teaser_block_data {
 
     $this->lastLoadSites($blockDataObj->site_id);
 
-    $campaignDataObj = $this->getCampaignDataObj($geoLocation);
+    $campaignDataObj = $this->getCampaignDataObj($blockDataObj->user_id, $geoLocation);
 
     $this->checkUserAndCampaignDataObj($campaignDataObj);
 
@@ -88,7 +88,11 @@ class Get_teaser_block_data {
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'sites');
   }
 
-  function getCampaignDataObj($geoLocation){
+  function getCampaignDataObj($userId, $geoLocation){
+    $dataWhereArr = array( 'userip' => sprintf('%u', ip2long(getenv("REMOTE_ADDR"))), 'user_id' => $userId );
+
+    $geoLocation = $this->ci->select_models->selectcolumn_limit_where_return_boolean($dataWhereArr, 'userip_id', 1, 'userip') ? false : $geoLocation;
+
     return $this->ci->show_query->select_all_from_campaign_banlike(array(), $geoLocation, $this->referer, 'campaign_id', 'campaigns');
   }
 

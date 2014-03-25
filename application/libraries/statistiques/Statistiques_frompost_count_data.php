@@ -44,7 +44,7 @@ class Statistiques_frompost_count_data {
 
         $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-        $statistiq['count_money'] = number_format($statistiq['money'], 2);
+        $statistiq['count_money'] = number_format($statistiq['money'], 2, '.', '');
 
         $statistiq['dataadd'] = date('d-m-Y', $statistiq['dataadd']);
 
@@ -67,6 +67,6 @@ class Statistiques_frompost_count_data {
   function getCommonStatistiqCtrRur(){
     $this->commonStatistiqArr['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $this->commonStatistiqArr['view']) * $this->commonStatistiqArr['click']));
 
-    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2);
+    $this->commonStatistiqArr['count_money'] = number_format($this->commonStatistiqArr['count_money'], 2, '.', '');
   }
 }
