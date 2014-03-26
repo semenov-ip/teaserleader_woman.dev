@@ -26,7 +26,7 @@
         </div>
 
         <div class="input">
-          <input type="text" name="purse" placeholder="WMR" value="<?php echo $userDataObj->purse; ?>" />
+          <input type="text" name="purse" placeholder="WMR" value="<?php echo $userDataObj->purse; ?>" onfocus="$(this).val('R');" />
         </div>
 
         <div class="input">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="button_reg">
-          <a  href="javascript:void(0);" onclick="formSubmit(this);"></a>
+          <a  href="javascript:void(0);" onclick="validationFormSubmit(event, this);"></a>
         </div>
 
       </form>

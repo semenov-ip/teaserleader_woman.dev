@@ -475,3 +475,11 @@ BODY.main {
   width: 5%;
   text-align: justify;
 }
+
+.input .txt{
+  margin-left: 30px;
+  margin-top: 6px;
+  font-size: 9pt;
+  line-height: 125%;
+  width: 80%;
+}
