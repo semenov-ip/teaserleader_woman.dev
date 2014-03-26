@@ -56,7 +56,7 @@ class Click_count_statistiques {
   }
 
   function getDataStatisticsObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'click', $dbTableName);
+    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, 'click', 1, $dbTableName);
   }
 
   function updateCountStatistics($dataWhereArr, $dbTableName){
@@ -82,7 +82,7 @@ class Click_count_statistiques {
   }
 
   function getDataStatisticsGeoObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, $dbTableName);
+    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, 1, $dbTableName);
   }
 
   function updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName){

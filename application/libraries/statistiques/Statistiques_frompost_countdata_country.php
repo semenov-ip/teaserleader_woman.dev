@@ -22,6 +22,8 @@ class Statistiques_frompost_countdata_country {
   }
 
   function getCurentDataStatistiqArr($statistiqConfig, $searchData){
+    if( isset($searchData['user_id']) ) { $dataWhereArr['user_id'] = $searchData['user_id']; }
+
     $dataWhereArr['dataadd >='] = timestamp_of_date_formt($searchData['date_start']);
 
     $dataWhereArr['dataadd <='] = timestamp_of_date_formt($searchData['date_end']);
@@ -53,7 +55,7 @@ class Statistiques_frompost_countdata_country {
 
         $count[] = $statistiq;
       }
-      
+
       return $count;
     }
     return false;

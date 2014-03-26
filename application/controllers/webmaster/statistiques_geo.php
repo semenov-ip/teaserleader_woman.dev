@@ -25,15 +25,15 @@ class Statistiques_geo extends CI_Controller {
 
     $data['statistiqData'] = empty($_POST) ? $this->getFormDefaultData() : $_POST;
 
-    $data['siteDataAllArrObj'] = $this->getSiteData();
-
     $data = $this->data_builder_statistiq_geo_html_elements->data($data);
 
     $data['keyformname'] = 'country';
 
-    $data['urlError'] = $this->getBooleanPostUrl();
+    $booleanPostUrl = $this->getBooleanPostUrl();
 
-    $data['geoStatistiqDataArr'] = $this->getGeoStatistiqDataArr();
+    $data['urlError'] = $booleanPostUrl;
+
+    $data['geoStatistiqDataArr'] = $this->getGeoStatistiqDataArr( $booleanPostUrl );
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
@@ -42,28 +42,17 @@ class Statistiques_geo extends CI_Controller {
     return webmaster_statistiq_default_data('country');
   }
 
-
-  function getSiteData(){
-    $dataWhereArr = $this->who != "admin" ? array('user_id' => extract_key_this_array($this->session->userdata('user'), 'user_id')) : array();
-
-    return $this->checkData($this->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'site_id, url', 'sites'));
-  }
-
-  function checkData($siteDataAllArrObj){
-    if(is_array($siteDataAllArrObj)){ return $siteDataAllArrObj; }
-
-    return false;
-  }
-
   function getBooleanPostUrl(){
     if( empty($_POST) ){ return true; }
     if( $_POST['country'] == -1 ){ return true; }
 
+    $_POST['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
+
     return false;
   }
 
-  function getGeoStatistiqDataArr(){
-    if( $this->getBooleanPostUrl() ){ return false; }
+  function getGeoStatistiqDataArr($booleanPostUrl){
+    if( $booleanPostUrl ){ return false; }
 
     $money_column = extract_select_key_this_moneycountry($_POST['country']);
 

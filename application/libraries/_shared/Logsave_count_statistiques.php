@@ -35,13 +35,13 @@ class Logsave_count_statistiques {
   function siteStat($siteId, $blockId, $userId){
     $countIdBlockOnSite = $this->getCountBlockOnSite($siteId);
 
-    if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){ 
+    if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){
       $this->countStatistics($siteId, 'site_id', 'sites_stat');
 
       if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
     }
 
-    if( count($countIdBlockOnSite) === 1 ){ 
+    if( count($countIdBlockOnSite) === 1 ){
       $this->countStatistics($siteId, 'site_id', 'sites_stat');
 
       if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
@@ -140,7 +140,7 @@ class Logsave_count_statistiques {
   }
 
   function getDataStatisticsGeoObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, $dbTableName);
+    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, 1, $dbTableName);
   }
 
   function updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName){
