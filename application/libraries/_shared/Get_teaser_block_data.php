@@ -113,7 +113,7 @@ class Get_teaser_block_data {
   }
 
   function checkTeaserData($teaserDataObj){
-    if( !is_array($teaserDataObj) ){ 
+    if( !is_array($teaserDataObj) ){
       return $this->ci->riderConstructedDataJs(extract_key_this_array( $this->ci->config->item('error_message'), "empty_teaser")); 
     }
   }
