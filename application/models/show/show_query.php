@@ -11,7 +11,7 @@
       $this->prefixes = $this->config->item('prefixes');
     }
 
-    function select_one_from_where_column_selectcolumn_join($dataWhereArr, $selectcolumn, $dbTableName){
+    function select_one_from_where_column_selectcolumn_join($dataWhereArr, $dataWhereOrrArr, $selectcolumn, $dbTableName){
 
       if( is_array($dataWhereArr) ){
         $this->db->select($selectcolumn);
@@ -19,6 +19,10 @@
         $this->db->join($this->prefixes."sites s", 'b.site_id = s.site_id');
 
         $this->db->where($dataWhereArr);
+
+        foreach ($dataWhereOrrArr as $whereOrr) {
+          $this->db->or_where('s.url', $whereOrr);
+        }
 
         $query = $this->db->get($this->prefixes.$dbTableName);
 
@@ -101,9 +105,11 @@
 
         foreach ($query->result() as $row) {
 
-          if( in_array($sectionId, convert_one_data_array($row->section_id)) && count($dataQuery) < $limit ){ 
+          if(in_array($sectionId, convert_one_data_array($row->section_id))){
 
             $dataQuery[] = $row;
+
+            if( count($dataQuery) >= $limit ) break;
 
           }
 
