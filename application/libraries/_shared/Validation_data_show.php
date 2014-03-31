@@ -49,12 +49,12 @@ class Validation_data_show {
     return false;
   }
 
-  function blockIdAndRefererEmptyDb($blockId, $referer){
-    $referer = (stripos($referer, 'xn--') !== false) ? $this->ci->idna_convert->decode($referer) : $referer;
+  function blockIdAndRefererEmptyDb($blockId, $refererStandart){
+    $referer = (stripos($refererStandart, 'xn--') !== false) ? $this->ci->idna_convert->decode($refererStandart) : $refererStandart;
 
-    $dataWhereArr = array( 'b.block_id' => $blockId, 's.url' => $referer);
+    $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join(array( 'b.block_id' => $blockId, 's.url' => $referer), 'b.block_id, s.status, b.user_id', 'blocks b');
 
-    $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join($dataWhereArr, 'b.block_id, s.status, b.user_id', 'blocks b');
+    if( !$blockDataObj ){ $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join(array( 'b.block_id' => $blockId, 's.url' => $refererStandart), 'b.block_id, s.status, b.user_id', 'blocks b'); }
 
     if( !$blockDataObj ){ return true; }
 

@@ -22,13 +22,21 @@ class Data_builder_campaign_html_elements {
   }
 
   function getBanCountrysKeyIdValueName(){
-    return $this->ci->select_models->select_all_row_selectcolumn_return_key_value_orderby('country, country_name', 'country', 'country_name', 'asc', 'ipgeobase');
+    $selectChangeBanCountrysDefault = $this->ci->select_models->select_all_row_selectcolumn_return_key_value_orderby('country, country_name', 'country', 'country_name', 'asc', 'ipgeobase');
+
+    $selectChangeBanCountrysDB[$this->ci->config->item('other_countries')] = $this->ci->config->item('other_countries');
+
+    return array_merge($selectChangeBanCountrysDB, $selectChangeBanCountrysDefault);
   }
 
   function getBanRegionsKeyIdValueName(){
     $dataWhereArr['country'] = "RU";
 
-    return $this->ci->select_models->select_all_row_where_column_selectcolumn_orderby_groupby($dataWhereArr, 'region', 'asc', 'ipgeobase');
+    $selectChangeBanCountrysDB = $this->ci->select_models->select_all_row_where_column_selectcolumn_orderby_groupby($dataWhereArr, 'region', 'asc', 'ipgeobase');
+
+    $selectChangeBanCountrysDefault[$this->ci->config->item('other_regions')] = $this->ci->config->item('other_regions');
+
+    return array_merge($selectChangeBanCountrysDefault, $selectChangeBanCountrysDB);
   }
 
   function getBanHourKeyIdValueName(){

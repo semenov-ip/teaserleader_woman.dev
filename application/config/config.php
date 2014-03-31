@@ -471,5 +471,9 @@ $config['daysWeek'] = array(
   'Пятница',
   'Суббота'
 );
+
+$config['other_countries'] = 'Прочие страны';
+
+$config['other_regions'] = 'Прочие регионы';
 /* End of file config.php */
 /* Location: ./application/config/config.php */

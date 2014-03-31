@@ -68,8 +68,6 @@ class Show extends CI_Controller{
   function codingData($text, $siteId){
     if($siteId){
       $urlEncoding = extract_key_this_object($this->getUrlEncoding($siteId), "url_encoding");
-
-      //return iconv('utf-8', $urlEncoding, $text);
     }
 
     return $text;

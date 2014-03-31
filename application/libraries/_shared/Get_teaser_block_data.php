@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Get_teaser_block_data {
-  public $ci, $blockId, $referer;
+  public $ci, $blockId, $referer, $geoLocationCampaignBD;
 
   function __construct(){
     $this->ci =& get_instance();
@@ -19,7 +19,9 @@ class Get_teaser_block_data {
 
     $this->lastLoadSites($blockDataObj->site_id);
 
-    $campaignDataObj = $this->getCampaignDataObj($blockDataObj->user_id, $geoLocation);
+    $this->getGeoLocationCampaignDB($blockDataObj->user_id, $geoLocation);
+
+    $campaignDataObj = $this->getCampaignDataObj();
 
     $this->checkUserAndCampaignDataObj($campaignDataObj);
 
@@ -88,12 +90,18 @@ class Get_teaser_block_data {
     $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'sites');
   }
 
-  function getCampaignDataObj($userId, $geoLocation){
-    $dataWhereArr = array( 'userip' => sprintf('%u', ip2long(getenv("REMOTE_ADDR"))), 'user_id' => $userId );
+  function getCampaignDataObj(){
+    return $this->ci->show_query->select_all_from_campaign_banlike(array(), $this->geoLocationCampaignBD, $this->referer, 'campaign_id', 'campaigns');
+  }
 
-    $geoLocation = $this->ci->select_models->selectcolumn_limit_where_return_boolean($dataWhereArr, 'userip_id', 1, 'userip') ? false : $geoLocation;
+  function getGeoLocationCampaignDB($userId, $geoLocation){
+    if( !in_array($geoLocation['country'], array('RU', 'UA', 'BY', 'KZ')) ){
+      $dataWhereArr = array( 'userip' => sprintf('%u', ip2long(getenv("REMOTE_ADDR"))), 'user_id' => $userId );
 
-    return $this->ci->show_query->select_all_from_campaign_banlike(array(), $geoLocation, $this->referer, 'campaign_id', 'campaigns');
+      $this->geoLocationCampaignBD = $this->ci->select_models->selectcolumn_limit_where_return_boolean($dataWhereArr, 'userip_id', 1, 'userip') ? false : $geoLocation;
+    }
+
+    $this->geoLocationCampaignBD = $geoLocation;
   }
 
   function checkUserAndCampaignDataObj($campaignDataObj){
@@ -110,7 +118,7 @@ class Get_teaser_block_data {
     }
   }
 
-  function increaseTeaserDataEnoughBlock( $teaserDataObj, $countTeaserDataObj ){
+  function increaseTeaserDataEnoughBlock($teaserDataObj, $countTeaserDataObj){
     if( count($teaserDataObj) < $countTeaserDataObj ){
 
       $notEnough = $countTeaserDataObj - count($teaserDataObj);
