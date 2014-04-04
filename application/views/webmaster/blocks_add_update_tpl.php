@@ -6,7 +6,7 @@
  
 <div class="row">
        
-  <div class="col-md-7">
+  <div class="col-md-12">
 
     <div class="awidget">
       <div class="awidget-head">
@@ -216,25 +216,6 @@
     </div>   
   </div>
 
-  <!-- post sidebar -->
-  <div class="col-md-5">
-
-    <div class="awidget">
-      <div class="awidget-head">
-        <h3><?php echo $titleMinor; ?></h3>
-      </div>
-      
-      <div class="awidget-body">
-        <?php if($leftBlockHtml){ ?>
-          <textarea class="form-control" rows="12"><?php echo $referralCode; ?></textarea>
-        <?php } else {
-          echo $style;
-          echo $teaserPreview; } ?>
-      </div>
-    </div>  
-
-  </div>
-
   <?php if($leftBlockHtml){ ?>
   <div class="col-md-7">
 
@@ -250,4 +231,24 @@
     </div>
   </div>
   <?php } ?>
+
+    <!-- post sidebar -->
+  <div class="col-md-5">
+
+    <div class="awidget">
+      <div class="awidget-head">
+        <h3><?php echo $titleMinor; ?></h3>
+      </div>
+
+      <div class="awidget-body">
+        <?php if($leftBlockHtml){ ?>
+          <textarea class="form-control" rows="12"><?php echo $referralCode; ?></textarea>
+        <?php } else {
+          echo $style;
+          echo $teaserPreview; } ?>
+      </div>
+    </div>  
+
+  </div>
+
 </div>
