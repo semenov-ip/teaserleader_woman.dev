@@ -14,6 +14,7 @@ class Blocks_edit extends CI_Controller {
   function index($blockId){
     $this->load->helper('trim_stripslashes_helper');
     $this->load->helper('select_define_builder');
+    $this->load->helper('radio_define_builder');
     $this->load->model('update_models');
     $this->load->model('insert_models');
     $this->load->model('select_models');
@@ -75,7 +76,7 @@ class Blocks_edit extends CI_Controller {
       if($this->updateDataCollectionBlock($_POST)){
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        redirect( "/webmaster/blocks_edit/index/$this->blockId/", 'location');
+        redirect( "/webmaster/blocks_edit/index/$this->blockId/#teaser_block_table", 'location');
       }
     }
 
@@ -84,6 +85,8 @@ class Blocks_edit extends CI_Controller {
 
   function updateDataCollectionBlock($post){
     $post['second_link'] = isset($post['second_link']) ? 1 : 0;
+    $post['cell_background_transparent'] = isset($post['cell_background_transparent']) ? 1 : 0;
+    $post['background_color_transparent'] = isset($post['background_color_transparent']) ? 1 : 0;
 
     $dataWhereArr = array( 'block_id' => $this->blockId, 'user_id' => extract_key_this_array($this->session->userdata('user'), 'user_id') );
 

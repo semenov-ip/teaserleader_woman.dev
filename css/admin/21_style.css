@@ -720,17 +720,21 @@ strong{
 }
 
 .ui-slider .ui-slider-handle { 
-   position: absolute; 
-   z-index: 2; 
-   width: 1.1em; 
-   height: 1.1em; 
-   cursor: default; 
+   position: absolute;
+   z-index: 2;
+   width: 2.6em;
+   height: 1.6em;
+   cursor: pointer;
    background: #fafafa !important;
-   border: 1px solid #ccc !important; 
+   border: 1px solid #ccc !important;
+   margin-top: -2px;
+   text-align: center;
+   color: #5cb85c;
+   text-decoration: none;
 }
 
 .ui-slider-horizontal { 
-   height: .5em; 
+   height: .7em; 
    border: 0px solid #eee !important; 
    background: #dfdfdf !important;
 }
@@ -1277,3 +1281,169 @@ footer .copy{
    left: -6px;
    background-size: 15px;
 }
+
+/* Slider UI */
+.amount{
+   border:0; 
+   font-weight:bold;
+}
+
+.tooltip_slider{
+   margin-top: -3px;
+   font-size: 14px;
+}
+.slider-size{
+   padding-right: 2px;
+   padding-left: 2px;
+   margin-top: -2px;
+}
+
+
+/* Writen name banner */
+.nameblock{
+   border: 0 !important;
+   font-size: 20px;
+   height: 28px !important;
+   padding: 0 !important;
+   font-style: normal !important;
+   font-weight: bold;
+   color: #333 !important;
+   margin-top: -2px;
+   border-bottom: 1px dashed #777!important;
+}
+
+.bottom-line{
+   border-bottom: 1px solid #dddddd;
+   padding-bottom: 14px;
+}
+
+
+.radio {
+   margin-right: 6px;
+}
+
+.border-solid {
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+   display: inline-block;
+   margin-top: 6px;
+}
+.border-dashed {
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px dashed #cccccc;
+   padding: 2px 4px 2px 24px;
+   display: inline-block;
+   margin-top: 6px;
+}
+.border-dotted {
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px dotted #cccccc;
+   padding: 2px 4px 2px 24px;
+   display: inline-block;
+   margin-top: 6px;
+}
+
+.content{
+   padding-bottom: 0px;
+   padding-top: 10px;
+}
+
+.content-icon {
+   height: 18px;
+   width: 18px;
+   vertical-align: middle;
+}
+
+.up {
+   background: url(/images/up.png) no-repeat;
+   background-size: 14px;
+}
+
+.down {
+   background: url(/images/down.png) no-repeat;
+   background-size: 14px;
+}
+.inside-inlian .radio{
+   display: inline-block;
+}
+.title-b{
+   color: #333333;
+   font-size: 15px;
+   font-weight: bold;
+}
+.border-Times{
+   font-family: 'Times';
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+}
+
+.border-Arial{
+   font-family: 'Arial';
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+}
+
+.border-Verdana{
+   font-family: 'Verdana';
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+}
+.border-Tahoma{
+   font-family: 'Tahoma';
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+}
+
+.border-inherit{
+   -webkit-border-radius: 12px;
+   -moz-border-radius: 12px;
+   -o-border-radius: 12px;
+   border-radius: 12px;
+   border: 1px solid #cccccc;
+   padding: 2px 4px 2px 24px;
+}
+.label-bottom{
+   vertical-align: -webkit-baseline-middle;
+   margin-bottom: 0px;
+}
+.awidget-body .textarea-html-height{
+   height: 80pt;
+   margin-bottom: 10pt;
+}
+
+
+
+
+
+
+
+
+
+
+

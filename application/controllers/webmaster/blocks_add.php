@@ -14,6 +14,7 @@ class Blocks_add extends CI_Controller{
   function index($siteId){
     $this->load->helper('trim_stripslashes_helper');
     $this->load->helper('select_define_builder');
+    $this->load->helper('radio_define_builder');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->library('check_campaign_blocks_id_current_user');
@@ -70,6 +71,9 @@ class Blocks_add extends CI_Controller{
 
   function saveDataCollectionBlock($post){
     $post['second_link'] = isset($post['second_link']) ? 1 : 0;
+    $post['cell_background_transparent'] = isset($post['cell_background_transparent']) ? 1 : 0;
+    $post['background_color_transparent'] = isset($post['background_color_transparent']) ? 1 : 0;
+
     $post['site_id'] = $this->siteId;
     $post['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
     $post['dataadd'] = $this->config->item('datetime');
@@ -79,7 +83,7 @@ class Blocks_add extends CI_Controller{
     if($blockId){
       $this->session->set_flashdata('successSaveUpdateData', 'success_save_data');
 
-      redirect( "/webmaster/blocks_edit/index/$blockId/", 'location');
+      redirect( "/webmaster/blocks_edit/index/$blockId/#teaser_block_table", 'location');
     }
   }
 }

@@ -21,7 +21,7 @@
         $this->db->where($dataWhereArr);
 
         foreach ($dataWhereOrrArr as $whereOrr) {
-          $this->db->or_where('s.url', $whereOrr);
+          $this->db->where('s.url', $whereOrr);
         }
 
         $query = $this->db->get($this->prefixes.$dbTableName);

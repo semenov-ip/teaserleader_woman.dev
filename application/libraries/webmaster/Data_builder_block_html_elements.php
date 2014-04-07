@@ -9,11 +9,13 @@ class Data_builder_block_html_elements {
 
   function data($data){
 
+    $data['selectChangePreparedBlock'] = select_define_builder(array(), $this->getPreparedBlockKeyIdValueName(), true);
+
     $data['selectChangeBlockSizeValue'] = select_define_builder(array($data['blockDataObj']->block_size_value), $this->getBlockSizeValueKeyIdValueName());
 
     $data['selectChangeTableBorderWidth'] = select_define_builder(array($data['blockDataObj']->table_border_width), $this->getBorderWidthKeyIdValueName(), true);
 
-    $data['selectChangeTableBorderStyle'] = select_define_builder(array($data['blockDataObj']->table_border_style), $this->getBorderStyleKeyIdValueName(), true);
+    $data['radioChangeTableBorderStyle'] = radio_define_builder(array($data['blockDataObj']->table_border_style), $this->getBorderStyleKeyIdValueName(), 'table_border_style', true);
 
     $data['selectChangeHor'] = select_define_builder(array($data['blockDataObj']->hor), $this->getHorKeyIdValueName());
 
@@ -22,28 +24,38 @@ class Data_builder_block_html_elements {
     $data['selectChangeSize'] = select_define_builder(array($data['blockDataObj']->size), $this->getSizeKeyIdValueName() ,true);
 
     $data['selectChangeImageBorderWidth'] = select_define_builder(array($data['blockDataObj']->image_border_width), $this->getBorderWidthKeyIdValueName(), true);
+    
+    $data['radioChangeImageBorderStyle'] = radio_define_builder(array($data['blockDataObj']->image_border_style), $this->getBorderStyleKeyIdValueName(), 'image_border_style', true);
 
-    $data['selectChangeImageBorderStyle'] = select_define_builder(array($data['blockDataObj']->image_border_color), $this->getBorderStyleKeyIdValueName(), true);
+    $data['radioChangePosition'] = radio_define_builder(array($data['blockDataObj']->position), $this->getPositionKeyIdValueName(), 'position', true);
 
-    $data['selectChangePosition'] = select_define_builder(array($data['blockDataObj']->position), $this->getPositionKeyIdValueName(), true);
-
-    $data['selectChangeFontFamily'] = select_define_builder(array($data['blockDataObj']->font_family), $this->getFontFamilyKeyIdValueName(), true);
+    $data['radioChangeFontFamily'] = radio_define_builder(array($data['blockDataObj']->font_family), $this->getFontFamilyKeyIdValueName(), 'font_family', true);
 
     $data['selectChangeFontSize'] = select_define_builder(array($data['blockDataObj']->font_size), $this->getFontSizeKeyIdValueName(), true);
 
     $data['selectChangeCellBorderWidth'] = select_define_builder(array($data['blockDataObj']->cell_border_width), $this->getBorderWidthKeyIdValueName(), true);
 
-    $data['selectChangeCellBorderStyle'] = select_define_builder(array($data['blockDataObj']->cell_border_style), $this->getBorderStyleKeyIdValueName(), true);
+    $data['radioChangeCellBorderStyle'] = radio_define_builder(array($data['blockDataObj']->cell_border_style), $this->getBorderStyleKeyIdValueName(), 'cell_border_style', true);
 
-    $data['selectChangeAlign'] = select_define_builder(array($data['blockDataObj']->align), $this->getAlignKeyIdValueName(), true);
+    $data['radioChangeAlign'] = radio_define_builder(array($data['blockDataObj']->align), $this->getAlignKeyIdValueName(), 'align', true);
 
     $data['checkboxChangeSecondLink'] = $this->getSecondLinkDataChecked($data['blockDataObj']->second_link);
+
+    $data['checkboxCellBackgroundTransparent'] = $this->getSecondLinkDataChecked($data['blockDataObj']->cell_background_transparent);
+
+    $data['checkboxBackgroundColorTransparent'] = $this->getSecondLinkDataChecked($data['blockDataObj']->background_color_transparent);
+
+    $data['blockDataObj']->font_size = ($data['blockDataObj']->font_size == 'inherit') ? '12px' : $data['blockDataObj']->font_size;
 
     $data['style'] = $this->ci->block_style_builder->getStyle($data['blockDataObj']);
 
     $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml( $data['blockDataObj'] );
 
     return $data;
+  }
+
+  function getPreparedBlockKeyIdValueName(){
+    return array('4x1_50x50' => '4x1, 50x50', '2x1_50x50' => '2x1, 50x50', '1x1_50x50' => '1x1, 50x50', '1x4_50x50' => '1x4, 50x50', '1x4_70x70' => '1x4, 70x70', '2x2_100x100' => '2x2, 100x100', '4x1_100x100' => '4x1, 100x100', '6x1_100x100' => '6x1, 100x100');
   }
 
   function getBlockSizeValueKeyIdValueName(){
@@ -71,7 +83,7 @@ class Data_builder_block_html_elements {
   }
 
   function getPositionKeyIdValueName(){
-    return array("left" => "Изображение слева от текста", "right" => "Изображение справа от текста", "top" => "Изображение сверху над текстом");
+    return array("left" => "Cлева от текста", "right" => "Cправа от текста", "top" => "Над текстом");
   }
 
   function getFontFamilyKeyIdValueName(){

@@ -19,9 +19,9 @@ if(!function_exists('select_define_builder')){
   }
 
   function setUpSelected($valueCurrentArr, $valueCommon, $keyCommon, $includeKeyThisValBoolean){
-    if( $includeKeyThisValBoolean && in_array( $keyCommon, $valueCurrentArr )){ return 'selected="selected"'; }
+    if( $includeKeyThisValBoolean && in_array( $keyCommon, $valueCurrentArr )){ return 'selected'; }
     
-    if(in_array( $valueCommon, $valueCurrentArr )){ return 'selected="selected"'; }
+    if(in_array( $valueCommon, $valueCurrentArr )){ return 'selected'; }
 
     return "";
   }
