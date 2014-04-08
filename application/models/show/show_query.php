@@ -21,12 +21,12 @@
         $this->db->where($dataWhereArr);
 
         foreach ($dataWhereOrrArr as $whereOrr) {
-          $this->db->where('s.url', $whereOrr);
+          $this->db->or_where('s.url', $whereOrr);
         }
 
         $query = $this->db->get($this->prefixes.$dbTableName);
 
-        if($query->num_rows() == 1){
+        if($query->num_rows() > 0){
 
           foreach ($query->result() as $row) {
 

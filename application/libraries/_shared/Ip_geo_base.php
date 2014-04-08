@@ -8,6 +8,8 @@ class Ip_geo_base {
   }
 
   function determineLocationSite(){
+    return $this->setUpExtractUserLocationCookie();
+
     if( !isset($_COOKIE['user_country']) ){ return $this->setUpExtractUserLocationCookie(); }
 
     $location['country'] = $_COOKIE['user_country'];
