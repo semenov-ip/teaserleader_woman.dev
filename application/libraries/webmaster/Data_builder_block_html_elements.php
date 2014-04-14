@@ -47,6 +47,12 @@ class Data_builder_block_html_elements {
 
     $data['blockDataObj']->font_size = ($data['blockDataObj']->font_size == 'inherit') ? '12px' : $data['blockDataObj']->font_size;
 
+    $data['cssDefaultNormalBold'] = $this->getCssDefaultNormal($data['blockDataObj']->textlink_font_weight);
+
+    $data['cssDefaultNormalItalic'] = $this->getCssDefaultNormal($data['blockDataObj']->textlink_font_style);
+
+    $data['cssDefaultNoneUnderline'] = $this->getCssDefaultNone($data['blockDataObj']->textlink_text_decoration);
+
     $data['style'] = $this->ci->block_style_builder->getStyle($data['blockDataObj']);
 
     $data['teaserPreview'] = $this->ci->show_block_preview->getBlockHtml( $data['blockDataObj'] );
@@ -100,5 +106,17 @@ class Data_builder_block_html_elements {
 
   function getSecondLinkDataChecked($secondLink){
     if($secondLink){ return "checked='checked'"; }
+  }
+
+  function getCssDefaultNormal($textlinkFont){
+    if( !in_array($textlinkFont, array('normal')) ){ return "active_font_style"; }
+
+    return "";
+  }
+
+  function getCssDefaultNone($textlinkDecoration){
+    if( !in_array($textlinkDecoration, array('none', '')) ){ return "active_font_style"; }
+
+    return "";
   }
 }

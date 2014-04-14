@@ -54,12 +54,12 @@
 
               <div class="form-group">
               <label class="control-label col-lg-2 width_auto b">Количество тизеров:</label>
-                <label class="control-label col-lg-3 width_auto">по вертикали</label>
+                <label class="control-label col-lg-3 width_auto">по горизонтали</label>
                 <div class="col-lg-2 slider-size width_18 padding-right-12">
                   <input type="hidden" class="hor" name="hor" value="<?php echo $blockDataObj->hor; ?>" />
                   <div class="slider-green margin-top-15 slider-range-min-1"></div>
                 </div>
-                <label class="control-label col-lg-3 width_auto">по горизонтали</label>
+                <label class="control-label col-lg-3 width_auto">по вертикали</label>
                 <div class="col-lg-2 slider-size width_18 padding-right-12">
                   <input type="hidden" class="ver" name="ver" value="<?php echo $blockDataObj->ver; ?>" />
                   <div class="slider-green margin-top-15 slider-range-min-2"></div>
@@ -212,14 +212,25 @@
               </div>
 
               <div class="form-group bottom-line">
-                <label class="control-label col-lg-3 width_auto b">Цвет текста:</label>
+
+                <label class="control-label col-lg-3 width_auto b">Стиль текста:</label>
                 <div class="col-lg-2 padding-l-r-0">
+                  <a href="javascript:" class="font_style bold inline_block <?php echo $cssDefaultNormalBold; ?>">b</a>
+                  <a href="javascript:" class="font_style italic inline_block <?php echo $cssDefaultNormalItalic; ?>">i</a>
+                  <a href="javascript:" class="font_style underline inline_block <?php echo $cssDefaultNoneUnderline; ?>">u</a>
+                  <input type="hidden" name="textlink_font_weight" value="<?php echo $blockDataObj->textlink_font_weight; ?>">
+                  <input type="hidden" name="textlink_font_style" value="<?php echo $blockDataObj->textlink_font_style; ?>">
+                  <input type="hidden" name="textlink_text_decoration" value="<?php echo $blockDataObj->textlink_text_decoration; ?>">
+                </div>
+
+                <label class="control-label col-lg-3 width_auto b">Цвет текста:</label>
+                <div class="col-lg-2 padding-l-r-0 width_auto">
                   <input type="text" name="font_color" class="form-control display-inline-block width_80" value="<?php echo $blockDataObj->font_color ?>" />
                   <div id="colorSelector" class="fontColor"><div></div></div>
                 </div>
 
                 <label class="control-label col-lg-3 width_auto b">Цвет текста при наведении:</label>
-                <div class="col-lg-2 padding-l-r-0">
+                <div class="col-lg-2 padding-l-r-0 width_auto">
                   <input type="text" name="font_color_hover" class="form-control display-inline-block width_80" value="<?php echo $blockDataObj->font_color_hover ?>" />
                   <div id="colorSelector" class="fontColorHover"><div></div></div>
                 </div>

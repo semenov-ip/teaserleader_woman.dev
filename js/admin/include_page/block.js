@@ -70,8 +70,13 @@
 
     $('.ver').val( horVerArray[1] );
   });
-});
 
+  textStyle('bold', 'textlink_font_weight', 'normal');
+
+  textStyle('italic', 'textlink_font_style', 'normal');
+
+  textStyle('underline', 'textlink_text_decoration', 'none');
+});
 
 function sliderRange(sliderClass, inputNameClass, min, max, unitOfLength, unitOfSave){
   $(sliderClass).slider({
@@ -98,24 +103,48 @@ function sliderRange(sliderClass, inputNameClass, min, max, unitOfLength, unitOf
 function colorPickerDeclare(colorClass, inputNameClass){
   $(colorClass).ColorPicker({
 
-      color: $('input[name='+inputNameClass+']').val(),
+    color: $('input[name='+inputNameClass+']').val(),
 
-      onShow: function (colpkr) {
-        $(colpkr).fadeIn(500);
-        return false;
-      },
+    onShow: function (colpkr) {
+      $(colpkr).fadeIn(500);
+      return false;
+    },
 
-      onHide: function (colpkr) {
-        $(colpkr).fadeOut(500);
-        return false;
-      },
+    onHide: function (colpkr) {
+      $(colpkr).fadeOut(500);
+      return false;
+    },
 
-      onChange: function (hsb, hex, rgb){
-        $(colorClass + ' div').css('backgroundColor', '#' + hex);
-        $('input[name='+inputNameClass+']').val('#' + hex);
-      }
+    onChange: function (hsb, hex, rgb){
+      $(colorClass + ' div').css('backgroundColor', '#' + hex);
+      $('input[name='+inputNameClass+']').val('#' + hex);
+    }
 
-    });
+  });
 
-    $('div', $(colorClass)).css('background-color', $('input[name='+inputNameClass+']').val());
+  $('div', $(colorClass)).css('background-color', $('input[name='+inputNameClass+']').val());
+}
+
+function textStyle(className, inputName, defaultData){
+  checkActiveClass('active_font_style', className, inputName, defaultData);
+
+  $( "." + className ).click(function(){
+
+    $(this).toggleClass('active_font_style');
+
+    checkActiveClass('active_font_style', className, inputName, defaultData);
+
+    return false;
+  });
+}
+
+function checkActiveClass(activeClass, className, inputName, defaultData){
+   if( $("." + className).hasClass(activeClass) ){
+      
+      $('input[name=' + inputName + ']').val(className);
+    
+    } else {
+
+      $('input[name=' + inputName + ']').val(defaultData);
+    }
 }

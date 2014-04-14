@@ -49,7 +49,7 @@ if(!function_exists('template_builder')){
 
     $count = $ci->select_models->select_from_where_column_selectcolumn_return_num_rows($dataWhereArr, 'user_id', 'tickets');
 
-    if($count){ return "<span class='label label-success'>".$count."</span>"; }
+    if($count){ return "<span class='label label-success new-color'>".$count."</span>"; }
 
     return "";
   }

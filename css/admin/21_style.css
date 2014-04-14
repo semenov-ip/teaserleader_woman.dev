@@ -729,7 +729,7 @@ strong{
    border: 1px solid #ccc !important;
    margin-top: -2px;
    text-align: center;
-   color: #188B88;;
+   color: #16cbe6;
    text-decoration: none;
 }
 
@@ -762,8 +762,8 @@ strong{
 }  
 
 .slider-green .ui-widget-header{
-   background: #188B88 !important;
-   border-color: #188B88 !important;
+   background: #16cbe6 !important;
+   border-color: #16cbe6 !important;
 }  
 
 .slider-yellow .ui-widget-header{
@@ -1437,8 +1437,46 @@ footer .copy{
    margin-bottom: 10pt;
 }
 
+.font_style.bold {
+   font-style: normal;
+   font-weight: bold !important;
+}
 
+.font_style {
+   text-transform: uppercase;
+   text-decoration: none !important;
+   width: 40px;
+   height: 30px;
+   line-height: 30px;
+   background: #16cbe6;
+   text-align: center;
+   margin-right: 3px !important;
+   color: #000;
+   margin-top: 2px;
+   border-radius: 3px;
+   display: inline-block;
+}
 
+.font_style.bold {
+   font-style: normal;
+   font-weight: bold !important;
+}
+.font_style:hover, .active_font_style {
+   background: #188B88;
+   color: #fff;
+}
+a:hover {
+   cursor: pointer;
+}
+.font_style.italic {
+   font-style: italic;
+}
+.font_style.underline {
+   text-decoration: underline !important;
+}
+.new-color{
+   background: #16cbe6;
+}
 
 
 
