@@ -50,9 +50,9 @@
         </div>
         
     </div>
-      
-    <div class="copyright2">Copyright 2013 Ladyads. All rights reserved.</div>
-      
+
+    <?php $this->load->view('/_shared/welcome_copyright_tpl'); ?>
+
   </div>
 <?php $this->load->view('/_shared/welcome_footer_details_tpl'); ?>
 </body></html>

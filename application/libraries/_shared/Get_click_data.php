@@ -17,7 +17,9 @@ class Get_click_data {
 
       'price' => $this->getPrice($logDataObj->site_id, $logDataObj->country),
 
-      'money_stat' => $this->priceStatArr
+      'money_stat' => $this->priceStatArr,
+
+      'boolean_stat_count' => $this->booleanStatCount($logDataObj->country)
     );
   }
 
@@ -69,5 +71,11 @@ class Get_click_data {
     $this->priceStatArr = array('money_sng' => $sitePrice->price_sng);
 
     return $sitePrice->price_sng;
+  }
+
+  function booleanStatCount($country){
+    if($country == 'Прочие страны'){ return false; }
+
+    return true;
   }
 }

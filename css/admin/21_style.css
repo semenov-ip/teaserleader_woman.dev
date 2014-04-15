@@ -1050,7 +1050,7 @@ footer{
    box-shadow:inset 0px 0px 3px #111;
    color:#ccc;
    font-size:14px;
-   line-height:25px;
+   line-height:16px;
    padding:10px 0px 10px 0px;
 }
 
@@ -1075,7 +1075,7 @@ footer hr{
 
 footer .copy{
    font-size:13px;
-   margin:15px 0px;
+   /*margin:15px 0px;*/
 }
 
 /* Responsive CSS */

@@ -29,10 +29,14 @@ class Logsave_count_statistiques {
   }
 
   function blocksStat($blockId){
+    if( $this->booleanStatCount() ){ return false; }
+
     $this->countStatistics($blockId, 'block_id', 'blocks_stat');
   }
 
   function siteStat($siteId, $blockId, $userId){
+    if( $this->booleanStatCount() ){ return false; }
+
     $countIdBlockOnSite = $this->getCountBlockOnSite($siteId);
 
     if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){
@@ -79,7 +83,7 @@ class Logsave_count_statistiques {
 
       $this->ci->insert_models->insert_data_return_id($addDataArr, 'logs_'.$this->ci->config->item('day'));
 
-      $this->countStatistics( $oneTeaserDataObj->teaser_id, 'teaser_id', 'teasers_stat' );
+      $this->teaserStat($oneTeaserDataObj->teaser_id, 'teaser_id', 'teasers_stat');
 
       $this->updateTeaserDataLastShow($oneTeaserDataObj->teaser_id);
 
@@ -89,10 +93,23 @@ class Logsave_count_statistiques {
     $this->campaignStat($campaignIdCollectionArr);
   }
 
+  function teaserStat($idCurentData, $columnName, $dbTableName){
+    if( $this->booleanStatCount() ){ return false; }
+
+    $this->countStatistics($idCurentData, $columnName, $dbTableName);
+  }
+
   function campaignStat($campaignIdCollectionArr){
-    foreach ($campaignIdCollectionArr as $key => $campaignId) {
+    if( $this->booleanStatCount() ){ return false; }
+
+    foreach ($campaignIdCollectionArr as $key => $campaignId){
       $this->countStatistics($campaignId, 'campaign_id', 'campaigns_stat');
     }
+  }
+
+  function booleanStatCount(){
+    if( $this->countryColumnName == 'Other_view' ){ return true; }
+    return false;
   }
 
   function countStatistics($idCurentData, $columnName, $dbTableName){

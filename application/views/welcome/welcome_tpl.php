@@ -115,7 +115,7 @@
         <a href="/welcome/registration/"></a>
       </div>
         
-      <div class="copyright">Copyright 2013 Ladyads. All rights reserved.</div>
+      <?php $this->load->view('/_shared/welcome_copyright_tpl'); ?>
     
     </div>
 
