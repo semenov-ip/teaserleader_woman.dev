@@ -39,7 +39,7 @@ class CI_Pagination {
 	var $next_link			= '&gt;';
 	var $prev_link			= '&lt;';
 	var $last_link			= 'Last &rsaquo;';
-	var $uri_segment		= 3;
+	var $uri_segment		= 4;
 	var $full_tag_open		= '';
 	var $full_tag_close		= '';
 	var $first_tag_open		= '';

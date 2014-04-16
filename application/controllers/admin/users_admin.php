@@ -14,8 +14,9 @@ class Users_admin extends CI_Controller{
   function index(){
     $this->load->helper('status/incite_status_user_name');
     $this->load->helper('date2str');
+    $this->load->helper('pagination_initialize');
     $this->load->library('admin/search_id_mail');
-    $this->load->model('select_models');
+    $this->load->model('pagination/user_pagination');
 
     $data = template_builder('admin', 'users_admin_tpl', $this->who);
 
@@ -25,9 +26,17 @@ class Users_admin extends CI_Controller{
   }
 
   function getUserAllData(){
-    $dataWhereArr = ( !empty($_POST['search']) ) ? $this->search_id_mail->getSearchData($_POST['search']) : array();
+    $perPagePagination = pagination_initialize('/index.php/admin/users_admin/index/', $this->totalRows());
 
-    return $this->setDataProcessing($this->select_models->select_all_row_whereforeach_selectcilumn_orderby($dataWhereArr, 'user_id, email, name, count_money, dataadd, status', 'user_id', 'desc', 'users'));
+    return $this->setDataProcessing($this->user_pagination->select_all_row_whereforeach_selectcilumn_orderby_pagination($this->getDataWhereArr(), 'user_id, email, name, count_money, dataadd, status', 'user_id', 'desc', $perPagePagination, intval($this->uri->segment(4)), 'users'));
+  }
+
+  function totalRows(){
+    return $this->user_pagination->select_all_row_whereforeach_selectcilumn_orderby_pagination_count($this->getDataWhereArr(), 'user_id', 'users');
+  }
+
+  function getDataWhereArr(){
+    return ( !empty($_POST['search']) ) ? $this->search_id_mail->getSearchData($_POST['search']) : array();
   }
 
   function setDataProcessing($userDataObj){

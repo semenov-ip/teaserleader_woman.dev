@@ -18,7 +18,7 @@ class Check_users_access {
 
     $permissionDirArr = $this->$permissionUserWho();
 
-    $currentDir = $this->currentDirExtract();
+    $currentDir = current_dir_extract();
 
     if( array_search($currentDir, $permissionDirArr) === false ){
       return $this->sendUserDistributor();
@@ -43,12 +43,6 @@ class Check_users_access {
     if( !is_object($dataUserWho) ){ return $this->sendUserDistributor(); }
 
     return $dataUserWho->who;
-  }
-
-  function currentDirExtract(){
-    $currentUrl = explode( "/", $_SERVER['REQUEST_URI'] );
-
-    return $currentUrl[1];
   }
 
   function sendUserDistributor(){

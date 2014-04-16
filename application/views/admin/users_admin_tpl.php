@@ -82,6 +82,7 @@
 
               <?php } ?>
             </table>
+          <?php echo $this->pagination->create_links(); ?>
           <?php } ?>
           <?php if(!$userDataObj) { ?><div class="alert alert-warning">К сожалению на данный момент список площадок пуст, Вы еще не добавили ни одного сайта.</div><?php } ?>
           <div class="clearfix"></div>

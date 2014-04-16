@@ -27,16 +27,17 @@
                   <td><?php echo $currentTicketDataObj->dataadd; ?></td>
 
                   <th class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentTicketDataObj->user_id; ?>/"><?php echo $currentTicketDataObj->email; ?></a></th>
-                  
+
                   <td><a href="/admin/tickets_edit_admin/index/<?php echo $currentTicketDataObj->ticket_id; ?>/"><?php echo $currentTicketDataObj->title; ?></a></td>
 
                   <td class="text-align-center"><span class="label <?php echo $currentTicketDataObj->status['class'] ?>"><?php echo $currentTicketDataObj->status['name'] ?></span></td>
-                
+
                 </tr>
               </tbody>
 
             <?php } ?>
           </table>
+        <?php echo $this->pagination->create_links(); ?>
         <?php } ?>
         <?php if(!$ticketDataObj) { ?><div class="alert alert-warning">На данный момент нет сформированных тикетов.</div><?php } ?>
         <div class="clearfix"></div>

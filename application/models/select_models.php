@@ -496,6 +496,29 @@
       return false;
     }
 
+    function select_all_row_where_foreach_column_selectcolumn_join_orderby_return_count($dataWhereArr, $orderbycolumn, $orderbycommand, $leftjoin, $equalityjoin, $selectcolumn, $dbTableName){
+      if(is_array($dataWhereArr)){
+
+        $this->db->select($selectcolumn);
+
+        $this->db->join($this->prefixes.$leftjoin, $equalityjoin);
+
+        $this->db->order_by($orderbycolumn, $orderbycommand);
+
+        if(!empty($dataWhereArr)){
+          foreach ($dataWhereArr as $key => $where) {
+            $this->db->or_where($where);
+          }
+        }
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        return $query->num_rows();
+      }
+
+      return false;
+    }
+
     function select_from_all_limit_orderby($limit, $orderbycolumn, $orderbycommand, $dbTableName){
 
       $this->db->limit($limit);

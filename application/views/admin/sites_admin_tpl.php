@@ -1,9 +1,3 @@
-<script>
-  $( document ).ready(function() {
-    console.log($('.stat_login').html());
-  });
-</script>
-
 <!-- Page title -->
 <div class="page-title">
   <h2><i class="icon-desktop color"></i> Площадки</h2>
@@ -88,6 +82,7 @@
 
               <?php } ?>
             </table>
+          <?php echo $this->pagination->create_links(); ?>
           <?php } ?>
           <?php if(!$siteDataObj) { ?><div class="alert alert-warning">На данный момент список площадок пуст</div><?php } ?>
           <div class="clearfix"></div>

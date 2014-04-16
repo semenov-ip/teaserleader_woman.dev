@@ -14,7 +14,9 @@ class Tickets_admin extends CI_Controller{
   function index(){
     $this->load->helper('status/incite_status_ticket_name');
     $this->load->helper('date2str');
+    $this->load->helper('pagination_initialize');
     $this->load->model('select_models');
+    $this->load->model('pagination/ticket_pagination');
 
     $data = template_builder('admin','tickets_admin_tpl', $this->who);
 
@@ -24,9 +26,13 @@ class Tickets_admin extends CI_Controller{
   }
 
   function getTicketData(){
-    $dataWhereArr['upid'] = 0;
+    $perPagePagination = pagination_initialize('/index.php/admin/tickets_admin/index/', $this->totalRows());
 
-    return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_orderby($dataWhereArr,'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', 'tickets'));
+    return $this->setDataProcessing($this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination(array('upid' => 0 ),'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', $perPagePagination, intval($this->uri->segment(4)), 'tickets'));
+  }
+
+  function totalRows(){
+    return $this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination_count(array('upid' => 0 ), 'dataadd', 'tickets');
   }
 
   function setDataProcessing($ticketDataObj){
