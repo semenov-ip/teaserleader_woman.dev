@@ -34,13 +34,15 @@ class Statistiques_referral extends CI_Controller{
   }
 
   function getReferralStatistiqDataArr($statistiqData){
+    $statistiqData['user_id'] = extract_key_this_array($this->session->userdata('user'), 'user_id');
 
     $statistiqConfig = array(
       'select_column' => 'money, dataadd, view, click',
       'table_name' => 'referral',
       'column_id' => 'user_id',
+      'keyformname' => 'user_id'
     );
 
-    return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($statistiqData, array('date_start', 'date_end')));
+    return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($statistiqData, array('user_id', 'date_start', 'date_end')));
   }
 }
