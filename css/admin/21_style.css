@@ -1478,10 +1478,22 @@ a:hover {
    background: #16cbe6;
 }
 
+.jumbotron-style p{
+   font-size: 10.5pt;
+   margin-bottom: 6px;
+   margin-top: 6px;
+}
 
-
-
-
-
-
-
+.formula-referral{
+   font-size: 14pt;
+   background: #fafafa url('/img/main-back.png') repeat;
+   margin: 10px 0px;
+   padding: 5px;
+   border-radius: 10px;
+   border-left: 1px solid #16cbe6;
+   border-top: 1px solid #16cbe6;
+   border-bottom: 1px solid #16cbe6;
+   border-right: 1px solid #16cbe6;
+   display: inline;
+   color: #16cbe6;
+}

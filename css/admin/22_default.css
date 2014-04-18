@@ -27,9 +27,17 @@
   width: 31%%
 }
 
+.width_32{
+  width: 32%%
+}
+
 .width_50 {
   width: 50px !important;
 }
+.width_70 {
+  width: 70%;
+}
+
 .width_80 {
   width: 80px !important;
 }
@@ -74,6 +82,10 @@
   margin-top: 4px;
 }
 
+.margin-top--4{
+  margin-top: -4px;
+}
+
 .margin-top-14{
 	margin-top: 14px;
 }
@@ -106,6 +118,11 @@
 .margin-top-2{
   margin-top: 2px;
 }
+
+.margin-b-6 {
+  margin-bottom: 6px;
+}
+
 
 .font-size-20{
   font-size: 20px;

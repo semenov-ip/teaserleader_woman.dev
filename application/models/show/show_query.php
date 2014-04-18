@@ -121,6 +121,45 @@
       return false;
     }
 
+    function update_set_several_where_column_plus_set_column($dataWhereArr, $incrementColumn, $dbTableName){
+
+      if(is_array($dataWhereArr)){
+
+        $this->db->set($incrementColumn, $incrementColumn." + 1", FALSE);
+
+        $this->db->where($dataWhereArr);
+
+        return $this->db->update( $this->prefixes.$dbTableName );
+      }
+
+      return false;
+    }
+
+    function select_limit_row_where_column_selectcolumn_return_stat_id($dataWhereArr, $dbTableName){
+      if(is_array($dataWhereArr)){
+
+        $this->db->select('stat_id');
+
+        $this->db->limit(1);
+
+        $this->db->where($dataWhereArr);
+
+        $query = $this->db->get($this->prefixes.$dbTableName);
+
+        if($query->num_rows() == 1){
+
+          foreach ($query->result() as $row) {
+
+            return $row->stat_id;
+          }
+
+        }
+
+      }
+
+      return false;
+    }
+
     function create_table_log($dbTableName){
 
       $this->load->dbforge();

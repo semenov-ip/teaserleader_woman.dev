@@ -2,23 +2,17 @@
     
 class Registration extends CI_Controller{
 
-  private $referral;
-
   function __construct(){
     parent::__construct();
-
-    $this->referral = 0;
 
     check_users_authentication();
   }
 
-  function index($referral = NULL){
+  function index(){
     $this->load->helper('execute_trim_empty_form');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->library('welcome/validation_data_registration');
-
-    if(isset($referral)){ $this->referral = $referral; }
 
     $data['error'] = extract_key_this_array( $this->config->item('error_message'), $this->getPostDataRegistration() );
 
@@ -56,16 +50,18 @@ class Registration extends CI_Controller{
 
     $post['hash'] = md5($post['email'].$post['password'].$post['dataadd']);
 
-    $post['referral'] = $this->referral;
+    $post['referral'] = $this->session->userdata('referral') ? $this->session->userdata('referral') : 0;
 
     $post['last_data_auth'] = $this->config->item('date');
 
     $idUser = $this->insert_models->insert_data_return_id($post, 'users');
 
-    if($idUser){ 
+    if($idUser){
+      if($this->session->userdata('referral')) { $this->session->unset_userdata('referral'); }
+
       $this->session->set_userdata( array('user' => array('hash' => $post['hash'], 'user_id' => $idUser)) );
 
-      redirect( "/_shared/user_distributor/", 'location'); 
+      redirect( "/welcome/metrika/", 'location'); 
     }
   }
 }

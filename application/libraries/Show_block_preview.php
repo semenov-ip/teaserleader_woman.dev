@@ -43,7 +43,7 @@ class Show_block_preview {
 
     $teaserBlockTableTd = '<td id="teaser_block_td'.$id.'"><p>';
     $teaserBlockTableTd .= '<a rel="nofollow" href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">';
-    $teaserBlockTableTd .= '<img width="'.$blockDataObj->size.'px" height="'.$blockDataObj->size.'px" id="teaser_block_img'.$id.'" src="http://'.$_SERVER['SERVER_NAME'].$teaser->image.'"></a>';
+    $teaserBlockTableTd .= '<img style="'.($blockDataObj->position != 'top' ? 'float: '.$blockDataObj->position.' !important; ' : '').'; '.($blockDataObj->position == 'left' ? 'margin: 0 '.$blockDataObj->cell_padding.'px 0 0' : ($blockDataObj->position == 'right' ? 'margin: 0 0 0 '.$blockDataObj->cell_padding.'px' : 'margin: 0 0 0 0')).'" width="'.$blockDataObj->size.'px" height="'.$blockDataObj->size.'px" id="teaser_block_img'.$id.'" src="http://'.$_SERVER['SERVER_NAME'].$teaser->image.'"></a>';
     $teaserBlockTableTd .= ($blockDataObj->position == 'top' ? '<br/>' : '');
     $teaserBlockTableTd .= '<a rel="nofollow" href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">'.$teaserText.'</a>';
     $teaserBlockTableTd .= ($blockDataObj->second_link) ? '<br><br><b><a href="'.$clickUrl.'" target="_blank" title="'.$teaserText.'">читать далее &raquo;</a></b>' : "";

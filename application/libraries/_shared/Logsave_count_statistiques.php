@@ -1,10 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Logsave_count_statistiques {
-  public $ci, $countryColumnName;
+  public $ci, $countryColumnName, $campaignIdCollection;
 
   function __construct(){
     $this->ci =& get_instance();
+
+    $this->campaignIdCollection = array();
   }
 
   function saveDataLogAndStat($teaserDataObj, $blockDataObj){
@@ -13,11 +15,23 @@ class Logsave_count_statistiques {
 
     $this->getCountryColumnName($blockDataObj->country);
 
-    $this->blocksStat($blockDataObj->block_id);
-
-    $this->siteStat($blockDataObj->site_id, $blockDataObj->block_id, $blockDataObj->user_id);
-
     $this->saveLogDataObjAndTeaserStatCompaingStat($teaserDataObj, $blockDataObj);
+
+    if( $this->booleanStatCount() ){ return false; }
+
+    $this->countStatistics($this->getDataWhereArr($blockDataObj->block_id, 'block_id'), 'view', 'blocks_stat');
+
+    $this->countStatistics($this->getDataWhereArr($blockDataObj->site_id, 'site_id'), 'view', 'sites_stat');
+
+    foreach ($teaserDataObj as $key => $oneTeaserDataObj){
+      $this->countStatistics($this->getDataWhereArr($oneTeaserDataObj->teaser_id, 'teaser_id'), 'view', 'teasers_stat');
+    }
+
+    foreach ($this->campaignIdCollection as $key => $campaignId) {
+      $this->countStatistics($this->getDataWhereArr($campaignId, 'campaign_id'), 'view', 'campaigns_stat');
+    }
+
+    $this->countStatistics($this->getDataWhereArr( $blockDataObj->user_id, 'user_id'), $this->countryColumnName, 'geo_stat');
   }
 
   function createLogTable(){
@@ -28,39 +42,7 @@ class Logsave_count_statistiques {
     $this->countryColumnName = country_extratc_column_name_view($country);
   }
 
-  function blocksStat($blockId){
-    if( $this->booleanStatCount() ){ return false; }
-
-    $this->countStatistics($blockId, 'block_id', 'blocks_stat');
-  }
-
-  function siteStat($siteId, $blockId, $userId){
-    if( $this->booleanStatCount() ){ return false; }
-
-    $countIdBlockOnSite = $this->getCountBlockOnSite($siteId);
-
-    if( count($countIdBlockOnSite) !== 1 && $countIdBlockOnSite[0]->block_id == $blockId ){
-      $this->countStatistics($siteId, 'site_id', 'sites_stat');
-
-      if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
-    }
-
-    if( count($countIdBlockOnSite) === 1 ){
-      $this->countStatistics($siteId, 'site_id', 'sites_stat');
-
-      if( $this->countryColumnName ){ $this->geoStat($userId, 'geo_stat'); };
-    }
-  }
-
-  function getCountBlockOnSite($siteId){
-    $dataWhereArr = array('site_id' => $siteId, 'status'=> 1);
-
-    return $this->ci->select_models->select_all_row_where_column_selectcolumn($dataWhereArr, 'block_id', 'blocks');
-  }
-
   function saveLogDataObjAndTeaserStatCompaingStat($teaserDataObj, $blockDataObj){
-    $campaignIdCollectionArr = array();
-
     foreach ( $teaserDataObj as $key => $oneTeaserDataObj ){
 
       $addDataArr = array(
@@ -83,28 +65,14 @@ class Logsave_count_statistiques {
 
       $this->ci->insert_models->insert_data_return_id($addDataArr, 'logs_'.$this->ci->config->item('day'));
 
-      $this->teaserStat($oneTeaserDataObj->teaser_id, 'teaser_id', 'teasers_stat');
-
       $this->updateTeaserDataLastShow($oneTeaserDataObj->teaser_id);
 
-      if(array_search($oneTeaserDataObj->campaign_id, $campaignIdCollectionArr) === false){ $campaignIdCollectionArr[] = $oneTeaserDataObj->campaign_id; }
+      if(array_search($oneTeaserDataObj->campaign_id, $this->campaignIdCollection) === false){ $this->campaignIdCollection[] = $oneTeaserDataObj->campaign_id; }
     }
-
-    $this->campaignStat($campaignIdCollectionArr);
   }
 
-  function teaserStat($idCurentData, $columnName, $dbTableName){
-    if( $this->booleanStatCount() ){ return false; }
-
-    $this->countStatistics($idCurentData, $columnName, $dbTableName);
-  }
-
-  function campaignStat($campaignIdCollectionArr){
-    if( $this->booleanStatCount() ){ return false; }
-
-    foreach ($campaignIdCollectionArr as $key => $campaignId){
-      $this->countStatistics($campaignId, 'campaign_id', 'campaigns_stat');
-    }
+  function updateTeaserDataLastShow($teaserId){
+    return $this->ci->update_models->update_set_one_where_column(array('last_show' => $this->ci->config->item('date')), array('teaser_id' => $teaserId), 'teasers');
   }
 
   function booleanStatCount(){
@@ -112,65 +80,30 @@ class Logsave_count_statistiques {
     return false;
   }
 
-  function countStatistics($idCurentData, $columnName, $dbTableName){
-    $dataWhereArr = $this->getDataWhereArr($idCurentData, $columnName);
-
-    $dataStatisticsObj = $this->getDataStatisticsObj($dataWhereArr, $dbTableName);
-
-    is_object($dataStatisticsObj) ? $this->updateCountStatistics($dataWhereArr, $dataStatisticsObj, $dbTableName) : $this->saveCountStatistics($dataWhereArr, $dbTableName);
-  }
-
   function getDataWhereArr($idCurentData, $columnName){
     return array( $columnName => $idCurentData, 'dataadd' => $this->ci->config->item('day') );
   }
 
-  function getDataStatisticsObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, 'view', 1, $dbTableName);
+  function countStatistics($dataWhereArr, $columnName, $dbTableName){
+    $booleanDataStatisticsToday = $this->checkDataStatisticsToday($dataWhereArr, $dbTableName);
+
+    $addDataArr = $dataWhereArr;
+    $addDataArr[$columnName] = 1;
+
+    $dataWhereArr['stat_id'] = $booleanDataStatisticsToday;
+
+    $booleanDataStatisticsToday ? $this->updateCountStatistics($dataWhereArr, $columnName, $dbTableName) : $this->saveCountStatistics($addDataArr, $dbTableName);
+  }
+
+  function checkDataStatisticsToday($dataWhereArr, $dbTableName){
+    return $this->ci->show_query->select_limit_row_where_column_selectcolumn_return_stat_id($dataWhereArr, $dbTableName);
+  }
+
+  function updateCountStatistics($dataWhereArr, $incrementColumn, $dbTableName){
+    $this->ci->show_query->update_set_several_where_column_plus_set_column($dataWhereArr, $incrementColumn, $dbTableName);
   }
 
   function saveCountStatistics($addDataArr, $dbTableName){
-    $addDataArr['view'] = 1;
-
-    $this->ci->insert_models->insert_data_return_id($addDataArr, $dbTableName);
-  }
-
-  function updateCountStatistics($dataWhereArr, $dataStatisticsObj, $dbTableName){
-    $dataUpdateArr = array('view' => $dataStatisticsObj->view + 1);
-
-    $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, $dbTableName);
-  }
-
-  function updateTeaserDataLastShow($teaserId){
-    $dataWhereArr['teaser_id'] = $teaserId;
-    $dataUpdateArr['last_show'] = $this->ci->config->item('date');
-
-    $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'teasers');
-  }
-
-  function geoStat($userId, $dbTableName){
-    $dataWhereArr['dataadd'] = $this->ci->config->item('day');
-    $dataWhereArr['user_id'] = $userId;
-
-    $dataStatisticsGeoObj = $this->getDataStatisticsGeoObj($dataWhereArr, $dbTableName);
-
-    is_object($dataStatisticsGeoObj) ? $this->updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName) : $this->saveCountStatisticsGeo($dataWhereArr, $dbTableName);
-  }
-
-  function getDataStatisticsGeoObj($dataWhereArr, $dbTableName){
-    return $this->ci->select_models->select_limit_row_where_column_selectcolumn($dataWhereArr, $this->countryColumnName, 1, $dbTableName);
-  }
-
-  function updateCountStatisticsGeo($dataWhereArr, $dataStatisticsGeoObj, $dbTableName){
-    $column = $this->countryColumnName;
-
-    $dataUpdateArr = array($column => $dataStatisticsGeoObj->$column + 1);
-
-    $this->ci->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, $dbTableName);
-  }
-
-  function saveCountStatisticsGeo($addDataArr, $dbTableName){
-    $addDataArr[$this->countryColumnName] = 1;
-
     $this->ci->insert_models->insert_data_return_id($addDataArr, $dbTableName);
   }
 }

@@ -37,6 +37,7 @@
               </ul>
             </div>
 
+            <?php if($close){ ?>
             <div class="awidget-head"><h3>Добавление быстрого ответа</h3></div>
             <!-- Edit profile form (not working)-->
             <form class="form-horizontal" role="form" method="post">
@@ -59,10 +60,11 @@
                     <input type="hidden" name="author_name" class="form-control" value="Администратор">
 
                     <button type="submit" class="btn btn-default">Добавить</button>
-                    <a href="/webmaster/sites/" type="reset" class="btn btn-default">Отменить</a>
+                    <a href="/admin/ticket_close_admin/index/<?php echo $ticketDataObj[0]->ticket_id; ?>/" type="reset" class="btn btn-default">Закрыть тикет</a>
                  </div>
               </div>
             </form>
+            <?php } ?>
           </div>
        </div>
     </div>

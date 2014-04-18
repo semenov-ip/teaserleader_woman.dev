@@ -373,8 +373,6 @@ $config['paytitle']   = 'ladyads';
 
 $config['min_payout'] = 99;
 
-
-
 $config['base_url'] = '';
 
 $config['datetime']  = date("Y-m-d H:i:s", time());

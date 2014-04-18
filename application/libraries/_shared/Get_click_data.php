@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('Нет доступа к скрипту'); 
 
 class Get_click_data {
-  public $ci, $priceStatArr;
+  public $ci;
 
   function __construct(){
     $this->ci =& get_instance();
@@ -16,8 +16,6 @@ class Get_click_data {
       'teaserDataObj' => $this->getTeaserDataObj($logDataObj->teaser_id),
 
       'price' => $this->getPrice($logDataObj->site_id, $logDataObj->country),
-
-      'money_stat' => $this->priceStatArr,
 
       'boolean_stat_count' => $this->booleanStatCount($logDataObj->country)
     );
@@ -62,13 +60,7 @@ class Get_click_data {
   }
 
   function geoBaseCountry($sitePrice, $country){
-    if( $country == "RU" ){
-      $this->priceStatArr = array('money_ru' => $sitePrice->price);
-
-      return $sitePrice->price; 
-    }
-
-    $this->priceStatArr = array('money_sng' => $sitePrice->price_sng);
+    if( $country == "RU" ){ return $sitePrice->price; }
 
     return $sitePrice->price_sng;
   }

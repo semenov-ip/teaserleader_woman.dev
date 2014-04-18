@@ -23,10 +23,10 @@
             <thead>
               <tr>
                 <th width="50%">Дата</th>
-                <th>Показов</th>
-                <th>Кликов</th>
-                <th>CTR</th>
-                <th>Доход</th>
+                <th class="text-align-center">Показов</th>
+                <th class="text-align-center">Кликов</th>
+                <th class="text-align-center">CTR</th>
+                <th class="text-align-center">Доход</th>
               </tr>
             </thead>
             <?php foreach ($geoStatistiqDataArr['current'] as $key => $currentGeoStatistiq) {?>
@@ -35,23 +35,23 @@
                 <tr>
                   <td><?php echo $currentGeoStatistiq['dataadd']; ?></td>
 
-                  <td><?php echo $currentGeoStatistiq['view']; ?></td>
+                  <td class="text-align-center"><?php echo $currentGeoStatistiq['view']; ?></td>
 
-                  <td><?php echo $currentGeoStatistiq['click']; ?></td>
+                  <td class="text-align-center"><?php echo $currentGeoStatistiq['click']; ?></td>
 
-                  <td><?php echo $currentGeoStatistiq['ctr']; ?> %</td>
+                  <td class="text-align-center"><?php echo $currentGeoStatistiq['ctr']; ?> %</td>
 
-                  <td><?php echo $currentGeoStatistiq['count_money']; ?> руб.</td>
+                  <td class="text-align-center"><?php echo $currentGeoStatistiq['count_money']; ?> руб.</td>
 
                 </tr>
 
             <?php } ?>
                 <tr>
                   <td></td>
-                  <td><?php echo $geoStatistiqDataArr['common']['view']; ?></td>
-                  <td><?php echo $geoStatistiqDataArr['common']['click']; ?></td>
-                  <td><?php echo $geoStatistiqDataArr['common']['ctr']; ?> %</td>
-                  <td><?php echo $geoStatistiqDataArr['common']['count_money']; ?> руб.</td>
+                  <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['view']; ?></td>
+                  <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['click']; ?></td>
+                  <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['ctr']; ?> %</td>
+                  <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['count_money']; ?> руб.</td>
                 </tr>
               </tbody>
           </table>

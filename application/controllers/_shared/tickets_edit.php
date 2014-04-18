@@ -14,6 +14,7 @@ class Tickets_edit extends CI_Controller {
   function index($ticketId){
     $this->load->helper('date2str');
     $this->load->helper('tickets_function');
+    $this->load->helper('status/update_status');
     $this->load->model('select_models');
     $this->load->model('insert_models');
     $this->load->model('update_models');
@@ -26,6 +27,8 @@ class Tickets_edit extends CI_Controller {
     $data['error'] = extract_key_this_array($this->config->item('error_message'), $this->extractKeyErrorMessageInitializationPostQuery());
 
     $data['ticketDataObj'] = $this->getTicketData();
+
+    $data['close'] = !in_array($data['ticketDataObj'][0]->status, array('3', '4'));
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
@@ -50,22 +53,16 @@ class Tickets_edit extends CI_Controller {
         $currentTicketDataObj->dataadd = date2str($currentTicketDataObj->dataadd);
 
         $ticketDataObj[$key]->user_roles = ($currentTicketDataObj->author_name !== "Администратор") ? byUserRoles() : byAdminRoles();
-
       }
 
-      if ($ticketDataObj[0]->status == 1){ $this->statusUpdate(2); }
+      if ($ticketDataObj[0]->status == 1){ 
+        update_status(array('status' => 2), array( 'ticket_id' => $this->ticketId ), 'tickets');
+      }
 
       return $ticketDataObj; 
     }
 
     redirect( "/_shared/user_distributor/", 'location'); 
-  }
-
-  function statusUpdate($statusNum){
-    $dataUpdateArr['status'] = $statusNum;
-    $dataWhereArr['ticket_id'] = $this->ticketId;
-
-    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
 
   function extractKeyErrorMessageInitializationPostQuery(){
@@ -81,9 +78,9 @@ class Tickets_edit extends CI_Controller {
 
       if($this->updateTicketData($_POST)){
 
-        $this->statusAdminUpdate();
+        update_status(array('admin_status' => 0), array( 'ticket_id' => $this->ticketId ), 'tickets');
 
-        $this->statusUpdate(0);
+        update_status(array('status' => 0), array( 'ticket_id' => $this->ticketId ), 'tickets');
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
@@ -101,12 +98,5 @@ class Tickets_edit extends CI_Controller {
     $addDataArr['dataadd'] = $this->config->item('datetime');
 
     return $this->insert_models->insert_data_return_id($addDataArr, 'tickets');
-  }
-
-  function statusAdminUpdate(){
-    $dataUpdateArr['admin_status'] = 0;
-    $dataWhereArr['ticket_id'] = $this->ticketId;
-
-    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
 }

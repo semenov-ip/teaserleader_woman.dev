@@ -47,7 +47,7 @@ class Statistiques_frompost_countdata_country {
 
         $statistiq['ctr'] = str_replace(",", ".", @sprintf("%.2f", (100 / $statistiq['view']) * $statistiq['click']));
 
-        $statistiq['count_money'] = number_format($statistiq[$statistiqConfig['money_column']], 2, '.', '');
+        $statistiq['count_money'] = number_format($statistiq['money'], 2, '.', '');
 
         $statistiq['dataadd'] = date('d-m-Y', $statistiq['dataadd']);
 

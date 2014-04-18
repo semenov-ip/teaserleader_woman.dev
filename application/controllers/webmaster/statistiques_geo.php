@@ -54,14 +54,11 @@ class Statistiques_geo extends CI_Controller {
   function getGeoStatistiqDataArr($booleanPostUrl){
     if( $booleanPostUrl ){ return false; }
 
-    $money_column = extract_select_key_this_moneycountry($_POST['country']);
-
     $statistiqConfig = array(
-      'select_column' => $_POST['country'].'_view, '.$_POST['country'].'_click, '.$money_column.' , dataadd',
+      'select_column' => $_POST['country'].'_view, '.$_POST['country'].'_click, money, dataadd',
       'table_name' => 'geo',
       'view_column' => $_POST['country'].'_view',
-      'click_column' => $_POST['country'].'_click',
-      'money_column' => $money_column
+      'click_column' => $_POST['country'].'_click'
     );
 
     return $this->statistiques_frompost_countdata_country->getStatistiqCount($statistiqConfig, extract_select_key_this_array($_POST, array('country', 'date_start', 'date_end')));

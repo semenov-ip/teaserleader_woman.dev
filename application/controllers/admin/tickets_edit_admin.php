@@ -29,6 +29,8 @@ class Tickets_edit_admin extends CI_Controller {
 
     $data['ticketDataObj'] = $this->getTicketData();
 
+    $data['close'] = !in_array($data['ticketDataObj'][0]->status, array('3', '4'));
+
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
 
@@ -92,9 +94,9 @@ class Tickets_edit_admin extends CI_Controller {
 
         $this->session->set_flashdata('successSaveUpdateData', 'success_save_update_data');
 
-        $this->statusAdminUpdate();
+        update_status(array('admin_status' => 1), array( 'ticket_id' => $this->ticketId ), 'tickets');
 
-        $this->statusUpdate();
+        update_status(array('status' => 1), array( 'ticket_id' => $this->ticketId ), 'tickets');
 
         $this->send_mail->sendMailMessage($this->userAuthorEmail, $_POST['title'], $_POST['text']);
 
@@ -120,19 +122,5 @@ class Tickets_edit_admin extends CI_Controller {
     $userIdTicketsArr = $this->select_models->select_one_row_where_column_selectcolumn($dataWhereArr, 'user_id', 'tickets');
 
     return $userIdTicketsArr->user_id;
-  }
-
-  function statusAdminUpdate(){
-    $dataUpdateArr['admin_status'] = 1;
-    $dataWhereArr['ticket_id'] = $this->ticketId;
-
-    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
-  }
-
-  function statusUpdate(){
-    $dataUpdateArr['status'] = 1;
-    $dataWhereArr['ticket_id'] = $this->ticketId;
-
-    $this->update_models->update_set_one_where_column($dataUpdateArr, $dataWhereArr, 'tickets');
   }
 }

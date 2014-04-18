@@ -36,27 +36,31 @@
               </ul>
             </div>
 
+            <?php if($close){ ?>
             <div class="awidget-head"><h3>Добавление быстрого ответа</h3></div>
-              <!-- Edit profile form (not working)-->
-              <form class="form-horizontal" role="form" method="post">
-                <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
+            <!-- Edit profile form (not working)-->
+            <form class="form-horizontal" role="form" method="post">
+              <?php if($error){ echo '<div class="alert '.$error['class'].'">'.$error['text'].'</div>'; } ?>
 
-                <div class="form-group">
-                  <label class="control-label col-lg-1">Описание</label>
-                  <div class="col-lg-6">
-                    <textarea class="form-control" rows="3" name="text" ></textarea>
-                  </div>
+              <div class="form-group">
+                <label class="control-label col-lg-1">Описание</label>
+                <div class="col-lg-6">
+                  <textarea class="form-control" rows="3" name="text" ></textarea>
                 </div>
+              </div>
 
-                <div class="form-group">
-                   <!-- Buttons -->
-                    <div class="col-lg-6 col-lg-offset-1">
-                      <input type="hidden" name="author_name" class="form-control" value="<?php echo $email; ?>">
-                      <button type="submit" class="btn btn-default">Добавить</button>
-                      <a href="/_shared/tickets/" type="reset" class="btn btn-default">Отменить</a>
-                   </div>
-                </div>
-              </form>
+              <div class="form-group">
+                 <!-- Buttons -->
+                  <div class="col-lg-6 col-lg-offset-1">
+                    <input type="hidden" name="author_name" class="form-control" value="<?php echo $email; ?>">
+                    <button type="submit" class="btn btn-default">Добавить</button>
+                    <a href="/_shared/ticket_close/index/<?php echo $currentTicketDataObj->ticket_id; ?>/" type="reset" class="btn btn-default">Закрыть тикет</a>
+                 </div>
+              </div>
+            </form>
+            <?php } ?>
+
+
           </div>
        </div>
     </div>
