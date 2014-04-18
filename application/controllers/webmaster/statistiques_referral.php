@@ -24,7 +24,7 @@ class Statistiques_referral extends CI_Controller{
 
     $data['referralStatistiqDataArr'] = $this->getReferralStatistiqDataArr($data['statistiqData']);
 
-    $data['referralUrl'] = 'http://'.$_SERVER['HTTP_HOST'].'/welcome/welcome/index/'.extract_key_this_array($this->session->userdata('user'), 'user_id').'/';
+    $data['referralUrl'] = 'http://'.$_SERVER['HTTP_HOST'].'/?ref='.extract_key_this_array($this->session->userdata('user'), 'user_id');
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }

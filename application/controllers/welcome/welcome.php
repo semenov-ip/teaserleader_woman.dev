@@ -9,10 +9,10 @@ class Welcome extends CI_Controller {
     check_users_authentication();
   }
 
-  public function index($referral = false) {
+  public function index() {
     $data['header'] = header_src_css_js('welcome', false);
 
-    if($referral){ $this->session->set_userdata(array('referral' => $referral)); }
+    if(isset($_GET['ref'])){ $this->session->set_userdata(array('referral' => htmlspecialchars(trim($_GET['ref'])))); }
 
     $this->load->view('/welcome/welcome_tpl.php', $data);
   }

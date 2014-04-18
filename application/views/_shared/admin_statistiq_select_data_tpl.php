@@ -4,10 +4,10 @@
   
     
       <div class="form-group">
-        <div class="col-lg-12">
-          <div class="input-group">
 
-            <div class="datetimepicker input-append display-inline-block margin-right-10 width_31">
+        <div class="col-lg-12">
+
+            <div class="datetimepicker input-append display-inline-block margin-right-10 width_24">
               От: <input data-format="dd-MM-yyyy" name="date_start" class="picker width_70" type="text" value="<?php echo $statistiqData['date_start']; ?>" />
               <span class="add-on">
                  &nbsp;<i data-time-icon="icon-time" data-date-icon="icon-calendar">
@@ -15,7 +15,7 @@
               </span>
             </div>
 
-            <div class="datetimepicker input-append display-inline-block margin-right-10 width_32">
+            <div class="datetimepicker input-append display-inline-block margin-right-10 width_24">
               До: <input data-format="dd-MM-yyyy" name="date_end" class="picker width_70" type="text" value="<?php echo $statistiqData['date_end']; ?>" />
               <span class="add-on">
                  &nbsp;<i data-time-icon="icon-time" data-date-icon="icon-calendar">
@@ -26,8 +26,8 @@
               <input type="submit" name="date" class="btn btn-default vertical-align-baseline" value="Применить" />
             </div>
 
-          </div>
         </div>
+
       </div>
 
     </form>
