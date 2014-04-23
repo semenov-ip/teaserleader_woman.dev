@@ -2,12 +2,12 @@
 
 if(!function_exists('pagination_initialize')){
 
-  function pagination_initialize($baseUrl, $totalRows){
+  function pagination_initialize($baseUrl, $totalRows, $perPage = 10){
     $ci =& get_instance();
 
     $config['base_url'] = $baseUrl;
 
-    $config['per_page'] =  10;
+    $config['per_page'] =  $perPage;
 
     $config['total_rows'] = $totalRows;
 

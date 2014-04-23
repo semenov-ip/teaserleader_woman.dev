@@ -21,7 +21,12 @@ class Teasers extends CI_Controller{
     $this->load->helper('extract_select_key_this_array');
     $this->load->helper('data_where_user_id');
     $this->load->helper('timestamp_of_date_formt');
+    $this->load->helper('sort_arr_of_obj');
+    $this->load->helper('curent_sort_builder');
+    $this->load->helper('wordwrap2');
+    $this->load->helper('split_string');
     $this->load->library('statistiques/statistiques_count_data');
+    $this->load->library('teaser/data_builder_teaser_statistiques_html_elements');
     $this->load->model('statistiques/statistiques_query');
 
     $this->getCampaignId($campaignId);
@@ -29,6 +34,8 @@ class Teasers extends CI_Controller{
     $data = template_builder('admin','teasers_tpl', $this->who);
 
     $data['statistiqData'] = $this->getStatistiqFormData();
+
+    $data = $this->data_builder_teaser_statistiques_html_elements->data($data);
 
     $data['defineDay'] = get_define_day();
 
@@ -67,6 +74,10 @@ class Teasers extends CI_Controller{
 
         $currentTeaserDataObj->status = incite_status_site_teaser_name($currentTeaserDataObj->status);
 
+        $currentTeaserDataObj->href = $currentTeaserDataObj->url;
+
+        $currentTeaserDataObj->url = split_string($currentTeaserDataObj->url, 20);
+
         $this->statistiqData['teaser_id'] = $currentTeaserDataObj->teaser_id;
 
         $statistiqCount =  $this->getTeaserStatistiqDataArr();
@@ -77,7 +88,7 @@ class Teasers extends CI_Controller{
 
       }
 
-      return $teaserDataObj;
+      return sort_arr_of_obj($teaserDataObj, $this->statistiqData['sorter_column'], $this->statistiqData['sorter_by'] );
     }
 
     return false;

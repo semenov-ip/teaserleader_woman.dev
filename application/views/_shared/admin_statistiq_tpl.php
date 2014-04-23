@@ -41,7 +41,9 @@
           </div>
         <!-- </div> -->
       </div>
+      <input type="hidden" name="sorter_column" value="<?php echo $statistiqData['sorter_column']; ?>" />
 
+      <input type="hidden" name="sorter_by" value="<?php echo $statistiqData['sorter_by']; ?>" />
     </form>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<form class="form-horizontal" role="form" method="post">
+<form id="statistiq" class="form-horizontal" role="form" method="post">
   <div class="row">
     <div class="col-md-4">
 
@@ -48,4 +48,8 @@
 
     </div>
   </div>
+
+  <input type="hidden" name="sorter_column" value="<?php echo $statistiqData['sorter_column']; ?>" />
+
+  <input type="hidden" name="sorter_by" value="<?php echo $statistiqData['sorter_by']; ?>" />
 </form>

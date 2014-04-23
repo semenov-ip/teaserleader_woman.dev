@@ -15,6 +15,7 @@ class Sites_admin extends CI_Controller{
     $this->load->helper('status/incite_status_site_teaser_name');
     $this->load->helper('wordwrap2');
     $this->load->helper('pagination_initialize');
+    $this->load->helper('split_string');
     $this->load->library('admin/search_id_url_mail');
     $this->load->model('select_models');
     $this->load->model('pagination/site_pagination');
@@ -47,24 +48,12 @@ class Sites_admin extends CI_Controller{
 
         $currentSiteDataObj->status = incite_status_site_teaser_name($currentSiteDataObj->status);
 
-        $currentSiteDataObj->stat_login = $this->splitString($currentSiteDataObj->stat_login);
+        $currentSiteDataObj->stat_login = split_string($currentSiteDataObj->stat_login, 25);
       }
 
       return $siteDataObj;
     }
 
     return false;
-  }
-
-  function splitString($statLogin){
-    $statLogin = preg_replace("/\n|\r|\r\n|(\r\n)+/u", "<br />", $statLogin);
-
-    $statLoginArray = explode("<br />", $statLogin);
-
-    foreach ($statLoginArray as $key => $statData) {
-      $statLoginArray[$key] = wordwrap2($statData, 25);
-    }
-
-    return implode("<br />", $statLoginArray);
   }
 }

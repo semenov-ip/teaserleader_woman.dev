@@ -26,7 +26,7 @@ class Tickets_admin extends CI_Controller{
   }
 
   function getTicketData(){
-    $perPagePagination = pagination_initialize('/index.php/admin/tickets_admin/index/', $this->totalRows());
+    $perPagePagination = pagination_initialize('/index.php/admin/tickets_admin/index/', $this->totalRows(), 20);
 
     return $this->setDataProcessing($this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination(array('upid' => 0 ),'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', $perPagePagination, intval($this->uri->segment(4)), 'tickets'));
   }

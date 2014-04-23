@@ -17,7 +17,10 @@ class Ticket_close_admin extends CI_Controller{
 
     $this->getUserId($ticketId);
 
-    if( update_status(array('status' => 4), array( 'ticket_id' => $this->ticketId ), 'tickets') ){ 
+    if( update_status(array('status' => 4), array( 'ticket_id' => $this->ticketId ), 'tickets') ){
+
+      update_status(array('admin_status' => 1), array( 'ticket_id' => $this->ticketId ), 'tickets');
+
       redirect( "/admin/tickets_admin/", 'location'); 
     }
   }

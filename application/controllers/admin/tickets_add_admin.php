@@ -43,7 +43,7 @@ class Tickets_add_admin extends CI_Controller{
 
       if( $submitStatus !== true ){ return $submitStatus; }
 
-      $this->send_mail->sendMailMessage($this->userAuthorEmail(), $_POST['title'], $_POST['text']);
+      // $this->send_mail->sendMailMessage($this->userAuthorEmail(), $_POST['title'], $_POST['text']);
 
       $this->saveTicketData($_POST);
     }
@@ -59,6 +59,7 @@ class Tickets_add_admin extends CI_Controller{
     $addDataArr['dataadd'] = $this->config->item('datetime');
     $addDataArr['user_id'] = $this->userId;
     $addDataArr['status'] = 1;
+    $addDataArr['admin_status'] = 1;
 
     $ticketId = $this->insert_models->insert_data_return_id($addDataArr, 'tickets');
 

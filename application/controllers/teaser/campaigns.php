@@ -22,12 +22,19 @@ class Campaigns extends CI_Controller{
     $this->load->helper('extract_select_key_this_array');
     $this->load->helper('data_where_user_id');
     $this->load->helper('timestamp_of_date_formt');
+    $this->load->helper('sort_arr_of_obj');
+    $this->load->helper('wordwrap2');
+    $this->load->helper('split_string');
+    $this->load->helper('curent_sort_builder');
     $this->load->library('statistiques/statistiques_count_data');
+    $this->load->library('teaser/data_builder_campaign_statistiques_html_elements');
     $this->load->model('statistiques/statistiques_query');
 
     $data = template_builder('admin','campaigns_tpl', $this->who);
 
     $data['statistiqData'] = $this->getStatistiqFormData();
+
+    $data = $this->data_builder_campaign_statistiques_html_elements->data($data);
 
     $data['defineDay'] = get_define_day();
 
@@ -61,6 +68,8 @@ class Campaigns extends CI_Controller{
 
         $campaignDataObj[$key]->countTeaser = return_word_end($this->select_models->select_count_where_fromtable(array('campaign_id' => $currentCampaignDataObj->campaign_id), 'teasers'), 'объявлен', 'ие', 'ия', 'ий');
 
+        $currentCampaignDataObj->name = split_string($currentCampaignDataObj->name, 34);
+
         $this->statistiqData['campaign_id'] = $currentCampaignDataObj->campaign_id;
 
         $statistiqCount =  $this->getCampaignStatistiqDataArr();
@@ -69,8 +78,7 @@ class Campaigns extends CI_Controller{
 
         $this->totalStatistiq($statistiqCount);
       }
-
-      return $campaignDataObj;
+      return sort_arr_of_obj($campaignDataObj, $this->statistiqData['sorter_column'], $this->statistiqData['sorter_by'] );
     }
 
     return false;

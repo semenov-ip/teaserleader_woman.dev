@@ -18,6 +18,9 @@ class Ticket_close extends CI_Controller{
     $this->getUserId($ticketId);
 
     if(update_status(array('status' => 3), array( 'ticket_id' => $this->ticketId ), 'tickets')){
+
+      update_status(array('admin_status' => 1), array( 'ticket_id' => $this->ticketId ), 'tickets');
+
       redirect( "/_shared/tickets/", 'location');
     }
   }

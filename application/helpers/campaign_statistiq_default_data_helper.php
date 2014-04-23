@@ -11,6 +11,10 @@ if(!function_exists('campaign_statistiq_default_data')){
 
     $campaignDefaultData['date_end'] = date("d-m-Y", $day);
 
+    $campaignDefaultData['sorter_by'] = 'desc';
+
+    $campaignDefaultData['sorter_column'] = 'ctr';
+
     return $campaignDefaultData;
   }
 }

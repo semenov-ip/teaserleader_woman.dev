@@ -23,9 +23,9 @@
               </div>
 
               <div class="form-group">
-                <label class="control-label col-lg-4">Причина <?php echo mb_strtolower($siteDataObj->title); ?> сайта</label>
+                <label class="control-label col-lg-4"><?php echo $siteDataObj->title; ?> сайта по причине:</label>
                 <div class="col-lg-6">
-                  <textarea name="text" class="form-control" rows="3">Ваш сайт <?php echo $siteDataObj->url." ".$siteDataObj->text; ?></textarea>
+                  <textarea name="text" class="form-control" rows="3">Ваш сайт <?php echo $siteDataObj->url." ".$siteDataObj->text; ?>:</textarea>
                 </div>
               </div>
 

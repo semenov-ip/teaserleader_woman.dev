@@ -15,6 +15,7 @@ class Tickets_edit_admin extends CI_Controller {
     $this->load->helper('date2str');
     $this->load->helper('tickets_function');
     $this->load->helper('extract_key_this_object');
+    $this->load->helper('status/update_status');
     $this->load->library('send_mail');
     $this->load->library('/_shared/validation_data_ticket_edit');
     $this->load->model('select_models');

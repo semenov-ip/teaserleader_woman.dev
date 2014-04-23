@@ -7,13 +7,17 @@ if(!function_exists('site_statistiq_default_data')){
 
     $day = $ci->config->item('day');
 
-    $campaignDefaultData['date_start'] = date("d-m-Y", strtotime(extractFirst()));
+    $siteDefaultData['date_start'] = date("d-m-Y", strtotime(extractFirst()));
 
-    $campaignDefaultData['date_end'] = date("d-m-Y", $day);
+    $siteDefaultData['date_end'] = date("d-m-Y", $day);
 
-    $campaignDefaultData['search'] = "";
+    $siteDefaultData['search'] = "";
 
-    return $campaignDefaultData;
+    $siteDefaultData['sorter_by'] = 'desc';
+
+    $siteDefaultData['sorter_column'] = 'ctr';
+
+    return $siteDefaultData;
   }
 }
 

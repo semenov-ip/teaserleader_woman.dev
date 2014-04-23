@@ -17,13 +17,10 @@
             <thead>
               <tr>
                 <th width="5%">ID</th>
-                <th width="20%" class="text-align-center">Изображение</th>
+                <th width="15%" class="text-align-center">Изображение</th>
                 <th width="20%">Текст</th>
                 <th width="8%" class="text-align-center">Статус</th>
-                <th width="8%" class="text-align-center">Показы</th>
-                <th width="8%" class="text-align-center">Клики</th>
-                <th width="8%" class="text-align-center">CTR</th>
-                <th width="8%" class="text-align-center">Расход</th>
+                <?php echo $curentColumnSort; ?>
                 <th width="18%" class="text-align-center"></th>
               </tr>
             </thead>
@@ -33,12 +30,12 @@
                 <tr>
                   <td><?php echo $currentTeaserDataObj->teaser_id; ?></td>
 
-                  <td class="text-align-center"><a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><img id="teaser_block_img_1" src="<?php echo $currentTeaserDataObj->image; ?>" width="70" height="70"></a></td>
+                  <td class="text-align-center"><a href="<?php echo $currentTeaserDataObj->href; ?>" target="_blank"><img id="teaser_block_img_1" src="<?php echo $currentTeaserDataObj->image; ?>" width="70" height="70"></a></td>
 
                   <td>
                     <?php echo $currentTeaserDataObj->text; ?>
                     <br />
-                    <a href="<?php echo $currentTeaserDataObj->url; ?>" target="_blank"><?php echo $currentTeaserDataObj->url; ?></a>
+                    <a href="<?php echo $currentTeaserDataObj->href; ?>" target="_blank"><?php echo $currentTeaserDataObj->url; ?></a>
                   </td>
 
                   <td class="text-align-center"><span class="label <?php echo $currentTeaserDataObj->status['class'] ?>"><?php echo $currentTeaserDataObj->status['name'] ?></span></td>
@@ -86,3 +83,4 @@
 </div>
 <script src="/js/admin/include_page/play_pause_element.js"></script>
 <script src="/js/admin/include_page/setdate.js"></script>
+<script src="/js/admin/include_page/setsorter.js"></script>

@@ -26,13 +26,7 @@
 
                   <th width="20%" class="text-align-center">Пользователь</th>
 
-                  <th class="text-align-center">Показов</th>
-
-                  <th class="text-align-center">Кликов</th>
-
-                  <th class="text-align-center">CTR</th>
-
-                  <th class="text-align-center">Доход</th>
+                  <?php echo $curentColumnSort; ?>
                 </tr>
               </thead>
               <?php foreach ($siteDataObj as $key => $currentSiteStatistiq) {?>
@@ -41,7 +35,7 @@
                   <tr>
                     <td><?php echo $currentSiteStatistiq->site_id; ?></td>
 
-                    <td><a href="http://<?php echo $currentSiteStatistiq->url; ?>"><?php echo $currentSiteStatistiq->url; ?></a></td>
+                    <td><a target="_blank" href="http://<?php echo $currentSiteStatistiq->url; ?>"><?php echo $currentSiteStatistiq->url; ?></a></td>
 
                     <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteStatistiq->user_id; ?>/"><?php echo $currentSiteStatistiq->email; ?></a></td>
 
@@ -78,3 +72,4 @@
     </div>
   </div>
 </div>
+<script src="/js/admin/include_page/setsorter.js"></script>

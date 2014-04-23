@@ -19,10 +19,7 @@
                 <th width="20%">Название</th>
                 <th width="7%" class="text-align-center">Объявления</th>
                 <th width="13%" class="text-align-center">Статус</th>
-                <th width="8%" class="text-align-center">Показы</th>
-                <th width="8%" class="text-align-center">Клики</th>
-                <th width="8%" class="text-align-center">CTR</th>
-                <th width="8%" class="text-align-center">Расход</th>
+                <?php echo $curentColumnSort; ?>
                 <th width="18%" class="text-align-center"></th>
               </tr>
             </thead>
@@ -76,3 +73,4 @@
 </div>
 <script src="/js/admin/include_page/play_pause_element.js"></script>
 <script src="/js/admin/include_page/setdate.js"></script>
+<script src="/js/admin/include_page/setsorter.js"></script>

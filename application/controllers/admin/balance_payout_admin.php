@@ -35,7 +35,7 @@ class Balance_payout_admin extends CI_Controller{
   }
 
   function getBalanceDataObj(){
-    $dataWhereArr = ( isset($_POST['status']) && $_POST['status'] !== '-1') ? array( 'ch.status' => $_POST['status'] ) : array();
+    $dataWhereArr = ( isset($_POST['status']) && $_POST['status'] !== '-1') ? array( 'ch.status' => $_POST['status'] ) : array('ch.status' => '0');
 
     return $this->setDataProcessing($this->select_models->select_all_row_where_column_selectcolumn_join_orderby($dataWhereArr, "ch.dataadd", "desc", 'users lu', 'ch.user_id = lu.user_id', 'ch.user_id, ch.count_history_id, ch.description, ch.dataadd, ch.status, ch.trans_type, ch.summ, lu.email', 'count_history ch'));
   }

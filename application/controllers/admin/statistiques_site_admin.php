@@ -19,14 +19,19 @@ class Statistiques_site_admin extends CI_Controller{
     $this->load->helper('extract_select_key_this_array');
     $this->load->helper('data_where_user_id');
     $this->load->helper('timestamp_of_date_formt');
+    $this->load->helper('sort_arr_of_obj');
+    $this->load->helper('curent_sort_builder');
     $this->load->library('statistiques/statistiques_count_data');
     $this->load->library('admin/search_id_url_mail');
+    $this->load->library('admin/data_builder_site_statistiques_html_elements');
     $this->load->model('statistiques/statistiques_query');
     $this->load->model('statistiques/admin_statistiques_query');
 
     $data = template_builder('admin', 'statistiques_site_admin_tpl', $this->who);
 
     $data['statistiqData'] = $this->getStatistiqFormData();
+
+    $data = $this->data_builder_site_statistiques_html_elements->data($data);
 
     $data['siteDataObj'] = $this->getSiteData();
 
@@ -62,7 +67,7 @@ class Statistiques_site_admin extends CI_Controller{
         $this->totalStatistiq($statistiqCount);
       }
 
-      return $siteDataObj;
+      return sort_arr_of_obj($siteDataObj, $this->statistiqData['sorter_column'], $this->statistiqData['sorter_by'] );
     }
 
     return false;
