@@ -34,7 +34,7 @@
 
                   <td class="text-align-center"><?php echo $currentCampaignDataObj->view; ?></td>
                   <td class="text-align-center"><?php echo $currentCampaignDataObj->click; ?></td>
-                  <td class="text-align-center"><?php echo $currentCampaignDataObj->ctr; ?> %</td>
+                  <td class="text-align-center"><?php echo $currentCampaignDataObj->ctr; ?>%</td>
                   <td class="text-align-center"><?php echo $currentCampaignDataObj->count_money; ?></td>
 
                   <td class="text-align-center">
@@ -55,7 +55,7 @@
                   <th colspan="4">Итого</th>
                   <th class="text-align-center"><?php echo $totalStatistiq['view']; ?></th>
                   <th class="text-align-center"><?php echo $totalStatistiq['click']; ?></th>
-                  <th class="text-align-center"><?php echo $totalStatistiq['ctr']; ?> %</th>
+                  <th class="text-align-center"><?php echo $totalStatistiq['ctr']; ?>%</th>
                   <th class="text-align-center"><?php echo $totalStatistiq['count_money']; ?></th>
                   <th></td>
                 </tr>

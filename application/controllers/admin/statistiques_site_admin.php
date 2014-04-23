@@ -21,6 +21,7 @@ class Statistiques_site_admin extends CI_Controller{
     $this->load->helper('timestamp_of_date_formt');
     $this->load->helper('sort_arr_of_obj');
     $this->load->helper('curent_sort_builder');
+    $this->load->helper('get_define_day');
     $this->load->library('statistiques/statistiques_count_data');
     $this->load->library('admin/search_id_url_mail');
     $this->load->library('admin/data_builder_site_statistiques_html_elements');
@@ -36,6 +37,8 @@ class Statistiques_site_admin extends CI_Controller{
     $data['siteDataObj'] = $this->getSiteData();
 
     $data['totalStatistiq'] = $this->getCommonStatistiqCtrRur();
+
+    $data['defineDay'] = get_define_day();
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }

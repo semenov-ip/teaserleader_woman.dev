@@ -1,3 +1,15 @@
+<div class="row">
+  <div class="col-md-4">&nbsp;</div>
+  <div class="col-md-8 link_stat margin-l">
+    <a class="" onclick="setdate(<?php echo $defineDay['today']; ?>);">Сегодня</a>
+    <a class="" onclick="setdate(<?php echo $defineDay['yesterday']; ?>);">Вчера</a>
+    <a class="" onclick="setdate(<?php echo $defineDay['current_week']; ?>);">Текущая неделя</a>
+    <a class="" onclick="setdate(<?php echo $defineDay['current_month']; ?>);">Текущий месяц</a>
+    <a class="" onclick="setdate(<?php echo $defineDay['last_week']; ?>);">Прошлая неделя</a>
+    <a class="" onclick="setdate(<?php echo $defineDay['last_month']; ?>);">Прошлый месяц</a>
+  </div>
+</div>
+<br />
 <form id="statistiq" class="form-horizontal" role="form" method="post">
   <div class="row">
     <div class="col-md-4">

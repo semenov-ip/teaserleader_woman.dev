@@ -72,6 +72,5 @@ class Statistiques_site extends CI_Controller{
     );
 
     return $this->statistiques_frompost_count_data->getStatistiqCount($statistiqConfig, extract_select_key_this_array($_POST, array('site_id', 'date_start', 'date_end')));
-
   }
 }

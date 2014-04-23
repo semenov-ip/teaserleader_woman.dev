@@ -43,7 +43,7 @@
 
                     <td class="text-align-center"><?php echo $currentSiteStatistiq->click; ?></td>
 
-                    <td class="text-align-center"><?php echo $currentSiteStatistiq->ctr; ?> %</td>
+                    <td class="text-align-center"><?php echo $currentSiteStatistiq->ctr; ?>%</td>
 
                     <td class="text-align-center"><?php echo $currentSiteStatistiq->count_money; ?> руб.</td>
 
@@ -57,7 +57,7 @@
 
                     <td class="text-align-center"><?php echo $totalStatistiq['click']; ?></td>
 
-                    <td class="text-align-center"><?php echo $totalStatistiq['ctr']; ?> %</td>
+                    <td class="text-align-center"><?php echo $totalStatistiq['ctr']; ?>%</td>
 
                     <td class="text-align-center"><?php echo $totalStatistiq['count_money']; ?> руб.</td>
                   </tr>
@@ -72,4 +72,5 @@
     </div>
   </div>
 </div>
+<script src="/js/admin/include_page/setdate.js"></script>
 <script src="/js/admin/include_page/setsorter.js"></script>

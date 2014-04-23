@@ -106,7 +106,7 @@
     <div id="footer">
         
       <h2>Специальные условия для постоянных партнёров!</h2>
-        
+
       <div class="text1">Зарегистрируйтесь прямо сейчас, получите – максимально выгодные и комфортные условия для заработка.</div>
         
       <div class="text2">LadyAds.ru<br />с нами выгодно!</div>
@@ -116,7 +116,10 @@
       </div>
         
       <?php $this->load->view('/_shared/welcome_copyright_tpl'); ?>
-    
+
+      <h2>Примеры тизерного блока!</h2>
+      <div id="teaser_458"><img src="http://ladyads.ru/images/preolader.gif" /></div><script async type="text/javascript" src="http://ladyads.ru/_shared/show/index/458"></script>
+      <br /><br />
     </div>
 
 </div>
