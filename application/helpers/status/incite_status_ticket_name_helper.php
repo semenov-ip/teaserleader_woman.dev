@@ -13,4 +13,21 @@ if(!function_exists('incite_status_ticket_name')){
 
     return $statusName[$statusNum];
   }
+
+
+  function status_ticket_name_key_value(){
+    return array(
+      -1 => "Все",
+
+      0 => "В обработке",
+
+      1 => "Получен ответ",
+
+      2 => "Просмотрен пользователем",
+
+      3 => "Закрыт пользователем",
+
+      4 => "Закрыт администратором"
+    );
+  }
 }

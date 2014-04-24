@@ -2,7 +2,7 @@
 
   if(!function_exists('linkUserCallOn')){
     function linkUserCallOn($userId, $authorName){
-      return '<a href="/admin/users_redirected_admin/index/'.$userId.'/">'.$authorName.'</a>';
+      return '<a target="_blank" href="/admin/users_redirected_admin/index/'.$userId.'/">'.$authorName.'</a>';
     }
   }
 

@@ -2,7 +2,7 @@
     
 class Tickets_admin extends CI_Controller{
 
-  private $who;
+  private $who, $dataWhereArr;
 
   function __construct(){
 
@@ -15,12 +15,18 @@ class Tickets_admin extends CI_Controller{
     $this->load->helper('status/incite_status_ticket_name');
     $this->load->helper('date2str');
     $this->load->helper('pagination_initialize');
+    $this->load->helper('select_define_builder');
+    $this->load->library('admin/data_builder_ticket_html_elements');
     $this->load->model('select_models');
     $this->load->model('pagination/ticket_pagination');
 
     $data = template_builder('admin','tickets_admin_tpl', $this->who);
 
+    $this->getDataWhereArr();
+
     $data['ticketDataObj'] = $this->getTicketData();
+
+    $data = $this->data_builder_ticket_html_elements->data($data);
 
     $this->load->view( '/_shared/admin_tpl.php', $data );
   }
@@ -28,11 +34,17 @@ class Tickets_admin extends CI_Controller{
   function getTicketData(){
     $perPagePagination = pagination_initialize('/index.php/admin/tickets_admin/index/', $this->totalRows(), 20);
 
-    return $this->setDataProcessing($this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination(array('upid' => 0 ),'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', $perPagePagination, intval($this->uri->segment(4)), 'tickets'));
+    return $this->setDataProcessing($this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination($this->dataWhereArr,'dataadd', 'desc', 'ticket_id, user_id, title, text, dataadd, status', $perPagePagination, intval($this->uri->segment(4)), 'tickets'));
   }
 
   function totalRows(){
-    return $this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination_count(array('upid' => 0 ), 'dataadd', 'tickets');
+    return $this->ticket_pagination->select_all_row_where_column_selectcolumn_orderby_pagination_count($this->dataWhereArr, 'dataadd', 'tickets');
+  }
+
+  function getDataWhereArr(){
+    $this->dataWhereArr = ( isset($_POST['status']) && $_POST['status'] !== '-1') ? array( 'status' => $_POST['status'] ) : array();
+
+    $this->dataWhereArr['upid'] = 0;
   }
 
   function setDataProcessing($ticketDataObj){

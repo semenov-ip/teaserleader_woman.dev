@@ -8,7 +8,7 @@ class Data_builder_balance_html_elements {
   }
 
   function data($data){
-  	$status = isset($_POST['status']) ? $_POST['status'] : '0';
+    $status = isset($_POST['status']) ? $_POST['status'] : '0';
 
     $data['selectStatus'] = select_define_builder( array($status), status_balance_name_key_value(), true );
 

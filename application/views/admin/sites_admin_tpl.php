@@ -59,7 +59,7 @@
 
                     <td><a target="_blank" href="http://<?php echo $currentSiteDataObj->url; ?>"><?php echo $currentSiteDataObj->url; ?></a></td>
 
-                    <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
+                    <td class="text-align-center"><a target="_blank" href="/admin/users_redirected_admin/index/<?php echo $currentSiteDataObj->user_id; ?>/"><?php echo $currentSiteDataObj->email; ?></a></td>
 
                     <td class="stat_login"><?php echo $currentSiteDataObj->stat_login; ?></td>
 

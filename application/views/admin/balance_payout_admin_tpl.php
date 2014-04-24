@@ -10,7 +10,7 @@
       <div class="awidget">
         <div class="awidget-head"></div>
 
-         <div class="awidget-body">
+        <div class="awidget-body">
 
           <form class="form-inline" role="form" method="post">
             <div class="row">

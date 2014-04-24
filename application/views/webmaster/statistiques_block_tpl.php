@@ -11,7 +11,7 @@
         <div class="awidget-head"></div>
         <div class="awidget-body">
 
-        <?php if($urlError && $statistiqData) { ?><div class="alert alert-warning">Для того, чтобы воспользоватьс статистической информацией выберите сайт</div><?php } ?>
+        <?php if($urlError && $statistiqData) { ?><div class="alert alert-warning">Для того, чтобы воспользоватьс статистической информацией выберите блок</div><?php } ?>
 
         <?php if($statistiqData){ $this->load->view('/_shared/admin_statistiq_select_tpl'); }?>
 

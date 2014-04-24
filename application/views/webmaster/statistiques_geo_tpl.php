@@ -11,7 +11,7 @@
         <div class="awidget-head"></div>
         <div class="awidget-body">
 
-        <?php if($urlError && $statistiqData) { ?><div class="alert alert-warning">Для того, чтобы воспользоватьс статистической информацией выберите сайт</div><?php } ?>
+        <?php if($urlError && $statistiqData) { ?><div class="alert alert-warning">Для того, чтобы воспользоватьс статистической информацией выберите страну</div><?php } ?>
 
         <?php if($statistiqData){ $this->load->view('/_shared/admin_statistiq_select_tpl'); }?>
 
@@ -26,7 +26,6 @@
                 <th class="text-align-center">Показов</th>
                 <th class="text-align-center">Кликов</th>
                 <th class="text-align-center">CTR</th>
-                <th class="text-align-center">Доход</th>
               </tr>
             </thead>
             <?php foreach ($geoStatistiqDataArr['current'] as $key => $currentGeoStatistiq) {?>
@@ -41,8 +40,6 @@
 
                   <td class="text-align-center"><?php echo $currentGeoStatistiq['ctr']; ?> %</td>
 
-                  <td class="text-align-center"><?php echo $currentGeoStatistiq['count_money']; ?> руб.</td>
-
                 </tr>
 
             <?php } ?>
@@ -51,7 +48,6 @@
                   <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['view']; ?></td>
                   <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['click']; ?></td>
                   <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['ctr']; ?> %</td>
-                  <td class="text-align-center"><?php echo $geoStatistiqDataArr['common']['count_money']; ?> руб.</td>
                 </tr>
               </tbody>
           </table>

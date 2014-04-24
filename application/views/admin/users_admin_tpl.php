@@ -59,7 +59,7 @@
 
                     <td class="text-align-center"><?php echo $currentUserDataObj->dataadd; ?></td>
 
-                    <td class="text-align-center"><a href="/admin/users_redirected_admin/index/<?php echo $currentUserDataObj->user_id; ?>/"><?php echo $currentUserDataObj->email; ?></a></td>
+                    <td class="text-align-center"><a target="_blank" href="/admin/users_redirected_admin/index/<?php echo $currentUserDataObj->user_id; ?>/"><?php echo $currentUserDataObj->email; ?></a></td>
 
                     <td class="text-align-center"><?php echo $currentUserDataObj->name; ?></td>
 
