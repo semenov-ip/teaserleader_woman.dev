@@ -49,12 +49,12 @@ class Redirect_click_url {
       return $this->subidDesigner( $campaignDataObj->subid, $clickData['logDataObj']->teaser_id, $clickData['logDataObj']->site_id );
     }
 
-    return 'sub1='.$clickData['logDataObj']->teaser_id.'&sub2='.$clickData['logDataObj']->site_id.'';
+    return 'sub1='.$clickData['logDataObj']->teaser_id.'&sub2='.$clickData['logDataObj']->site_id;
   }
 
   function _subid_utm($clickData, $campaignDataObj){
     if(!empty($campaignDataObj->subid)){
-      return $this->subidDesigner( $campaignDataObj->subid, $clickData['logDataObj']->teaser_id, $clickData['logDataObj']->site_id ).'?'.$this->_utm($clickData);
+      return $this->subidDesigner( $campaignDataObj->subid, $clickData['logDataObj']->teaser_id, $clickData['logDataObj']->site_id ).$this->_utm($clickData);
     }
 
     return 'sub1='.$clickData['logDataObj']->teaser_id.'&sub2='.$clickData['logDataObj']->site_id.'?'.$this->_utm($clickData);

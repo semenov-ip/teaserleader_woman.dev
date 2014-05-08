@@ -4,7 +4,7 @@
   <hr />
 </div>
  
-<div class="row">
+<div ng-app id="ng-app" class="row">
 
   <div class="col-md-12">
 
@@ -295,3 +295,4 @@
 
 </div>
 <script src="/js/admin/include_page/block.js"></script>
+<script src="/js/admin/include_page/angular.min.js"></script>

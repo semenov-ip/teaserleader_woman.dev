@@ -11,7 +11,7 @@
       $this->prefixes = $this->config->item('prefixes');
     }
 
-    function select_one_from_where_column_selectcolumn_join($dataWhereArr, $dataWhereOrrArr, $selectcolumn, $dbTableName){
+    function select_one_from_where_column_selectcolumn_join($dataWhereArr, $domain, $selectcolumn, $dbTableName){
 
       if( is_array($dataWhereArr) ){
         $this->db->select($selectcolumn);
@@ -20,9 +20,7 @@
 
         $this->db->where($dataWhereArr);
 
-        foreach ($dataWhereOrrArr as $whereOrr) {
-          $this->db->or_where('s.url', $whereOrr);
-        }
+        $this->db->where('s.url', $domain);
 
         $query = $this->db->get($this->prefixes.$dbTableName);
 

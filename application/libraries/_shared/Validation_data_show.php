@@ -54,15 +54,23 @@ class Validation_data_show {
 
     if( stripos($refererStandart, 'xn--') !== false ) $refererArray[] = $this->ci->idna_convert->decode($refererStandart);
 
-    $blockDataObj = $this->ci->show_query->select_one_from_where_column_selectcolumn_join(array('b.block_id' => $blockId), $refererArray, 'b.block_id, s.status, b.user_id', 'blocks b');
+    foreach ($refererArray as $domain) {
+      $blockDataObj = $this->checkDomain($blockId, $domain);
 
-    if( !$blockDataObj ){ return true; }
+      if( is_object($blockDataObj) ){ break; }
+    }
+
+    if( !is_object($blockDataObj) ){ return true; }
 
     $this->status = $blockDataObj->status;
 
     $this->userStatus = extract_key_this_object($this->getUserStatus($blockDataObj->user_id), 'status');
 
     return false;
+  }
+
+  function checkDomain($blockId, $domain){
+    return $this->ci->show_query->select_one_from_where_column_selectcolumn_join(array('b.block_id' => $blockId), $domain, 'b.block_id, s.status, b.user_id', 'blocks b');
   }
 
   function getUserStatus($userId){
