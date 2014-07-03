@@ -122,7 +122,10 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array();
+$autoload['model'] = array(
+  'select_models',
+  'insert_models'
+);
 
 
 /* End of file autoload.php */
