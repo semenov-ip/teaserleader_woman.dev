@@ -19,7 +19,7 @@ class Data_builder_statistiq_block_html_elements {
     $getBlockDataAllKeyValue['-1'] = "Выберите блок";
     
     if( is_array($blockDataAllArrObj) ){
-      foreach ($blockDataAllArrObj as $key => $blockDataCurentObj) {
+      foreach ($blockDataAllArrObj as $key => $blockDataCurentObj){
 
         $getBlockDataAllKeyValue[$blockDataCurentObj->block_id] = $blockDataCurentObj->name;
 
